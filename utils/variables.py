@@ -1,0 +1,58 @@
+from pyrogram.enums import ChatAction
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import os
+
+#
+dl_ani = "https://static.videezy.com/system/resources/previews/000/014/065/original/downloading_bar.mp4"
+up_ani = "https://static.videezy.com/system/resources/previews/000/014/066/original/uploading_bar.mp4"
+# UPLOAD APP
+upload_app = os.getenv("UPLOAD_APP")
+# API URL
+api_url = os.getenv("API_URL")
+# proxy
+proxy = {"scheme": "http", "hostname": "113.160.214.209", "port": 8080}
+# chat actions:
+t = ChatAction.TYPING
+rv = ChatAction.RECORD_VIDEO
+ra = ChatAction.RECORD_AUDIO
+sv = ChatAction.UPLOAD_VIDEO
+sp = ChatAction.UPLOAD_PHOTO
+sm = ChatAction.UPLOAD_AUDIO
+sd = ChatAction.UPLOAD_DOCUMENT
+
+# file formats:
+
+image_formats = [
+    "image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp",
+    "image/svg+xml", "image/bmp"
+]
+
+video_formats = [
+    "video/mp4", "video/webm", "video/ogg", "video/avi", "video/mov",
+    "video/mpeg"
+]
+
+audio_formats = [
+    "audio/mpeg", "audio/ogg", "audio/aac", "audio/midi", "audio/wav",
+    "audio/webm", "audio/mp3"
+]
+
+skip_formats = [
+    "application/json", "text/plain", "text/plain; charset=utf-8",
+    "text/html; charset=UTF-8"
+]
+
+# start button:
+
+button = InlineKeyboardMarkup(
+    [[
+        InlineKeyboardButton("Youtube",
+                             url="https://youtube.com/@TongLanhChua"),
+        InlineKeyboardButton("Cloud",
+                             url="https://vmcloud-nextcloud.hf.space/")
+    ],
+     [
+         InlineKeyboardButton("Group",
+                              url="https://t.me/contentdownload_group"),
+         InlineKeyboardButton("Channel", url="https://t.me/contentdownload")
+     ]])

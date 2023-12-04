@@ -1,0 +1,9 @@
+pyrogram
+requests 
+urllib3 
+tgcrypto 
+flask 
+gunicorn
+deta
+psutil
+pytz
