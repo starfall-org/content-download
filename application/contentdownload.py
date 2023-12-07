@@ -1,6 +1,6 @@
 from utils.secret import api_id, api_hash, bot_token
 from utils.variables import proxy
-import pyrogram, logging
+import pyrogram, os
 
 app = pyrogram.Client("Content-Download",
                       api_id,
@@ -12,5 +12,5 @@ app = pyrogram.Client("Content-Download",
 
 def runserver():
   app.start()
-  logging.critical("Content Download")
+  os.system("echo Content Download")
   pyrogram.idle()
