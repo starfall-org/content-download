@@ -1,7 +1,7 @@
 from utils.secret import api_id, api_hash, bot_token
 import pyrogram, os
 
-app = pyrogram.Client("Content-Download",
+app = pyrogram.Client("Content Download",
                       api_id,
                       api_hash,
                       bot_token=bot_token,
