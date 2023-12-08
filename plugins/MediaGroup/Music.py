@@ -26,7 +26,5 @@ def handle_music(c, m):
   c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
-  except Exception as e:
-    delog = m.reply(e)
-    time.sleep(5)
-    c.delete_messages(m.chat.id, delog.id)
+  except:
+    pass
