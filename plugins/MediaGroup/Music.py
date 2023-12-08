@@ -1,7 +1,7 @@
 from pyrogram import filters, Client
 from api_callback.YTMusic import YTM
 from utils.functions import save
-from utils.variables import ra, sm, dl_ani, up_ani
+from utils.variables import ra, sm
 import re, os, logging, time
 
 
@@ -18,12 +18,12 @@ def handle_music(c, m):
     user_name = m.from_user.first_name
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
-  dw = m.reply_animation(dl_ani, quote=True)
+  download = m.reply("**Downloading**`...`", quote=True)
   audio = YTM(url)
-  c.delete_messages(m.chat.id, dw.id)
-  uw = m.reply_animation(up_ani, quote=True)
+  c.delete_messages(m.chat.id, download.id)
+  sending = m.reply("**Sending**`...`", quote=True)
   m.reply_audio(audio, caption=caption)
-  c.delete_messages(m.chat.id, uw.id)
+  c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
   except Exception as e:
