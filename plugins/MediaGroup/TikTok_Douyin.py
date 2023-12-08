@@ -38,7 +38,5 @@ def handle_tiktokdouyin(c, m):
       uploads(file)
   try:
     m.delete()
-  except Exception as e:
-    delog = m.reply(e)
-    time.sleep(3)
-    c.delete_messages(m.chat.id, delog.id)
+  except:
+    pass
