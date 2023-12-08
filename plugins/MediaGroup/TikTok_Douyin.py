@@ -40,5 +40,5 @@ def handle_tiktokdouyin(c, m):
     m.delete()
   except Exception as e:
     delog = m.reply(e)
-    time.sleep(5)
+    time.sleep(3)
     c.delete_messages(m.chat.id, delog.id)
