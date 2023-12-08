@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Facebook import FBDL
 from utils.functions import save, send_videos
-from utils.variables import rv, sv, dl_ani, up_ani
+from utils.variables import rv, sv
 import re, os, logging
 
 
@@ -21,15 +21,14 @@ def handle_facebook(c, m):
     user_name = m.from_user.first_name
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
-  dw = m.reply_video(dl_ani, quote=True)
+  download = m.reply("**Downloading**`...`", quote=True)
   files = FBDL(url)
-  c.delete_messages(m.chat.id, dw.id)
+  c.delete_messages(m.chat.id, download.id)
   m.reply_chat_action(sv)
-  uw = m.reply_video(up_ani, quote=True)
+  sending = m.reply("**Sending**`...`", quote=True)
   send_videos(m, c, original, files, caption)
-  c.delete_messages(m.chat.id, uw.id)
+  c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
   except Exception as e:
     logging.critical(e)
-  logging.critical("Video-sent")
