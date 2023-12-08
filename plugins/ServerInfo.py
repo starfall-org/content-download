@@ -11,6 +11,6 @@ def bot_server_info(c, m):
 
   reply_text = (f'**INFO:** \n`{name}`\n\n'
                 f'**VERSION:** \n`{ver}`\n**OS:** `{system}`\n\n'
-                f'**INFO:** \n`{name}`\n\n')
+                f'**HOSTING:** \n`{serverinfo}`\n\n')
 
   m.reply(reply_text)
