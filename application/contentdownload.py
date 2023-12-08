@@ -1,5 +1,4 @@
 from utils.secret import api_id, api_hash, bot_token
-from utils.variables import proxy
 import pyrogram, os
 
 app = pyrogram.Client("Content-Download",
