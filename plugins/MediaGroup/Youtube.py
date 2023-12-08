@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Youtube import YTDL
 from utils.functions import save
-from utils.variables import rv, sv, dl_ani, up_ani
+from utils.variables import rv, sv
 import re, os, logging, time
 
 
@@ -21,13 +21,13 @@ def handle_youtube(c, m):
     user_name = m.from_user.first_name
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
-  dw = m.reply_animation(dl_ani, quote=True)
+  download = m.reply("**Downloading**`...`", quote=True)
   file = YTDL(url)
-  c.delete_messages(m.chat.id, dw.id)
+  c.delete_messages(m.chat.id, download.id)
   m.reply_chat_action(sv)
-  uw = m.reply_animation(up_ani, quote=True)
+  sending = m.reply("**Sending**`...`", quote=True)
   m.reply_video(file, reply_markup=original, caption=caption)
-  c.delete_messages(m.chat.id, uw.id)
+  c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
   except Exception as e:
