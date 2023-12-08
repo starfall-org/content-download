@@ -16,4 +16,4 @@ def TDDL(url):
   else:
     file = data["url"]
   logging.critical("TikTok/Douyin")
-  return file, data["video"]
+  return file, data["url"], data["video"]
