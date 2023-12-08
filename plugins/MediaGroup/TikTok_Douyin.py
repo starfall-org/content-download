@@ -30,9 +30,9 @@ def handle_tiktokdouyin(c, m):
     sending = m.reply("**Sending**`...`", quote=True)
     m.reply_chat_action(sv)
     try:
-      m.reply_video(file, reply_markup=original, caption=caption)
-    except:
       m.reply_video(link, reply_markup=original, caption=caption)
+    except:
+      m.reply_video(file, reply_markup=original, caption=caption)
     c.delete_messages(m.chat.id, sending.id)
     if m.chat.username == "contentdownload":
       uploads(file)
