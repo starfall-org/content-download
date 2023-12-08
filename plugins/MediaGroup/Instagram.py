@@ -32,5 +32,5 @@ def handle_instagram(c, m):
     c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
-  except Exception as e:
-    logging.critical(e)
+  except:
+    pass
