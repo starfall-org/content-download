@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Other import DL
 from utils.functions import save
-from utils.variables import t, rv, sv, sp, sm, sd, dl_ani, up_ani
+from utils.variables import t, rv, sv, sp, sm, sd 
 import re, os, logging, time
 
 
@@ -15,7 +15,7 @@ def handle_other(c, m):
   file, type = DL(url)
   if file is None:
     return
-  dw = m.reply_animation(dl_ani, quote=True)
+  download = m.reply("**Downloading**`...`", quote=True)
   save(m)
   m.reply_chat_action(rv)
   original = InlineKeyboardMarkup([[InlineKeyboardButton("Original",
@@ -27,22 +27,20 @@ def handle_other(c, m):
     user_name = m.from_user.first_name
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
-  c.delete_messages(m.chat.id, dw.id)
+  c.delete_messages(m.chat.id, download.id)
+  sending = m.reply("**Sending**`...`", quote=True)
   if type == "image":
     m.reply_chat_action(sp)
     m.reply_photo(file, reply_markup=original, caption=caption)
   elif type == "video":
-    uw = m.reply_animation(up_ani, quote=True)
     m.reply_chat_action(sv)
     m.reply_video(file, reply_markup=original, caption=caption)
-    c.delete_messages(m.chat.id, uw.id)
   elif type == "audio":
-    uw = m.reply_animation(up_ani, quote=True)
     m.reply_chat_action(sm)
     m.reply_audio(file, caption=caption)
-    c.delete_messages(m.chat.id, uw.id)
   else:
     pass
+  c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
   except Exception as e:
