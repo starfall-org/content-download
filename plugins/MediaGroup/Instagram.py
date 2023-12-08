@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Instagram import IGDL
 from utils.functions import save, send_photos, send_videos
-from utils.variables import rv, dl_ani, up_ani
+from utils.variables import rv
 import re, os, logging
 
 
@@ -21,15 +21,15 @@ def handle_instagram(c, m):
     user_name = m.from_user.first_name
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
-  dw = m.reply_animation(dl_ani, quote=True)
+  download = m.reply("**Downloading**`...`", quote=True)
   files, video = IGDL(url)
-  c.delete_messages(m.chat.id, dw.id)
+  c.delete_messages(m.chat.id, download.id)
   if video == False:
     send_photos(m, c, original, files, caption)
   elif video == True:
-    uw = m.reply_animation(up_ani, quote=True)
+    sending = m.reply("**Sending**`...`", quote=True)
     send_videos(m, c, original, files, caption)
-    c.delete_messages(m.chat.id, uw.id)
+    c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
   except Exception as e:
