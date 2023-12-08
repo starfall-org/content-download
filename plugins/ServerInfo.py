@@ -9,8 +9,8 @@ def bot_server_info(c, m):
   system = platform.system()
   serverinfo = server_info()
 
-  reply_text = (f'**SERVER:** \n`{serverinfo}`\n\n'
-                f'**INFO:** \n`{name}`\n\n'
-                f'**VERSION:** \n`{ver}`\n\n**OS:** `{system}`')
+  reply_text = (f'**INFO:** \n`{name}`\n\n'
+                f'**VERSION:** \n`{ver}`\n\n**OS:** `{system}`'
+                f'**INFO:** \n`{name}`\n\n')
 
   m.reply(reply_text)
