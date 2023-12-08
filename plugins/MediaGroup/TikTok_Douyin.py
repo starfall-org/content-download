@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.TikTok_Douyin import TDDL
 from utils.functions import save, send_photos, uploads
-from utils.variables import sv, rv, dl_ani, up_ani
+from utils.variables import sv, rv
 import re, os, logging, time
 
 
@@ -21,16 +21,16 @@ def handle_tiktokdouyin(c, m):
     user_name = m.from_user.first_name
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
-  dw = m.reply_animation(dl_ani, quote=True)
+  download = m.reply("**Downloading**`...`", quote=True)
   file, is_video = TDDL(url)
-  c.delete_messages(m.chat.id, dw.id)
+  c.delete_messages(m.chat.id, download.id)
   if is_video == False:
     send_photos(m, c, original, file, caption)
   elif is_video == True:
-    uw = m.reply_animation(up_ani, quote=True)
+    sending = m.reply("**Sending**`...`", quote=True)
     m.reply_chat_action(sv)
     m.reply_video(file, reply_markup=original, caption=caption)
-    c.delete_messages(m.chat.id, uw.id)
+    c.delete_messages(m.chat.id, sending.id)
     if m.chat.username == "contentdownload":
       uploads(file)
   try:
