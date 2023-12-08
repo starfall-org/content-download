@@ -22,14 +22,17 @@ def handle_tiktokdouyin(c, m):
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
   download = m.reply("**Downloading**`...`", quote=True)
-  file, is_video = TDDL(url)
+  file, link, is_video = TDDL(url)
   c.delete_messages(m.chat.id, download.id)
   if is_video == False:
     send_photos(m, c, original, file, caption)
   elif is_video == True:
     sending = m.reply("**Sending**`...`", quote=True)
     m.reply_chat_action(sv)
-    m.reply_video(file, reply_markup=original, caption=caption)
+    try:
+      m.reply_video(file, reply_markup=original, caption=caption)
+    except:
+      m.reply_video(link, reply_markup=original, caption=caption)
     c.delete_messages(m.chat.id, sending.id)
     if m.chat.username == "contentdownload":
       uploads(file)
