@@ -39,11 +39,7 @@ html = """
       const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.body.classList.toggle('dark-mode', isDarkMode);
     }
-
-    // Thực hiện kiểm tra khi trang được tải
     window.addEventListener('load', toggleDarkMode);
-
-    // Thực hiện kiểm tra khi chế độ màu sắc thay đổi
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', toggleDarkMode);
   </script>
 </head>
