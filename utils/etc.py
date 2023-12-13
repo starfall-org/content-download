@@ -1,6 +1,6 @@
 from pyrogram.types import InputMediaPhoto, InputMediaVideo
 from typing import List
-from utils.vả import sp, sv
+from utils.var import sp, sv
 from utils.db import save_chat, save_user
 from utils.upld import upload_file
 import requests, threading, os
