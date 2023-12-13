@@ -1,5 +1,6 @@
 import requests, random, re, logging
-from utils.secret import api_url, image_formats, video_formats, audio_formats
+from utils.secret import api_url
+from utils.var import image_formats, video_formats, audio_formats
 from io import BytesIO
 
 def DL(url):
