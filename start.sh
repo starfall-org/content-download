@@ -7,9 +7,6 @@ sleep 10
 
 while true; do
   gmt7_time=$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S")
-  
   echo "Content Download - Time: $gmt7_time"
-  curl http://localhost:8080
-  
-  sleep 169200
+  sleep 80000
 done
