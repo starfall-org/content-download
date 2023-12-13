@@ -1,9 +1,9 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.TikTok_Douyin import TDDL
-from utils.functions import save, send_photos, uploads
-from utils.variables import sv, rv
-import re, os, logging, time
+from utils.etc import save, send_photos, uploads
+from utils.var import sv, rv
+import re
 
 
 @Client.on_message(filters.regex(r"douyin.com|tiktok.com|iesdouyin.com"))

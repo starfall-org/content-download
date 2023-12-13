@@ -1,9 +1,8 @@
 import requests
-import time
 import logging
 from datetime import datetime
 from pytz import timezone
-from utils.variables import upload_app
+from utils.secret import upload_app
 
 
 def upload_file(file_data):

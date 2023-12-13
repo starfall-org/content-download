@@ -1,9 +1,9 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Instagram import IGDL
-from utils.functions import save, send_photos, send_videos
-from utils.variables import rv
-import re, os, logging
+from utils.etc import save, send_photos, send_videos
+from utils.var import rv
+import re
 
 
 @Client.on_message(filters.regex(r"instagram.com"))

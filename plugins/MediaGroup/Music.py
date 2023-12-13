@@ -1,8 +1,8 @@
 from pyrogram import filters, Client
 from api_callback.YTMusic import YTM
-from utils.functions import save
-from utils.variables import ra, sm
-import re, os, logging, time
+from utils.etc import save
+from utils.var import ra, sm
+import re
 
 
 @Client.on_message(filters.command("music"))
@@ -22,6 +22,7 @@ def handle_music(c, m):
   audio = YTM(url)
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
+  m.reply_chat_action(sm)
   m.reply_audio(audio, caption=caption)
   c.delete_messages(m.chat.id, sending.id)
   try:

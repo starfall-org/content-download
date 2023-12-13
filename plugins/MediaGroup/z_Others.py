@@ -1,9 +1,9 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Other import DL
-from utils.functions import save
-from utils.variables import t, rv, sv, sp, sm, sd 
-import re, os, logging, time
+from utils.etc import save
+from utils.var import t, sv, sp, sm
+import re
 
 
 @Client.on_message(filters.regex(r"https?://(\S+\.)?") & filters.incoming)
@@ -17,7 +17,7 @@ def handle_other(c, m):
     return
   download = m.reply("**Downloading**`...`", quote=True)
   save(m)
-  m.reply_chat_action(rv)
+  m.reply_chat_action(t)
   original = InlineKeyboardMarkup([[InlineKeyboardButton("Original",
                                                          url=url)]])
   try:

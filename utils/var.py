@@ -1,10 +1,6 @@
 from pyrogram.enums import ChatAction
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import os
-
-upload_app = os.getenv("UPLOAD_APP")
-api_url = os.getenv("API_URL")
-
+#
 t = ChatAction.TYPING
 rv = ChatAction.RECORD_VIDEO
 ra = ChatAction.RECORD_AUDIO

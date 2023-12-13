@@ -1,9 +1,9 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Youtube import YTDL
-from utils.functions import save
-from utils.variables import rv, sv
-import re, os, logging, time
+from utils.etc import save
+from utils.var import rv, sv
+import re
 
 
 @Client.on_message(filters.regex(r"youtube.com|youtu.be"))

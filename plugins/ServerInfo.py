@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
-from utils.functions import server_info
-import platform, psutil
+from utils.etc import server_info
+import platform
 
 @Client.on_message(filters.command('info'))
 def bot_server_info(c, m):

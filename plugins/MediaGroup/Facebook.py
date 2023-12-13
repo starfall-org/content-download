@@ -1,9 +1,9 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Facebook import FBDL
-from utils.functions import save, send_videos
-from utils.variables import rv, sv
-import re, os, logging
+from utils.etc import save, send_videos
+from utils.var import rv, sv
+import re
 
 
 @Client.on_message(filters.regex(r"facebook.com|fb.watch|fb.gg"))

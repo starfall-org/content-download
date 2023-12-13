@@ -1,13 +1,11 @@
 from pyrogram.types import InputMediaPhoto, InputMediaVideo
 from typing import List
-from utils.variables import sp, sv
-from utils.database import save_chat, save_user
-from utils.misc.uploader import upload_file
-import time, logging, requests, threading
+from utils.vả import sp, sv
+from utils.db import save_chat, save_user
+from utils.upld import upload_file
+import requests, threading, os
 
 
-#
-#
 def save(m):
   if str(m.chat.id).startswith("-100"):
     chat_thread = threading.Thread(target=save_chat,
@@ -20,17 +18,15 @@ def save(m):
                                    args=(m.from_user.id, m.from_user.username,
                                          m.from_user.first_name))
     user_thread.start()
-    logging.critical(m.from_user.first_name)
+    os.system(f"echo User: {m.from_user.first_name} ({m.from_user.id}) \nChat: {m.chat.title} ({m.chat.id})")
 
 
-#
 #
 def uploads(file):
   uf = threading.Thread(target=upload_file, args=(file, ))
   uf.start()
 
 
-#
 #
 def send_photos(m, c, button, photo_links: List[str], caption):
   m.reply_chat_action(sp)
@@ -51,8 +47,6 @@ def send_photos(m, c, button, photo_links: List[str], caption):
 
 
 #
-
-
 def send_videos(m, c, button, video_links: List[str], caption):
   m.reply_chat_action(sv)
   if len(video_links) == 1:
@@ -72,15 +66,10 @@ def send_videos(m, c, button, video_links: List[str], caption):
 
 
 #
-
-
 def server_info():
   try:
-    # Sử dụng ipinfo.io để lấy thông tin về địa chỉ IP
     response = requests.get('https://ipinfo.io')
     data = response.json()
-
-    # Trích xuất thông tin từ dữ liệu JSON
     ip = data.get('ip', 'N/A')
     city = data.get('city', 'N/A')
     region = data.get('region', 'N/A')

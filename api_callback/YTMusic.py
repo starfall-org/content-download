@@ -1,5 +1,5 @@
 import requests, random, re, logging
-from utils.variables import api_url
+from utils.secret import api_url
 from io import BytesIO
 
 def YTM(url):
