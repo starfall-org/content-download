@@ -1,12 +1,14 @@
+import re  #type:ignore
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Other import DL
 from utils.etc import save
 from utils.var import t, sv, sp, sm
-import re
 
 
-@Client.on_message((filters.regex(r"https?://(\S+\.)?") or filters.command("download"))& filters.incoming)
+@Client.on_message(
+    (filters.regex(r"https?://(\S+\.)?") or filters.command("download"))
+    & filters.incoming)
 def handle_other(c, m):
   text = m.text
   if text.startswith('/request'):
@@ -38,9 +40,6 @@ def handle_other(c, m):
   elif type == "audio":
     m.reply_chat_action(sm)
     m.reply_audio(file, caption=caption)
-  else:
-    m.reply_chat_action(sv)
-    m.reply_document(file, reply_markup=original, caption=caption)
   c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
