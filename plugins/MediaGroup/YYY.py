@@ -40,7 +40,7 @@ def handle_other(c, m):
     m.reply_audio(file, caption=caption)
   else:
     m.reply_chat_action(sv)
-    m.reply_video(file, reply_markup=original, caption=caption)
+    m.reply_document(file, reply_markup=original, caption=caption)
   c.delete_messages(m.chat.id, sending.id)
   try:
     m.delete()
