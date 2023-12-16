@@ -14,9 +14,10 @@ def handle_other(c, m):
   if text.startswith('/request'):
     return
   url = re.search(r"(?P<url>https?://[^\s]+)", text).group("url")
-  file, type = DL(url)
-  if file is None:
-    return
+  try:
+    file, type = DL(url)
+  except Exception as e:
+    return e
   download = m.reply("**Downloading**`...`", quote=True)
   save(m)
   m.reply_chat_action(t)
