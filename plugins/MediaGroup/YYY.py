@@ -6,7 +6,7 @@ from utils.var import t, sv, sp, sm
 import re
 
 
-@Client.on_message((filters.regex(r"https?://(\S+\.)?") or filters.command("download")& filters.incoming)
+@Client.on_message((filters.regex(r"https?://(\S+\.)?") or filters.command("download"))& filters.incoming)
 def handle_other(c, m):
   text = m.text
   if text.startswith('/request'):
