@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 python3 main.py runserver &
 gunicorn --log-level critical --bind 0.0.0.0:8080 application.flask:app &
