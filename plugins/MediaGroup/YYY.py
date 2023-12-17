@@ -16,6 +16,8 @@ def handle_other(c, m):
   url = re.search(r"(?P<url>https?://[^\s]+)", text).group("url")
   try:
     file, type = DL(url)
+    if type == "other":
+      raise
   except Exception as e:
     return e
   download = m.reply("**Downloading**`...`", quote=True)
