@@ -25,5 +25,5 @@ def DL(url):
   elif r.headers["Content-Type"] in audio_formats:
     type = "audio"
   else:
-    return None, "other"
+    return None, None
   return file, type
