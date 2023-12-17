@@ -19,7 +19,7 @@ def save(m):
                                          m.from_user.first_name))
     user_thread.start()
     os.system(f"echo User: {m.from_user.first_name} ID: {m.from_user.id}")
-    os.system(f"Chat: {m.chat.title} ID: {m.chat.id}")
+    os.system(f"echo Chat: {m.chat.title} ID: {m.chat.id}")
 
 
 #
