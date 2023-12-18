@@ -1,11 +1,9 @@
-from utils.secret import api_id, api_hash, bot_token
+from utils.db import session_string
 import pyrogram, os
 
-app = pyrogram.Client("Content Download",
-                      api_id,
-                      api_hash,
-                      bot_token=bot_token,
-                      plugins={"root":"plugins"},
+app = pyrogram.Client("Content Download", session_string=session_string
+                      
+                      ,plugins={"root":"plugins"},
                       max_concurrent_transmissions=100)
 
 

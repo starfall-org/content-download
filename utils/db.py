@@ -50,3 +50,9 @@ def get_chats():
           f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)"
       )
   return len(result), result
+
+
+def session_string():
+  session_base = deta.Base('telegram-sessions')
+  session_dict = session_base.get('content-download')
+  return session_dict['value']
