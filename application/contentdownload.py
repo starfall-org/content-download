@@ -1,7 +1,7 @@
 from utils.db import session_string
 import pyrogram, os
 
-app = pyrogram.Client("Content Download", session_string=session_string
+app = pyrogram.Client("Content Download", session_string=session_string()
                       
                       ,plugins={"root":"plugins"},
                       max_concurrent_transmissions=100)
