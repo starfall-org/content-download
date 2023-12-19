@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from utils.etc import server_info
+from etc.util import server_info
 import platform
 
 @Client.on_message(filters.command('info'))

@@ -1,5 +1,5 @@
 from pyrogram import filters, Client
-from etc.etc import save
+from etc.util import save
 from etc.var import button, t
 
 start_vn = '''**Content Download bot** cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 

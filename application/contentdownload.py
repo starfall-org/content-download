@@ -1,4 +1,4 @@
-from db.secret import tokens
+from secret import tokens
 import pyrogram, os
 
 app = pyrogram.Client("Content Download",
