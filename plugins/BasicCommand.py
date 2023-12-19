@@ -1,6 +1,6 @@
 from pyrogram import filters, Client
-from utils.etc import save
-from utils.var import button, t
+from etc.etc import save
+from etc.var import button, t
 
 start_vn = '''**Content Download bot** cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
 Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như Youtube, TikTok/Douyin, Facebook, Twitter, và nhiều trang web khác. 

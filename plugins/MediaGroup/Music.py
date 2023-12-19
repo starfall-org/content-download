@@ -1,7 +1,7 @@
 from pyrogram import filters, Client
 from api_callback.YTMusic import YTM
-from utils.etc import save
-from utils.var import ra, sm
+from etc.util import save
+from etc.var import ra, sm
 import re
 
 

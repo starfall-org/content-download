@@ -1,8 +1,8 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from api_callback.TikTok_Douyin import TDDL
-from utils.etc import save, send_photos, uploads
-from utils.var import sv, rv
+from api_callback.ByteDance import TDDL
+from etc.util import save, send_photos, uploads
+from etc.var import sv, rv
 import re
 
 
