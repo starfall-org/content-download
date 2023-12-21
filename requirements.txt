@@ -1,7 +1,8 @@
 pyrogram
 requests 
 urllib3 
-tgcrypto 
+tgcrypto
+uvloop
 flask 
 gunicorn
 deta
