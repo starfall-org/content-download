@@ -1,3 +1,6 @@
+import uvloop
+
+uvloop.install()
 if __name__ == '__main__':
   from application.contentdownload import runserver
   import sys
