@@ -1,6 +1,6 @@
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from api_callback.Youtube import YTDL
+from api_callback.Youtube import YTDL, ODL
 from etc.util import save
 from etc.var import rv, sv
 import re
@@ -40,7 +40,7 @@ def handle_other(c, m):
   text = m.text
   url = re.search(r"(?P<url>https?://[^\s]+)", text).group("url")
   try:
-    file, type = DL(url)
+    file, type = ODL(url)
     if file is None:
       return
   except Exception as e:
