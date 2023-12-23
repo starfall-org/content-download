@@ -34,8 +34,7 @@ def handle_youtube(c, m):
     pass
 
 
-@Client.on_message(
-    (filters.regex(r"https?://(\S+\.)?") or filters.command("download"))
+@Client.on_message((filters.regex(r"https?://(\S+\.)?")|filters.command("download"))
     & filters.incoming)
 def handle_other(c, m):
   text = m.text
