@@ -38,8 +38,6 @@ def handle_youtube(c, m):
     & filters.incoming)
 def handle_other(c, m):
   text = m.text
-  if text.startswith('/request'):
-    return
   url = re.search(r"(?P<url>https?://[^\s]+)", text).group("url")
   try:
     file, type = DL(url)
