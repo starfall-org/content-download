@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Youtube import YTDL, ODL
 from etc.util import save
-from etc.var import rv, sv
+from etc.var import t, rv, sv, sp, sm
 import re
 
 
@@ -45,9 +45,9 @@ def handle_other(c, m):
       return
   except Exception as e:
     return e
+  m.reply_chat_action(t)
   download = m.reply("**Downloading**`...`", quote=True)
   save(m)
-  m.reply_chat_action(t)
   original = InlineKeyboardMarkup([[InlineKeyboardButton("Original",
                                                          url=url)]])
   try:
@@ -58,6 +58,7 @@ def handle_other(c, m):
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
   c.delete_messages(m.chat.id, download.id)
+  m.reply_chat_action(t)
   sending = m.reply("**Sending**`...`", quote=True)
   if type == "image":
     m.reply_chat_action(sp)
