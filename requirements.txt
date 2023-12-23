@@ -1,7 +1,7 @@
 pyrogram
-requests 
+requests
 tgcrypto
-flask 
+flask
 gunicorn
 deta
 psutil
