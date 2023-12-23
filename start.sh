@@ -7,6 +7,6 @@ sleep 10
 
 while true; do
   gmt7_time=$(TZ=Asia/Ho_Chi_Minh date +"%Y-%m-%d %H:%M:%S")
-  echo "Time: $gmt7_time"
-  sleep 80000
+  echo "$gmt7_time"
+  sleep 86400
 done
