@@ -5,7 +5,6 @@ from db.db import save_chat, save_user
 from etc.upld import upload_file
 import requests, threading, os
 
-
 def save(m):
   if str(m.chat.id).startswith("-100"):
     chat_thread = threading.Thread(target=save_chat,
@@ -19,15 +18,10 @@ def save(m):
                                          m.from_user.first_name))
     user_thread.start()
     os.system(f"echo User: {m.from_user.first_name} ID: {m.from_user.id}")
-    os.system(f"echo Chat: {m.chat.title} ID: {m.chat.id}")
-
-
 #
 def uploads(file):
   uf = threading.Thread(target=upload_file, args=(file, ))
   uf.start()
-
-
 #
 def send_photos(m, c, button, photo_links: List[str], caption):
   m.reply_chat_action(sp)
@@ -45,8 +39,6 @@ def send_photos(m, c, button, photo_links: List[str], caption):
       m.reply_media_group(media_group)
     m.reply_chat_action(sp)
     m.reply_photo(photo_links[-1], caption=caption, reply_markup=button)
-
-
 #
 def send_videos(m, c, button, video_links: List[str], caption):
   m.reply_chat_action(sv)
@@ -64,8 +56,6 @@ def send_videos(m, c, button, video_links: List[str], caption):
       m.reply_media_group(media_group)
     m.reply_chat_action(sp)
     m.reply_video(video_links[-1], caption=caption, reply_markup=button)
-
-
 #
 def server_info():
   try:
