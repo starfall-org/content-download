@@ -65,5 +65,5 @@ def media_handler(c, m):
   if is_media:
     try:
       m.delete()
-   except:
-     pass
+    except:
+      pass
