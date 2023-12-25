@@ -6,3 +6,4 @@ gunicorn
 deta
 psutil
 pytz
+bs4
