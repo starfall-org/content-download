@@ -5,7 +5,6 @@ from etc.util import save, send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
 import re, logging
 
-@Client.on_message(filters.regex(r"www.tiktok.com/@"))
 def handle_tiktokuserlink(c,m):
   save(m)
   text = m.text
@@ -68,7 +67,10 @@ def handle_tiktokdouyin(c, m):
     user_id = m.from_user.id
   caption = f'**[{user_name}](tg://user?id={user_id})**'
   download = m.reply("**Downloading**`...`", quote=True)
-  file, link, is_video = TDDL(url)
+  try:
+    file, link, is_video = TDDL(url)
+  except:
+    handle_tiktokuserlink(c,m)
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
   if is_video == False:
