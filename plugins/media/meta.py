@@ -1,7 +1,6 @@
 from api_callback.Meta import FBDL, IGDL
-from etc.util import save, send_videos, send_photos
+from etc.util import send_videos, send_photos
 from etc.var import rv, sv
-import re
 
 def facebook(c, m):
   m.reply_chat_action(rv)
