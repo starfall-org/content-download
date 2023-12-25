@@ -26,7 +26,7 @@ def handle_tiktokuserlink(c,m):
   list_file = []
   list_photo = []
   for sharelink in share_links:
-    file, link, is_video = TDDL(url)
+    file, link, is_video = TDDL(sharelink)
     if is_video == True:
       list_video.append(link)
       list_file.append(file)
