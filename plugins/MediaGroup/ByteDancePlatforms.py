@@ -24,7 +24,7 @@ def handle_tiktokuserlink(c,m):
   share_links = get_share_links(url)
   list_video = []
   list_file = []
-  list_photo
+  list_photo = []
   for sharelink in share_links:
     file, link, is_video = TDDL(url)
     if is_video == True:
