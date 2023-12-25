@@ -1,6 +1,6 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.ByteDance import TDDL
-from etc.util import save, send_videos, send_photos, uploads, get_share_links
+from etc.util import send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
 import re, logging
 
