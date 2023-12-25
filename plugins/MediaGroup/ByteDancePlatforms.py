@@ -5,21 +5,10 @@ from etc.util import save, send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
 import re, logging
 
-def handle_tiktokuserlink(c,m):
-  save(m)
-  text = m.text
-  url = re.search(r"(?P<url>https?://[^\s]+)", text).group("url")
+def handle_tiktokuserlink(c, m, url, caption, download):
   original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",
                                                          url=url)]])
   m.reply_chat_action(rv)
-  try:
-    user_name = m.sender_chat.title
-    user_id = m.sender_chat.id
-  except:
-    user_name = m.from_user.first_name
-    user_id = m.from_user.id
-  caption = f'**[{user_name}](tg://user?id={user_id})**'
-  download = m.reply("**Downloading**`...`", quote=True)   
   share_links = get_share_links(url)
   list_video = []
   list_file = []
@@ -70,8 +59,7 @@ def handle_tiktokdouyin(c, m):
   try:
     file, link, is_video = TDDL(url)
   except:
-    c.delete_messages(m.chat.id, download.id)
-    handle_tiktokuserlink(c,m)
+    handle_tiktokuserlink(c, m, url, caption, download)
     return
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
