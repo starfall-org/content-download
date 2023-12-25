@@ -2,7 +2,7 @@ from api_callback.Meta import FBDL, IGDL
 from etc.util import send_videos, send_photos
 from etc.var import rv, sv
 
-def facebook(c, m):
+def facebook(c, m, url, original, caption, download):
   m.reply_chat_action(rv)
   files = FBDL(url)
   c.delete_messages(m.chat.id, download.id)
@@ -11,7 +11,7 @@ def facebook(c, m):
   send_videos(m, c, original, files, caption)
   c.delete_messages(m.chat.id, sending.id)
 
-def instagram(c, m):
+def instagram(c, m, url, original, caption, download):
   m.reply_chat_action(rv)
   download = m.reply("**Downloading**`...`", quote=True)
   files, video = IGDL(url)
