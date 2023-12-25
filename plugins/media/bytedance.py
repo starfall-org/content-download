@@ -38,7 +38,7 @@ def tikdou(c, m, url, original, caption, download):
   try:
     file, link, is_video = TDDL(url)
   except:
-    handle_tiktokuserlink(c, m, url, caption, download)
+    tiktokuserlink(c, m, url, caption, download)
     return
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
