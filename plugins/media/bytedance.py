@@ -1,4 +1,3 @@
-from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.ByteDance import TDDL
 from etc.util import save, send_videos, send_photos, uploads, get_share_links
@@ -33,10 +32,6 @@ def tiktokuserlink(c, m, url, caption, download):
     except:
       send_videos(m, c, original, list_file, caption)
   c.delete_messages(m.chat.id, sending.id)
-  try:
-    m.delete()
-  except:
-    pass
   
 def tikdou(c, m, url, original, caption, download):
   m.reply_chat_action(rv)
@@ -58,4 +53,3 @@ def tikdou(c, m, url, original, caption, download):
     if m.chat.username == "contentdownload":
       uploads(file)
   c.delete_messages(m.chat.id, sending.id)
-  return
