@@ -3,7 +3,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.ByteDance import TDDL
 from etc.util import save, send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
-import re
+import re, logging
 
 @Client.on_message(filters.regex(r"www.tiktok.com/@"))
 def handle_tiktokuserlink(c,m):
@@ -34,9 +34,12 @@ def handle_tiktokuserlink(c,m):
       list_photo.extend(link)
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
-  if list_photo is not None:
-    send_photos(m, c, original, list_photo, caption)
-  if list_video is not None:
+  if list_photo:
+    try:
+      send_photos(m, c, original, list_photo, caption)
+    except Exception as e:
+      logging.error(e)
+  if list_video:
     try:
       send_videos(m, c, original, list_video, caption)
     except:
