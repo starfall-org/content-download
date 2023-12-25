@@ -70,7 +70,9 @@ def handle_tiktokdouyin(c, m):
   try:
     file, link, is_video = TDDL(url)
   except:
+    c.delete_messages(m.chat.id, download.id)
     handle_tiktokuserlink(c,m)
+    return
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
   if is_video == False:
