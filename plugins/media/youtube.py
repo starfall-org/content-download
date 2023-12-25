@@ -2,7 +2,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.Youtube import YTDL,YTM, ODL
 from etc.var import t, rv, ra, sv, sp, sm
 
-def youtube(c, m):
+def youtube(c, m, url, original, caption, download):
   m.reply_chat_action(rv)
   file = YTDL(url)
   c.delete_messages(m.chat.id, download.id)
@@ -15,7 +15,7 @@ def youtube(c, m):
   except:
     pass
 
-def other(c, m):
+def other(c, m, file, type, original, caption, download):
   c.delete_messages(m.chat.id, download.id)
   m.reply_chat_action(t)
   sending = m.reply("**Sending**`...`", quote=True)
@@ -30,7 +30,7 @@ def other(c, m):
     m.reply_audio(file, caption=caption)
   c.delete_messages(m.chat.id, sending.id)
 
-def music(c, m):
+def music(c, m, url, caption, download):
   m.reply_chat_action(ra)
   audio = YTM(url)
   c.delete_messages(m.chat.id, download.id)
