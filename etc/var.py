@@ -1,5 +1,6 @@
 from pyrogram.enums import ChatAction
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import re
 #
 t = ChatAction.TYPING
 rv = ChatAction.RECORD_VIDEO
@@ -39,3 +40,17 @@ button = InlineKeyboardMarkup(
                               url="https://t.me/contentdownload_group"),
          InlineKeyboardButton("Channel", url="https://t.me/contentdownload")
      ]])
+
+def getattrs(m, s):
+  url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
+  original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url)]])
+  if s:
+    original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Webstream", url=f"{webstream}/stream?box={s.chat.id}&id={s.id}")]])
+  try:
+    user_name = m.sender_chat.title
+    user_id = m.sender_chat.id
+  except:
+    user_name = m.from_user.first_name
+    user_id = m.from_user.id
+  caption = f'**[{user_name}](tg://user?id={user_id})**'
+  return url, original, caption
