@@ -3,6 +3,7 @@ from deta import Deta
 
 upload_app = os.getenv("UPLOAD_APP")
 api_url = os.getenv("API_URL")
+webstream = os.getenv("WEBSTREAM")
 deta = Deta(os.getenv('DETA_KEY'))
 db = deta.Base('telegram-sessions')
 
