@@ -7,6 +7,7 @@ from plugins.media.youtube import youtube, music, other
 from api_callback.Youtube import ODL
 from etc.util import save
 from etc.var import t, getattrs
+import logging
 
 @Client.on_message(filters.command("music"))
 def music_handler(c, m):
