@@ -33,7 +33,8 @@ def tiktokuserlink(c, m, url, caption, download):
       send_videos(m, c, original, list_file, caption)
   c.delete_messages(m.chat.id, sending.id)
   
-def tikdou(c, m, url, original, caption, download):
+def tikdou(c, m, download, getattrs):
+  url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   try:
     file, link, is_video = TDDL(url)
@@ -47,9 +48,11 @@ def tikdou(c, m, url, original, caption, download):
   elif is_video == True:
     m.reply_chat_action(sv)
     try:
-      m.reply_video(link, reply_markup=original, caption=caption)
+      s = m.reply_video(link, reply_markup=original, caption=caption)
     except:
-      m.reply_video(file, reply_markup=original, caption=caption)
+      s = m.reply_video(file, reply_markup=original, caption=caption)
+    original = getattrs(s=s) 
+    c.edit_inline_reply_markup(s.id, original)
     if m.chat.username == "contentdownload":
       uploads(file)
   c.delete_messages(m.chat.id, sending.id)
