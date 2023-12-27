@@ -52,7 +52,7 @@ def tikdou(c, m, download, getattrs):
     except:
       s = m.reply_video(file, reply_markup=original, caption=caption)
     original = getattrs(m, s) 
-    c.edit_message_reply_markup(s.id, original)
+    c.edit_message_reply_markup(s.chat.id, s.id, original)
     if m.chat.username == "contentdownload":
       uploads(file)
   c.delete_messages(m.chat.id, sending.id)
