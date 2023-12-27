@@ -15,7 +15,7 @@ def facebook(c, m, download, getattrs):
   else:
     for file in files:
       s = m.reply_video(file, reply_markup=original, caption=caption)
-  original = getattrs(s=s)
+  original = getattrs(m, s)
   c.edit_inline_reply_markup(s.id, original)
   #send_videos(m, c, original, files, caption)
   c.delete_messages(m.chat.id, sending.id)
