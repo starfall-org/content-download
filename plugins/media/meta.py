@@ -13,7 +13,6 @@ def facebook(c, m, url, original, caption, download):
 
 def instagram(c, m, url, original, caption, download):
   m.reply_chat_action(rv)
-  download = m.reply("**Downloading**`...`", quote=True)
   files, video = IGDL(url)
   c.delete_messages(m.chat.id, download.id)
   sending = m.reply("**Sending**`...`", quote=True)
