@@ -2,7 +2,7 @@ from api_callback.Youtube import YTDL,YTM, ODL
 from etc.var import t, rv, ra, sv, sp, sm
 
 def youtube(c, m, download, getattrs):
-  url, original, button = getattrs(m=m)
+  url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   file = YTDL(url)
   c.delete_messages(m.chat.id, download.id)
@@ -18,7 +18,7 @@ def youtube(c, m, download, getattrs):
     pass
 
 def other(c, m, file, type, download, getattrs):
-  _, original, button = getattrs(m=m)
+  _, original, caption = getattrs(m=m)
   c.delete_messages(m.chat.id, download.id)
   m.reply_chat_action(t)
   sending = m.reply("**Sending**`...`", quote=True)
