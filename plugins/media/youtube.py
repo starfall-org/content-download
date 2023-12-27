@@ -9,7 +9,7 @@ def youtube(c, m, download, getattrs):
   m.reply_chat_action(sv)
   sending = m.reply("**Sending**`...`", quote=True)
   s = m.reply_video(file, reply_markup=original, caption=caption)
-  original = getattrs(s=s)
+  original = getattrs(m, s)
   c.edit_inline_reply_markup(s.id, original)
   c.delete_messages(m.chat.id, sending.id)
   try:
@@ -33,7 +33,7 @@ def other(c, m, file, type, download, getattrs):
     m.reply_chat_action(sm)
     m.reply_audio(file, caption=caption)
   if s:
-    original = getattrs(s=s)
+    original = getattrs(m, s)
     c.edit_inline_reply_markup(s.id, original)
   c.delete_messages(m.chat.id, sending.id)
 
