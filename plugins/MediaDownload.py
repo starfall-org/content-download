@@ -38,7 +38,7 @@ def media_handler(c, m):
     is_media = True
   else:
     try:
-      f, t = ODL(url)
+      f, tp = ODL(url)
       if file is None:
         return
     except Exception as e:
@@ -47,7 +47,7 @@ def media_handler(c, m):
     save(m)
     m.reply_chat_action(t)
     download = m.reply("**Downloading**`...`", quote=True)
-    other(c, m, f, t, d, getattrs)
+    other(c, m, f, tp, d, getattrs)
     is_media = True
   if is_media:
     try:
