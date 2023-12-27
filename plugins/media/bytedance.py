@@ -51,7 +51,7 @@ def tikdou(c, m, download, getattrs):
       s = m.reply_video(link, reply_markup=original, caption=caption)
     except:
       s = m.reply_video(file, reply_markup=original, caption=caption)
-    original = getattrs(s=s) 
+    original = getattrs(m, s) 
     c.edit_inline_reply_markup(s.id, original)
     if m.chat.username == "contentdownload":
       uploads(file)
