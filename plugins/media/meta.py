@@ -11,19 +11,12 @@ def facebook(c, m, s, getattrs):
   s.edit("**Sending**`...`")
   m.reply_chat_action(sv)
   if not isinstance(files, list):
-    s.edit_media(InputMediaVideo(files))
-    s.edit_caption(caption=caption, reply_markup=original)
+    st = m.reply_video(files, caption=caption, reply_markup=original)
   else:
-    first = True
     for file in files:
-      if first:
-        s.edit_media(InputMediaVideo(file))
-        s.edit_caption(caption=caption, reply_markup=original)
-        first = False
-      else:
-        m.reply_video(file, caption=caption, reply_markup=original)
-  original = getattrs(m, s)
-  s.edit_reply_markup(original)
+      st = m.reply_video(file, caption=caption, reply_markup=original)
+  original = getattrs(m, st)
+  st.edit_reply_markup(original)
   #send_videos(m, c, original, files, caption)
 
 def instagram(c, m, s, getattrs):
@@ -35,4 +28,3 @@ def instagram(c, m, s, getattrs):
     send_photos(m, c, original, files, caption)
   elif video == True:
     send_videos(m, c, original, files, caption)
-  s.delete()
