@@ -1,4 +1,4 @@
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaVideo
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api_callback.ByteDance import TDDL
 from etc.util import send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
@@ -7,7 +7,6 @@ import logging
 def tiktokuserlink(c, m, url, caption, s):
   original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",
                                                          url=url)]])
-  m.reply_chat_action(rv)
   share_links = get_share_links(url)
   list_video = []
   list_file = []
@@ -30,7 +29,6 @@ def tiktokuserlink(c, m, url, caption, s):
       send_videos(m, c, original, list_video, caption)
     except:
       send_videos(m, c, original, list_file, caption)
-  s.delete()
   
 def tikdou(c, m, s, getattrs):
   url, original, caption = getattrs(m=m)
@@ -43,16 +41,13 @@ def tikdou(c, m, s, getattrs):
   s.edit("**Sending**`...`")
   if is_video == False:
     send_photos(m, c, original, file, caption)
-    s.delete()
   elif is_video == True:
     m.reply_chat_action(sv)
     try:
-      s.edit_media(InputMediaVideo(link))
-      s.edit_caption(caption=caption, reply_markup=original)
+      st = m.reply_video(link, caption=caption, reply_markup=original)
     except:
-      s.edit_media(InputMediaVideo(file.getvalue()))
-      s.edit_caption(caption=caption, reply_markup=original)
-    original = getattrs(m, s) 
-    s.edit_reply_markup(original)
+      st = m.reply_video(file, caption=caption, reply_markup=original)
+    original = getattrs(m, st) 
+    st.edit_reply_markup(original)
     if m.chat.username == "contentdownload":
       uploads(file)
