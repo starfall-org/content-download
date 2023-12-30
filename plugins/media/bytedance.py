@@ -34,7 +34,7 @@ def tiktokuserlink(c, m, url, caption, s):
   
 def tikdou(c, m, s, getattrs):
   url, original, caption = getattrs(m=m)
-  s.reply_chat_action(rv)
+  m.reply_chat_action(rv)
   try:
     file, link, is_video = TDDL(url)
   except:
@@ -45,7 +45,7 @@ def tikdou(c, m, s, getattrs):
     send_photos(m, c, original, file, caption)
     s.delete()
   elif is_video == True:
-    s.reply_chat_action(sv)
+    m.reply_chat_action(sv)
     try:
       s.edit_media(InputMediaVideo(link))
       s.edit_caption(caption=caption, reply_markup=original)
