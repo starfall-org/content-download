@@ -50,7 +50,7 @@ def tikdou(c, m, s, getattrs):
       s.edit_media(InputMediaVideo(link))
       s.edit_caption(caption=caption, reply_markup=original)
     except:
-      s.edit_media(InputMediaVideo(file))
+      s.edit_media(InputMediaVideo(file.getvalue()))
       s.edit_caption(caption=caption, reply_markup=original)
     original = getattrs(m, s) 
     s.edit_reply_markup(original)
