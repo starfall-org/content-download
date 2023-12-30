@@ -54,5 +54,5 @@ def tikdou(c, m, s, getattrs):
       s.edit_caption(caption=caption, reply_markup=original)
     original = getattrs(m, s) 
     s.edit_reply_markup(original)
-    if s.chat.username == "contentdownload":
+    if m.chat.username == "contentdownload":
       uploads(file)
