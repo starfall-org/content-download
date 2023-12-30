@@ -12,8 +12,9 @@ import logging
 @Client.on_message(filters.command("music"))
 def music_handler(c, m):
   save(m)
-  s = m.reply("**Downloading**`...`", quote=True)
-  music(c, m, s, getattrs)
+  stt = m.reply("**Downloading**`...`", quote=True)
+  music(c, m, stt, getattrs)
+  stt.delete()
   try:
     m.delete()
   except:
@@ -27,19 +28,19 @@ def media_handler(c, m):
   if any(media in url for media in media_group):
     m.reply_chat_action(t)
     save(m)
-    s = m.reply("**Downloading**`...`", quote=True)
+    stt = m.reply("**Downloading**`...`", quote=True)
     if any(reg in url for reg in ["youtube", "youtu.be"]):
-      youtube(c, m, s, getattrs)
+      youtube(c, m, stt, getattrs)
     elif any(reg in url for reg in ["facebook", "fb"]):
-      facebook(c, m, s, getattrs)
+      facebook(c, m, stt, getattrs)
     elif "instagram" in url:
-      instagram(c, m, s, getattrs)
+      instagram(c, m, stt, getattrs)
     else:
-      tikdou(c, m, s, getattrs)
+      tikdou(c, m, stt, getattrs)
     is_media = True
   else:
     try:
-      f, tp = ODL(url)
+      file, tp = ODL(url)
       if file is None:
         return
     except Exception as e:
@@ -47,11 +48,11 @@ def media_handler(c, m):
       return
     save(m)
     m.reply_chat_action(t)
-    s = m.reply("**Downloading**`...`", quote=True)
-    other(c, m, f, tp, s, getattrs)
+    stt = m.reply("**Downloading**`...`", quote=True)
+    other(c, m, file, tp, stt, getattrs)
     is_media = True
   if is_media:
-    s.delete()
+    stt.delete()
     try:
       m.delete()
     except:
