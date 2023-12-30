@@ -4,7 +4,7 @@ from etc.util import send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
 import logging
 
-def tiktokuserlink(c, m, url, caption, download):
+def tiktokuserlink(c, m, url, caption, status):
   original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",
                                                          url=url)]])
   m.reply_chat_action(rv)
@@ -19,8 +19,7 @@ def tiktokuserlink(c, m, url, caption, download):
       list_file.append(file)
     else:
       list_photo.extend(link)
-  c.delete_messages(m.chat.id, download.id)
-  sending = m.reply("**Sending**`...`", quote=True)
+  status.edit("**Sending**`...`")
   if list_photo:
     try:
       send_photos(m, c, original, list_photo, caption)
@@ -31,7 +30,7 @@ def tiktokuserlink(c, m, url, caption, download):
       send_videos(m, c, original, list_video, caption)
     except:
       send_videos(m, c, original, list_file, caption)
-  c.delete_messages(m.chat.id, sending.id)
+  status.delete()
   
 def tikdou(c, m, status, getattrs):
   url, original, caption = getattrs(m=m)
@@ -51,7 +50,7 @@ def tikdou(c, m, status, getattrs):
     except:
       s = m.reply_video(file, reply_markup=original, caption=caption)
     original = getattrs(m, s) 
-    c.edit_message_reply_markup(s.chat.id, s.id, original)
+    s.edit_reply_markup(original)
     if m.chat.username == "contentdownload":
       uploads(file)
-  c.delete_messages(m.chat.id, status.id)
+  status.delete()
