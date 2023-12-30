@@ -1,10 +1,10 @@
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaVideo
 from api_callback.ByteDance import TDDL
 from etc.util import send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
 import logging
 
-def tiktokuserlink(c, m, url, caption, status):
+def tiktokuserlink(c, m, url, caption, s):
   original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",
                                                          url=url)]])
   m.reply_chat_action(rv)
@@ -19,7 +19,7 @@ def tiktokuserlink(c, m, url, caption, status):
       list_file.append(file)
     else:
       list_photo.extend(link)
-  status.edit("**Sending**`...`")
+  s.edit("**Sending**`...`")
   if list_photo:
     try:
       send_photos(m, c, original, list_photo, caption)
@@ -30,27 +30,28 @@ def tiktokuserlink(c, m, url, caption, status):
       send_videos(m, c, original, list_video, caption)
     except:
       send_videos(m, c, original, list_file, caption)
-  status.delete()
+  s.delete()
   
-def tikdou(c, m, status, getattrs):
+def tikdou(c, m, s, getattrs):
   url, original, caption = getattrs(m=m)
-  m.reply_chat_action(rv)
+  s.reply_chat_action(rv)
   try:
     file, link, is_video = TDDL(url)
   except:
     tiktokuserlink(c, m, url, caption, download)
     return
-  status.edit("**Sending**`...`")
+  s.edit("**Sending**`...`")
   if is_video == False:
     send_photos(m, c, original, file, caption)
   elif is_video == True:
-    m.reply_chat_action(sv)
+    s.reply_chat_action(sv)
     try:
-      s = m.reply_video(link, reply_markup=original, caption=caption)
+      s.edit_media(InputMediaVideo(link))
+      s.edit_caption(caption=caption, reply_markup=original)
     except:
-      s = m.reply_video(file, reply_markup=original, caption=caption)
+      s.edit_media(InputMediaVideo(file))
+      s.edit_caption(caption=caption, reply_markup=original)
     original = getattrs(m, s) 
     s.edit_reply_markup(original)
-    if m.chat.username == "contentdownload":
+    if s.chat.username == "contentdownload":
       uploads(file)
-  status.delete()
