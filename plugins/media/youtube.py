@@ -10,7 +10,7 @@ def youtube(c, m, status, getattrs):
   s = m.reply_video(file, reply_markup=original, caption=caption)
   original = getattrs(m, s)
   c.edit_message_reply_markup(s.chat.id, s.id, original)
-  c.delete_messages(m.chat.id, status.id)
+  status.delete()
   try:
     m.delete()
   except:
@@ -33,7 +33,7 @@ def other(c, m, file, type, status, getattrs):
   if s:
     original = getattrs(m, s)
     c.edit_message_reply_markup(s.chat.id, s.id, original)
-  c.delete_messages(m.chat.id, status.id)
+  status.delete()
 
 def music(c, m, status, getattrs):
   url, _, caption = getattrs(m=m)
@@ -42,4 +42,4 @@ def music(c, m, status, getattrs):
   status.edit("**Sending**`...`")
   m.reply_chat_action(sm)
   m.reply_audio(audio, caption=caption)
-  c.delete_messages(m.chat.id, status.id)
+  status.delete()
