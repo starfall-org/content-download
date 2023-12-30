@@ -33,7 +33,7 @@ def tiktokuserlink(c, m, url, caption, download):
       send_videos(m, c, original, list_file, caption)
   c.delete_messages(m.chat.id, sending.id)
   
-def tikdou(c, m, download, getattrs):
+def tikdou(c, m, status, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   try:
@@ -41,8 +41,7 @@ def tikdou(c, m, download, getattrs):
   except:
     tiktokuserlink(c, m, url, caption, download)
     return
-  c.delete_messages(m.chat.id, download.id)
-  sending = m.reply("**Sending**`...`", quote=True)
+  status.edit("**Sending**`...`")
   if is_video == False:
     send_photos(m, c, original, file, caption)
   elif is_video == True:
@@ -55,4 +54,4 @@ def tikdou(c, m, download, getattrs):
     c.edit_message_reply_markup(s.chat.id, s.id, original)
     if m.chat.username == "contentdownload":
       uploads(file)
-  c.delete_messages(m.chat.id, sending.id)
+  c.delete_messages(m.chat.id, status.id)
