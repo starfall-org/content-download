@@ -42,11 +42,11 @@ button = InlineKeyboardMarkup(
          InlineKeyboardButton("Channel", url="https://t.me/contentdownload")
      ]])
 
-def getattrs(m, s=None):
+def getattrs(m, sf=None):
   url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
   original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url)]])
-  if s:
-    original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Webstream", url=f"{webstream}/stream?box={s.chat.id}&id={s.id}")]])
+  if sf:
+    original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Webstream", url=f"{webstream}/stream?box={sf.chat.id}&id={sf.id}")]])
     return original
   try:
     user_name = m.sender_chat.title
