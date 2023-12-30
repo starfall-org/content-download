@@ -51,6 +51,7 @@ def media_handler(c, m):
     other(c, m, f, tp, s, getattrs)
     is_media = True
   if is_media:
+    s.delete()
     try:
       m.delete()
     except:
