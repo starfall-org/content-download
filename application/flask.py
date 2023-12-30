@@ -44,7 +44,7 @@ html = """
   </script>
 </head>
 <body>
-  <b>Hello, Welcome to <a href='https://t.me/contentdownload_bot' id='link'>Content Download!</a></b>.
+  <b>Hello, Welcome!</b>
 </body>
 </html>
 """
