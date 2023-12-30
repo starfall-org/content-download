@@ -32,7 +32,7 @@ def uploads(file):
   uf = threading.Thread(target=upload_file, args=(file, ))
   uf.start()
 #
-def send_photos(m, c, button, photo_links: List[str], caption):
+def send_photos(m, photo_links: List[str], button, caption):
   m.reply_chat_action(sp)
   if len(photo_links) == 1:
     for link in photo_links:
@@ -49,7 +49,7 @@ def send_photos(m, c, button, photo_links: List[str], caption):
     m.reply_chat_action(sp)
     m.reply_photo(photo_links[-1], caption=caption, reply_markup=button)
 #
-def send_videos(m, c, button, video_links: List[str], caption):
+def send_videos(m, video_links: List[str], button, caption):
   m.reply_chat_action(sv)
   if len(video_links) == 1:
     for link in video_links:
