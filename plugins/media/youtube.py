@@ -9,7 +9,7 @@ def youtube(c, m, status, getattrs):
   status.edit("**Sending**`...`")
   s = m.reply_video(file, reply_markup=original, caption=caption)
   original = getattrs(m, s)
-  c.edit_message_reply_markup(s.chat.id, s.id, original)
+  s.edit_reply_markup(original)
   status.delete()
   try:
     m.delete()
@@ -32,7 +32,7 @@ def other(c, m, file, type, status, getattrs):
     m.reply_audio(file, caption=caption)
   if s:
     original = getattrs(m, s)
-    c.edit_message_reply_markup(s.chat.id, s.id, original)
+    s.edit_reply_markup(original)
   status.delete()
 
 def music(c, m, status, getattrs):
