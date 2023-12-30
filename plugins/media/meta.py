@@ -15,9 +15,9 @@ def facebook(c, m, status, getattrs):
     for file in files:
       s = m.reply_video(file, reply_markup=original, caption=caption)
   original = getattrs(m, s)
-  c.edit_message_reply_markup(s.chat.id, s.id, original)
+  s.edit_reply_markup(original)
   #send_videos(m, c, original, files, caption)
-  c.delete_messages(m.chat.id, status.id)
+  status.delete()
 
 def instagram(c, m, status, getattrs):
   url, original, caption = getattrs(m=m)
@@ -28,4 +28,4 @@ def instagram(c, m, status, getattrs):
     send_photos(m, c, original, files, caption)
   elif video == True:
     send_videos(m, c, original, files, caption)
-  c.delete_messages(m.chat.id, status.id)
+  status.delete()
