@@ -1,31 +1,38 @@
+from pyrogram.types import InputMediaVideo
 from api_callback.Meta import FBDL, IGDL
 from etc.util import send_videos, send_photos
 from etc.var import rv, sv
 
-def facebook(c, m, status, getattrs):
+def facebook(c, m, s, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   files = FBDL(url)
   m.reply_chat_action(sv)
-  status.edit("**Sending**`...`")
+  s.edit("**Sending**`...`")
   m.reply_chat_action(sv)
   if not isinstance(files, list):
-    s = m.reply_video(files, reply_markup=original, caption=caption)
+    s.edit_media(InputMediaVideo(files))
+    s.edit_caption(caption=caption, reply_markup=original)
   else:
+    first = True
     for file in files:
-      s = m.reply_video(file, reply_markup=original, caption=caption)
+      if first:
+        s.edit_media(InputMediaVideo(file))
+        s.edit_caption(caption=caption, reply_markup=original)
+        first = False
+      else:
+        m.reply_video(file, caption=caption, reply_markup=original)
   original = getattrs(m, s)
   s.edit_reply_markup(original)
   #send_videos(m, c, original, files, caption)
-  status.delete()
 
-def instagram(c, m, status, getattrs):
+def instagram(c, m, s, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   files, video = IGDL(url)
-  status.edit("**Sending**`...`")
+  s.edit("**Sending**`...`")
   if video == False:
     send_photos(m, c, original, files, caption)
   elif video == True:
     send_videos(m, c, original, files, caption)
-  status.delete()
+  s.delete()
