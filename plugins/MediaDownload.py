@@ -12,8 +12,8 @@ import logging
 @Client.on_message(filters.command("music"))
 def music_handler(c, m):
   save(m)
-  d = m.reply("**Downloading**`...`", quote=True)
-  music(c, m, d, getattrs)
+  status = m.reply("**Downloading**`...`", quote=True)
+  music(c, m, status, getattrs)
   try:
     m.delete()
   except:
@@ -27,15 +27,15 @@ def media_handler(c, m):
   if any(media in url for media in media_group):
     m.reply_chat_action(t)
     save(m)
-    d = m.reply("**Downloading**`...`", quote=True)
+    status = m.reply("**Downloading**`...`", quote=True)
     if any(reg in url for reg in ["youtube", "youtu.be"]):
-      youtube(c, m, d, getattrs)
+      youtube(c, m, status, getattrs)
     elif any(reg in url for reg in ["facebook", "fb"]):
-      facebook(c, m, d, getattrs)
+      facebook(c, m, status, getattrs)
     elif "instagram" in url:
-      instagram(c, m, d, getattrs)
+      instagram(c, m, status, getattrs)
     else:
-      tikdou(c, m, d, getattrs)
+      tikdou(c, m, status, getattrs)
     is_media = True
   else:
     try:
@@ -47,8 +47,8 @@ def media_handler(c, m):
       return
     save(m)
     m.reply_chat_action(t)
-    download = m.reply("**Downloading**`...`", quote=True)
-    other(c, m, f, tp, d, getattrs)
+    status = m.reply("**Downloading**`...`", quote=True)
+    other(c, m, f, tp, status, getattrs)
     is_media = True
   if is_media:
     try:
