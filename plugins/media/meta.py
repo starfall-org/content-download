@@ -2,13 +2,12 @@ from api_callback.Meta import FBDL, IGDL
 from etc.util import send_videos, send_photos
 from etc.var import rv, sv
 
-def facebook(c, m, download, getattrs):
+def facebook(c, m, status, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   files = FBDL(url)
-  c.delete_messages(m.chat.id, download.id)
   m.reply_chat_action(sv)
-  sending = m.reply("**Sending**`...`", quote=True)
+  status.edit("**Sending**`...`")
   m.reply_chat_action(sv)
   if not isinstance(files, list):
     s = m.reply_video(files, reply_markup=original, caption=caption)
@@ -18,16 +17,15 @@ def facebook(c, m, download, getattrs):
   original = getattrs(m, s)
   c.edit_message_reply_markup(s.chat.id, s.id, original)
   #send_videos(m, c, original, files, caption)
-  c.delete_messages(m.chat.id, sending.id)
+  c.delete_messages(m.chat.id, status.id)
 
-def instagram(c, m, download, getattrs):
+def instagram(c, m, status, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   files, video = IGDL(url)
-  c.delete_messages(m.chat.id, download.id)
-  sending = m.reply("**Sending**`...`", quote=True)
+  status.edit("**Sending**`...`")
   if video == False:
     send_photos(m, c, original, files, caption)
   elif video == True:
     send_videos(m, c, original, files, caption)
-  c.delete_messages(m.chat.id, sending.id)
+  c.delete_messages(m.chat.id, status.id)
