@@ -43,6 +43,7 @@ def tikdou(c, m, s, getattrs):
   s.edit("**Sending**`...`")
   if is_video == False:
     send_photos(m, c, original, file, caption)
+    s.delete()
   elif is_video == True:
     s.reply_chat_action(sv)
     try:
