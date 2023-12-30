@@ -17,7 +17,7 @@ def facebook(c, m, stt, getattrs):
       sf = m.reply_video(file, caption=caption, reply_markup=original)
   original = getattrs(m, sf)
   sf.edit_reply_markup(original)
-  #send_videos(c, m, original, files, caption)
+  #send_videos(m, files, original, caption)
 
 def instagram(c, m, stt, getattrs):
   url, original, caption = getattrs(m=m)
@@ -25,6 +25,6 @@ def instagram(c, m, stt, getattrs):
   files, video = IGDL(url)
   stt.edit("**Sending**`...`")
   if video == False:
-    send_photos(c, m, original, files, caption)
+    send_photos(m, files, original, caption)
   elif video == True:
-    send_videos(c, m, original, files, caption)
+    send_videos(m, files, original, caption)
