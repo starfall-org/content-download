@@ -20,14 +20,14 @@ def tiktokuserlink(c, m, url, caption):
       list_photo.extend(link)
   if list_photo:
     try:
-      send_photos(m, c, original, list_photo, caption)
+      send_photos(m, list_photo, original, caption)
     except Exception as e:
       logging.error(e)
   if list_video:
     try:
-      send_videos(m, c, original, list_video, caption)
+      send_videos(m, list_video, original, caption)
     except:
-      send_videos(m, c, original, list_file, caption)
+      send_videos(m, list_file, original, caption)
   
 def tikdou(c, m, getattrs):
   url, original, caption = getattrs(m=m)
