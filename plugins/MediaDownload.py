@@ -12,9 +12,7 @@ import logging
 @Client.on_message(filters.command("music"))
 def music_handler(c, m):
   save(m)
-  stt = m.reply("**Downloading**`...`", quote=True)
-  music(c, m, stt, getattrs)
-  stt.delete()
+  music(c, m, getattrs)
   try:
     m.delete()
   except:
@@ -28,15 +26,14 @@ def media_handler(c, m):
   if any(media in url for media in media_group):
     m.reply_chat_action(t)
     save(m)
-    stt = m.reply("**Downloading**`...`", quote=True)
     if any(reg in url for reg in ["youtube", "youtu.be"]):
-      youtube(c, m, stt, getattrs)
+      youtube(c, m, getattrs)
     elif any(reg in url for reg in ["facebook", "fb"]):
-      facebook(c, m, stt, getattrs)
+      facebook(c, m, getattrs)
     elif "instagram" in url:
-      instagram(c, m, stt, getattrs)
+      instagram(c, m, getattrs)
     else:
-      tikdou(c, m, stt, getattrs)
+      tikdou(c, m, getattrs)
     is_media = True
   else:
     try:
@@ -48,11 +45,9 @@ def media_handler(c, m):
       return
     save(m)
     m.reply_chat_action(t)
-    stt = m.reply("**Downloading**`...`", quote=True)
-    other(c, m, file, tp, stt, getattrs)
+    other(c, m, file, tp,  getattrs)
     is_media = True
   if is_media:
-    stt.delete()
     try:
       m.delete()
     except:
