@@ -4,7 +4,7 @@ from etc.util import send_videos, send_photos, uploads, get_share_links
 from etc.var import sv, rv
 import logging
 
-def tiktokuserlink(c, m, stt, url, caption):
+def tiktokuserlink(c, m, url, caption):
   original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",
                                                          url=url)]])
   share_links = get_share_links(url)
@@ -18,7 +18,6 @@ def tiktokuserlink(c, m, stt, url, caption):
       list_file.append(file)
     else:
       list_photo.extend(link)
-  stt.edit("**Sending**`...`")
   if list_photo:
     try:
       send_photos(m, c, original, list_photo, caption)
@@ -30,15 +29,14 @@ def tiktokuserlink(c, m, stt, url, caption):
     except:
       send_videos(m, c, original, list_file, caption)
   
-def tikdou(c, m, stt, getattrs):
+def tikdou(c, m, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   try:
     file, link, is_video = TDDL(url)
   except:
-    tiktokuserlink(c, m, stt, url, caption)
+    tiktokuserlink(c, m, url, caption)
     return
-  stt.edit("**Sending**`...`")
   if is_video == False:
     send_photos(m, link, original, caption)
   elif is_video == True:
