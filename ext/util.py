@@ -1,8 +1,7 @@
 from pyrogram.types import InputMediaPhoto, InputMediaVideo
 from typing import List
-from etc.var import sp, sv
-from db.db import save_chat, save_user
-from etc.upld import upload_file
+from ext.var import sp, sv
+from data.db import save_chat, save_user
 import requests, threading, os
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
@@ -27,11 +26,7 @@ def save(m):
                                          m.from_user.first_name))
     user_thread.start()
     os.system(f"echo User: {m.from_user.first_name} ID: {m.from_user.id}")
-#
-def uploads(file):
-  uf = threading.Thread(target=upload_file, args=(file, ))
-  uf.start()
-#
+
 def send_photos(m, photo_links: List[str], button, caption):
   m.reply_chat_action(sp)
   if len(photo_links) == 1:
