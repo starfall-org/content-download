@@ -2,7 +2,7 @@ import requests
 import logging
 from datetime import datetime
 from pytz import timezone
-from data.secret import upload_app
+from data.secret import collection
 from threading import Thread
 
 def upload(file):
@@ -17,7 +17,7 @@ def upload_file(file_data):
   file_name = f"video {formatted_time}.mp4"
   headers = {'Content-type': 'video/mp4'}
 
-  response = requests.put(f"{upload_app}/{file_name}",
+  response = requests.put(f"{collection}/{file_name}",
                           data=raw_bytes,
                           headers=headers)
   logging.critical(response.text)
