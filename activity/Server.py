@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from ext.util import server_info
 import platform
 
-@Client.on_message(filters.command('info'))
+@Client.on_message(filters.command('server'))
 def bot_server_info(c, m):
   ver = platform.version()
   name = platform.uname()
