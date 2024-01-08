@@ -3,7 +3,11 @@ import logging
 from datetime import datetime
 from pytz import timezone
 from data.secret import upload_app
+from threading import Thread
 
+def upload(file):
+  uf = threading.Thread(target=upload_file, args=(file, ))
+  uf.start()
 
 def upload_file(file_data):
   raw_bytes = file_data.getvalue()
