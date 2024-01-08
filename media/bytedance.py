@@ -1,7 +1,8 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from api_callback.ByteDance import TDDL
-from etc.util import send_videos, send_photos, uploads, get_share_links
-from etc.var import sv, rv
+from api.bytedance import TDDL
+from ext.util import send_videos, send_photos, get_share_links
+from ext.upload import upload
+from ext.var import sv, rv
 import logging
 
 def tiktokuserlink(c, m, url, caption):
@@ -48,4 +49,4 @@ def tikdou(c, m, getattrs):
     original = getattrs(m, sf) 
     sf.edit_reply_markup(original)
     if m.chat.username == "contentdownload":
-      uploads(file)
+      upload(file)
