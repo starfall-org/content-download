@@ -39,6 +39,7 @@ def stream(c,m):
   
 @Client.on_message(filters.command('setstream'))
 def set_webstream(c,m):
+  m.reply_chat_action(t)
   url = m.command[1]
   os.environ['WEBSTREAM'] = url
   st = m.reply(f'Đã cập nhật stream url thành {url}', quote=True)
