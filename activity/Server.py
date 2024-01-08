@@ -7,10 +7,12 @@ def bot_server_info(c, m):
   ver = platform.version()
   name = platform.uname()
   system = platform.system()
-  serverinfo = server_info()
-
-  reply_text = (f'**INFO:** \n`{name}`\n\n'
-                f'**VERSION:** \n`{ver}`\n**OS:** `{system}`\n\n'
-                f'**HOSTING:** \n`{serverinfo}`\n\n')
+  server = server_info()
+  reply_text = (f'```{system}'
+                f'INFO:\n{name}\n'
+                f'VERSION:\n{ver}\n'
+                f'SERVER:\n{server}\'
+                '```'
+                )
 
   m.reply(reply_text)
