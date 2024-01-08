@@ -1,10 +1,10 @@
 import requests, random, logging
-from data.secret import webapi
+from data.secret import dapi
 from io import BytesIO
 
 
 def TDDL(url):
-  data = requests.get(f"{webapi}/tiktokdouyin",
+  data = requests.get(f"{dapi}/tiktokdouyin",
                       params={
                           "url": url
                       },
