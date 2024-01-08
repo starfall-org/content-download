@@ -1,10 +1,10 @@
 from pyrogram import Client, filters
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from plugins.media.bytedance import tikdou
-from plugins.media.meta import facebook, instagram
-from plugins.media.youtube import youtube, music, other
-from api_callback.Youtube import ODL
+from media.bytedance import tikdou
+from media.meta import facebook, instagram
+from media.youtube import youtube, music, other
+from webapi.Youtube import ODL
 from etc.util import save
 from etc.var import t, getattrs
 import logging

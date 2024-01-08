@@ -1,5 +1,5 @@
 import requests, random, logging
-from secret import api_url
+from data.secret import api_url
 from io import BytesIO
 
 
