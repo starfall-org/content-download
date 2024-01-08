@@ -1,7 +1,7 @@
 import os
 from deta import Deta
 
-webapi = os.getenv("WEBAPI")
+DAPI = os.getenv("WEBAPI")
 webstream = os.getenv("WEBSTREAM")
 collection = os.getenv("COLLECTION")
 deta = Deta(os.getenv('DETA_KEY'))
