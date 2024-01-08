@@ -2,7 +2,7 @@ import requests
 import logging
 from datetime import datetime
 from pytz import timezone
-from secret import upload_app
+from data.secret import upload_app
 
 
 def upload_file(file_data):
