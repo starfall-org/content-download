@@ -5,8 +5,7 @@ from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
 from data.secret import collection
-
-t = enums.ChatAction.TYPING
+from ext.var import t
 
 
 @Client.on_message(filters.command("album"))
