@@ -1,9 +1,11 @@
 from pyrogram import Client, filters
 from data.secret import webstream
-import os 
+from ext.var import t
+import os, time 
 
 @Client.on_message(filters.command('stream'))
 def stream(c,m):
+  m.reply_chat_action(t)
   if m.reply_to_message:
     reply_to = m.reply_to_message
     box = reply_to.chat.id
@@ -39,4 +41,7 @@ def stream(c,m):
 def set_webstream(c,m):
   url = m.command[1]
   os.environ['WEBSTREAM'] = url
-  m.reply(f'Đã cập nhật stream url thành {url}', quote=True)
+  st = m.reply(f'Đã cập nhật stream url thành {url}', quote=True)
+  time.sleep(10)
+  st.delete()
+  m.delete()
