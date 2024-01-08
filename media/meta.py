@@ -1,7 +1,7 @@
 from pyrogram.types import InputMediaVideo
-from api_callback.Meta import FBDL, IGDL
-from etc.util import send_videos, send_photos
-from etc.var import rv, sv
+from api.meta import FBDL, IGDL
+from ext.util import send_videos, send_photos
+from ext.var import rv, sv
 
 def facebook(c, m, getattrs):
   url, original, caption = getattrs(m=m)
