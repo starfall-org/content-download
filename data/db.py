@@ -1,4 +1,4 @@
-from secret import deta
+from data.secret import deta
 
 #
 chats_db = deta.Base("chats")
