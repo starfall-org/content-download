@@ -1,4 +1,4 @@
-FROM python:3.12.1-windowsservercore-1809
+FROM python:3.10-windowsservercore
 
 RUN useradd -m -u 1000 user 
 WORKDIR /home/user/content
