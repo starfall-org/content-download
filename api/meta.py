@@ -1,9 +1,9 @@
 import requests, random, os
-from secret import api_url
+from data.secret import webapi
 from io import BytesIO
 
 def FBDL(url):
-  data = requests.get(f"{api_url}/facebook", params={
+  data = requests.get(f"{webapi}/facebook", params={
     "url": url
   }, timeout=60).json()
   files = []
@@ -17,7 +17,7 @@ def FBDL(url):
 
 
 def IGDL(url):
-  data = requests.get(f"{api_url}/instagram", params={
+  data = requests.get(f"{webapi}/instagram", params={
       "url": url
   }, timeout=60).json()
   files = []
