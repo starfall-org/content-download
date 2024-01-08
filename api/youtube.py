@@ -1,11 +1,11 @@
 import requests, random
-from data.secret import webapi
+from data.secret import dapi
 from io import BytesIO
 from ext.var import image_formats, video_formats, audio_formats
 
 
 def YTDL(url):
-  data = requests.get(f"{webapi}/youtube", params={
+  data = requests.get(f"{dapi}/youtube", params={
       "url": url
   }, timeout=60).json()
   content = requests.get(data["url"]).content
@@ -15,7 +15,7 @@ def YTDL(url):
 
 
 def YTM(url):
-  data = requests.get(f"{webapi}/music", params={
+  data = requests.get(f"{dapi}/music", params={
       "url": url
   }, timeout=60).json()
   content = requests.get(data["url"]).content
@@ -25,7 +25,7 @@ def YTM(url):
 
 
 def ODL(url):
-  data = requests.get(f"{webapi}/other", params={
+  data = requests.get(f"{dapi}/other", params={
       "url": url
   }, timeout=60).json()
   r = requests.get(data["url"])
