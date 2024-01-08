@@ -1,6 +1,6 @@
 from pyrogram import filters, Client, enums
-from db.db import get_chats, get_users
-from etc.var import t
+from base.db import get_chats, get_users
+from ext.var import t
 
 
 @Client.on_message(filters.command("count"))
