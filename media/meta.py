@@ -9,12 +9,12 @@ def facebook(c, m, getattrs):
   files = FBDL(url)
   m.reply_chat_action(sv)
   if not isinstance(files, list):
-    sf = m.reply_video(files, caption=caption, reply_markup=original)
+    st = m.reply_video(files, caption=caption, reply_markup=original)
   else:
     for file in files:
-      sf = m.reply_video(file, caption=caption, reply_markup=original)
-  original = getattrs(m, sf)
-  sf.edit_reply_markup(original)
+      st = m.reply_video(file, caption=caption, reply_markup=original)
+  original = getattrs(m, st)
+  st.edit_reply_markup(original)
 
 def instagram(c, m, getattrs):
   url, original, caption = getattrs(m=m)
