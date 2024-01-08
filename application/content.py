@@ -1,7 +1,8 @@
 from data.secret import tokens
-import pyrogram, os
+from pyrogram import Client, idle
+import os
 
-app = pyrogram.Client("Content Download",
+client = Client("Content Download",
     api_id=tokens()[0],
     api_hash=tokens()[1],
     bot_token=tokens()[2],
@@ -9,7 +10,7 @@ app = pyrogram.Client("Content Download",
     max_concurrent_transmissions=100)
 
 
-def runserver():
-  app.start()
+def run():
+  client.start()
   os.system("echo Content Download")
-  pyrogram.idle()
+  idle()
