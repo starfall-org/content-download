@@ -8,11 +8,11 @@ def bot_server_info(c, m):
   name = platform.uname()
   system = platform.system()
   server = server_info()
-  msg_text = (f'```{system}'
-                f'INFO:\n{name}\n'
-                f'VERSION:\n{ver}\n'
-                f'SERVER:\n{server}\'
-                '```'
+  msg_text = (f"```{system}"
+              f"INFO:\n{name}\n"
+              f"VERSION:\n{ver}\n"
+              f"SERVER:\n{server}\n"
+              "```"
                 )
 
   m.reply(msg_text)
