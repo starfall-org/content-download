@@ -4,9 +4,9 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from media.bytedance import tikdou
 from media.meta import facebook, instagram
 from media.youtube import youtube, music, other
-from webapi.Youtube import ODL
-from etc.util import save
-from etc.var import t, getattrs
+from api.youtube import ODL
+from ext.util import save
+from ext.var import t, getattrs
 import logging
 
 @Client.on_message(filters.command("music"))
