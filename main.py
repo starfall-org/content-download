@@ -1,3 +1,4 @@
+#!/bin/env python
 from application.content import run
 
 if __name__ == '__main__':
