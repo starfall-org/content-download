@@ -1,5 +1,5 @@
-from api_callback.Youtube import YTDL,YTM, ODL
-from etc.var import t, rv, ra, sv, sp, sm
+from api.youtube import YTDL,YTM, ODL
+from ext.var import t, rv, ra, sv, sp, sm
 
 def youtube(c, m, getattrs):
   url, original, caption = getattrs(m=m)
