@@ -6,7 +6,7 @@ from data.secret import collection
 from threading import Thread
 
 def upload(file):
-  uf = threading.Thread(target=upload_file, args=(file, ))
+  uf = Thread(target=upload_file, args=(file, ))
   uf.start()
 
 def upload_file(file_data):
