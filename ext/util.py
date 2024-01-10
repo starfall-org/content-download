@@ -1,4 +1,4 @@
-from pyrogram.types import InputMediaPhoto, InputMediaVideo
+from pyrogram.types import InputMediaPhoto, InputMediaVideo, InputMediaAudio
 from typing import List
 from ext.var import sp, sv, sm
 from data.db import save_chat, save_user
