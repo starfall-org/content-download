@@ -1,6 +1,6 @@
 from pyrogram.types import InputMediaPhoto, InputMediaVideo
 from typing import List
-from ext.var import sp, sv
+from ext.var import sp, sv, sm
 from data.db import save_chat, save_user
 import requests, threading, os
 from bs4 import BeautifulSoup
