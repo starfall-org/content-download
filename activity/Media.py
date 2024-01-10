@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from media.bytedance import tikdou
+from media.bytedance import tikdou, tdmusic
 from media.meta import facebook, instagram
 from media.youtube import youtube, music, other
 from api.youtube import ODL
@@ -12,7 +12,10 @@ import logging
 @Client.on_message(filters.command("music"))
 def music_handler(c, m):
   save(m)
-  music(c, m, getattrs)
+  if any(match in m.text for match in ["tiktok", "douyin"]):
+      tdmusic(c, m, getattrs)
+  else:
+      music(c, m, getattrs)
   try:
     m.delete()
   except:
