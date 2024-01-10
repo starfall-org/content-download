@@ -14,12 +14,14 @@ def TDDL(url):
     content = requests.get(data["url"]).content
     file = BytesIO(content)
     file.name = "video.mp4"
+    is_video = True
   else:
     file = data["url"]
-    music_url = data.get("music")
+    music_url = data["music"]
+    is_video = False
     if music_url:
         music_data = requests.get(music_url).content
         music = BytesIO(content)
         music.name = "music.mp3"
   logging.critical("TikTok/Douyin")
-  return file, data["url"], data["is_video"], music
+  return file, data["url"], is_video, music
