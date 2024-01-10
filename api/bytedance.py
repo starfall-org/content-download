@@ -16,7 +16,12 @@ def TDDL(url):
     file.name = "video.mp4"
     is_video = True
   else:
-    file = data["url"]
+    file = []
+    for _url in data["url"]:
+        _data = requests.get(_url).content
+        _photo = BytesIO(content)
+        _photo.name = "photo.jpg"
+        file.append(_photo)
     music_url = data["music"]
     is_video = False
     if music_url:
