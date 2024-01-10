@@ -60,6 +60,23 @@ def send_videos(m, video_links: List[str], button, caption):
       m.reply_media_group(media_group)
     m.reply_chat_action(sp)
     m.reply_video(video_links[-1], caption=caption, reply_markup=button)
+    
+def send_audios(m, audio_links: List[str], caption):
+  m.reply_chat_action(sm)
+  if len(video_links) == 1:
+    for link in audio_links:
+      m.reply_audio(link, caption=caption)
+  else:
+    for i in range(0, len(audio_links) - 1, 10):
+      media_group = [
+          InputMediaAudio(link)
+          for link in audio_links[i:min(i + 10,
+                                        len(audio_links) - 1)]
+      ]
+      m.reply_chat_action(sm)
+      m.reply_media_group(media_group)
+    m.reply_chat_action(sp)
+    m.reply_audio(audio_links[-1], caption=caption)
 #
 def server_info():
   try:
