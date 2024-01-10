@@ -1,14 +1,9 @@
 import requests, logging
-from data.secret import dapi
 from io import BytesIO
-
+from data.secret import dapi
 
 def TDDL(url):
-  data = requests.get(f"{dapi}/tikdou",
-                      params={
-                          "url": url
-                      },
-                      timeout=60).json()
+  data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=60).json()
   music = None
   if data['is_video'] == True:
     content = requests.get(data["url"]).content
@@ -17,16 +12,16 @@ def TDDL(url):
     is_video = True
   else:
     file = []
-    for _url in data["url"]:
-        _data = requests.get(_url).content
-        _photo = BytesIO(content)
-        _photo.name = "photo.jpg"
-        file.append(_photo)
+    for photo_url in data["url"]:
+        photo_data = requests.get(photo_url).content
+        photo_file = BytesIO(photo_data)
+        photo_file.name = "photo.jpg"
+        file.append(photo_file)
     music_url = data["music"]
     is_video = False
     if music_url:
         music_data = requests.get(music_url).content
-        music = BytesIO(content)
+        music = BytesIO(music_data)
         music.name = "music.mp3"
   logging.critical("TikTok/Douyin")
   return file, data["url"], is_video, (music, data["music"])
