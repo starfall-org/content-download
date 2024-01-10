@@ -24,4 +24,4 @@ def TDDL(url):
         music = BytesIO(music_data)
         music.name = "music.mp3"
   logging.critical("TikTok/Douyin")
-  return file, data["url"], is_video, (music, data["music"])
+  return file, data["url"], is_video, music
