@@ -68,3 +68,13 @@ def tikdou(c, m, getattrs):
     st.edit_reply_markup(original)
     if m.chat.username == "contentdownload":
       upload(file)
+      
+def music(c, m, getattrs):
+  url, _, caption = getattrs(m=m)
+  m.reply_chat_action(ra)
+  _, __, ____, audio = TDDL(url)
+  m.reply_chat_action(sm)
+  try:
+      m.reply_audio(audio[1], caption=caption)
+  except:
+      m.reply_audio(audio[0], caption=caption)
