@@ -21,7 +21,7 @@ def IGDL(url):
       "url": url
   }, timeout=60).json()
   files = []
-  if data.get("video", True):
+  if data.get("is_video", True):
     is_video = True
     for link in data["url"]:
       content = requests.get(link).content
