@@ -46,7 +46,7 @@ def tikdou(c, m, getattrs):
   if is_video == False:
     send_photos(m, link, original, caption)
     if music:
-        m.reply_audio(music, caption=caption)
+        send_audios(m, [music], caption)
   elif is_video == True:
     m.reply_chat_action(sv)
     try:
