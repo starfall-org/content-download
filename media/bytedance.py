@@ -69,7 +69,7 @@ def tikdou(c, m, getattrs):
     if m.chat.username == "contentdownload":
       upload(file)
       
-def music(c, m, getattrs):
+def tdmusic(c, m, getattrs):
   url, _, caption = getattrs(m=m)
   m.reply_chat_action(ra)
   _, __, ____, audio = TDDL(url)
