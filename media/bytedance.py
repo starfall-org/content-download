@@ -49,7 +49,10 @@ def tikdou(c, m, getattrs):
     tiktokuserlink(c, m, url, caption)
     return
   if is_video == False:
-    send_photos(m, link, original, caption)
+    try:
+        send_photos(m, link, original, caption)
+    except:
+        send_photos(m, file, original, caption)
     if music:
         try:
             send_audios(m, [music[1]], caption)
