@@ -20,7 +20,7 @@ def cloud_list(c, m):
 def upload_file(c, m):
   current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
   formatted = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
-  if not m.reply_to_message:
+  if not hasattr(m, "reply_to_message"):
     m.reply('Please reply to a message containing a file to upload.')
     return
   words = f"date: {formatted}"
