@@ -60,7 +60,11 @@ def upload_to_cloud(c, m):
   
 @Client.on_message(filters.command("delete"))
 def request_delete_file(c, m):
-    url, _, __ = getattrs(m=m)
+    m.reply_chat_action(t)
+    if m.reply_to_message:
+        url, _, __ = getattrs(m=m.reply_to_message)
+    else:
+        url, _, __ = getattrs(m=m)
     res = requests.delete(url).text
     m.reply(res)
   
