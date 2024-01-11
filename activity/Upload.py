@@ -5,7 +5,7 @@ from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
 from data.secret import collection
-from ext.var import t
+from ext.var import t, getattrs
 from ext.upload import upload_file
 
 
@@ -60,7 +60,7 @@ def upload_to_cloud(c, m):
   
 @Client.on_message(filters.command("delete"))
 def request_delete_file(c, m):
-    url = match = re.search(r'https?://[^\s]+', m.text).group()
+    url, _, __ = getattrs(m=m)
     res = requests.delete(url).text
     m.reply(res)
   
