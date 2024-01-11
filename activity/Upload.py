@@ -52,7 +52,7 @@ def upload_to_cloud(c, m):
   set_filename = re.search(r'\?(.*)', m.text)
   if set_filename:
     file_name = set_filename.group(1)
-  file_data = c.stream_media(file_id)
+  file_data = c.download_media(file_id)
   m.reply_chat_action(t)
   upload_file(file_data, file_name)
   file_url = f"{collection}/{file_name}"
