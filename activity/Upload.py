@@ -58,3 +58,9 @@ def upload_to_cloud(c, m):
   file_url = f"{collection}/{file_name}"
   m.reply(f"`Result:` \n{quote(file_url, safe=':/')}")
   
+@Client.on_message(filters.command("delete"))
+def request_delete_file(c, m):
+    url = match = re.search(r'https?://[^\s]+', m.text).group()
+    res = requests.delete(url).text
+    m.reply(res)
+  
