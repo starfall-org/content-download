@@ -13,8 +13,6 @@ def upload(file_data):
 
 def upload_file(file_data, file_name):
   raw_bytes = file_data.getvalue()
-  headers = {'Content-type': 'video/mp4'}
   response = requests.post(f"{collection}/{file_name}",
-                          data=raw_bytes,
-                          headers=headers)
+                          data=raw_bytes)
   logging.critical(response.text)
