@@ -54,7 +54,7 @@ def upload_file(c, m):
     file_name = set_filename.group(1)
   file_data = c.stream_media(file_id)
   m.reply_chat_action(t)
-  upload(file_data, file_name)
+  upload_file(file_data, file_name)
   file_url = f"{collection}/{file_name}"
   m.reply(f"`Result:` \n{quote(file_url, safe=':/')}")
   
