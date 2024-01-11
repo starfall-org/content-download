@@ -6,7 +6,7 @@ from datetime import datetime
 from urllib.parse import quote
 from data.secret import collection
 from ext.var import t
-from ext.upload import upload
+from ext.upload import upload_file
 
 
 @Client.on_message(filters.command("album"))
