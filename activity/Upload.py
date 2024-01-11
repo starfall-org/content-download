@@ -6,6 +6,7 @@ from datetime import datetime
 from urllib.parse import quote
 from data.secret import collection
 from ext.var import t
+from ext.upload import upload
 
 
 @Client.on_message(filters.command("album"))
@@ -53,10 +54,7 @@ def upload_file(c, m):
     file_name = set_filename.group(1)
   file_data = c.stream_media(file_id)
   m.reply_chat_action(t)
-  response = requests.put(f"{collection}/{quote(file_name)}",
-                          data=file_data,
-                          headers=headers)
-  print(response.text)
+  upload(file_data, file_name)
   file_url = f"{collection}/{file_name}"
   m.reply(f"`Result:` \n{quote(file_url, safe=':/')}")
   
