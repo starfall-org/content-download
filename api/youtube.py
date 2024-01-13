@@ -34,17 +34,16 @@ def ODL(url):
     header = r.headers['Content-Disposition']
     filename = re.findall("filename=(.+)", header)[0]
   except:
-    filename = f"file{random.randint(1000,9000)}"
+    filename = f"{random.randint(1000,9000)}"
     if r.headers["Content-Type"] in audio_formats:
-      filename = f"file{random.randint(1000,9000)}.mp3"
+      filename = f"{filename}.mp3"
+      type = "audio"
   file = BytesIO(content)
   file.name = filename
   if r.headers["Content-Type"] in image_formats:
     type = "image"
   elif r.headers["Content-Type"] in video_formats:
     type = "video"
-  elif r.headers["Content-Type"] in audio_formats:
-    type = "audio"
   else:
-    return None, None
+    type = "other"
   return file, type
