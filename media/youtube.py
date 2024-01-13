@@ -22,6 +22,9 @@ def other(c, m, file, tp, getattrs):
   elif type == "audio":
     m.reply_chat_action(sm)
     m.reply_audio(file, caption=caption)
+  else:
+    m.reply_chat_action(sd)
+    st = m.reply_document(file, reply_markup=original, caption=caption)
   if st:
     original = getattrs(m, st)
     st.edit_reply_markup(original)
