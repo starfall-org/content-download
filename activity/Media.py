@@ -12,6 +12,10 @@ import logging
 @Client.on_message(filters.command("music"))
 def music_handler(c, m):
   save(m)
+  url, _, __ = getattrs(m=m)
+  if not url:
+      m.reply("Không tìm thấy liên kết", quote=True)
+      return
   if any(match in m.text for match in ["tiktok", "douyin"]):
       tdmusic(c, m, getattrs)
   else:
