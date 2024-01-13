@@ -17,10 +17,9 @@ def TDDL(url):
         photo_file = BytesIO(photo_data)
         photo_file.name = "photo.jpg"
         file.append(photo_file)
-    music_url = data["music"]
     is_video = False
-    if music_url:
-        music_data = requests.get(music_url).content
+    if data["music"]:
+        music_data = requests.get(data["music"]).content
         music = BytesIO(music_data)
         music.name = "music.mp3"
   logging.critical("TikTok/Douyin")
