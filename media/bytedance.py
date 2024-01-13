@@ -14,7 +14,7 @@ def tiktokuserlink(c, m, url, caption):
   list_photo = []
   list_music = []
   for sharelink in share_links:
-    file, link, is_video, music = TDDL(sharelink)
+    file, link, is_video, music, music_url = TDDL(sharelink)
     if is_video == True:
       list_video.append(link)
       list_file.append(file)
@@ -40,7 +40,7 @@ def tikdou(c, m, getattrs):
   url, original, caption = getattrs(m=m)
   m.reply_chat_action(rv)
   try:
-    file, link, is_video, music = TDDL(url)
+    file, link, is_video, music, music_url = TDDL(url)
   except:
     tiktokuserlink(c, m, url, caption)
     return
@@ -50,7 +50,10 @@ def tikdou(c, m, getattrs):
     except:
         send_photos(m, file, original, caption)
     if music:
-        m.reply_audio(music, caption=caption)
+        try:
+            m.reply_audio(music_url, caption=caption)
+        except:
+            m.reply_audio(music, caption=caption)
   elif is_video == True:
     m.reply_chat_action(sv)
     try:
