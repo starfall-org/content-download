@@ -70,7 +70,7 @@ def tdmusic(c, m, getattrs):
   m.reply_chat_action(ra)
   _, __, ____, audio, audio_url = TDDL(url)
   m.reply_chat_action(sm)
-  if not audio[1]:
+  if not audio:
       m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
   try:
       m.reply_audio(audio_url, caption=caption)
