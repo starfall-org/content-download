@@ -68,11 +68,11 @@ def tikdou(c, m, getattrs):
 def tdmusic(c, m, getattrs):
   url, _, caption = getattrs(m=m)
   m.reply_chat_action(ra)
-  _, __, ____, audio = TDDL(url)
+  _, __, ____, audio, audio_url = TDDL(url)
   m.reply_chat_action(sm)
   if not audio[1]:
       m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
   try:
-      m.reply_audio(audio[1], caption=caption)
+      m.reply_audio(audio_url, caption=caption)
   except:
-      m.reply_audio(audio[0], caption=caption)
+      m.reply_audio(audio, caption=caption)
