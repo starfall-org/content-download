@@ -28,7 +28,11 @@ def music_handler(c, m):
 
 @Client.on_message((filters.regex("https://|http://") & filters.command('download')) & filters.incoming)
 def media_handler(c, m):
-  url, _, __ = getattrs(m=m)
+  try:
+      url, _, __ = getattrs(m=m)
+  except:
+      m.reply("Không tìm thấy liên kết", quote=True)
+      return
   media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
   is_media = False
   if any(media in url for media in media_group):
