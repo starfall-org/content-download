@@ -34,7 +34,6 @@ def media_handler(c, m):
       m.reply("Không tìm thấy liên kết", quote=True)
       return
   media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
-  is_media = False
   if any(media in url for media in media_group):
     m.reply_chat_action(t)
     save(m)
@@ -46,7 +45,7 @@ def media_handler(c, m):
       instagram(c, m, getattrs)
     else:
       tikdou(c, m, getattrs)
-    is_media = True
+    m.delete()
   else:
     try:
       file, tp = ODL(url)
@@ -58,9 +57,3 @@ def media_handler(c, m):
     save(m)
     m.reply_chat_action(t)
     other(c, m, file, tp,  getattrs)
-    is_media = True
-  if is_media:
-    try:
-        m.delete()
-    except Exception as e:
-        print(e)
