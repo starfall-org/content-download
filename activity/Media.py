@@ -26,7 +26,7 @@ def music_handler(c, m):
   except:
     pass
 
-@Client.on_message(filters.regex("https://|http://") & filters.incoming)
+@Client.on_message((filters.regex("https://|http://") & filters.command('download')) & filters.incoming)
 def media_handler(c, m):
   url, _, __ = getattrs(m=m)
   media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
