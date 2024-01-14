@@ -44,7 +44,6 @@ html = """
   </script>
 </head>
 <body>
-  <b>Content Download</b>
 </body>
 </html>
 """
