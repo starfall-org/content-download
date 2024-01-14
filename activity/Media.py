@@ -31,11 +31,8 @@ def media_handler(c, m):
   try:
       url, _, __ = getattrs(m=m)
   except:
-      if m.reply_to_message:
-          url, _, __ = getattrs(m=m.reply_to_message)
-      else:
-          m.reply("Không tìm thấy liên kết", quote=True)
-          return
+      m.reply("Không tìm thấy liên kết", quote=True)
+      return
   media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
   is_media = False
   if any(media in url for media in media_group):
