@@ -1,7 +1,7 @@
 import requests, random
 from data.secret import dapi
 from io import BytesIO
-from ext.var import image_formats, video_formats, audio_formats
+from ext.var import image_formats, video_formats, audio_formats, skip_formats
 
 
 def YTDL(url):
@@ -44,6 +44,8 @@ def ODL(url):
     type = "image"
   elif r.headers["Content-Type"] in video_formats:
     type = "video"
+  if r.headers["Content-Type"] in skip_formats:
+    return None, None
   else:
     type = "other"
   return file, type
