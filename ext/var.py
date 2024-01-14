@@ -43,7 +43,10 @@ button = InlineKeyboardMarkup(
      ]])
 
 def getattrs(m, sf=None):
-  url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
+  try:
+      url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
+  except:
+      url = re.search(r"(?P<url>https?://[^\s]+)", m.reply_to_message.text).group("url")
   original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url)]])
   if sf:
     original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Webstream", url=f"{webstream}/stream?box={sf.chat.id}&id={sf.id}")]])
