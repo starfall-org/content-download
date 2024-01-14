@@ -23,8 +23,8 @@ def music_handler(c, m):
       music(c, m, getattrs)
   try:
     m.delete()
-  except:
-    pass
+  except Exception as e:
+    print(e)
 
 @Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming)
 def media_handler(c, m):
@@ -61,6 +61,6 @@ def media_handler(c, m):
     is_media = True
   if is_media:
     try:
-      m.delete()
-    except:
-      pass
+        m.delete()
+    except Exception as e:
+        print(e)
