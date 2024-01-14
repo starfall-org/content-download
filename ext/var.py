@@ -18,7 +18,7 @@ image_formats = [
 
 video_formats = [
     "video/mp4", "video/webm", "video/ogg", "video/avi", "video/mov",
-    "video/mpeg"
+    "video/mpeg", "video/x-flv", "video/3gpp", "video/h261", "video/h263"
 ]
 
 audio_formats = [
