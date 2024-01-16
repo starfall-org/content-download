@@ -11,7 +11,7 @@ You can download videos, images, audio, or file from websites such as Youtube, T
 
 Send /help command for more details.'''
 
-@Client.on_message(filters.command("start") & filters.private)
+@Client.on_message(filters.command("start") & (filters.private|filters.chat(-1001832458549)))
 def handle_start(c, m):
   save(m)
   m.reply_chat_action(t)
