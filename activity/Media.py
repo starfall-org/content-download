@@ -14,7 +14,7 @@ import logging
 def music_download(c, m):
   save(m)
   try:
-      getattrs(m=m)
+      getattrs(m)
   except:
       m.reply("Không tìm thấy liên kết", quote=True)
       return
@@ -30,7 +30,7 @@ def music_download(c, m):
 @Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming & channel_post)
 def all_media_download(c, m):
   try:
-      url, _, __ = getattrs(m=m)
+      url, _, __ = getattrs(m)
   except:
       m.reply("Không tìm thấy liên kết", quote=True)
       return
