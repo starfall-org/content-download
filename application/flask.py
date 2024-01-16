@@ -1,13 +1,14 @@
 from flask import Flask
 
-app = Flask('app')
+class Webapp(Flask):
+    def __init__(self):
+        super().__init__('webapp')
 
+app = Webapp()
 
 @app.route('/')
-def hello_world():
-  return html
-
-html = """
+def web_app_home():
+    return """
 <!DOCTYPE html>
 <html>
 <head>
