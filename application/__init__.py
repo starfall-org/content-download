@@ -1,2 +1,2 @@
 from .content import Content 
-from .flask import webapp
+from .flask import app
