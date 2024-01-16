@@ -4,9 +4,9 @@ class Webapp(Flask):
     def __init__(self):
         super().__init__('webapp')
 
-app = Webapp()
+webapp = Webapp()
 
-@app.route('/')
+@webapp.route('/')
 def web_app_home():
     return """
 <!DOCTYPE html>
