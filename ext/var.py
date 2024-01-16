@@ -55,5 +55,5 @@ def getattrs(m, _=None):
   except:
     user_name = m.from_user.first_name
     user_id = m.from_user.id
-  caption = f'**Sent by: --__[{user_name}](tg://user?id={user_id})__--**'
+  caption = f'**Sent by --__[{user_name}](tg://user?id={user_id})__--**'
   return url, original, caption
