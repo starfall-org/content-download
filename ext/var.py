@@ -42,7 +42,7 @@ button = InlineKeyboardMarkup(
          InlineKeyboardButton("Channel", url="https://t.me/contentdownload")
      ]])
 
-def getattrs(m, _=None):
+def getattrs(m):
   try:
       url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
   except:
