@@ -1,5 +1,5 @@
 #!/bin/env python
-from application.content import run
+from application.content import Content
 
 if __name__ == '__main__':
-  run()
+  Content().run()
