@@ -11,7 +11,7 @@ from ext.custom import channel_post
 import logging
 
 @Client.on_message(filters.command("music") & channel_post)
-def music_handler(c, m):
+def music_download(c, m):
   save(m)
   try:
       getattrs(m=m)
@@ -28,7 +28,7 @@ def music_handler(c, m):
     print(e)
 
 @Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming & channel_post)
-def media_handler(c, m):
+def all_media_download(c, m):
   try:
       url, _, __ = getattrs(m=m)
   except:
