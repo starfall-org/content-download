@@ -1,5 +1,5 @@
 from pyrogram.types import InputMediaVideo
-from api.meta import FBDL, IGDL
+from api import FBDL, IGDL
 from ext.util import send_videos, send_photos
 from ext.var import rv, sv
 
