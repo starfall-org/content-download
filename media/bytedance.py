@@ -1,5 +1,5 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from api.bytedance import TDDL
+from api import TDDL
 from ext.util import send_videos, send_photos, get_share_links
 from ext.upload import upload
 from ext.var import sv, rv, ra, sm
