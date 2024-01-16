@@ -6,7 +6,7 @@ def filter_owner(_, __, m):
 def content_download_channel(_, __, m):
     if m.chat.username == "contentdownload_group":
         if hasattr(m, "sender_chat"):
-            return m.sender_chat.username == "contentdownload":
+            if m.sender_chat.username == "contentdownload":
                 return False
     
 owner = filters.create(filter_owner)
