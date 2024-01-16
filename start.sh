@@ -1,8 +1,8 @@
-#!/bin/env bash
+#!/usr/bin/bash
 
 chmod +x ./main.py
 ./main.py &
-gunicorn --log-level critical -b 0.0.0.0:8080 application.flask:app &
+gunicorn --log-level critical -b 0.0.0.0:8080 application:app &
 
 sleep 5
 while true; do
