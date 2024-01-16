@@ -7,9 +7,10 @@ from media.youtube import youtube, music, other
 from api.youtube import ODL
 from ext.util import save
 from ext.var import t, getattrs
+from ext.custom import channel_post
 import logging
 
-@Client.on_message(filters.command("music"))
+@Client.on_message(filters.command("music") & channel_post)
 def music_handler(c, m):
   save(m)
   try:
@@ -26,7 +27,7 @@ def music_handler(c, m):
   except Exception as e:
     print(e)
 
-@Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming)
+@Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming & channel_post)
 def media_handler(c, m):
   try:
       url, _, __ = getattrs(m=m)
