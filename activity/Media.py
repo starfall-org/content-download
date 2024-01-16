@@ -1,10 +1,10 @@
 from pyrogram import Client, filters
 from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from media.bytedance import tikdou, tdmusic
-from media.meta import facebook, instagram
-from media.youtube import youtube, music, other
-from api.youtube import ODL
+from media import tikdou, tdmusic
+from media import facebook, instagram
+from media import youtube, music, other
+from api import ODL
 from ext.util import save
 from ext.var import t, getattrs
 from ext.custom import channel_post
