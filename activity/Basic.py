@@ -35,7 +35,7 @@ help_en = '''**Instructions:**
 `/upload:` Upload file to cloud from message and get shareable link
 `/cloud:` Storage platform'''
 
-@Client.on_message(filters.command('help') & (filters.private | filters.mentioned))
+@Client.on_message(filters.command('help') & ((filters.private | filters.mentioned)|filters.chat(-1001832458549)))
 def handle_help(c, m):
   save(m)
   m.reply_chat_action(t)
