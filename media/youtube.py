@@ -1,4 +1,4 @@
-from api.youtube import YTDL,YTM, ODL
+from api import YTDL,YTM, ODL
 from ext.var import t, rv, ra, sv, sp, sm, sd
 
 def youtube(c, m, getattrs):
