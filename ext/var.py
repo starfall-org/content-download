@@ -49,7 +49,7 @@ def getattrs(m, sf=None):
       url = re.search(r"(?P<url>https?://[^\s]+)", m.reply_to_message.text).group("url")
   original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url)]])
   if sf:
-    original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group")],[InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
+    original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
     return original
   try:
     user_name = m.sender_chat.title
