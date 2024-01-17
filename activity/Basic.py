@@ -19,8 +19,7 @@ You can download videos, images, audio, or file from websites such as __Youtube_
 def reply_start(c, m):
     save(m)
     m.reply_chat_action(typing)
-    language = m.from_user.language_code
-    if language == "vi":
+    if m.from_user.language_code == "vi":
         msg = start_vn
     else:
         msg = start_en
