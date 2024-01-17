@@ -1,8 +1,14 @@
 from api import FBDL, IGDL
 from ext import Attrs, Actions,send_videos, send_photos
+from pyrogram.enums import ChatAction
 
-rv = Actions().record_video
-uv = Actions().upload_video
+tp = ChatAction.TYPING
+rv = ChatAction.RECORD_VIDEO
+ra = ChatAction.RECORD_AUDIO
+sv = ChatAction.UPLOAD_VIDEO
+sp = ChatAction.UPLOAD_PHOTO
+sa = ChatAction.UPLOAD_AUDIO
+sd = ChatAction.UPLOAD_DOCUMENT
 
 def facebook(c, m):
     url = Attrs(m).url
