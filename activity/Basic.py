@@ -18,7 +18,7 @@ You can download videos, images, audio, or file from websites such as Youtube, T
 
 Send /help command for more details.'''
 
-@Client.on_message(filters.command("start") & (filters.private|filters.chat(-1001832458549)))
+@Client.on_message(filters.command(["start","help"]) & (filters.private|filters.chat(-1001832458549)))
 def reply_start(c, m):
     save(m)
     m.reply_chat_action(typing)
@@ -27,28 +27,4 @@ def reply_start(c, m):
         msg = start_vn
     else:
         msg = start_en
-    m.reply(msg, reply_markup=button)
-
-help_vn = ''' **Hướng dẫn:**
-
-`URL chia sẻ:` Tải nội dung từ URL
-`/music + URL:` Tải nội dung âm thanh từ URL
-`/upload:` Đăng tải tệp lên đám mây từ tin nhắn và nhận liên kết chia sẻ
-`/cloud:` Nền tảng lưu trữ'''
-help_en = '''**Instructions:**
-
-`Share URL:` Download content from URL
-`/music + URL:` Download music content from URL
-`/upload:` Upload file to cloud from message and get shareable link
-`/cloud:` Storage platform'''
-
-@Client.on_message(filters.command('help') & ((filters.private | filters.mentioned)|filters.chat(-1001832458549)))
-def reply_help(c, m):
-    save(m)
-    m.reply_chat_action(typing)
-    language = m.from_user.language_code
-    if language == "vi":
-        msg = help_vn
-    else:
-        msg = help_en
     m.reply(msg, reply_markup=button)
