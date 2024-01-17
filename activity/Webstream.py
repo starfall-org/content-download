@@ -44,7 +44,7 @@ def get_webstream(c, m):
             m.reply(f'Liên kết Stream:\n{main_stream}', quote=True)
     except Exception as e:
         m.reply(str(e), quote=True)
-        logging.error(e)
+        logging.critical(e)
   
 @Client.on_message(filters.command('setstream'))
 def set_webstream(c,m):
