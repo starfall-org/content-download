@@ -1,22 +1,33 @@
 from api import YTDL,YTM, ODL
-from ext.var import t, rv, ra, sv, sp, sm, sd
+from pyrogram.enums import ChatAction
 
-def youtube(c, m, getattrs):
-    url, original, caption = getattrs(m)
+tp = ChatAction.TYPING
+rv = ChatAction.RECORD_VIDEO
+ra = ChatAction.RECORD_AUDIO
+sv = ChatAction.UPLOAD_VIDEO
+sp = ChatAction.UPLOAD_PHOTO
+sa = ChatAction.UPLOAD_AUDIO
+sd = ChatAction.UPLOAD_DOCUMENT
+
+def youtube(m):
+    url = Attrs(m).url
+    button = Attrs(m).button
+    caption = Attrs(m).caption
     m.reply_chat_action(rv)
     file = YTDL(url)
     m.reply_chat_action(sv)
-    m.reply_video(file, caption=caption, reply_markup=original)
+    m.reply_video(file, caption=caption, reply_markup=button)
     
-def other(c, m, file, tp, getattrs):
-    _, original, caption = getattrs(m)
-    if type == "image":
+def other(m, file, type):
+    button = Attrs(m).button
+    caption = Attrs(m).caption
+    if types == "image":
         m.reply_chat_action(sp)
         m.reply_photo(file, caption=caption, reply_markup=original)
-    elif type == "video":
+    elif types == "video":
         m.reply_chat_action(sv)
         m.reply_video(file, caption=caption, reply_markup=original)
-    elif type == "audio":
+    elif types == "audio":
         m.reply_chat_action(sm)
         m.reply_audio(file, caption=caption)
     else:
@@ -24,8 +35,9 @@ def other(c, m, file, tp, getattrs):
         m.reply_document(file, reply_markup=original, caption=caption)
 
 def music(c, m, getattrs):
-    url, _, caption = getattrs(m)
+    url = Attrs(m).url
+    caption = Attrs(m).caption
     m.reply_chat_action(ra)
     audio = YTM(url)
-    m.reply_chat_action(sm)
+    m.reply_chat_action(sa)
     m.reply_audio(audio, caption=caption)
