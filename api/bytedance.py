@@ -24,4 +24,4 @@ class TDDL:
             music = BytesIO(music_data)
             music.name = "music.mp3"
         os.system("echo TikTok/Douyin")
-        return file, data["url"], is_video, music
+        return file, music, is_video
