@@ -45,13 +45,13 @@ def tikdou(c, m):
     caption = Attrs(m).caption
     m.reply_chat_action(rv)
     try:
-        file, dllink, is_video, music = TDDL(url)
+        file, dlink, is_video, music = TDDL(url)
     except:
         TikTokUser(c, m, url, caption)
         return
     if is_video == False:
         try:
-            send_photos(m, dllink, original, caption)
+            send_photos(m, dlink, original, caption)
         except:
             send_photos(m, file, original, caption)
     if music:
@@ -59,10 +59,7 @@ def tikdou(c, m):
         m.reply_audio(music, caption=caption)
     elif is_video == True:
         m.reply_chat_action(sv)
-        try:
-            m.reply_video(dllink, caption=caption, reply_markup=original)
-        except:
-            m.reply_video(file, caption=caption, reply_markup=original)
+        m.reply_video(file, caption=caption, reply_markup=original)
     if m.chat.username == "contentdownload":
         upload(file)
       
