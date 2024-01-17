@@ -8,18 +8,18 @@ sp = ChatAction.UPLOAD_PHOTO
 sa = ChatAction.UPLOAD_AUDIO
 sd = ChatAction.UPLOAD_DOCUMENT
 
-def youtube(m):
-    url = Attrs(m).url
-    button = Attrs(m).button
-    caption = Attrs(m).caption
+def youtube(m, attrs):
+    url = attrs.url
+    button = attrs.button
+    caption = attrs.caption
     m.reply_chat_action(rv)
     file = YTDL(url)
     m.reply_chat_action(sv)
     m.reply_video(file, caption=caption, reply_markup=button)
     
-def other(m, file, type):
-    button = Attrs(m).button
-    caption = Attrs(m).caption
+def other(m, file, types, attrs):
+    button = attrs.button
+    caption = attrs.caption
     if types == "image":
         m.reply_chat_action(sp)
         m.reply_photo(file, caption=caption, reply_markup=original)
@@ -33,9 +33,9 @@ def other(m, file, type):
         m.reply_chat_action(sd)
         m.reply_document(file, reply_markup=original, caption=caption)
 
-def music(c, m, getattrs):
-    url = Attrs(m).url
-    caption = Attrs(m).caption
+def music(m, attrs):
+    url = attrs.url
+    caption = attrs.caption
     m.reply_chat_action(ra)
     audio = YTM(url)
     m.reply_chat_action(sa)
