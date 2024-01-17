@@ -3,7 +3,6 @@ from data import get_chats, get_users
 
 typing = enums.ChatAction.TYPING
 
-
 @Client.on_message(filters.command("count"))
 def uses_count(c, m):
     m.reply_chat_action(t)
