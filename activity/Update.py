@@ -11,7 +11,7 @@ typing = ChatAction.TYPING
 def system_update(c, m):
     m.reply_chat_action(typing)
     result = subprocess.run(["bash", "update.sh"], stdout=subprocess.PIPE, text=True)
-    m.reply(str(result.stdout))
+    m.reply(f"```bash\n{result.stdout}\n```")
     os.execl(sys.executable, sys.executable, *sys.argv)
     
 @Client.on_message(filters.command("shell") & owner)
