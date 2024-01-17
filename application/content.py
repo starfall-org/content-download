@@ -1,6 +1,6 @@
 from pyrogram import Client, idle
+from init import Token
 import os
-import Token
 
 class Content(Client):
     def __init__(self):
