@@ -10,7 +10,7 @@ button = InlineKeyboardMarkup([[
         InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
         InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
 
-start_vn = '''**Content Download bot** cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
+start_vn = '''__--**Content Download bot**--__ cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
 Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như Youtube, TikTok/Douyin, Facebook, Twitter, và nhiều trang web khác. 
 
 Dùng lệnh /help để biết thêm chi tiết.'''
