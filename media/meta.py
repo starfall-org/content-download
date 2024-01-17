@@ -16,7 +16,7 @@ def facebook(c, m):
     caption = Attrs(m).caption
     m.reply_chat_action(rv)
     files = FBDL(url)
-    m.reply_chat_action(upis_video)
+    m.reply_chat_action(sv)
     if not isinstance(files, list):
         m.reply_is_video(files, caption=caption, reply_markup=button)
     else:
