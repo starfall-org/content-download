@@ -6,7 +6,7 @@ webstream = os.getenv("WEBSTREAM")
 collection = os.getenv("COLLECTION")
 deta = Deta(os.getenv('DETA_KEY'))
 
-class Token():
+class Token:
     def __init__(self):
         db = deta.Base('telegram-sessions')
         self.id = db.get('API_ID')["value"]
