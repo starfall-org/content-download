@@ -1,6 +1,7 @@
 FROM python:latest
 
 RUN useradd -m -u 1000 user 
+RUN apt-get update && apt install -y git expect
 WORKDIR /home/user/content
 COPY . .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
