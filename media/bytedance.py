@@ -42,34 +42,45 @@ class TikTokUser:
         os.system("echo Completed")
   
 def tikdou(m, attrs):
-    url = attrs.url
-    button = attrs.button
-    caption = attrs.caption
-    m.reply_chat_action(rv)
     try:
-        file, music, is_video = TDDL(url)
-    except:
-        TikTokUser(c, m, url, caption)
+        url = attrs.url
+        button = attrs.button
+        caption = attrs.caption
+        m.reply_chat_action(rv)
+        try:
+            file, music, is_video = TDDL(url)
+        except:
+            TikTokUser(c, m, url, caption)
+            return
+        if is_video == False:
+            send_photos(m, file, original, caption)
+            if music:
+                m.reply_chat_action(sa)
+                m.reply_audio(music, caption=caption)
+        elif is_video == True:
+            m.reply_chat_action(sv)
+            m.reply_video(file, caption=caption, reply_markup=original)
+        if m.chat.username == "contentdownload":
+            upload(file)
+        os.system("echo Completed")
         return
-    if is_video == False:
-        send_photos(m, file, original, caption)
-        if music:
-            m.reply_chat_action(sa)
-            m.reply_audio(music, caption=caption)
-    elif is_video == True:
-        m.reply_chat_action(sv)
-        m.reply_video(file, caption=caption, reply_markup=original)
-    if m.chat.username == "contentdownload":
-        upload(file)
+    except Exception as e:
+        logging.error(e)
+        raise Exception(e)
       
 def tdmusic(m, attrs):
-    url = attrs.url
-    caption = attrs.caption
-    m.reply_chat_action(ra)
-    _, music, __ = TDDL(url)
-    m.reply_chat_action(sa)
-    if not audio_url:
-        m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
-        raise
-    m.reply_audio(audio, caption=caption)
-    os.system("echo Completed")
+    try:
+        url = attrs.url
+        caption = attrs.caption
+        m.reply_chat_action(ra)
+        _, music, __ = TDDL(url)
+        m.reply_chat_action(sa)
+        if not audio_url:
+            m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
+            raise
+        m.reply_audio(audio, caption=caption)
+        os.system("echo Completed")
+        return
+    except Exception as e:
+        logging.error(e)
+        raise Exception(e)
