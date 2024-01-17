@@ -16,4 +16,4 @@ def upload_file(file_data, file_name):
     raw_bytes = file_data.getvalue()
     response = requests.post(f"{collection}/{file_name}",
                           data=raw_bytes)
-    os.system(f"echo {response.text}")
+    os.system(f'echo "{response.text}"')
