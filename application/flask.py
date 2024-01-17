@@ -1,4 +1,9 @@
 from flask import Flask
+from threading import Thread
+import subprocess
+import time
+import sys
+import os
 
 class Webapp(Flask):
     def __init__(self):
@@ -6,7 +11,16 @@ class Webapp(Flask):
 
 app = Webapp()
 
-@app.route('/')
+def restart():
+    time.sleep(5)
+    os.execl(sys.executable, sys.executable, *sys.argv)
+
+@app.route("/update")
+def update_system():
+    result = subprocess.run(["bash", "update.sh"], stdout=subprocess.PIPE, text=True)
+    return f"<pre>{result.stdout}</pre>"
+
+@app.route("/")
 def web_app_home():
     return """
 <!DOCTYPE html>
@@ -45,6 +59,7 @@ def web_app_home():
   </script>
 </head>
 <body>
+<b>Content</b>
 </body>
 </html>
 """
