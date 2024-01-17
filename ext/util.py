@@ -15,8 +15,8 @@ def get_share_links(url):
     user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
     html = requests.get(url, headers={'User-Agent': user_agent}).text
     soup = BeautifulSoup(html, 'html.parser')
-    absolute_links = [urljoin(url, a['href']) for a in soup.select('li.tiktok-18tsjrs-LiVideoItem a')]
-    return absolute_links 
+    list_links = [urljoin(url, a['href']) for a in soup.select('li.tiktok-18tsjrs-LiVideoItem a')]
+    return list_links 
     
 def save(m):
     if str(m.chat.id).startswith("-100"):
