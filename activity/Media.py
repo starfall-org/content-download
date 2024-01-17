@@ -1,60 +1,56 @@
-from pyrogram import Client, filters
-from pyrogram import filters, Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from media import tikdou, tdmusic
-from media import facebook, instagram
-from media import youtube, music, other
+from pyrogram.enums import ChatAction
+from pyrogram import Client, filters
+from media import tikdou, tdmusic, facebook, instagram, youtube, music, other
 from api import ODL
-from ext.util import save
-from ext.var import t, getattrs
-from ext.custom import channel_post
+from ext import Attrs, save, channel_post
 import logging
+import os
+
+typing = ChatAction.TYPING
 
 @Client.on_message(filters.command("music") & channel_post)
 def music_download(c, m):
-  save(m)
-  try:
-      getattrs(m)
-  except:
-      m.reply("Không tìm thấy liên kết", quote=True)
-      return
-  if any(match in m.text for match in ["tiktok", "douyin"]):
-      tdmusic(c, m, getattrs)
-  else:
-      music(c, m, getattrs)
-  try:
-    m.delete()
-  except Exception as e:
-    print(e)
+    save(m)
+    try:
+        attrs = Attrs(m)
+        if any(match in m.text for match in ["tiktok", "douyin"]):
+            tdmusic(m, attrs)
+        else:
+            music(m, attrs)
+        try:
+            m.delete()
+        except Exception as e:
+            logging.error(e)
+    except Exception as e:
+        logging.error(e)
 
 @Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming & channel_post)
 def all_media_download(c, m):
-  try:
-      url, _, __ = getattrs(m)
-  except:
-      m.reply("Không tìm thấy liên kết", quote=True)
-      return
-  media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
-  if any(media in url for media in media_group):
-    m.reply_chat_action(t)
-    save(m)
-    if any(reg in url for reg in ["youtube", "youtu.be"]):
-      youtube(c, m, getattrs)
-    elif any(reg in url for reg in ["facebook", "fb"]):
-      facebook(c, m, getattrs)
-    elif "instagram" in url:
-      instagram(c, m, getattrs)
-    else:
-      tikdou(c, m, getattrs)
-    m.delete()
-  else:
-    try:
-      file, tp = ODL(url)
-      if file is None:
-        return
-    except Exception as e:
-      logging.error(e)
-      return
-    save(m)
-    m.reply_chat_action(t)
-    other(c, m, file, tp,  getattrs)
+    attrs = Attrs(m)
+    if attrs.url:
+        media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
+        if any(media in url for media in media_group):
+            m.reply_chat_action(t)
+            try:
+                if any(reg in url for reg in ["youtube", "youtu.be"]):
+                    youtube(m, attrs)
+                elif any(reg in url for reg in ["facebook", "fb"]):
+                    facebook(m, attrs)
+                elif "instagram" in url:
+                    instagram(m, attrs)
+                else:
+                    tikdou(m, attrs)
+                m.delete()
+                save(m)
+            except Exception as e:
+                logging.error(e)
+        else:
+            try:
+                file, types = ODL(url)
+                if file:
+                    save(m)
+                    m.reply_chat_action(typing)
+                    other(m, file, types,  attrs)
+            except Exception as e:
+                logging.error(e)
