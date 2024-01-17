@@ -1,6 +1,7 @@
+from pyrogram.enums.ChatAction import TYPING
 from pyrogram import filters, Client
-from ext.util import save
-from ext.var import button, t
+from ext import save
+from ext import BaseButton
 
 start_vn = '''**Content Download bot** cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
 Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như Youtube, TikTok/Douyin, Facebook, Twitter, và nhiều trang web khác. 
@@ -12,15 +13,15 @@ You can download videos, images, audio, or file from websites such as Youtube, T
 Send /help command for more details.'''
 
 @Client.on_message(filters.command("start") & (filters.private|filters.chat(-1001832458549)))
-def handle_start(c, m):
-  save(m)
-  m.reply_chat_action(t)
-  lan = m.from_user.language_code
-  if lan == "vi":
-    msg = start_vn
-  else:
-    msg = start_en
-  m.reply(msg, reply_markup=button)
+def reply_start(c, m):
+    save(m)
+    m.reply_chat_action(TYPING)
+    language = m.from_user.language_code
+    if language == "vi":
+        msg = start_vn
+    else:
+        msg = start_en
+    m.reply(msg, reply_markup=BaseButton())
 
 help_vn = ''' **Hướng dẫn:**
 
@@ -36,12 +37,12 @@ help_en = '''**Instructions:**
 `/cloud:` Storage platform'''
 
 @Client.on_message(filters.command('help') & ((filters.private | filters.mentioned)|filters.chat(-1001832458549)))
-def handle_help(c, m):
-  save(m)
-  m.reply_chat_action(t)
-  lan = m.from_user.language_code
-  if lan == "vi":
-    msg = help_vn
-  else:
-    msg = help_en
-  m.reply(msg, reply_markup=button)
+def reply_help(c, m):
+    save(m)
+    m.reply_chat_action(TYPING)
+    language = m.from_user.language_code
+    if language == "vi":
+        msg = help_vn
+    else:
+        msg = help_en
+    m.reply(msg, reply_markup=BaseButton())
