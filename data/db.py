@@ -1,4 +1,4 @@
-import detaspace as deta
+from init import deta
 
 #
 chats_db = deta.Base("chats")
