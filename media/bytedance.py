@@ -5,36 +5,36 @@ from ext.upload import upload
 from ext.var import sv, rv, ra, sm
 import logging
 
-def tiktokuserlink(c, m, url, caption):
-  original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",
-                                                         url=url)]])
-  share_links = get_share_links(url)
-  list_video = []
-  list_file = []
-  list_photo = []
-  list_music = []
-  for sharelink in share_links:
-    file, link, is_video, music, music_url = TDDL.get(sharelink)
-    if is_video == True:
-      list_video.append(link)
-      list_file.append(file)
-    else:
-      list_photo.extend(link)
-    if music:
-      list_music.append(music)
-  if list_photo:
-    try:
-      send_photos(m, list_photo, original, caption)
-    except Exception as e:
-      logging.error(e)
-  if list_video:
-    try:
-      send_videos(m, list_video, original, caption)
-    except:
-      send_videos(m, list_file, original, caption)
-  if list_music:
-      for music in list_music:
-          m.reply_audio(music, caption=caption)
+class TikTokUser:
+    def __init__(self, c, m, url, caption):
+        original = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",url=url)]])
+        share_links = get_share_links(url)
+        list_video = []
+        list_file = []
+        list_photo = []
+        list_music = []
+        for sharelink in share_links:
+            file, link, is_video, music, music_url = TDDL(sharelink)
+            if is_video == True:
+                list_video.append(link)
+                list_file.append(file)
+            else:
+                list_photo.extend(link)
+            if music:
+                list_music.append(music)
+        if list_photo:
+            try:
+                send_photos(m, list_photo, original, caption)
+            except Exception as e:
+                logging.error(e)
+        if list_video:
+            try:
+                send_videos(m, list_video, original, caption)
+            except:
+                send_videos(m, list_file, original, caption)
+        if list_music:
+            for music in list_music:
+                m.reply_audio(music, caption=caption)
   
 def tikdou(c, m, getattrs):
   url, original, caption = getattrs(m)
@@ -42,7 +42,7 @@ def tikdou(c, m, getattrs):
   try:
     file, link, is_video, music, music_url = TDDL.music(url)
   except:
-    tiktokuserlink(c, m, url, caption)
+    TikTokUser(c, m, url, caption)
     return
   if is_video == False:
     try:
@@ -66,7 +66,7 @@ def tikdou(c, m, getattrs):
 def tdmusic(c, m, getattrs):
   url, _, caption = getattrs(m)
   m.reply_chat_action(ra)
-  _, __, ____, audio, audio_url = TDDL.get(url)
+  _, __, ____, audio, audio_url = TDDL(url)
   m.reply_chat_action(sm)
   if not audio_url:
       m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
