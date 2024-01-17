@@ -1,5 +1,4 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from init import webstream 
 import re
 
 class Attrs:
