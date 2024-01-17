@@ -11,4 +11,4 @@ class Token():
         db = deta.Base('telegram-sessions')
         self.id = db.get('API_ID')["value"]
         self.hash = db.get('API_HASH')["value"]
-        self.token = db.get('CD_TOKEN')["value"]
+        self.cd = db.get('CD_TOKEN')["value"]
