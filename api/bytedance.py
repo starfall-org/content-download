@@ -1,6 +1,6 @@
 from io import BytesIO
+from init import dapi
 import requests
-import dapi
 import os
 
 class TDDL:
