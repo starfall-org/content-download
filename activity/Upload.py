@@ -1,5 +1,5 @@
 from pyrogram import Client, filters, enums
-from pyrogram.enums import ChatType
+from pyrogram.enums import ChatAction
 from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
@@ -10,7 +10,7 @@ import requests
 import re
 
 HTML = enums.ParseMode.HTML
-typing = ChatType.TYPING
+typing = ChatAction.TYPING
 
 @Client.on_message(filters.command("album"))
 def cloud_list(c, m):
