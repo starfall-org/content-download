@@ -5,7 +5,7 @@ from ext import owner
 typing = enums.ChatAction.TYPING
 
 @Client.on_message(filters.command("count") & owner)
-def uses_count(c, m):
+def count_uses(c, m):
     m.reply_chat_action(t)
     user, _ = get_users()
     chat, __ = get_chats()
