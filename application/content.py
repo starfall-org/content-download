@@ -7,7 +7,7 @@ class Content(Client):
         self.client = Client("Content Download",
         api_id=Token().id,
         api_hash=Token().hash,
-        bot_token=Token().bot,
+        bot_token=Token().cd,
         plugins=dict(root="activity"),
         max_concurrent_transmissions=100)
     def run(self):
