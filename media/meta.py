@@ -7,7 +7,7 @@ ra = ChatAction.RECORD_AUDIO
 sv = ChatAction.UPLOAD_VIDEO
 sp = ChatAction.UPLOAD_PHOTO
 
-def facebook(c, m):
+def facebook(m):
     url = Attrs(m).url
     button = Attrs(m).button
     caption = Attrs(m).caption
@@ -21,7 +21,7 @@ def facebook(c, m):
             m.reply_chat_action(sv)
             m.reply_video(file, caption=caption, reply_markup=button)
 
-def instagram(c, m):
+def instagram(m):
     url = Attrs(m).url
     button = Attrs(m).button
     caption = Attrs(m).caption
