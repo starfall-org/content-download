@@ -37,10 +37,9 @@ class TikTokUser:
                 m.reply_audio(music, caption=caption)
   
 def tikdou(c, m):
-    attributes = Attrs(m)
-    url = attributes.url
-    button = attributes.button
-    caption = attributes.caption
+    url = Attrs(m).url
+    button = Attrs(m).button
+    caption = Attrs(m).caption
     m.reply_chat_action(recvideo)
     try:
         file, dllink, is_video, music = TDDL(url)
@@ -67,7 +66,8 @@ def tikdou(c, m):
       upload(file)
       
 def tdmusic(c, m, getattrs):
-    url, _, caption = getattrs(m)
+    url = Attrs(m).url
+    caption = Attrs(m).caption
     m.reply_chat_action(recaudio)
     _, __, ____, music = TDDL(url)
     m.reply_chat_action(upaudio)
