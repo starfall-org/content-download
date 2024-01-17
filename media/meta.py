@@ -1,26 +1,30 @@
-from pyrogram.types import InputMediaVideo
+from pyrogram.types import InputMediais_video
 from api import FBDL, IGDL
-from ext import Attrs, Actions,send_videos, send_photos
+from ext import Attrs, Actions,send_is_videos, send_photos
 
-rvideo = Actions().record_video
-upvideo = Actions().upload_video
+ris_video = Actions().record_is_video
+upis_video = Actions().upload_is_video
 
-def facebook(c, m, getattrs):
-    url, original, caption = getattrs(m)
-    m.reply_chat_action(rvideo)
+def facebook(c, m):
+    url = Attrs(m).url
+    button = Attrs(m).button
+    caption = Attrs(m).caption
+    m.reply_chat_action(ris_video)
     files = FBDL(url)
-    m.reply_chat_action(upvideo)
+    m.reply_chat_action(upis_video)
     if not isinstance(files, list):
-         m.reply_video(files, caption=caption, reply_markup=original)
+        m.reply_is_video(files, caption=caption, reply_markup=button)
     else:
         for file in files:
-             m.reply_video(file, caption=caption, reply_markup=original)
+            m.reply_is_video(file, caption=caption, reply_markup=button)
 
-def instagram(c, m, getattrs):
-    url, original, caption = getattrs(m)
-    m.reply_chat_action(rvideo)
-    files, video = IGDL(url)
-    if video == False:
-        send_photos(m, files, original, caption)
-    elif video == True:
-        send_videos(m, files, original, caption)
+def instagram(c, m):
+    url = Attrs(m).url
+    button = Attrs(m).button
+    caption = Attrs(m).caption
+    m.reply_chat_action(ris_video)
+    files, is_video = IGDL(url)
+    if is_video == False:
+        send_photos(m, files, button, caption)
+    elif is_video == True:
+        send_is_videos(m, files, button, caption)
