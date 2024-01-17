@@ -4,7 +4,7 @@ from io import BytesIO
 
 class FBDL:
     def __init__(self, url):
-        self.fb = requests.get(f"{dapi}/facebook", params={"url": self.url}, timeout=60).json()
+        self.fb = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=60).json()
     def get(self):
         files = []
         for link in self.fb["url"]:
