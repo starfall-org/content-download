@@ -17,7 +17,7 @@ class FBDL:
         return files
 
 
-class IGDL(url):
+class IGDL:
     def __init__(self, url):
         self.url = url
         self.ig = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=60).json()
