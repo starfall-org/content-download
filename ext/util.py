@@ -1,9 +1,9 @@
 from pyrogram.types import InputMediaPhoto, InputMediaVideo
 from pyrogram.enums import ChatAction
-from typing import List
-from data.db import save_chat, save_user
-from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from typing import List
+from data import save_chat, save_user
+from bs4 import BeautifulSoup
 from threading import Thread
 import requests
 import os
