@@ -1,8 +1,13 @@
 from pyrogram.enums import ChatAction
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 from ext import save
 
 typing = ChatAction.TYPING
+button = InlineKeyboardMarkup([[
+        InlineKeyboardButton("Youtube",url="https://youtube.com/@DouyinShare")],[
+        InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
+        InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
 
 start_vn = '''**Content Download bot** cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
 Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như Youtube, TikTok/Douyin, Facebook, Twitter, và nhiều trang web khác. 
