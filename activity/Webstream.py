@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.enums import ChatAction
-import webstream
+from init import webstream
 import logging
 import time 
 import os
