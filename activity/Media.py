@@ -3,7 +3,7 @@ from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
 from media import tikdou, tdmusic, facebook, instagram, youtube, music, other
 from api import ODL
-from ext import Attrs, save, channel_post, if_media
+from ext import Attrs, save, channel_post
 import logging
 import os
 
@@ -24,10 +24,10 @@ def music_download(c, m):
         except Exception as e:
             raise Exception(e)
     except Exception as e:
-        m.reply(str(e), quote=True)
+        m.reply("Không phát hiện nội dung", quote=True)
         logging.critical(e)
 
-@Client.on_message((if_media | filters.command('download')) & filters.incoming & channel_post)
+@Client.on_message((filters.regex(["http:","https:"]) | filters.command('download')) & filters.incoming & channel_post)
 def all_media_download(c, m):
     attrs = Attrs(m)
     if attrs.url:
