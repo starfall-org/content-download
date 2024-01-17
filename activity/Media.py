@@ -12,6 +12,7 @@ typing = ChatAction.TYPING
 @Client.on_message(filters.command("music") & channel_post)
 def music_download(c, m):
     save(m)
+    m.reply_chat_action(typing)
     try:
         attrs = Attrs(m)
         if any(match in m.text for match in ["tiktok", "douyin"]):
