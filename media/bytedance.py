@@ -90,7 +90,10 @@ def tdmusic(m, attrs):
         if not audio_url:
             m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
             raise
-        m.reply_audio(audio, caption=caption)
+        try:
+            m.reply_audio(audio[0], caption=caption)
+        except:
+            m.reply_audio(audio[1], caption=caption)
         os.system("echo Completed")
         return
     except Exception as e:
