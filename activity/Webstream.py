@@ -7,7 +7,7 @@ import os
 
 typing = ChatAction.TYPING
 
-@Client.on_message(filters.command('stream'))
+@Client.on_message(filters.command("stream"))
 def get_webstream(c, m):
     m.reply_chat_action(typing)
     try:
@@ -16,13 +16,13 @@ def get_webstream(c, m):
             mid = m.reply_to_message.id
             if m.reply_to_message.video:
                 file_id = m.reply_to_message.video.file_id
-                file_type = 'video'
+                file_type = "video"
             elif m.reply_to_message.audio:
                 file_id = m.reply_to_message.audio.file_id
-                file_type = 'audio'
+                file_type = "audio"
             elif m.reply_to_message.photo:
                 file_id = m.reply_to_message.photo.file_id
-                file_type = 'photo'
+                file_type = "photo"
             else:
                 raise Exception("Không phát hiện đối tượng có thể stream, vui lòng cung cấp thêm")
         else:
@@ -30,27 +30,27 @@ def get_webstream(c, m):
             mid = m.id
             if m.video:
                 file_id = m.video.file_id
-                file_type = 'video'
+                file_type = "video"
             elif m.audio:
                 file_id = m.audio.file_id
-                file_type = 'audio'
+                file_type = "audio"
             elif m.photo:
                 file_id = m.photo.file_id
-                file_type = 'photo'
+                file_type = "photo"
             else:
                 raise Exception("Không phát hiện đối tượng có thể stream, vui lòng cung cấp thêm")
-            main_stream = f'{webstream}/stream?box={box}&id={mid}'
-            m.reply(f'Liên kết Stream:\n{main_stream}', quote=True)
+            main_stream = f"{webstream}/stream?box={box}&id={mid}"
+            m.reply(f"Liên kết Stream:\n{main_stream}", quote=True)
     except Exception as e:
         m.reply(str(e), quote=True)
         logging.critical(e)
   
-@Client.on_message(filters.command('setstream'))
+@Client.on_message(filters.command("setstream"))
 def set_webstream(c,m):
     m.reply_chat_action(t)
     url = m.command[1]
-    os.environ['WEBSTREAM'] = url
-    st = m.reply(f'Đã cập nhật webstream {url}', quote=True)
+    os.environ["WEBSTREAM"] = url
+    st = m.reply(f"Đã cập nhật webstream {url}", quote=True)
     time.sleep(30)
     st.delete()
     m.delete()
