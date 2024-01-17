@@ -31,7 +31,7 @@ def music_download(c, m):
 def all_media_download(c, m):
     attrs = Attrs(m)
     if attrs.url:
-        media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
+        media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb.com", "instagram"]
         url = attrs.url
         if any(media in url for media in media_group):
             save(m)
