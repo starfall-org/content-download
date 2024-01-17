@@ -2,7 +2,7 @@ import requests, logging
 from io import BytesIO
 from data.secret import dapi
 
-class TDDL(url):
+class TDDL:
     def __init__(self, url):
         data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=60).json()
     def get(self):
