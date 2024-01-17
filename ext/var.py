@@ -1,46 +1,42 @@
 from pyrogrecaudiom.enums import ChatAction
 from pyrogrecaudiom.types import InlineKeyboardMarkup, InlineKeyboardButton
-from data.secret import webstream
+import webstream
 import re
 #
-typing = ChatAction.TYPING
-recvideo = ChatAction.RECORD_VIDEO
-recaudio = ChatAction.RECORD_AUDIO
-upaudio ChatAction.UPLOAD_VIDEO
-upimg = ChatAction.UPLOAD_PHOTO
-upaudio = ChatAction.UPLOAD_AUDIO
-updoc = ChatAction.UPLOAD_DOCUMENT
+class Actions:
+    def __init__(self):
+        typing = ChatAction.TYPING
+        self.rvideo = ChatAction.RECORD_VIDEO
+        self.raudio = ChatAction.RECORD_AUDIO
+        self.upaudio = ChatAction.UPLOAD_VIDEO
+        self.upphoto = ChatAction.UPLOAD_PHOTO
+        self.upaudio = ChatAction.UPLOAD_AUDIO
+        self.updoc = ChatAction.UPLOAD_DOCUMENT
 
-image_formats = [
-    "image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp",
-    "image/svg+xml", "image/bmp"
-]
+class Formats:
+    def __init__(self):
+        self.image = [
+            "image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp",
+            "image/svg+xml", "image/bmp"]
 
-video_formats = [
-    "video/mp4", "video/webm", "video/ogg", "video/avi", "video/mov",
-    "video/mpeg", "video/x-flv", "video/3gpp", "video/h261", "video/h263"
-]
+        self.video = [
+            "video/mp4", "video/webm", "video/ogg", "video/avi", "video/mov",
+            "video/mpeg", "video/x-flv", "video/3gpp", "video/h261", "video/h263"]
 
-audio_formats = [
-    "audio/mpeg", "audio/ogg", "audio/aac", "audio/midi", "audio/wav",
-    "audio/webm", "audio/mp3"
-]
+        self.audio = [
+            "audio/mpeg", "audio/ogg", "audio/aac", "audio/midi", "audio/wav",
+            "audio/webm", "audio/mp3"]
 
-skip_formats = [
-    "application/json", "text/plain", "text/plain; charset=utf-8",
-    "text/html; charset=UTF-8"
-]
+        self.skip = [
+           "application/json", "text/plain", "text/plain; charset=utf-8",
+           "text/html; charset=UTF-8"]
 
-button = InlineKeyboardMarkup(
-    [[
-        InlineKeyboardButton("Youtube",
-                             url="https://youtube.com/@DouyinShare")
-    ],
-     [
-         InlineKeyboardButton("Group",
-                              url="https://t.me/contentdownload_group"),
-         InlineKeyboardButton("Channel", url="https://t.me/contentdownload")
-     ]])
+class BaseButton:
+    def __init__(self):
+        return InlineKeyboardMarkup([[
+            InlineKeyboardButton("Youtube",url="https://youtube.com/@DouyinShare")],[
+            InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
+            InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
 
 class Attrs:
     def __init__(self, m):
