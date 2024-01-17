@@ -38,6 +38,7 @@ class TikTokUser:
             for music in list_music:
                 m.reply_chat_action(sa)
                 m.reply_audio(music, caption=caption)
+        os.system("echo Completed")
   
 def tikdou(m, attrs):
     url = attrs.url
@@ -70,3 +71,4 @@ def tdmusic(m, attrs):
         m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
         raise
     m.reply_audio(audio, caption=caption)
+    os.system("echo Completed")
