@@ -11,5 +11,5 @@ def filter_media_link(_, __, m):
     
 owner = filters.create(filter_owner)
 channel_post  = filters.create(content_download_channel)
-filter_media = filters.create(filter_media_link)
+if_media = filters.create(filter_media_link)
     
