@@ -62,7 +62,7 @@ def upload_to_cloud(c, m):
   
 @Client.on_message(filters.command("delete"))
 def request_delete_file(c, m):
-    m.reply_chat_action(t)
+    m.reply_chat_action(typing)
     if m.reply_to_message:
         url = Attrs(m.reply_to_message).url
     else:
