@@ -12,7 +12,6 @@ typing = ChatAction.TYPING
 @Client.on_message(filters.command("music") & channel_post)
 def music_download(c, m):
     save(m)
-    m.reply_chat_action(typing)
     try:
         attrs = Attrs(m)
         if any(match in m.text for match in ["tiktok", "douyin"]):
@@ -24,6 +23,7 @@ def music_download(c, m):
         except Exception as e:
             raise Exception(e)
     except Exception as e:
+        m.reply_chat_action(typing)
         m.reply("**Error:** __resource not found__", quote=True)
         logging.critical(e)
 
@@ -35,7 +35,6 @@ def all_media_download(c, m):
         url = attrs.url
         if any(media in url for media in media_group):
             save(m)
-            m.reply_chat_action(typing)
             try:
                 if any(reg in url for reg in ["youtube", "youtu.be"]):
                     youtube(m, attrs)
@@ -47,6 +46,7 @@ def all_media_download(c, m):
                     tikdou(m, attrs)
                 m.delete()
             except Exception as e:
+                m.reply_chat_action(typing)
                 m.reply("**Error:** __resource not found__", quote=True)
                 logging.critical(e)
         else:
