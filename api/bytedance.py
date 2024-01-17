@@ -1,6 +1,7 @@
-import requests, logging
 from io import BytesIO
-from data.secret import dapi
+import requests
+import dapi
+import os
 
 class TDDL:
     def __init__(self, url):
