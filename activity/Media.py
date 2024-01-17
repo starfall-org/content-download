@@ -27,7 +27,7 @@ def music_download(c, m):
         m.reply("**Error:** __resource not found__", quote=True)
         logging.critical(e)
 
-@Client.on_message((filters.regex(["http:","https:"]) | filters.command('download')) & filters.incoming & channel_post)
+@Client.on_message((filters.regex("http://|https://") | filters.command('download')) & filters.incoming & channel_post)
 def all_media_download(c, m):
     attrs = Attrs(m)
     if attrs.url:
