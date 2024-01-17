@@ -39,10 +39,10 @@ class TikTokUser:
                 m.reply_chat_action(sa)
                 m.reply_audio(music, caption=caption)
   
-def tikdou(c, m):
-    url = Attrs(m).url
-    button = Attrs(m).button
-    caption = Attrs(m).caption
+def tikdou(m, attrs):
+    url = attrs.url
+    button = attrs.button
+    caption = attrs.caption
     m.reply_chat_action(rv)
     try:
         file, music, is_video = TDDL(url)
@@ -60,11 +60,11 @@ def tikdou(c, m):
     if m.chat.username == "contentdownload":
         upload(file)
       
-def tdmusic(m):
-    url = Attrs(m).url
-    caption = Attrs(m).caption
+def tdmusic(m, attrs):
+    url = attrs.url
+    caption = attrs.caption
     m.reply_chat_action(ra)
-    _, __, ____, music = TDDL(url)
+    _, music, __ = TDDL(url)
     m.reply_chat_action(sa)
     if not audio_url:
         m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
