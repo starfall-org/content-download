@@ -21,8 +21,9 @@ def music_download(c, m):
         try:
             m.delete()
         except Exception as e:
-            logging.critical(e)
+            raise Exception(e)
     except Exception as e:
+        m.reply(str(e), quote=True)
         logging.critical(e)
 
 @Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming & channel_post)
