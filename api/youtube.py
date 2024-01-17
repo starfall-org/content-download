@@ -1,7 +1,7 @@
 import requests, random
-from data.secret import dapi
+from init import dapi
 from io import BytesIO
-from ext.var import image_formats, video_formats, audio_formats, skip_formats
+from ext import Formats
 
 
 class YTDL:
@@ -30,16 +30,16 @@ class ODL:
             filename = re.findall("filename=(.+)", header)[0]
         except:
             filename = f"{random.randint(1000,9000)}"
-            if r.headers["Content-Type"] in audio_formats:
+            if r.headers["Content-Type"] in Formats().audio:
                 filename = f"{filename}.mp3"
                 type = "audio"
                 file = BytesIO(content)
                 file.name = filename
-            if r.headers["Content-Type"] in image_formats:
+            if r.headers["Content-Type"] in Formats().image:
                 type = "image"
-            elif r.headers["Content-Type"] in video_formats:
+            elif r.headers["Content-Type"] in Formats().video:
                 type = "video"
-            if r.headers["Content-Type"] in skip_formats:
+            if r.headers["Content-Type"] in Formats().skip:
                 return None, None
             else:
                 type = "other"
