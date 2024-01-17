@@ -4,6 +4,7 @@ from api import TDDL
 from ext import send_videos, send_photos, get_media_links
 from ext.upload import upload
 import logging
+import os
 
 rv = ChatAction.RECORD_VIDEO
 ra = ChatAction.RECORD_AUDIO
