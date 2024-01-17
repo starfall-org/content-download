@@ -2,7 +2,6 @@ from deta import Deta
 import os
 
 dapi = os.getenv("DAPI")
-webstream = os.getenv("WEBSTREAM")
 collection = os.getenv("COLLECTION")
 deta = Deta(os.getenv('DETA_KEY'))
 
