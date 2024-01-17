@@ -1,5 +1,5 @@
-import os
 from deta import Deta
+import os
 
 dapi = os.getenv("DAPI")
 webstream = os.getenv("WEBSTREAM")
