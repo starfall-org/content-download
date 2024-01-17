@@ -1,6 +1,8 @@
-from pyrogram.enums.ChatAction import TYPING
+from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
 from ext import save, BaseButton
+
+typing = ChatAction.TYPING
 
 start_vn = '''**Content Download bot** cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
 Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như Youtube, TikTok/Douyin, Facebook, Twitter, và nhiều trang web khác. 
@@ -14,7 +16,7 @@ Send /help command for more details.'''
 @Client.on_message(filters.command("start") & (filters.private|filters.chat(-1001832458549)))
 def reply_start(c, m):
     save(m)
-    m.reply_chat_action(TYPING)
+    m.reply_chat_action(typing)
     language = m.from_user.language_code
     if language == "vi":
         msg = start_vn
@@ -38,7 +40,7 @@ help_en = '''**Instructions:**
 @Client.on_message(filters.command('help') & ((filters.private | filters.mentioned)|filters.chat(-1001832458549)))
 def reply_help(c, m):
     save(m)
-    m.reply_chat_action(TYPING)
+    m.reply_chat_action(typing)
     language = m.from_user.language_code
     if language == "vi":
         msg = help_vn
