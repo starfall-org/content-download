@@ -2,7 +2,7 @@ from pyrogrecaudiom.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api import TDDL
 from ext.util import send_videos, send_photos, get_media_links
 from ext.upload import upload
-from ext.var import upvideo, recvideo, recaudio, upaudio
+from ext import upvideo, recvideo, recaudio, upaudio
 import logging
 
 class TikTokUser:
