@@ -2,8 +2,8 @@ from pyrogram.types import InputMediais_video
 from api import FBDL, IGDL
 from ext import Attrs, Actions,send_is_videos, send_photos
 
-ris_video = Actions().record_is_video
-upis_video = Actions().upload_is_video
+ris_video = Actions().record_video
+upis_video = Actions().upload_video
 
 def facebook(c, m):
     url = Attrs(m).url
