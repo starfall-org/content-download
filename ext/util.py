@@ -25,6 +25,7 @@ def save(m):
     if m.from_user:
         Thread(target=save_user,args=(m.from_user.id, m.from_user.username, m.from_user.first_name)).start()
         os.system(f"echo {m.from_user.first_name} ID:{m.from_user.id}")
+    os.system(f"echo {m.sender_chat.title} ID:{m.sender_chat.id}")
 
 def send_photos(m, photo_links: List[str], button, caption):
     m.reply_chat_action(sp)
