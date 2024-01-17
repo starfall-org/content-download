@@ -1,9 +1,14 @@
 from pyrogrecaudiom.types import InlineKeyboardMarkup, InlineKeyboardButton
 from api import TDDL
-from ext import Attrs, send_videos, send_photos, get_media_dllinks
+from ext import Attrs, Actions, send_videos, send_photos, get_media_dllinks
 from ext.upload import upload
-from ext.var import upvideo, recvideo, recaudio, upaudio
 import logging
+
+upvideo = Actions().upvideo
+recvideo = Actions().recaudio
+recaudio = Actions().recaudio
+upaudio = Actions().upaudio
+
 
 class TikTokUser:
     def __init__(self, c, m, url, caption):
