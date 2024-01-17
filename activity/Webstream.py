@@ -12,17 +12,16 @@ def get_webstream(c, m):
     m.reply_chat_action(typing)
     try:
         if m.reply_to_message:
-            reply_to = m.reply_to_message
-            box = reply_to.chat.id
-            mid = reply_to.id
-            if reply_to.video:
-                file_id = reply_to.video.file_id
+            box = m.reply_to_message.chat.id
+            mid = m.reply_to_message.id
+            if m.reply_to_message.video:
+                file_id = m.reply_to_message.video.file_id
                 file_type = 'video'
-            elif reply_to.audio:
-                file_id = reply_to.audio.file_id
+            elif m.reply_to_message.audio:
+                file_id = m.reply_to_message.audio.file_id
                 file_type = 'audio'
-            elif reply_to.photo:
-                file_id = reply_to.photo.file_id
+            elif m.reply_to_message.photo:
+                file_id = m.reply_to_message.photo.file_id
                 file_type = 'photo'
             else:
                 raise Exception("Không phát hiện đối tượng có thể stream, vui lòng cung cấp thêm")
