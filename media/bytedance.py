@@ -1,7 +1,7 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ChatAction
 from api import TDDL
-from ext import Attrs, Actions, send_videos, send_photos, get_media_links
+from ext import send_videos, send_photos, get_media_links
 from ext.upload import upload
 import logging
 
