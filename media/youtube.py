@@ -28,7 +28,7 @@ def other(m, file, type):
         m.reply_chat_action(sv)
         m.reply_video(file, caption=caption, reply_markup=original)
     elif types == "audio":
-        m.reply_chat_action(sm)
+        m.reply_chat_action(sa)
         m.reply_audio(file, caption=caption)
     else:
         m.reply_chat_action(sd)
