@@ -4,10 +4,9 @@ from io import BytesIO
 
 class FBDL:
     def __init__(self, url):
-        self.fb = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=60).json()
-    def get(self):
+        data = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=60).json()
         files = []
-        for link in self.fb["url"]:
+        for link in data["url"]:
             content = requests.get(link).content
             file = BytesIO(content)
             file.name = f"file{random.randint(1, 9999)}.mp4"
@@ -18,8 +17,7 @@ class FBDL:
 
 class IGDL:
     def __init__(self, url):
-        self.ig = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=60).json()
-    def get(self):
+        data = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=60).json()
         files = []
         if data.get("is_video", True):
             is_video = True
