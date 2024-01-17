@@ -5,24 +5,24 @@ from ext.var import image_formats, video_formats, audio_formats, skip_formats
 
 
 class YTDL:
-    def __init__(self, url):
-        self.url
-    def get(self):
-        data = requests.get(f"{dapi}/youtube", params={"url":self.url}, timeout=60).json()
+    def __init__(self):
+        pass
+    def get(self, url):
+        data = requests.get(f"{dapi}/youtube", params={"url":url}, timeout=60).json()
         content = requests.get(data["url"]).content
         file = BytesIO(content)
         file.name = f"video.mp4"
         return file
         
-    def music(self):
-        data = requests.get(f"{dapi}/music", params={"url":self.url}, timeout=60).json()
+    def music(self, url):
+        data = requests.get(f"{dapi}/music", params={"url":url}, timeout=60).json()
         content = requests.get(data["url"]).content
         file = BytesIO(content)
         file.name = f"music.mp3"
         return file
     
-    def other(self):
-        data = requests.get(f"{dapi}/other", params={"url": self.url}, timeout=60).json()
+    def other(self, url):
+        data = requests.get(f"{dapi}/other", params={"url": url}, timeout=60).json()
         r = requests.get(data["url"])
         content = r.content
         try:
