@@ -30,7 +30,7 @@ def send_photos(m, photo_links: List[str], button, caption):
     m.reply_chat_action(sp)
     if len(photo_links) == 1:
         for link in photo_links:
-        m.reply_photo(link, reply_markup=button, caption=caption)
+            m.reply_photo(link, reply_markup=button, caption=caption)
     else:
         for i in range(0, len(photo_links) - 1, 10):
             media_group = [InputMediaPhoto(link)
