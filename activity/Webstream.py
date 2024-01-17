@@ -8,7 +8,7 @@ import os
 typing = ChatAction.TYPING
 
 @Client.on_message(filters.command('stream'))
-def stream(c,m):
+def stream(c, m):
     m.reply_chat_action(typing)
     try:
         if m.reply_to_message:
