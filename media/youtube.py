@@ -1,5 +1,6 @@
 from api import YTDL,YTM, ODL
 from pyrogram.enums import ChatAction
+import logging
 import os
 
 rv = ChatAction.RECORD_VIDEO
@@ -10,13 +11,16 @@ sa = ChatAction.UPLOAD_AUDIO
 sd = ChatAction.UPLOAD_DOCUMENT
 
 def youtube(m, attrs):
-    url = attrs.url
-    button = attrs.button
-    caption = attrs.caption
-    m.reply_chat_action(rv)
-    file = YTDL(url)
-    m.reply_chat_action(sv)
-    m.reply_video(file, caption=caption, reply_markup=button)
+    try:
+        url = attrs.url
+        button = attrs.button
+        caption = attrs.caption
+        m.reply_chat_action(rv)
+        file = YTDL(url)
+        m.reply_chat_action(sv)
+        m.reply_video(file, caption=caption, reply_markup=button)
+    except Exception as e:
+        logging.error(e)
     
 def other(m, file, types, attrs):
     button = attrs.button
