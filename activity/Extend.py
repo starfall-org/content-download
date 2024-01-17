@@ -1,9 +1,10 @@
 from pyrogram import filters, Client, enums
 from data import get_chats, get_users
+from ex import owner
 
 typing = enums.ChatAction.TYPING
 
-@Client.on_message(filters.command("count"))
+@Client.on_message(filters.command("count") & owner)
 def uses_count(c, m):
     m.reply_chat_action(t)
     user, _ = get_users()
@@ -11,7 +12,7 @@ def uses_count(c, m):
     m.reply(f"Chats: {chat}\nUsers: {user}")
 
 
-@Client.on_message(filters.command("users") & filters.private)
+@Client.on_message(filters.command("users") & owner)
 def users_list(c, m):
     m.reply_chat_action(typing)
     count, users = get_users()
@@ -28,7 +29,7 @@ def users_list(c, m):
         m.reply(message, quote=True, parse_mode=enums.ParseMode.HTML)
 
 
-@Client.on_message(filters.command("chats") & filters.private)
+@Client.on_message(filters.command("chats") & owner)
 def chats_list(c, m):
     m.reply_chat_action(typing)
     count, chats = get_chats()
