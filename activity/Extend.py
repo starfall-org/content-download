@@ -6,7 +6,7 @@ typing = enums.ChatAction.TYPING
 
 @Client.on_message(filters.command("count") & owner)
 def count_uses(c, m):
-    m.reply_chat_action(t)
+    m.reply_chat_action(typing)
     user, _ = get_users()
     chat, __ = get_chats()
     m.reply(f"Chats: {chat}\nUsers: {user}")
