@@ -1,13 +1,15 @@
 from pyrogram.types import InputMediaVideo
 from api import FBDL, IGDL
-from ext.util import send_videos, send_photos
-from ext.var import rv, sv
+from ext import Attrs, Actions,send_videos, send_photos
+
+rvideo = Actions().record_video
+upvideo = Actions().upload_video
 
 def facebook(c, m, getattrs):
     url, original, caption = getattrs(m)
-    m.reply_chat_action(rv)
+    m.reply_chat_action(rvideo)
     files = FBDL(url)
-    m.reply_chat_action(sv)
+    m.reply_chat_action(upvideo)
     if not isinstance(files, list):
          m.reply_video(files, caption=caption, reply_markup=original)
     else:
@@ -16,7 +18,7 @@ def facebook(c, m, getattrs):
 
 def instagram(c, m, getattrs):
     url, original, caption = getattrs(m)
-    m.reply_chat_action(rv)
+    m.reply_chat_action(rvideo)
     files, video = IGDL(url)
     if video == False:
         send_photos(m, files, original, caption)
