@@ -7,7 +7,7 @@ def TDDL(url):
     data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=60).json()
     music = None
     link = data["url"]
-    if data['is_video'] == True:
+    if data['is_video']:
         content = requests.get(link).content
         file = BytesIO(content)
         file.name = "tiktokdouyin.mp4"
