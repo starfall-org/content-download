@@ -1,6 +1,6 @@
 from pyrogram import filters, Client, enums
 from data import get_chats, get_users
-from ex import owner
+from ext import owner
 
 typing = enums.ChatAction.TYPING
 
