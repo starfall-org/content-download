@@ -1,7 +1,6 @@
 from api import YTDL,YTM, ODL
 from pyrogram.enums import ChatAction
 
-tp = ChatAction.TYPING
 rv = ChatAction.RECORD_VIDEO
 ra = ChatAction.RECORD_AUDIO
 sv = ChatAction.UPLOAD_VIDEO
