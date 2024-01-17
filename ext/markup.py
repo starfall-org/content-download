@@ -1,5 +1,5 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import webstream 
+from init import webstream 
 import re
 
 class BaseButton:
