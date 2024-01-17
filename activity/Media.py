@@ -21,9 +21,9 @@ def music_download(c, m):
         try:
             m.delete()
         except Exception as e:
-            logging.error(e)
+            logging.critical(e)
     except Exception as e:
-        logging.error(e)
+        logging.critical(e)
 
 @Client.on_message((filters.regex("https://|http://")|filters.command('download')) & filters.incoming & channel_post)
 def all_media_download(c, m):
@@ -45,7 +45,7 @@ def all_media_download(c, m):
                     tikdou(m, attrs)
                 m.delete()
             except Exception as e:
-                logging.error(e)
+                logging.critical(e)
         else:
             try:
                 file, types = ODL(url)
@@ -54,4 +54,4 @@ def all_media_download(c, m):
                     m.reply_chat_action(typing)
                     other(m, file, types,  attrs)
             except Exception as e:
-                logging.error(e)
+                logging.critical(e)
