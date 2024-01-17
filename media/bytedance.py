@@ -12,7 +12,7 @@ sv = ChatAction.UPLOAD_VIDEO
 sa = ChatAction.UPLOAD_AUDIO
 
 class TikTokUser:
-    def __init__(self, c, m, url, caption):
+    def __init__(self, m, url, caption):
         button = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
         media_links = get_media_links(url)
         list_video = []
@@ -56,7 +56,7 @@ def tikdou(m, attrs):
         try:
             media, music, is_video = TDDL(url)
         except:
-            TikTokUser(c, m, url, caption)
+            TikTokUser(m, url, caption)
             return
         if is_video == False:
             try:
