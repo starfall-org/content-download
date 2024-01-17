@@ -4,7 +4,7 @@ from deta import Deta
 dapi = os.getenv("DAPI")
 webstream = os.getenv("WEBSTREAM")
 collection = os.getenv("COLLECTION")
-deta = Deta(os.getenv('DETA_KEY'))
+detaspace = Deta(os.getenv('DETA_KEY'))
 
 class Token:
     def __init__(self):
