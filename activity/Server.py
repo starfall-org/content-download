@@ -1,9 +1,11 @@
 from pyrogram import Client, filters
 from ext import server_info
+from pyrogram.enums import ChatAction
 import platform
 
 @Client.on_message(filters.command('server'))
 def bot_server_info(c, m):
+    m.reply_chat_action(ChatAction.TYPING)
     ver = platform.version()
     name = platform.uname()
     system = platform.system()
