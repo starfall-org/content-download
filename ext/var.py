@@ -1,18 +1,7 @@
-from pyrogrecaudiom.enums import ChatAction
 from pyrogrecaudiom.types import InlineKeyboardMarkup, InlineKeyboardButton
 import webstream
 import re
 #
-class Actions:
-    def __init__(self):
-        typing = ChatAction.TYPING
-        self.rvideo = ChatAction.RECORD_VIDEO
-        self.raudio = ChatAction.RECORD_AUDIO
-        self.upaudio = ChatAction.UPLOAD_VIDEO
-        self.upphoto = ChatAction.UPLOAD_PHOTO
-        self.upaudio = ChatAction.UPLOAD_AUDIO
-        self.updoc = ChatAction.UPLOAD_DOCUMENT
-
 class Formats:
     def __init__(self):
         self.image = [
