@@ -1,6 +1,6 @@
 from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
-from ext import save, basicbutton
+from ext import save, button
 
 typing = ChatAction.TYPING
 
@@ -22,7 +22,7 @@ def reply_start(c, m):
         msg = start_vn
     else:
         msg = start_en
-    m.reply(msg, reply_markup=basicbutton())
+    m.reply(msg, reply_markup=button())
 
 help_vn = ''' **Hướng dẫn:**
 
@@ -46,4 +46,4 @@ def reply_help(c, m):
         msg = help_vn
     else:
         msg = help_en
-    m.reply(msg, reply_markup=basicbutton())
+    m.reply(msg, reply_markup=button())
