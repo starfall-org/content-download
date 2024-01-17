@@ -32,7 +32,7 @@ def all_media_download(c, m):
         media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb", "instagram"]
         url = attrs.url
         if any(media in url for media in media_group):
-            m.reply_chat_action(t)
+            m.reply_chat_action(typing)
             try:
                 if any(reg in url for reg in ["youtube", "youtu.be"]):
                     youtube(m, attrs)
