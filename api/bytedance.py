@@ -6,22 +6,24 @@ import os
 def TDDL(url):
     data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=60).json()
     music = None
+    link = data["url"]
     if data['is_video'] == True:
-        content = requests.get(data["url"]).content
+        content = requests.get(link).content
         file = BytesIO(content)
         file.name = "tiktokdouyin.mp4"
         is_video = True
     else:
         file = []
-        for photo_url in data["url"]:
-            photo_data = requests.get(photo_url).content
+        for photo_link in link:
+            photo_data = requests.get(photo_link).content
             photo_file = BytesIO(photo_data)
             photo_file.name = "photo.jpg"
             file.append(photo_file)
         is_video = False
     if data["music"]:
-        music_data = requests.get(data["music"]).content
+        musiclink = data["music"]
+        music_data = requests.get(musiclink).content
         music = BytesIO(music_data)
         music.name = "music.mp3"
     os.system("echo TikTok/Douyin")
-    return file, music, is_video
+    return (file, link), (music, musiclink), is_video
