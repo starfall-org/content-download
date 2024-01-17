@@ -1,7 +1,7 @@
 from datetime import datetime
 from pytz import timezone
 from threading import Thread
-import collection
+from init import collection
 import requests
 import logging
 import os
