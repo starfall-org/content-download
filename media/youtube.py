@@ -19,8 +19,11 @@ def youtube(m, attrs):
         file = YTDL(url)
         m.reply_chat_action(sv)
         m.reply_video(file, caption=caption, reply_markup=button)
+        os.system("echo Completed")
+        return
     except Exception as e:
         logging.error(e)
+        raise Exception(e)
     
 def other(m, file, types, attrs):
     try:
@@ -39,9 +42,11 @@ def other(m, file, types, attrs):
             m.reply_chat_action(sd)
             m.reply_document(file, reply_markup=button, caption=caption)
         os.system("echo Completed")
+        return
     except Exception as e:
         logging.error(e)
-
+        raise Exception(e)
+     
 def music(m, attrs):
     try:
         url = attrs.url
@@ -51,7 +56,7 @@ def music(m, attrs):
         m.reply_chat_action(sa)
         m.reply_audio(audio, caption=caption)
         os.system("echo Completed")
-        return "✓"
+        return
     except Exception as e:
         logging.error(e)
         raise Exception(e)
