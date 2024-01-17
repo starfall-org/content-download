@@ -4,7 +4,6 @@ from io import BytesIO
 
 class FBDL:
     def __init__(self, url):
-        self.url = url
         self.fb = requests.get(f"{dapi}/facebook", params={"url": self.url}, timeout=60).json()
     def get(self):
         files = []
@@ -19,7 +18,6 @@ class FBDL:
 
 class IGDL:
     def __init__(self, url):
-        self.url = url
         self.ig = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=60).json()
     def get(self):
         files = []
