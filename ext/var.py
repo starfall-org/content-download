@@ -1,15 +1,15 @@
-from pyrogram.enums import ChatAction
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogrecaudiom.enums import ChatAction
+from pyrogrecaudiom.types import InlineKeyboardMarkup, InlineKeyboardButton
 from data.secret import webstream
 import re
 #
-t = ChatAction.TYPING
-rv = ChatAction.RECORD_VIDEO
-ra = ChatAction.RECORD_AUDIO
-sv = ChatAction.UPLOAD_VIDEO
-sp = ChatAction.UPLOAD_PHOTO
-sm = ChatAction.UPLOAD_AUDIO
-sd = ChatAction.UPLOAD_DOCUMENT
+typing = ChatAction.TYPING
+recvideo = ChatAction.RECORD_VIDEO
+recaudio = ChatAction.RECORD_AUDIO
+upaudio ChatAction.UPLOAD_VIDEO
+upimg = ChatAction.UPLOAD_PHOTO
+upaudio = ChatAction.UPLOAD_AUDIO
+updoc = ChatAction.UPLOAD_DOCUMENT
 
 image_formats = [
     "image/png", "image/jpeg", "image/jpg", "image/gif", "image/webp",
@@ -42,17 +42,18 @@ button = InlineKeyboardMarkup(
          InlineKeyboardButton("Channel", url="https://t.me/contentdownload")
      ]])
 
-def getattrs(m):
-  try:
-      url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
-  except:
-      url = re.search(r"(?P<url>https?://[^\s]+)", m.reply_to_message.text).group("url")
-  original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
-  try:
-    user_name = m.sender_chat.title
-    user_id = m.sender_chat.id
-  except:
-    user_name = m.from_user.first_name
-    user_id = m.from_user.id
-  caption = f'**Sent by --__[{user_name}](tg://user?id={user_id})__--**'
-  return url, original, caption
+class Attrs:
+    def __init__(self, m):
+        try:
+            url = re.search(r"(?P<url>https?://[^\s]+)", m.text).group("url")
+        except:
+            url = re.search(r"(?P<url>https?://[^\s]+)", m.reply_to_message.text).group("url")
+        self.url = url
+        self.original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
+        try:
+            user_name = m.sender_chat.title
+            user_id = m.sender_chat.id
+        except:
+            user_name = m.from_user.first_name
+            user_id = m.from_user.id
+        self.caption = f'**Sent by --__[{user_name}](tg://user?id={user_id})__--**'
