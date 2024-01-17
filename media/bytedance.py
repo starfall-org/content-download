@@ -14,7 +14,7 @@ def tiktokuserlink(c, m, url, caption):
   list_photo = []
   list_music = []
   for sharelink in share_links:
-    file, link, is_video, music, music_url = TDDL(sharelink)
+    file, link, is_video, music, music_url = TDDL.get(sharelink)
     if is_video == True:
       list_video.append(link)
       list_file.append(file)
@@ -40,7 +40,7 @@ def tikdou(c, m, getattrs):
   url, original, caption = getattrs(m)
   m.reply_chat_action(rv)
   try:
-    file, link, is_video, music, music_url = TDDL(url)
+    file, link, is_video, music, music_url = TDDL.music(url)
   except:
     tiktokuserlink(c, m, url, caption)
     return
@@ -66,7 +66,7 @@ def tikdou(c, m, getattrs):
 def tdmusic(c, m, getattrs):
   url, _, caption = getattrs(m)
   m.reply_chat_action(ra)
-  _, __, ____, audio, audio_url = TDDL(url)
+  _, __, ____, audio, audio_url = TDDL.get(url)
   m.reply_chat_action(sm)
   if not audio_url:
       m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
