@@ -19,4 +19,4 @@ def run_shell(c, m):
     m.reply_chat_action(typing)
     command = m.text.replace("/shell ", "")
     result = subprocess.run(command, stdout=subprocess.PIPE, text=True)
-    m.reply(str(result.stdout))
+    m.reply(f"```bash\n{result.stdout}\n```)
