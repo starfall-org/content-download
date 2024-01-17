@@ -54,7 +54,6 @@ def all_media_download(c, m):
                 file, types = ODL(url)
                 if file:
                     save(m)
-                    m.reply_chat_action(typing)
                     other(m, file, types,  attrs)
             except Exception as e:
                 logging.critical(e)
