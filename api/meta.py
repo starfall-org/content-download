@@ -1,6 +1,6 @@
 import requests, random, os
-from data.secret import dapi
 from io import BytesIO
+import dapi
 
 class FBDL:
     def __init__(self, url):
