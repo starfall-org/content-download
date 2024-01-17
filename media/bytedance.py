@@ -18,12 +18,12 @@ class TikTokUser:
         list_photo = []
         list_music = []
         for media_link in media_links:
-            dlfile, dlink, is_video, music = TDDL(media_link)
+            file, music, is_video = TDDL(media_link)
             if is_video == True:
                 m.reply_chat_action(rv)
-                list_video.append(dlfile)
+                list_video.append(file)
             else:
-                list_photo.extend(dlink)
+                list_photo.extend(file)
             if music:
                 m.reply_chat_action(ra)
                 list_music.append(music)
@@ -45,18 +45,15 @@ def tikdou(c, m):
     caption = Attrs(m).caption
     m.reply_chat_action(rv)
     try:
-        file, dlink, is_video, music = TDDL(url)
+        file, music, is_video = TDDL(url)
     except:
         TikTokUser(c, m, url, caption)
         return
     if is_video == False:
-        try:
-            send_photos(m, dlink, original, caption)
-        except:
-            send_photos(m, file, original, caption)
-    if music:
-        m.reply_chat_action(sa)
-        m.reply_audio(music, caption=caption)
+        send_photos(m, file, original, caption)
+        if music:
+            m.reply_chat_action(sa)
+            m.reply_audio(music, caption=caption)
     elif is_video == True:
         m.reply_chat_action(sv)
         m.reply_video(file, caption=caption, reply_markup=original)
