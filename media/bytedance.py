@@ -19,15 +19,15 @@ class TikTokUser:
         list_photo = []
         list_music = []
         for media_link in media_links:
-            file, music, is_video = TDDL(media_link)
+            media, music, is_video = TDDL(media_link)
             if is_video == True:
                 m.reply_chat_action(rv)
-                list_video.append(file)
+                list_video.append(media[1])
             else:
-                list_photo.extend(file)
+                list_photo.extend(media[0])
             if music:
                 m.reply_chat_action(ra)
-                list_music.append(music)
+                list_music.append(music[0])
         if list_photo:
             try:
                 send_photos(m, list_photo, button, caption)
@@ -48,20 +48,32 @@ def tikdou(m, attrs):
         caption = attrs.caption
         m.reply_chat_action(rv)
         try:
-            file, music, is_video = TDDL(url)
+            media, music, is_video = TDDL(url)
         except:
             TikTokUser(c, m, url, caption)
             return
         if is_video == False:
-            send_photos(m, file, button, caption)
+            try:
+                send_photos(m, media[0], button, caption)
+            except:
+                send_photos(m, media[1], button, caption)
             if music:
                 m.reply_chat_action(sa)
-                m.reply_audio(music, caption=caption)
+                try:
+                    m.reply_audio(music[0], caption=caption)
+                except:
+                    m.reply_audio(music[1], caption=caption)
         elif is_video == True:
             m.reply_chat_action(sv)
-            m.reply_video(file, caption=caption, reply_markup=button)
+            try:
+                m.reply_video(media[0], caption=caption, reply_markup=button)
+            except:
+                m.reply_video(media[1], caption=caption, reply_markup=button)
         if m.chat.username == "contentdownload":
-            upload(file)
+            try:
+                upload(media[0])
+            except:
+                upload(media[1])
         os.system("echo Completed")
         return
     except Exception as e:
