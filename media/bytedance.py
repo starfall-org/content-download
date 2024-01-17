@@ -63,7 +63,7 @@ def tikdou(m, attrs):
                 send_photos(m, media[0], button, caption)
             except:
                 send_photos(m, media[1], button, caption)
-            if music:
+            if music[0]:
                 m.reply_chat_action(sa)
                 try:
                     m.reply_audio(music[0], caption=caption)
