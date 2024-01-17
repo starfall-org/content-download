@@ -23,25 +23,31 @@ def youtube(m, attrs):
         logging.error(e)
     
 def other(m, file, types, attrs):
-    button = attrs.button
-    caption = attrs.caption
-    if types == "image":
-        m.reply_chat_action(sp)
-        m.reply_photo(file, caption=caption, reply_markup=button)
-    elif types == "video":
-        m.reply_chat_action(sv)
-        m.reply_video(file, caption=caption, reply_markup=button)
-    elif types == "audio":
-        m.reply_chat_action(sa)
-        m.reply_audio(file, caption=caption)
-    else:
-        m.reply_chat_action(sd)
-        m.reply_document(file, reply_markup=button, caption=caption)
+    try:
+        button = attrs.button
+        caption = attrs.caption
+        if types == "image":
+            m.reply_chat_action(sp)
+            m.reply_photo(file, caption=caption, reply_markup=button)
+        elif types == "video":
+            m.reply_chat_action(sv)
+            m.reply_video(file, caption=caption, reply_markup=button)
+        elif types == "audio":
+            m.reply_chat_action(sa)
+            m.reply_audio(file, caption=caption)
+        else:
+            m.reply_chat_action(sd)
+            m.reply_document(file, reply_markup=button, caption=caption)
+    except Exception as e:
+        logging.error(e)
 
 def music(m, attrs):
-    url = attrs.url
-    caption = attrs.caption
-    m.reply_chat_action(ra)
-    audio = YTM(url)
-    m.reply_chat_action(sa)
-    m.reply_audio(audio, caption=caption)
+    try:
+        url = attrs.url
+        caption = attrs.caption
+        m.reply_chat_action(ra)
+        audio = YTM(url)
+        m.reply_chat_action(sa)
+        m.reply_audio(audio, caption=caption)
+    except Exception as e:
+        logging.error(e)
