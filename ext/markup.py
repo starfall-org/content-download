@@ -2,7 +2,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from init import webstream 
 import re
 
-def BaseButton():
+def basicbutton():
     return InlineKeyboardMarkup([[
         InlineKeyboardButton("Youtube",url="https://youtube.com/@DouyinShare")],[
         InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
