@@ -2,10 +2,11 @@ from pyrogram.enums import ChatAction
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 from ext import save
+from init import collection
 
 typing = ChatAction.TYPING
 button = InlineKeyboardMarkup([[
-        InlineKeyboardButton("Youtube",url="https://youtube.com/@DouyinShare")],[
+        InlineKeyboardButton("Youtube",url="https://youtube.com/@DouyinShare"), InlineKeyboardButton("Collection", url=collection)],[
         InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
         InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
 
