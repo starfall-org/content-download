@@ -5,7 +5,7 @@ from datetime import datetime
 from urllib.parse import quote
 from ext import Attrs
 from ext import upload_file
-import collection
+from init import collection
 import requests
 import re
 
