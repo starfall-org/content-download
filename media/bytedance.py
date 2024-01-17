@@ -32,13 +32,19 @@ class TikTokUser:
             try:
                 send_photos(m, list_photo, button, caption)
             except Exception as e:
-                logging.error(e)
+                logging.critical(e)
         if list_video:
-            send_videos(m, list_video, button, caption)
+            try:
+                send_videos(m, list_video, button, caption)
+            except Exception as e:
+                logging.critical(e)
         if list_music:
             for music in list_music:
                 m.reply_chat_action(sa)
-                m.reply_audio(music, caption=caption)
+                try:
+                    m.reply_audio(music, caption=caption)
+                except Exception as e:
+                    logging.critical(e)
         os.system("echo Completed")
   
 def tikdou(m, attrs):
@@ -77,7 +83,6 @@ def tikdou(m, attrs):
         os.system("echo Completed")
         return
     except Exception as e:
-        logging.error(e)
         raise Exception(e)
       
 def tdmusic(m, attrs):
@@ -97,5 +102,4 @@ def tdmusic(m, attrs):
         os.system("echo Completed")
         return
     except Exception as e:
-        logging.error(e)
         raise Exception(e)
