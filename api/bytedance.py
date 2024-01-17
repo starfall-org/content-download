@@ -25,6 +25,6 @@ class TDDL:
             music.name = "music.mp3"
         os.system("echo TikTok/Douyin")
         self.file = file
-        self.dlurl = data["url"]
+        self.dllink = data["url"]
         self.is_video = is_video
         self.music = music
