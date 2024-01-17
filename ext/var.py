@@ -49,7 +49,7 @@ class Attrs:
         except:
             url = re.search(r"(?P<url>https?://[^\s]+)", m.reply_to_message.text).group("url")
         self.url = url
-        self.original = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
+        self.button = InlineKeyboardMarkup([[InlineKeyboardButton("Original", url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
         try:
             user_name = m.sender_chat.title
             user_id = m.sender_chat.id
