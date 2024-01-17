@@ -24,7 +24,7 @@ def music_download(c, m):
         except Exception as e:
             raise Exception(e)
     except Exception as e:
-        m.reply("Không phát hiện nội dung", quote=True)
+        m.reply("**Error:** __resource not found__", quote=True)
         logging.critical(e)
 
 @Client.on_message((filters.regex(["http:","https:"]) | filters.command('download')) & filters.incoming & channel_post)
@@ -47,6 +47,7 @@ def all_media_download(c, m):
                     tikdou(m, attrs)
                 m.delete()
             except Exception as e:
+                m.reply("**Error:** __resource not found__", quote=True)
                 logging.critical(e)
         else:
             try:
