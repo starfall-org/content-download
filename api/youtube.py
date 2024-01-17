@@ -13,13 +13,13 @@ class YTDL:
         file = BytesIO(content)
         file.name = f"video.mp4"
         return file
+        
     def music(self):
         data = requests.get(f"{dapi}/music", params={"url":self.url}, timeout=60).json()
         content = requests.get(data["url"]).content
         file = BytesIO(content)
         file.name = f"music.mp3"
         return file
-    
     
     def other(self):
         data = requests.get(f"{dapi}/other", params={"url": self.url}, timeout=60).json()
