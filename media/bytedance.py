@@ -48,27 +48,27 @@ def tikdou(c, m):
     m.reply_chat_action(recvideo)
     try:
         file, dllink, is_video, music = TDDL(url)
-  except:
-    TikTokUser(c, m, url, caption)
-    return
-  if is_video == False:
-    try:
-        send_photos(m, dllink, original, caption)
     except:
-        send_photos(m, file, original, caption)
+        TikTokUser(c, m, url, caption)
+        return
+    if is_video == False:
+        try:
+            send_photos(m, dllink, original, caption)
+        except:
+            send_photos(m, file, original, caption)
     if music:
         try:
             m.reply_audio(music_url, caption=caption)
         except:
             m.reply_audio(music, caption=caption)
-  elif is_video == True:
-    m.reply_chat_action(upvideo)
-    try:
-       m.reply_video(dllink, caption=caption, reply_markup=original)
-    except:
-       m.reply_video(file, caption=caption, reply_markup=original)
+    elif is_video == True:
+        m.reply_chat_action(upvideo)
+        try:
+            m.reply_video(dllink, caption=caption, reply_markup=original)
+        except:
+            m.reply_video(file, caption=caption, reply_markup=original)
     if m.chat.username == "contentdownload":
-      upload(file)
+        upload(file)
       
 def tdmusic(c, m, getattrs):
     url = Attrs(m).url
