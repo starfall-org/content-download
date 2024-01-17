@@ -14,8 +14,7 @@ def FBDL(url):
     return files
 
 
-class IGDL:
-def __init__(self, url):
+def IGDL(url):
     data = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=60).json()
     files = []
     if data.get("is_video", True):
