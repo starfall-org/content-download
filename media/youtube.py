@@ -38,6 +38,7 @@ def other(m, file, types, attrs):
         else:
             m.reply_chat_action(sd)
             m.reply_document(file, reply_markup=button, caption=caption)
+        os.system("echo Completed")
     except Exception as e:
         logging.error(e)
 
@@ -49,5 +50,8 @@ def music(m, attrs):
         audio = YTM(url)
         m.reply_chat_action(sa)
         m.reply_audio(audio, caption=caption)
+        os.system("echo Completed")
+        return "✓"
     except Exception as e:
         logging.error(e)
+        raise Exception(e)
