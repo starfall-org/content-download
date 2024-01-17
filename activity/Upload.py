@@ -14,6 +14,7 @@ typing = ChatAction.TYPING
 
 @Client.on_message(filters.command("album"))
 def cloud_list(c, m):
+    m.reply_chat_action(typing)
     m.reply(f"<a href='{collection}'><b>COLLECTION</b></a>",
         parse_mode=HTML,
         disable_web_page_preview=True)
@@ -21,6 +22,7 @@ def cloud_list(c, m):
 
 @Client.on_message(filters.command("upload"))
 def upload_to_cloud(c, m):
+    m.reply_chat_action(typing)
     current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
     formatted = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
     if not m.reply_to_message:
