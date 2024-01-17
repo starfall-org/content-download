@@ -16,3 +16,4 @@ expect \"Password for 'https://$GIT_USERNAME@github.com': \"
 send \"$GIT_PASSWORD\r\"
 interact
 "
+echo "Update Completed"
