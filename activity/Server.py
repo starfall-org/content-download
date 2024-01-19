@@ -1,6 +1,6 @@
-from pyrogram import Client, filters
+from hydrogram import Client, filters
 from ext import server_info
-from pyrogram.enums import ChatAction
+from hydrogram.enums import ChatAction
 import platform
 
 @Client.on_message(filters.command('server'))
