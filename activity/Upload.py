@@ -1,5 +1,5 @@
-from pyrogram import Client, filters, enums
-from pyrogram.enums import ChatAction
+from hydrogram import Client, filters, enums
+from hydrogram.enums import ChatAction
 from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
