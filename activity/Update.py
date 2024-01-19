@@ -1,5 +1,5 @@
-from pyrogram import Client, filters
-from pyrogram.enums import ChatAction
+from hydrogram import Client, filters
+from hydrogram.enums import ChatAction
 from ext import owner
 import subprocess
 import sys
