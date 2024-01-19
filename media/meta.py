@@ -1,6 +1,6 @@
 from api import FBDL, IGDL
 from ext import send_videos, send_photos
-from pyrogram.enums import ChatAction
+from hydrogram.enums import ChatAction
 import logging
 import os
 
