@@ -1,6 +1,7 @@
 hydrogram
 requests
 tgcrypto
+uvloop
 flask
 gunicorn
 deta
