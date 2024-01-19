@@ -1,5 +1,5 @@
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.enums import ChatAction
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from hydrogram.enums import ChatAction
 from api import TDDL
 from ext import send_videos, send_photos, get_media_links
 from ext import upload
