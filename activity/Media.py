@@ -3,7 +3,7 @@ from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
 from media import tikdou, tdmusic, facebook, instagram, youtube, music, other
 from api import ODL
-from ext import Attrs, save, channel_post
+from ext import Attrs, save, channel_post, filter_off
 import logging
 import os
 
@@ -27,7 +27,7 @@ def music_download(c, m):
         m.reply("**Error:** __resource not found__", quote=True)
         logging.critical(e)
 
-@Client.on_message((filters.regex("http://|https://") | filters.command('download')) & filters.incoming & channel_post)
+@Client.on_message(((filters.regex("http://|https://") & filter_on) | filters.command('download')) & filters.incoming & channel_post)
 def all_media_download(c, m):
     attrs = Attrs(m)
     if attrs.url:
