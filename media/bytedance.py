@@ -77,9 +77,9 @@ def tikdou(m, attrs):
                 m.reply_video(media[1], caption=caption, reply_markup=button)
         if m.chat.username == "contentdownload":
             try:
-                upload(media[0])
+                upload(media[0], media[0])
             except:
-                upload(media[1])
+                upload(media[1], media[0])
         os.system("echo Completed")
         return
     except Exception as e:
