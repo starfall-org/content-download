@@ -6,7 +6,7 @@ from init import collection
 
 typing = ChatAction.TYPING
 button = InlineKeyboardMarkup([[
-        InlineKeyboardButton("Youtube",url="https://youtube.com/@DouyinShare"), InlineKeyboardButton("Collection", url=collection)],[
+        InlineKeyboardButton("Youtube",url="https://youtube.com/@tiktokdouyin-share"), InlineKeyboardButton("Collection", url=collection)],[
         InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
         InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
 
