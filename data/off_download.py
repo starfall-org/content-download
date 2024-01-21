@@ -13,3 +13,8 @@ def rm_off(chat_id):
             chat_ids.remove(str(chat_id)) 
             with open("listoff.txt", "w") as w:
                 w.write("\n".join(chat_ids))
+                
+def check_listoff(chat_id):
+    with open("listoff.txt", "r") as f:
+        chat_ids = f.read().splitlines()
+        return str(chat_id) in chat_ids
