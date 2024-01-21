@@ -1,5 +1,6 @@
 from hydrogram import filters
 from data import check_listoff
+from hydrogram.enums import ChatMemberStatus
 
 def filter_owner(_, __, m):
     return m.from_user.id == 5665225938 if m.from_user else m.sender_chat.username == "contentdownload"
@@ -9,6 +10,9 @@ def content_download_channel(_, __, m):
 
 def check_listoff_filter(_, __, m):
     return not check_listoff(m.chat.id)
+    
+def filter_group_admin(_, __, m):
+    return m.chat.get_member(m.from_user.id).status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR] if m.from_user else False
     
 owner = filters.create(filter_owner)
 channel_post  = filters.create(content_download_channel)
