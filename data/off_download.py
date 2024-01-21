@@ -1,7 +1,7 @@
 import os
 
 def add_off(chat_id):
-    if os.path.exits("listoff.txt"):
+    if os.path.exists("listoff.txt"):
         with open("listoff.txt", "r") as f:
             chat_ids = f.read().splitlines()
             if str(chat_id) not in chat_ids:
@@ -16,7 +16,7 @@ def add_off(chat_id):
                 return True
         
 def rm_off(chat_id):
-    if os.path.exits("listoff.txt"):
+    if os.path.exists("listoff.txt"):
         with open("listoff.txt", "r") as f:
             chat_ids = f.read().splitlines()
             if str(chat_id) in chat_ids:
@@ -30,6 +30,9 @@ def rm_off(chat_id):
         return False
                 
 def check_listoff(chat_id):
-    with open("listoff.txt", "r") as f:
-        chat_ids = f.read().splitlines()
-        return str(chat_id) in chat_ids
+    if os.path.exists("listoff.txt"):
+        with open("listoff.txt", "r") as f:
+            chat_ids = f.read().splitlines()
+            return str(chat_id) in chat_ids
+    else:
+        return False
