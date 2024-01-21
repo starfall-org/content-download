@@ -22,6 +22,6 @@ def upload_file(file_data, file_name):
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):
     current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
     formatted_time = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
-    title = f"{title} - {formatted_time}"
+    des = f"{title} - {formatted_time}"
     r = requests.post("https://eohejw5exru9jhs.m.pipedream.net", json={"url":url, "title":title, "des": des})
     print(r.text)
