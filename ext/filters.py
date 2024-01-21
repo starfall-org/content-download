@@ -19,5 +19,5 @@ def filter_group_admin(_, __, m: Message):
     
 owner = filters.create(filter_owner)
 channel_post  = filters.create(content_download_channel)
-filter_off = filters.create(check_listoff_filter)
+filter_on = filters.create(check_listoff_filter)
 filter_right = filters.create(filter_group_admin)
