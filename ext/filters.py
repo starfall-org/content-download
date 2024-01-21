@@ -11,9 +11,13 @@ def content_download_channel(_, __, m):
 def check_listoff_filter(_, __, m):
     return not check_listoff(m.chat.id)
     
-def filter_group_admin(_, __, m):
-    return m.chat.get_member(m.from_user.id).status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR] if m.from_user else False
+def filter_group_admin(_, __, m: Message):
+    if m.from_user:
+        user_status = m.chat.get_member(m.from_user.id).status
+        return user_status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]
+    return False
     
 owner = filters.create(filter_owner)
 channel_post  = filters.create(content_download_channel)
 filter_off = filters.create(check_listoff_filter)
+filter_right = filters.create(filter_group_admin)
