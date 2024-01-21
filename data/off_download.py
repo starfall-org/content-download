@@ -1,3 +1,4 @@
+import os
 
 def add_off(chat_id):
     if os.path.exits("listoff.txt"):
