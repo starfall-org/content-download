@@ -3,7 +3,7 @@ from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
 from media import tikdou, tdmusic, facebook, instagram, youtube, music, other
 from api import ODL
-from ext import Attrs, save, channel_post, filter_off
+from ext import Attrs, save, channel_post, filter_on
 import logging
 import os
 
