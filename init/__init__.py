@@ -3,11 +3,11 @@ import os
 
 dapi = os.getenv("DAPI")
 collection = os.getenv("COLLECTION")
-deta = Deta(os.getenv('DETA_KEY'))
+deta = Deta(os.getenv("DETA_KEY"))
 
 class Token:
     def __init__(self):
-        db = deta.Base('telegram-sessions')
-        self.id = db.get('API_ID')["value"]
-        self.hash = db.get('API_HASH')["value"]
-        self.cd = db.get('CD_TOKEN')["value"]
+        db = deta.Base("tokens")
+        self.id = db.get("api")["id"]
+        self.hash = db.get("api")["hash"]
+        self.cd = db.get("bot")["cd"]
