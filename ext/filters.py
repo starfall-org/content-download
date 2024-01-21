@@ -11,7 +11,7 @@ def content_download_channel(_, __, m):
 def check_listoff_filter(_, __, m):
     return not check_listoff(m.chat.id)
     
-def filter_group_admin(_, __, m: Message):
+def filter_group_admin(_, __, m):
     if m.from_user:
         user_status = m.chat.get_member(m.from_user.id).status
         return user_status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]
