@@ -30,4 +30,4 @@ def IGDL(url):
         files = data["url"]
         is_video = False
         os.system("echo Instagram")
-    return (files, links), is_video
+    return [files, links], is_video
