@@ -17,6 +17,7 @@ def FBDL(url):
 def IGDL(url):
     data = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=180).json()
     files = []
+    link = data["url"]
     if data.get("is_video", True):
         is_video = True
         for link in data["url"]:
@@ -28,4 +29,4 @@ def IGDL(url):
         files = data["url"]
         is_video = False
         os.system("echo Instagram")
-    return files, is_video
+    return (files, link), is_video
