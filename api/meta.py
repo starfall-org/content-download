@@ -5,13 +5,14 @@ from init import dapi
 def FBDL(url):
     data = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=180).json()
     files = []
+    links = data["url"]
     for link in data["url"]:
         content = requests.get(link).content
         file = BytesIO(content)
         file.name = f"file{random.randint(1, 9999)}.mp4"
         files.append(file)
     os.system("echo Facebook")
-    return files
+    return files, links
 
 
 def IGDL(url):
