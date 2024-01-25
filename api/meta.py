@@ -9,7 +9,7 @@ def FBDL(url):
     for link in data["url"]:
         content = requests.get(link).content
         file = BytesIO(content)
-        file.name = f"file{random.randint(1, 9999)}.mp4"
+        file.name = "video.mp4"
         files.append(file)
     os.system("echo Facebook")
     return files, links
@@ -24,7 +24,7 @@ def IGDL(url):
         for link in data["url"]:
             content = requests.get(link).content
             file = BytesIO(content)
-            file.name = f"instagram.mp4"
+            file.name = "instagram.mp4"
             files.append(file)
     else:
         files = data["url"]
