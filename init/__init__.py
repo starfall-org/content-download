@@ -4,6 +4,8 @@ import os
 dapi = os.getenv("DAPI")
 collection = os.getenv("COLLECTION")
 deta = Deta(os.getenv("DETA_KEY"))
+ip_add = os.getenv("IP_ADD")
+proxy = {"http": f"http://{ip_add}", "https": f"http://{ip_add}"}
 
 class Token:
     def __init__(self):
