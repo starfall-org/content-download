@@ -15,14 +15,12 @@ def facebook(m, attrs):
         button = attrs.button
         caption = attrs.caption
         m.reply_chat_action(rv)
-        files = FBDL(url)
+        files, links = FBDL(url)
         m.reply_chat_action(sv)
-        if not isinstance(files, list):
+        try:
+            m.reply_video(links, caption=caption, reply_markup=button)
+        except:
             m.reply_video(files, caption=caption, reply_markup=button)
-        else:
-            for file in files:
-                m.reply_chat_action(sv)
-                m.reply_video(file, caption=caption, reply_markup=button)
         os.system("echo Completed")
         return
     except Exception as e:
@@ -35,7 +33,7 @@ def instagram(m, attrs):
         button = attrs.button
         caption = attrs.caption
         m.reply_chat_action(rv)
-        files, is_video = IGDL(url)
+        (files, links), is_video = IGDL(url)
         if is_video == False:
             send_photos(m, files, button, caption)
         elif is_video == True:
