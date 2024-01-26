@@ -3,7 +3,7 @@ from .var import proxies
 
 def request_get(url):
     try:
-        r = requests.get(url, timeout=5)
+        r = requests.get(url)
         if not r.content or not isinstance(r.content, bytes):
             raise
     except:
