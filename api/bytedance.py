@@ -23,12 +23,16 @@ def TDDL(url):
         is_video = False
     if data["music"]:
         musiclink = data["music"]
-        music_data = request_get(musiclink)
-        if music_data:
+        try:
+            music_data = request_get(musiclink)
             musicfile = BytesIO(music_data)
             musicfile.name = "music.mp3"
-        else:
+        except Exception as e:
+            logging.critical(e)
             musiclink = None
             musicfile = None
+    else:
+        musiclink = None
+        musicfile = None
     os.system("echo TikTok/Douyin")
     return (link, file), (musiclink, musicfile), is_video
