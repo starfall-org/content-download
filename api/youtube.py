@@ -13,7 +13,7 @@ def YTDL(url):
     
 def YTM(url):
     data = requests.get(f"{dapi}/music", params={"url":url}, timeout=60).json()
-    content = requests.get(data["url"]).content
+    content = request_get(data["url"])
     file = BytesIO(content)
     file.name = f"music.mp3"
     return file
