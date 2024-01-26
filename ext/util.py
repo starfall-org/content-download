@@ -57,7 +57,7 @@ def send_videos(m, video_links: List[str], button, caption):
     
 def server_info():
     try:
-        response = session.get('https://ipinfo.io', proxies=proxy)
+        response = session.get('https://ipinfo.io')
         data = response.json()
         ip = data.get('ip', 'N/A')
         city = data.get('city', 'N/A')
