@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-chmod +x ./main.py
+chmod +x ./main.py ./lite
 ./main.py &
 gunicorn --log-level critical -b 0.0.0.0:8080 application:app &
 
