@@ -1,8 +1,7 @@
 from io import BytesIO
 from init import dapi
 from ext import request_get
-import requests
-import os
+import requests, logging, os
 
 def TDDL(url):
     data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=180).json()
