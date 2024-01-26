@@ -1,6 +1,8 @@
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import re
 
+proxies = {"http":"http://127.0.0.1:8090", "https":"http://127.0.0.1:8090"}
+
 class Attrs:
     def __init__(self, m):
         try:
