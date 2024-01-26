@@ -1,12 +1,12 @@
 import requests, random
 from init import dapi
 from io import BytesIO
-from ext import Formats
+from ext import Formats, request_get
 
 
 def YTDL(url):
     data = requests.get(f"{dapi}/youtube", params={"url":url}, timeout=60).json()
-    content = requests.get(data["url"]).content
+    content = request_get(data["url"])
     file = BytesIO(content)
     file.name = f"video.mp4"
     return file
