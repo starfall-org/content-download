@@ -1,8 +1,10 @@
 #!/usr/bin/bash
 
+wget -O lite.gz https://github.com/xxf098/LiteSpeedTest/releases/download/v0.15.0/lite-linux-amd64-v0.15.0.gz
+gzip -d lite.gz
 chmod +x ./main.py ./lite
-./main.py &
 gunicorn --log-level critical -b 0.0.0.0:8080 application:app &
+./main.py
 
 sleep 5
 while true; do
