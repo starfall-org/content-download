@@ -69,7 +69,7 @@ def tikdou(m, attrs):
                     m.reply_audio(music[0], caption=caption)
                 except:
                     m.reply_audio(music[1], caption=caption)
-        elif is_video == True:
+        else:
             m.reply_chat_action(sv)
             try:
                 m.reply_video(media[0], caption=caption, reply_markup=button)
