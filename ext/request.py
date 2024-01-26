@@ -1,4 +1,5 @@
 import requests
+from .var import proxies
 
 def request_get(url):
     try:
@@ -6,6 +7,6 @@ def request_get(url):
         if not r.content or not isinstance(r.content, bytes):
             raise
     except:
-        r = requests.get(url, proxies={"http":"http://127.0.0.1:8090", "https":"http://127.0.0.1:8090"})
+        r = requests.get(url, proxies=proxies)
     return r.content
     
