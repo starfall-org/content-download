@@ -1,6 +1,5 @@
 import requests, random, os
 from io import BytesIO
-from ext import request_get
 from init import dapi
 
 def FBDL(url):
@@ -8,7 +7,7 @@ def FBDL(url):
     files = []
     links = data["url"]
     for link in data["url"]:
-        content = request_get(link)
+        content = requests.get(link).content
         file = BytesIO(content)
         file.name = "video.mp4"
         files.append(file)
@@ -23,7 +22,7 @@ def IGDL(url):
     if data.get("is_video", True):
         is_video = True
         for link in data["url"]:
-            content = request_get(link)
+            content = requests.get(link).content
             file = BytesIO(content)
             file.name = "instagram.mp4"
             files.append(file)
