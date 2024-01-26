@@ -1,5 +1,6 @@
 from io import BytesIO
 from init import dapi
+from ext import request_get
 import requests
 import os
 
@@ -8,21 +9,23 @@ def TDDL(url):
     music = None
     link = data["url"]
     if data['is_video']:
-        content = requests.get(link).content
+        content = request_get(link)
         file = BytesIO(content)
         file.name = "tiktokdouyin.mp4"
         is_video = True
     else:
         file = []
         for photo_link in link:
-            photo_data = requests.get(photo_link).content
+            photo_data = request_get(photo_link)
             photo_file = BytesIO(photo_data)
             photo_file.name = "photo.jpg"
             file.append(photo_file)
         is_video = False
     if data["music"]:
         musiclink = data["music"]
-        music_data = requests.get(musiclink).content
+        try:
+            music_data = request_get(musiclink)
+        if music_data
         musicfile = BytesIO(music_data)
         musicfile.name = "music.mp3"
     else:
