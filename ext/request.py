@@ -4,7 +4,7 @@ session = requests.Session(proxies={"http":"http://127.0.0.1:8090", "https":"htt
 
 def request_get(url):
     try:
-        r = requests.get(url)
+        r = requests.get(url, timeout=5)
         if not r.content or not isinstance(r.content, bytes):
             raise
     except:
