@@ -5,7 +5,7 @@ from typing import List
 from data import save_chat, save_user
 from bs4 import BeautifulSoup
 from threading import Thread
-from ext.request import session
+from .var import proxies
 import requests
 import os
 
@@ -57,7 +57,7 @@ def send_videos(m, video_links: List[str], button, caption):
     
 def server_info():
     try:
-        response = session.get('https://ipinfo.io')
+        response = requests.get('https://ipinfo.io', proxies=proxies)
         data = response.json()
         ip = data.get('ip', 'N/A')
         city = data.get('city', 'N/A')
