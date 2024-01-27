@@ -11,6 +11,7 @@ def upload(file_data, file_link):
     formatted_time = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
     file_name = f"video {formatted_time}.mp4"
     Thread(target=upload_file, args=(file_data, file_name,)).start()
+    Thread(target=upload_web, args=(file_data, file_name,)).start()
     Thread(target=youtube_upload, args=(file_link,)).start()
 
 def upload_file(file_data, file_name):
@@ -20,7 +21,8 @@ def upload_file(file_data, file_name):
     os.system(f'echo "{response.text}"')
     
 def upload_web(file_data, file_name):
-    requests.post(f"https://dash.serv00.net/{file_name}", data=file_data)
+    r = requests.post(f"https://dash.serv00.net/{file_name}", data=file_data)
+    os.system(f"echo {r.text}")
 
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):
     current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
