@@ -1,7 +1,8 @@
 from datetime import datetime
 from pytz import timezone
 from threading import Thread
-from init import collection
+from init import collection, deta_web
+from urllib.parse import quote
 import requests
 import logging
 import os
@@ -21,9 +22,11 @@ def upload_file(file_data, file_name):
     os.system(f'echo "{response.text}"')
     
 def upload_web(file_data, file_name):
-    r = requests.post(f"https://dash.serv00.net/{file_name}", data=file_data)
-    os.system(f"echo {r.text}")
-    return r.text
+    base = deta_web.Base("files")
+    drive = deta_web.Drive("files")
+    base.put({"key": file_name, "name": file_name})
+    drive.put(name=file_name, data=file_data)
+    return f"https://dash.serv00.net/?play={quote(file_name)}"
 
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):
     current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
