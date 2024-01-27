@@ -20,9 +20,13 @@ def upload_file(file_data, file_name):
                           data=raw_bytes)
     os.system(f'echo "{response.text}"')
     
-def upload_web(file_data, file_name):
+def upload_web(file_data):
+    current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
+    formatted_time = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
+    file_name = f"video {formatted_time}.mp4"
     r = requests.post(f"https://dash.serv00.net/{file_name}", data=file_data)
     os.system(f"echo {r.text}")
+    return r.text
 
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):
     current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
