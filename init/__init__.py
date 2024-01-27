@@ -4,6 +4,7 @@ import os
 dapi = os.getenv("DAPI")
 collection = os.getenv("COLLECTION")
 deta = Deta(os.getenv("DETA_KEY"))
+deta_web = Deta(os.getenv("DETA_WEB_KEY"))
 ip_add = os.getenv("IP_ADD")
 
 class Token:
