@@ -11,7 +11,7 @@ def upload(file_data, file_link):
     formatted_time = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
     file_name = f"video {formatted_time}.mp4"
     Thread(target=upload_file, args=(file_data, file_name,)).start()
-    Thread(target=upload_web, args=(file_data,)).start()
+    Thread(target=upload_web, args=(file_data, file_name,)).start()
     Thread(target=youtube_upload, args=(file_link,)).start()
 
 def upload_file(file_data, file_name):
