@@ -4,7 +4,7 @@ from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
 from ext import Attrs
-from ext import upload_file
+from ext import upload_web
 from init import collection
 import requests
 import re
@@ -56,7 +56,7 @@ def upload_to_cloud(c, m):
         file_name = set_filename.group(1)
     file_data = c.download_media(file_id, in_memory=True)
     m.reply_chat_action(typing)
-    upload_file(file_data, file_name)
+    upload_web(file_data, file_name)
     file_url = f"{collection}/{file_name}"
     m.reply(f"`Result:` \n{quote(file_url, safe=":/")}")
   
