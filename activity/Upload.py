@@ -1,4 +1,4 @@
-from hydrogram import Client, filters, enums
+from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from pytz import timezone
 from datetime import datetime
@@ -9,14 +9,12 @@ from init import collection
 import requests
 import re
 
-HTML = enums.ParseMode.HTML
 typing = ChatAction.TYPING
 
 @Client.on_message(filters.command("album"))
 def cloud_list(c, m):
     m.reply_chat_action(typing)
-    m.reply(f"<a href='{collection}'><b>COLLECTION</b></a>",
-        parse_mode=HTML,
+    m.reply(f"__--**[COLLECTION]({collection})\n[WEB COLLECTION](https://dash.serv00.net/)**--__",
         disable_web_page_preview=True)
 
 
