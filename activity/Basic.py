@@ -2,11 +2,10 @@ from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from hydrogram import Client, filters
 from ext import save
-from init import collection
 
 typing = ChatAction.TYPING
 button = InlineKeyboardMarkup([[
-        InlineKeyboardButton("Youtube",url="https://youtube.com/@tiktokdouyin-share"), InlineKeyboardButton("Collection", url=collection)],[
+        InlineKeyboardButton("Youtube",url="https://youtube.com/@tiktokdouyin-share")],[
         InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
         InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
 
