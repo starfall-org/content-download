@@ -27,7 +27,7 @@ def upload_web(file_data, file_name):
     file_data = file_data.getvalue()
     base.put({"key": file_name, "name": file_name})
     drive.put(name=file_name, data=file_data)
-    return f"https://dash.serv00.net/{quote(file_name)}"
+    return f"https://dash.serv00.net/play/{quote(file_name)}"
 
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):
     current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
