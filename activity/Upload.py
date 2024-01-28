@@ -14,7 +14,7 @@ typing = ChatAction.TYPING
 @Client.on_message(filters.command("album"))
 def cloud_list(c, m):
     m.reply_chat_action(typing)
-    m.reply(f"__--**[COLLECTION]({collection})\n[WEB COLLECTION](https://dash.serv00.net/)**--__",
+    m.reply(f"__--**[COLLECTION]({collection})\n\n[WEB COLLECTION](https://dash.serv00.net/)**--__",
         disable_web_page_preview=True)
 
 
