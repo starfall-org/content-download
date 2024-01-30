@@ -6,13 +6,14 @@ users = mongo["users"]
 
 #
 def save_user(user_id, username, first_name):
-    update = users.update_one(str(user_id), {"username": username,
-        "first_name": first_name}, upsert=True)
+    update = users.update_one({"_id": str(user_id)}, {"$set": {"username": username,
+        "first_name": first_name}}, upsert=True)
     print(update)
 #
 def save_chat(chat_id, username, title):
-    update = chats.update_one(str(chat_id), {"username": username, "title": title}, 
+    update = chats.update_one({"_id": str(chat_id)}, {"$set": {"username": username, "title": title}}, 
         upsert=True)
+    print(update)
 #
 def get_users():
     result = []
