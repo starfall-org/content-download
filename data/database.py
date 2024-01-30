@@ -17,9 +17,9 @@ class Save:
             first_on_chat = f"{m.chat.title} - {m.chat.id}"
         if m.chat.type == ChatType.PRIVATE:
             first_on_chat = "Private Chat"
-        first_name = m.user.first_name
-        username = m.user.username
-        user_id = str(m.user.id)
+        first_name = m.from_user.first_name
+        username = m.from_user.username
+        user_id = str(m.from_user.id)
         update = users.update_one(
             {"_id": user_id},
             {
