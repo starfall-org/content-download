@@ -1,7 +1,7 @@
 from datetime import datetime
 from pytz import timezone
 from threading import Thread
-from init import collection, deta
+from data import collection, deta
 from urllib.parse import quote
 import requests
 import logging
