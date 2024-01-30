@@ -41,39 +41,62 @@ class Save:
         print(update)
         
     #
-    def save_chat(chat_id, username, title):
-        update = chats.update_one({"_id": str(chat_id)}, {"$set": {"username": username, "title": title}}, 
-            upsert=True)
+    def save_chat(self):
+        title = self.chat.title
+        username = self.chat.username
+        chat_id = self.chat.id
+        update = self.chats.update_one(
+            {"_id": chat_id},
+            {
+                "$set": {
+                    "username": username,
+                    "title": title,
+                    "update": self.date,
+                    "update_by": "TikTok & Douyin"
+                },
+                "$setOnInsert": {
+                    "first_time": self.date,
+                    "first_with": "TikTok & Douyin"
+                }
+            },
+            upsert=True
+        )
         print(update)
+        
 
 class Get:
-    def __init__(self):
-def get_users():
-    result = []
-    for user in users.find():
-        user_id = user["_id"]
-        username = user["username"]
-        first_name = user["first_name"]
-        if username is None:
-            result.append(
-                f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)")
-        else:
-            result.append(
-                f"<a href='https://t.me/{username}'><b>{first_name}</b></a> (ID: (<code>{user_id}</code>)")
-    return len(result), result
-
-
-#
-def get_chats():
-    result = []
-    for chat in chats.find():
-        chat_id = chat["_id"]
-        username = chat["username"]
-        title = chat["title"]
-        if username is None:
-            result.append(
-                f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
-        else:
-            result.append(
-                f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
-    return len(result), result
+    @staticmethod
+    def get_users():
+        result = []
+        for user in users.find():
+            user_id = user["_id"]
+            username = user["username"]
+            first_name = user["first_name"]
+            if username is None:
+                result.append(
+                    f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)")
+            else:
+                result.append(
+                    f"<a href='https://t.me/{username}'><b>{first_name}</b></a> (ID: (<code>{user_id}</code>)")
+        return len(result), result
+    
+    @staticmethod
+    def get_chats():
+        result = []
+        for chat in chats.find():
+            chat_id = chat["_id"]
+            username = chat["username"]
+            title = chat["title"]
+            if username is None:
+                result.append(
+                    f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
+            else:
+                result.append(
+                    f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
+        return len(result), result
+    
+    @staticmethod
+    def get_count():
+        users_count = users.count_documents({})
+        chats_count = chats.count_documents({})
+        return users_count, chats_count
