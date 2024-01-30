@@ -1,15 +1,17 @@
+from pymongo import MongoClient
 from deta import Deta
 import os
 
 dapi = os.getenv("DAPI")
 collection = os.getenv("COLLECTION")
+client = MongoClient(os.getenv("MONGO_URL"))
 deta = Deta(os.getenv("DETA_KEY"))
-deta_web = Deta(os.getenv("DETA_WEB_KEY"))
-ip_add = os.getenv("IP_ADD")
 
 class Token:
     def __init__(self):
-        db = deta.Base("tokens")
-        self.id = db.get("api")["id"]
-        self.hash = db.get("api")["hash"]
-        self.cd = db.get("bot")["cd"]
+        db = client["tokens"]
+        api = db.find_one("api")
+        bot = db.find_one("bot")
+        self.id = api["id"]
+        self.hash = api["hash"]
+        self.cd = bot["cd"]
