@@ -1,26 +1,25 @@
-from init import deta
+from init import mongo
 
 #
-chats_db = deta.Base("chats")
-users_db = deta.Base("users")
+chats = mongo["chats"]
+users = mongo["users"]
 
 #
 def save_user(user_id, username, first_name):
-    users_db.put({"username": username,
-        "first_name": first_name},
-        key=f"{user_id}")
+    update = users.update_one(str(user_id), {"username": username,
+        "first_name": first_name}, upsert=True)
+    print(update)
 #
 def save_chat(chat_id, username, title):
-    chats_db.put({"username": username, "title": title}, 
-        key=f"{chat_id}")
+    update = chats.update_one(str(chat_id), {"username": username, "title": title}, 
+        upsert=True)
 #
 def get_users():
-    users = users_db.fetch().items
     result = []
-    for user in users:
-        user_id = user["key"]
-        username = user.get("username")
-        first_name = user.get("first_name")
+    for user in users.find():
+        user_id = user["_id"]
+        username = user["username"]
+        first_name = user["first_name"]
         if username is None:
             result.append(
                 f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)")
@@ -32,12 +31,11 @@ def get_users():
 
 #
 def get_chats():
-    chats = chats_db.fetch().items
     result = []
-    for chat in chats:
-        chat_id = chat["key"]
-        username = chat.get("username")
-        title = chat.get("title")
+    for chat in chats.find():
+        chat_id = chat["_id"]
+        username = chat["username"]
+        title = chat["title"]
         if username is None:
             result.append(
                 f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
