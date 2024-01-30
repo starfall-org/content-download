@@ -7,32 +7,30 @@ chats = mongo["chats"]
 users = mongo["users"]
 
 class Save:
-    def __init__(self, m):
+    @staticmethod
+    def user(m):
         current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
-        self.date = current_time.strftime("%d - %B - %Y")
-        self.user = m.from_user
-        self.chat = m.chat
-    def save_user(self):
-        if self.chat.username:
-            first_on_chat = f"{self.chat.title}({self.chat.username}) - {self.chat.id}"
+        date = current_time.strftime("%d - %B - %Y")
+        if m.chat.username:
+            first_on_chat = f"{m.chat.title}({m.chat.username}) - {m.chat.id}"
         else:
-            first_on_chat = f"{self.chat.title} - {self.chat.id}"
-        if self.chat.type == ChatTypes.PRIVATE:
+            first_on_chat = f"{m.chat.title} - {m.chat.id}"
+        if m.chat.type == ChatTypes.PRIVATE:
             first_on_chat = "Private Chat"
-        first_name = self.user.first_name
-        username = self.user.username
-        user_id = str(self.user.id)
-        update = self.users.update_one(
+        first_name = m.user.first_name
+        username = m.user.username
+        user_id = str(m.user.id)
+        update = users.update_one(
             {"_id": user_id},
             {
                 "$set": {
                     "username": username,
                     "first_name": first_name,
-                    "update": self.date,
+                    "update": date,
                     "update_by": "Content Download"
                 },
                 "$setOnInsert": {
-                    "first_time": self.date,
+                    "first_time": date,
                     "first_on_chat": first_on_chat,
                     "first_with": "TikTok & Douyin"
                 }
@@ -41,22 +39,24 @@ class Save:
         )
         print(update)
         
-    #
-    def save_chat(self):
-        title = self.chat.title
-        username = self.chat.username
-        chat_id = self.chat.id
-        update = self.chats.update_one(
+    @staticmethod
+    def chat(m):
+        current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
+        date = current_time.strftime("%d - %B - %Y")
+        title = m.chat.title
+        username = m.chat.username
+        chat_id = m.chat.id
+        update = chats.update_one(
             {"_id": chat_id},
             {
                 "$set": {
                     "username": username,
                     "title": title,
-                    "update": self.date,
+                    "update": date,
                     "update_by": "TikTok & Douyin"
                 },
                 "$setOnInsert": {
-                    "first_time": self.date,
+                    "first_time": date,
                     "first_with": "TikTok & Douyin"
                 }
             },
