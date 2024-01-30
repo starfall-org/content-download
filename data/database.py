@@ -1,4 +1,4 @@
-from init import mongo
+from .environ import mongo
 from datetime import datetime
 from pytz import timezone
 from hydrogram.types import ChatTypes
