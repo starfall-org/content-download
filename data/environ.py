@@ -8,10 +8,10 @@ mongo = MongoClient(os.getenv("MONGO_URL"))["mo9973_dash"]
 deta = Deta(os.getenv("DETA_KEY"))
 
 class Token:
-    @staticmethod
-    def initial():
+    def __init__(self):
         db = mongo["tokens"]
         api = db.find_one({"_id": "api"})
         bot = db.find_one({"_id": "bot"})
-        return api["id"], api["hash"], bot["cd"]
-    id, hash, token = staticmethod(initial())()
+        self.id = api["id"]
+        self.hash = api["hash"]
+        self.token = bot["cd"]
