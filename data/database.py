@@ -29,6 +29,7 @@ class Save:
                     "update": date,
                     "update_by": "Content Download"
                 },
+                "$inc": {"message_count": 1},
                 "$setOnInsert": {
                     "first_time": date,
                     "first_on_chat": first_on_chat,
@@ -108,5 +109,5 @@ class Get:
         first_time = data.get("first_time")
         on_chat = data.get("first_on_chat")
         on_with = data.get("first_with")
-        msg_count = data.get("msg_count")
+        msg_count = data.get("message_count")
         return first_time, on_chat, on_with, msg_count
