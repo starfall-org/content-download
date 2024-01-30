@@ -14,4 +14,4 @@ class Token:
         api = db.find_one({"_id": "api"})
         bot = db.find_one({"_id": "bot"})
         return api["id"], api["hash"], bot["cd"]
-    id, hash, token = staticmethod(initial())
+    id, hash, token = staticmethod(initial())()
