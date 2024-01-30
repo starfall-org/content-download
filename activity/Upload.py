@@ -1,5 +1,6 @@
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
@@ -14,8 +15,8 @@ typing = ChatAction.TYPING
 @Client.on_message(filters.command("album"))
 def cloud_list(c, m):
     m.reply_chat_action(typing)
-    m.reply(f"__--**[COLLECTION]({collection})**--__",
-        disable_web_page_preview=True)
+    m.reply(f"__--**COLLECTION**--__",
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("COLLECTION", url=collection)]]))
 
 
 @Client.on_message(filters.command("upload"))
