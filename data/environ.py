@@ -4,7 +4,7 @@ import os
 
 dapi = os.getenv("DAPI")
 collection = os.getenv("COLLECTION")
-mongo = MongoClient(os.getenv("MONGO_URL"))["mo9973_dash"]
+mongo = MongoClient(os.getenv("MONGO_URL"), connectTimeoutMS=100000)["mo9973_dash"]
 deta = Deta(os.getenv("DETA_KEY"))
 
 class Token:
