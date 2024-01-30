@@ -1,5 +1,5 @@
 import requests, random
-from init import dapi
+from data import dapi
 from io import BytesIO
 from ext import Formats
 
