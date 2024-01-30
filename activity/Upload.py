@@ -4,8 +4,7 @@ from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
-from ext import Attrs
-from ext import upload_web
+from ext import Attrs, upload_web
 from data import collection
 import requests
 import re
