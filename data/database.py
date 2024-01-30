@@ -33,7 +33,7 @@ class Save:
                 "$setOnInsert": {
                     "first_time": date,
                     "first_on_chat": first_on_chat,
-                    "first_with": "TikTok & Douyin"
+                    "first_with": "Content Download"
                 }
             },
             upsert=True
@@ -54,11 +54,11 @@ class Save:
                     "username": username,
                     "title": title,
                     "update": date,
-                    "update_by": "TikTok & Douyin"
+                    "update_by": "Content Download"
                 },
                 "$setOnInsert": {
                     "first_time": date,
-                    "first_with": "TikTok & Douyin"
+                    "first_with": "Content Download"
                 }
             },
             upsert=True
