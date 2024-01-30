@@ -108,4 +108,5 @@ class Get:
         first_time = data.get("first_time")
         on_chat = data.get("first_on_chat")
         on_with = data.get("first_with")
-        return first_time, on_chat, on_with
+        msg_count = data.get("msg_count")
+        return first_time, on_chat, on_with, msg_count
