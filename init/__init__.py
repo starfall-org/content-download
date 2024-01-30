@@ -9,7 +9,7 @@ deta = Deta(os.getenv("DETA_KEY"))
 
 class Token:
     def __init__(self):
-        db = client["tokens"]
+        db = mongo["tokens"]
         api = db.find_one("api")
         bot = db.find_one("bot")
         self.id = api["id"]
