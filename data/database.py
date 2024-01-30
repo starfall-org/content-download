@@ -10,7 +10,7 @@ class Save:
     @staticmethod
     def user(m):
         current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
-        date = current_time.strftime("%d - %B - %Y")
+        date = current_time.strftime("%d - %m - %Y")
         if m.chat.username:
             first_on_chat = f"{m.chat.title}({m.chat.username}) - {m.chat.id}"
         else:
