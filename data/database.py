@@ -66,7 +66,7 @@ class Save:
 
 class Get:
     @staticmethod
-    def get_users():
+    def users_list():
         result = []
         for user in users.find():
             user_id = user["_id"]
@@ -81,7 +81,7 @@ class Get:
         return len(result), result
     
     @staticmethod
-    def get_chats():
+    def chats_list():
         result = []
         for chat in chats.find():
             chat_id = chat["_id"]
