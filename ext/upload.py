@@ -1,7 +1,7 @@
 from datetime import datetime
 from pytz import timezone
 from threading import Thread
-from init import collection, deta_web
+from init import collection, deta
 from urllib.parse import quote
 import requests
 import logging
@@ -22,8 +22,8 @@ def upload_file(file_data, file_name):
     os.system(f'echo "{response.text}"')
     
 def upload_web(file_data, file_name):
-    base = deta_web.Base("files")
-    drive = deta_web.Drive("files")
+    base = deta.Base("files")
+    drive = deta.Drive("files")
     file_data = file_data.getvalue()
     base.put({"key": file_name, "name": file_name})
     drive.put(name=file_name, data=file_data)
