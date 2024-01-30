@@ -4,7 +4,7 @@ import os
 
 dapi = os.getenv("DAPI")
 collection = os.getenv("COLLECTION")
-client = MongoClient(os.getenv("MONGO_URL"))
+mongo = MongoClient(os.getenv("MONGO_URL"))
 deta = Deta(os.getenv("DETA_KEY"))
 
 class Token:
