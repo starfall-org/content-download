@@ -8,3 +8,4 @@ deta
 psutil
 pytz
 bs4
+pymongo
