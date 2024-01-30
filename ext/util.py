@@ -2,7 +2,7 @@ from hydrogram.types import InputMediaPhoto, InputMediaVideo
 from hydrogram.enums import ChatAction
 from urllib.parse import urljoin
 from typing import List
-from data import save_chat, save_user
+from data import Save
 from bs4 import BeautifulSoup
 from threading import Thread
 from .var import proxies
