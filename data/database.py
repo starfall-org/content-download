@@ -1,7 +1,7 @@
 from .environ import mongo
 from datetime import datetime
 from pytz import timezone
-from hydrogram.enums import ChatTypes
+from hydrogram.enums import ChatType
 
 chats = mongo["chats"]
 users = mongo["users"]
@@ -15,7 +15,7 @@ class Save:
             first_on_chat = f"{m.chat.title}({m.chat.username}) - {m.chat.id}"
         else:
             first_on_chat = f"{m.chat.title} - {m.chat.id}"
-        if m.chat.type == ChatTypes.PRIVATE:
+        if m.chat.type == ChatType.PRIVATE:
             first_on_chat = "Private Chat"
         first_name = m.user.first_name
         username = m.user.username
@@ -101,3 +101,11 @@ class Get:
         users_count = users.count_documents({})
         chats_count = chats.count_documents({})
         return users_count, chats_count
+        
+    @staticmethod
+    def user_history(user_id):
+        data = users.find_one({"_id": str(user_id)})
+        first_time = data.get("first_time")
+        on_chat = data.get("first_on_chat")
+        on_with = data.get("first_with")
+        return first_time, on_chat, on_with
