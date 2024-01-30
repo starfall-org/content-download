@@ -43,3 +43,10 @@ def chats_list(c, m):
     if message:
         m.reply_chat_action(typing)
         m.reply(message, quote=True, parse_mode=enums.ParseMode.HTML)
+
+@Client.on_message(filters.command("when"))
+def get_start_time(c, m):
+    if m.from_user:
+        first_time, on_chat, on_with, msg_count = Get.user_history(m.from_user.id)
+        if m.from_user.language_code == "vi":
+            m.reply(f"Bạn bắt đầu sử dụng bot **{on_with}** từ ngày --**{first_time}**-- tại cuộc trò chuyện __--**{on_chat}**--__.\nBạn đã nhắn tổng cộng __--{msg_count}--__ cho bot.", quote=True)
