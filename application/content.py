@@ -1,4 +1,4 @@
-from library import Client, idle
+from hydrogram import Client, idle
 from init import Token
 import os
 
