@@ -1,5 +1,5 @@
 from hydrogram import filters, Client, enums
-from data import get_chats, get_users
+from data import Get
 from ext import owner
 
 typing = enums.ChatAction.TYPING
@@ -7,16 +7,15 @@ typing = enums.ChatAction.TYPING
 @Client.on_message(filters.command("count") & owner)
 def count_uses(c, m):
     m.reply_chat_action(typing)
-    user, _ = get_users()
-    chat, __ = get_chats()
+    user, chat = Get.get_count()
     m.reply(f"Chats: {chat}\nUsers: {user}")
 
 
 @Client.on_message(filters.command("users") & owner)
 def users_list(c, m):
     m.reply_chat_action(typing)
-    count, users = get_users()
-    m.reply(count)
+    count, users = Get.users_list()
+    m.reply(f"__--**{count}**--__")
     message = ""
     for i, user in enumerate(users):
         message += f"{i+1}) {user}\n"
@@ -32,8 +31,8 @@ def users_list(c, m):
 @Client.on_message(filters.command("chats") & owner)
 def chats_list(c, m):
     m.reply_chat_action(typing)
-    count, chats = get_chats()
-    m.reply(count)
+    count, chats = Get.chats_list()
+    m.reply(f"__--**{count}**--__")
     message = ""
     for i, chat in enumerate(chats):
         message += f"{i+1}) {chat}\n"
