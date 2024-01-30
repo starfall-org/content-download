@@ -1,2 +1,2 @@
-from .db import *
+from .database import *
 from .off_download import *
