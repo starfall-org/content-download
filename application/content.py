@@ -1,5 +1,5 @@
 from hydrogram import Client, idle
-from init import Token
+from data import Token
 import os
 
 class Content(Client):
