@@ -1,6 +1,6 @@
 import requests, random, os
 from io import BytesIO
-from init import dapi
+from data import dapi
 
 def FBDL(url):
     data = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=180).json()
