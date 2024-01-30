@@ -1,7 +1,7 @@
 from .environ import mongo
 from datetime import datetime
 from pytz import timezone
-from hydrogram.types import ChatTypes
+from hydrogram.enums import ChatTypes
 
 chats = mongo["chats"]
 users = mongo["users"]
