@@ -1,5 +1,5 @@
 from io import BytesIO
-from init import dapi
+from data import dapi
 import requests, logging, os
 
 def TDDL(url):
