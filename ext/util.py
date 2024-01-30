@@ -21,10 +21,9 @@ def get_media_links(url):
     
 def save(m):
     if str(m.chat.id).startswith("-100"):
-        Thread(target=save_chat, args=(m.chat.id, m.chat.username,m.chat.title)).start()
-
+        Thread(target=Save.chat, args=(m,)).start()
     if m.from_user:
-        Thread(target=save_user,args=(m.from_user.id, m.from_user.username, m.from_user.first_name)).start()
+        Thread(target=Save.user,args=(m,)).start()
         os.system(f"echo {m.from_user.first_name} ID:{m.from_user.id}")
     else:
         os.system(f"echo {m.sender_chat.title} ID:{m.sender_chat.id}")
