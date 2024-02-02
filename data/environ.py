@@ -1,17 +1,15 @@
-from pymongo import MongoClient
+from types import SimpleNamespace
 from deta import Deta
-import os
+import psycopg2, requests
+import json, os
 
-dapi = os.getenv("DAPI")
-collection = os.getenv("COLLECTION")
-mongo = MongoClient(os.getenv("MONGO_URL"), connectTimeoutMS=100000)["mo9973_dash"]
-deta = Deta(os.getenv("DETA_KEY"))
+secret = requests.get(os.getenv("SECRET")).text
+res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))
+
+conn = psycopg2.connect(res.data.cr_pg)
+cursor = conn.cursor()
 
 class Token:
-    def __init__(self):
-        db = mongo["tokens"]
-        api = db.find_one({"_id": "api"})
-        bot = db.find_one({"_id": "bot"})
-        self.id = api["id"]
-        self.hash = api["hash"]
-        self.token = bot["cd"]
+    id = res.key.api_id
+    hash = res.key.api_hash
+    token = res.bot.cd_tg
