@@ -32,7 +32,7 @@ class Save:
         """, (user_id, username, first_name, date, "Content Download", date, first_on_chat, "Content Download"))
         
         conn.commit()
-        
+        conn.close()
         
     @staticmethod
     def chat(m):
@@ -55,6 +55,7 @@ class Save:
         """, (chat_id, username, title, date, "Content Download", date, "Content Download"))
         
         conn.commit()
+        conn.close()
 
 class Get:
     @staticmethod
@@ -72,6 +73,7 @@ class Get:
             else:
                 result.append(
                     f"<a href='https://t.me/{username}'><b>{first_name}</b></a> (ID: (<code>{user_id}</code>)")
+        conn.close()
         return len(result), result
     
     @staticmethod
@@ -89,6 +91,7 @@ class Get:
             else:
                 result.append(
                     f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
+        conn.close()
         return len(result), result
     
     @staticmethod
@@ -98,6 +101,7 @@ class Get:
         users_count = cursor.fetchone()[0]
         cursor.execute("SELECT COUNT(*) FROM chats")
         chats_count = cursor.fetchone()[0]
+        conn.close()
         return users_count, chats_count
         
     @staticmethod
@@ -105,6 +109,7 @@ class Get:
         conn, cursor = pg()
         cursor.execute("SELECT * FROM users WHERE user_id = %s", (str(user_id),))
         data = cursor.fetchone()
+        conn.close()
         if data:
             first_time = data[6]
             on_chat = data[7]
