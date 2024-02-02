@@ -9,6 +9,8 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 RUN chown -R user:user /home/user/content
 RUN chmod +x ./start.sh ./update.sh
 
-USER user 
+USER user
+RUN curl --create-dirs -o $HOME/.postgresql/root.crt 'https://cockroachlabs.cloud/clusters/7616fc22-317d-43cf-bf87-4a51d4f339b6/cert'
+
 EXPOSE 8080
 ENTRYPOINT ["./start.sh"]
