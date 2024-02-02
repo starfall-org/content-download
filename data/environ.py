@@ -7,8 +7,7 @@ def res():
     secret = requests.get(os.getenv("SECRET")).text
     return json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))
 
-conn = psycopg2.connect(res().data.cr_pg)
-cursor = conn.cursor()
+pg = psycopg2.connect(res().data.cr_pg)
 
 class Token:
     id = res().key.api_id
