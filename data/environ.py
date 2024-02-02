@@ -9,7 +9,7 @@ def res():
    
 res = res()
 dapi = res.api.dapi_url
-collection = res.api.collection
+collection = res.api.collection_url
 deta = Deta(res.key.web_collection)
 pg = psycopg2.connect(res.data.cr_pg)
 
