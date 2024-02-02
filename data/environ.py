@@ -14,7 +14,7 @@ deta = Deta(res.key.web_collection)
 
 def pg():
     conn = psycopg2.connect(res.data.cr_pg)
-    return conn, conn.cursor
+    return conn, conn.cursor()
 
 class Token:
     id = res.key.api_id
