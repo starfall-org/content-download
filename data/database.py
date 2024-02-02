@@ -52,7 +52,6 @@ class Save:
                 update_time = EXCLUDED.update_time,
                 update_by = EXCLUDED.update_by
         """, (chat_id, username, title, date, "Content Download", date, "Content Download"))
-        
         pg.commit()
 
 class Get:
