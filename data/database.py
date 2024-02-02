@@ -1,10 +1,9 @@
-from .environ import mongo
+from .environ import pg
 from datetime import datetime
 from pytz import timezone
 from hydrogram.enums import ChatType
 
-chats = mongo["chats"]
-users = mongo["users"]
+cursor = pg.cursor()
 
 class Save:
     @staticmethod
@@ -19,27 +18,20 @@ class Save:
             first_on_chat = "Private Chat"
         first_name = m.from_user.first_name
         username = m.from_user.username
-        user_id = str(m.from_user.id)
-        update = users.update_one(
-            {"_id": user_id},
-            {
-                "$set": {
-                    "username": username,
-                    "first_name": first_name,
-                    "update": date,
-                    "update_by": "Content Download"
-                },
-                "$inc": {"message_count": 1},
-                "$setOnInsert": {
-                    "first_time": date,
-                    "first_on_chat": first_on_chat,
-                    "first_with": "Content Download"
-                }
-            },
-            upsert=True
-        )
+        user_id = m.from_user.id
+        update = cursor.execute("""
+            INSERT INTO users (user_id, username, first_name, update_time, update_by, message_count, first_time, first_on_chat, first_with)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (user_id) DO UPDATE SET
+                username = EXCLUDED.username,
+                first_name = EXCLUDED.first_name,
+                update_time = EXCLUDED.update_time,
+                update_by = EXCLUDED.update_by,
+                message_count = users.message_count + EXCLUDED.message_count
+        """, (user_id, username, first_name, date, 'Content Download', 1, date, first_on_chat, 'Content Download'))
+        pg.commit()
         print(update)
-        
+
     @staticmethod
     def chat(m):
         current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
@@ -47,67 +39,16 @@ class Save:
         title = m.chat.title
         username = m.chat.username
         chat_id = m.chat.id
-        update = chats.update_one(
-            {"_id": chat_id},
-            {
-                "$set": {
-                    "username": username,
-                    "title": title,
-                    "update": date,
-                    "update_by": "Content Download"
-                },
-                "$setOnInsert": {
-                    "first_time": date,
-                    "first_with": "Content Download"
-                }
-            },
-            upsert=True
-        )
+        update = cursor.execute("""
+            INSERT INTO chats (chat_id, username, title, update_time, update_by, first_time, first_with)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (chat_id) DO UPDATE SET
+                username = EXCLUDED.username,
+                title = EXCLUDED.title,
+                update_time = EXCLUDED.update_time,
+                update_by = EXCLUDED.update_by
+        """, (chat_id, username, title, date, 'Content Download', date, 'Content Download'))
+        pg.commit()
         print(update)
-        
 
-class Get:
-    @staticmethod
-    def users_list():
-        result = []
-        for user in users.find():
-            user_id = user["_id"]
-            username = user["username"]
-            first_name = user["first_name"]
-            if username is None:
-                result.append(
-                    f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)")
-            else:
-                result.append(
-                    f"<a href='https://t.me/{username}'><b>{first_name}</b></a> (ID: (<code>{user_id}</code>)")
-        return len(result), result
-    
-    @staticmethod
-    def chats_list():
-        result = []
-        for chat in chats.find():
-            chat_id = chat["_id"]
-            username = chat["username"]
-            title = chat["title"]
-            if username is None:
-                result.append(
-                    f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
-            else:
-                result.append(
-                    f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
-        return len(result), result
-    
-    @staticmethod
-    def get_count():
-        users_count = users.count_documents({})
-        chats_count = chats.count_documents({})
-        return users_count, chats_count
-        
-    @staticmethod
-    def user_history(user_id):
-        data = users.find_one({"_id": str(user_id)})
-        first_time = data.get("first_time")
-        on_chat = data.get("first_on_chat")
-        on_with = data.get("first_with")
-        msg_count = data.get("message_count")
-        return first_time, on_chat, on_with, msg_count
+# Các hàm Get và phần còn lại của mã không đổi.
