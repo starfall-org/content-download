@@ -21,9 +21,9 @@ class Save:
         user_id = str(m.from_user.id)
         
         cursor.execute("""
-            INSERT INTO users (_id, username, first_name, update_time, update_by, message_count, first_time, first_on_chat, first_with)
+            INSERT INTO users (user_id, username, first_name, update_time, update_by, message_count, first_time, first_on_chat, first_with)
             VALUES (%s, %s, %s, %s, %s, 1, %s, %s, %s)
-            ON CONFLICT (_id) DO UPDATE 
+            ON CONFLICT (user_id) DO UPDATE 
             SET 
                 username = EXCLUDED.username,
                 first_name = EXCLUDED.first_name,
@@ -43,9 +43,9 @@ class Save:
         chat_id = str(m.chat.id)
         
         cursor.execute("""
-            INSERT INTO chats (_id, username, title, update_time, update_by)
+            INSERT INTO chats (chat_id, username, title, update_time, update_by)
             VALUES (%s, %s, %s, %s, %s)
-            ON CONFLICT (_id) DO UPDATE 
+            ON CONFLICT (chat_id) DO UPDATE 
             SET 
                 username = EXCLUDED.username,
                 title = EXCLUDED.title,
@@ -61,7 +61,7 @@ class Get:
         result = []
         cursor.execute("SELECT * FROM users")
         for user in cursor.fetchall():
-            user_id = user["_id"]
+            user_id = user["user_id"]
             username = user["username"]
             first_name = user["first_name"]
             if username is None:
@@ -77,7 +77,7 @@ class Get:
         result = []
         cursor.execute("SELECT * FROM chats")
         for chat in cursor.fetchall():
-            chat_id = chat["_id"]
+            chat_id = chat["chat_id"]
             username = chat["username"]
             title = chat["title"]
             if username is None:
@@ -98,7 +98,7 @@ class Get:
         
     @staticmethod
     def user_history(user_id):
-        cursor.execute("SELECT * FROM users WHERE _id = %s", (str(user_id),))
+        cursor.execute("SELECT * FROM users WHERE user_id = %s", (str(user_id),))
         data = cursor.fetchone()
         if data:
             first_time = data.get("first_time")
