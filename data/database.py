@@ -106,5 +106,3 @@ class Get:
             on_with = data.get("first_with")
             msg_count = data.get("message_count")
             return first_time, on_chat, on_with, msg_count
-        else:
-            return None
