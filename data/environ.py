@@ -11,7 +11,9 @@ res = res()
 dapi = res.api.dapi_url
 collection = res.api.collection_url
 deta = Deta(res.key.web_collection)
-pg = psycopg2.connect(res.data.cr_pg)
+def pg():
+    conn = psycopg2.connect(res.data.cr_pg)
+    return conn, conn.cursor
 
 class Token:
     id = res.key.api_id
