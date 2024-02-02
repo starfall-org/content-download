@@ -61,9 +61,9 @@ class Get:
         result = []
         cursor.execute("SELECT * FROM users")
         for user in cursor.fetchall():
-            user_id = user["user_id"]
-            username = user["username"]
-            first_name = user["first_name"]
+            user_id = user[0]
+            username = user[1]
+            first_name = user[2]
             if username is None:
                 result.append(
                     f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)")
@@ -77,9 +77,9 @@ class Get:
         result = []
         cursor.execute("SELECT * FROM chats")
         for chat in cursor.fetchall():
-            chat_id = chat["chat_id"]
-            username = chat["username"]
-            title = chat["title"]
+            chat_id = chat[0]
+            username = chat[1]
+            title = chat[2]
             if username is None:
                 result.append(
                     f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
@@ -101,8 +101,8 @@ class Get:
         cursor.execute("SELECT * FROM users WHERE user_id = %s", (str(user_id),))
         data = cursor.fetchone()
         if data:
-            first_time = data.get("first_time")
-            on_chat = data.get("first_on_chat")
-            on_with = data.get("first_with")
-            msg_count = data.get("message_count")
+            first_time = data[2]
+            on_chat = data[7]
+            on_with = data[8]
+            msg_count = data[5]
             return first_time, on_chat, on_with, msg_count
