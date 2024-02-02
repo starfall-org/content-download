@@ -3,11 +3,10 @@ from datetime import datetime
 from pytz import timezone
 from hydrogram.enums import ChatType
 
-cursor = pg.cursor()
-
 class Save:
     @staticmethod
     def user(m):
+        conn, cursor = pg()
         current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
         date = current_time.strftime("%d - %m - %Y")
         if m.chat.username:
@@ -32,10 +31,12 @@ class Save:
                 message_count = users.message_count + 1
         """, (user_id, username, first_name, date, "Content Download", date, first_on_chat, "Content Download"))
         
-        pg.commit()
+        conn.commit()
+        
         
     @staticmethod
     def chat(m):
+        conn, cursor = pg()
         current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
         date = current_time.strftime("%d - %B - %Y")
         title = m.chat.title
@@ -53,11 +54,12 @@ class Save:
                 update_by = EXCLUDED.update_by
         """, (chat_id, username, title, date, "Content Download", date, "Content Download"))
         
-        pg.commit()
+        conn.commit()
 
 class Get:
     @staticmethod
     def users_list():
+        conn, cursor = pg()
         result = []
         cursor.execute("SELECT * FROM users")
         for user in cursor.fetchall():
@@ -74,6 +76,7 @@ class Get:
     
     @staticmethod
     def chats_list():
+        conn, cursor = pg()
         result = []
         cursor.execute("SELECT * FROM chats")
         for chat in cursor.fetchall():
@@ -90,6 +93,7 @@ class Get:
     
     @staticmethod
     def get_count():
+        conn, cursor = pg()
         cursor.execute("SELECT COUNT(*) FROM users")
         users_count = cursor.fetchone()[0]
         cursor.execute("SELECT COUNT(*) FROM chats")
@@ -98,6 +102,7 @@ class Get:
         
     @staticmethod
     def user_history(user_id):
+        conn, cursor = pg()
         cursor.execute("SELECT * FROM users WHERE user_id = %s", (str(user_id),))
         data = cursor.fetchone()
         if data:
