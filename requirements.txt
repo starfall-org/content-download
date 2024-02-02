@@ -8,4 +8,4 @@ deta
 psutil
 pytz
 bs4
-pymongo
+psycopg2
