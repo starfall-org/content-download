@@ -50,5 +50,3 @@ class Save:
         """, (chat_id, username, title, date, 'Content Download', date, 'Content Download'))
         pg.commit()
         print(update)
-
-# Các hàm Get và phần còn lại của mã không đổi.
