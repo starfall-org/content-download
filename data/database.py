@@ -101,7 +101,7 @@ class Get:
         cursor.execute("SELECT * FROM users WHERE user_id = %s", (str(user_id),))
         data = cursor.fetchone()
         if data:
-            first_time = data[2]
+            first_time = data[6]
             on_chat = data[7]
             on_with = data[8]
             msg_count = data[5]
