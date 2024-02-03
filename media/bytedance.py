@@ -17,17 +17,13 @@ class TikTokUser:
         media_links = get_media_links(url)
         list_video = []
         list_photo = []
-        list_music = []
         for media_link in media_links:
             media, music, is_video = TDDL(media_link)
             if is_video:
                 m.reply_chat_action(rv)
-                list_video.append(media[1])
+                list_video.append(media[0])
             else:
                 list_photo.extend(media[0])
-            if music:
-                m.reply_chat_action(ra)
-                list_music.append(music[0])
         if list_photo:
             try:
                 send_photos(m, list_photo, button, caption)
@@ -38,14 +34,7 @@ class TikTokUser:
                 send_videos(m, list_video, button, caption)
             except Exception as e:
                 logging.critical(e)
-        if list_music:
-            for music in list_music:
-                m.reply_chat_action(sa)
-                try:
-                    m.reply_audio(music, caption=caption)
-                except Exception as e:
-                    logging.critical(e)
-        os.system("echo Completed")
+        print("Completed")
   
 def tikdou(m, attrs):
     try:
@@ -80,7 +69,7 @@ def tikdou(m, attrs):
                 upload(media[1], media[0])
             except Exception as e:
                 logging.critical(e)
-        os.system("echo Completed")
+        print("Completed")
         return
     except Exception as e:
         raise Exception(e)
@@ -93,13 +82,12 @@ def tdmusic(m, attrs):
         _, audio, __ = TDDL(url)
         m.reply_chat_action(sa)
         if not audio:
-            m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
-            raise
+            raise Exception("API error")
         try:
             m.reply_audio(audio[0], caption=caption)
         except Exception:
             m.reply_audio(audio[1], caption=caption)
-        os.system("echo Completed")
+        print("Completed")
         return
     except Exception as e:
         raise Exception(e)
