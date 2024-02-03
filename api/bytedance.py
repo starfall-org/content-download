@@ -4,7 +4,6 @@ import requests, logging, os
 
 def TDDL(url):
     data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=180).json()
-    music = None
     link = data["url"]
     if data['is_video']:
         content = requests.get(link).content
