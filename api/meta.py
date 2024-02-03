@@ -16,8 +16,8 @@ def IGDL(url):
     data = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=180).json()
     files = []
     links = data["url"]
-    if data.get("is_video", True):
-        is_video = True
+    is_video = data["is_video"]
+    if is_video:
         for link in data["url"]:
             content = requests.get(link).content
             file = BytesIO(content)
@@ -25,6 +25,5 @@ def IGDL(url):
             files.append(file)
     else:
         files = data["url"]
-        is_video = False
         print("Instagram")
     return [files, links], is_video
