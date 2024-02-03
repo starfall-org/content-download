@@ -34,12 +34,12 @@ def instagram(m, attrs):
         caption = attrs.caption
         m.reply_chat_action(rv)
         dl , is_video = IGDL(url)
-        if is_video == False:
+        if not is_video:
             send_photos(m, dl[0], button, caption)
-        elif is_video == True:
+        elif is_video:
             try:
                 send_videos(m, dl[1], button, caption)
-            except:
+            except Exception:
                 send_videos(m, dl[0], button, caption)
         os.system("echo Completed")
         return
