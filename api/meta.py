@@ -26,4 +26,4 @@ def IGDL(url):
     else:
         files = data["url"]
         print("Instagram")
-    return [files, links], is_video
+    return (files, links), is_video
