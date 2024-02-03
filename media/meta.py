@@ -19,7 +19,7 @@ def facebook(m, attrs):
         m.reply_chat_action(sv)
         try:
             m.reply_video(links, caption=caption, reply_markup=button)
-        except:
+        except Exception:
             m.reply_video(files, caption=caption, reply_markup=button)
         os.system("echo Completed")
         return
