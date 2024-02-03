@@ -14,10 +14,7 @@ def music_download(c, m):
     save(m)
     try:
         attrs = Attrs(m)
-        if any(match in m.text for match in ["tiktok", "douyin"]):
-            tdmusic(m, attrs)
-        else:
-            music(m, attrs)
+        music(m, attrs)
         try:
             m.delete()
         except Exception as e:
