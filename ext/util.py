@@ -24,9 +24,9 @@ def save(m):
         Thread(target=Save.chat, args=(m,)).start()
     if m.from_user:
         Thread(target=Save.user,args=(m,)).start()
-        os.system(f"echo {m.from_user.first_name} ID:{m.from_user.id}")
+        print(f"{m.from_user.first_name} ID:{m.from_user.id}")
     else:
-        os.system(f"echo {m.sender_chat.title} ID:{m.sender_chat.id}")
+        print(f"{m.sender_chat.title} ID:{m.sender_chat.id}")
 
 def send_photos(m, photo_links: List[str], button, caption):
     m.reply_chat_action(sp)
