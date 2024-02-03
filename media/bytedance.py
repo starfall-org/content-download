@@ -20,7 +20,7 @@ class TikTokUser:
         list_music = []
         for media_link in media_links:
             media, music, is_video = TDDL(media_link)
-            if is_video == True:
+            if is_video:
                 m.reply_chat_action(rv)
                 list_video.append(media[1])
             else:
@@ -55,25 +55,25 @@ def tikdou(m, attrs):
         m.reply_chat_action(rv)
         try:
             media, music, is_video = TDDL(url)
-        except:
+        except Exception:
             TikTokUser(m, url, caption)
             return
-        if is_video == False:
+        if not is_video:
             try:
                 send_photos(m, media[0], button, caption)
-            except:
+            except Exception:
                 send_photos(m, media[1], button, caption)
             if music[0]:
                 m.reply_chat_action(sa)
                 try:
                     m.reply_audio(music[0], caption=caption)
-                except:
+                except Exception:
                     m.reply_audio(music[1], caption=caption)
         else:
             m.reply_chat_action(sv)
             try:
                 m.reply_video(media[0], caption=caption, reply_markup=button)
-            except:
+            except Exception:
                 m.reply_video(media[1], caption=caption, reply_markup=button)
         if m.chat.username == "contentdownload":
             try:
@@ -90,14 +90,14 @@ def tdmusic(m, attrs):
         url = attrs.url
         caption = attrs.caption
         m.reply_chat_action(ra)
-        _, music, __ = TDDL(url)
+        _, audio, __ = TDDL(url)
         m.reply_chat_action(sa)
-        if not audio_url:
+        if not audio:
             m.reply("API không hoạt động, không thể tải âm thanh", quote=True)
             raise
         try:
             m.reply_audio(audio[0], caption=caption)
-        except:
+        except Exception:
             m.reply_audio(audio[1], caption=caption)
         os.system("echo Completed")
         return
