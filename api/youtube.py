@@ -2,20 +2,21 @@ import requests, random
 from data import dapi
 from io import BytesIO
 from ext import Formats
+import re
 
 
 def YTDL(url):
     data = requests.get(f"{dapi}/youtube", params={"url":url}, timeout=60).json()
     content = requests.get(data["url"]).content
     file = BytesIO(content)
-    file.name = f"video.mp4"
+    file.name = "video.mp4"
     return file
     
 def YTM(url):
     data = requests.get(f"{dapi}/music", params={"url":url}, timeout=60).json()
     content = requests.get(data["url"]).content
     file = BytesIO(content)
-    file.name = f"music.mp3"
+    file.name = "music.mp3"
     return file
 
 def ODL(url):
@@ -25,7 +26,7 @@ def ODL(url):
     try:
         header = r.headers['Content-Disposition']
         filename = re.findall("filename=(.+)", header)[0]
-    except:
+    except Exception:
         filename = f"{random.randint(1000,9000)}"
         if r.headers["Content-Type"] in Formats().audio:
             filename = f"{filename}.mp3"
