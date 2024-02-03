@@ -1,7 +1,7 @@
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
-from media import tikdou, tdmusic, facebook, instagram, youtube, music, other
+from media import tikdou, facebook, instagram, youtube, music, other
 from api import ODL
 from ext import Attrs, save, channel_post, filter_on
 import logging
