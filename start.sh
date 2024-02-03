@@ -3,7 +3,7 @@
 chmod +x ./main.py ./lite
 
 gunicorn --log-level critical -b 0.0.0.0:8080 application:app &
-./main.py
+python -u main.py
 
 sleep 5
 while true; do
