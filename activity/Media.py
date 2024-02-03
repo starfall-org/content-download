@@ -24,7 +24,7 @@ def music_download(c, m):
             raise Exception(e)
     except Exception as e:
         m.reply_chat_action(typing)
-        m.reply("**Error:** __resource not found__", quote=True)
+        m.reply("**Error:** __resource temporary unavailable__", quote=True)
         logging.critical(e)
 
 @Client.on_message(((filters.regex("http://|https://") & filter_on) | filters.command('download')) & filters.incoming & channel_post)
@@ -47,7 +47,7 @@ def all_media_download(c, m):
                 m.delete()
             except Exception as e:
                 m.reply_chat_action(typing)
-                m.reply("**Error:** __resource not found__", quote=True)
+                m.reply("**Error:** __resource temporary unavailable__", quote=True)
                 logging.critical(e)
         else:
             try:
