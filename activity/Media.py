@@ -44,7 +44,7 @@ def all_media_download(c, m):
                 m.delete()
             except Exception as e:
                 m.reply_chat_action(typing)
-                m.reply("**Error:** __resource temporary unavailable__", quote=True)
+                m.reply("__--**INACCESSIBLE RESOURCES**--__", quote=True)
                 logging.critical(e)
         else:
             try:
