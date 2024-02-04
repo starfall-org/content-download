@@ -2,7 +2,7 @@ import requests, random
 from data import dapi
 from io import BytesIO
 from ext import Formats
-import re
+import re, logging
 
 
 def YTDL(url):
