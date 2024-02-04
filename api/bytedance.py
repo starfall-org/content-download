@@ -11,6 +11,7 @@ def TDDL(url):
             file = BytesIO(content)
             file.name = "tiktokdouyin.mp4"
         except Exception as e:
+            file = None
             logging.critical(e)
         is_video = True
     else:
