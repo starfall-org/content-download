@@ -7,9 +7,13 @@ import re
 
 def YTDL(url):
     data = requests.get(f"{dapi}/youtube", params={"url":url}, timeout=60).json()
-    content = requests.get(data["url"]).content
-    file = BytesIO(content)
-    file.name = "video.mp4"
+    try:
+        content = requests.get(data["url"]).content
+        file = BytesIO(content)
+        file.name = "video.mp4"
+    except Exception as e:
+        logging.critical(e)
+        file = data["url"]
     return file
     
 def YTM(url):
