@@ -35,7 +35,7 @@ def instagram(m, attrs):
         links, files, is_video = IGDL(url)
         if not is_video:
             send_photos(m, links, button, caption)
-        elif is_video:
+        else:
             try:
                 send_videos(m, links, button, caption)
             except Exception:
