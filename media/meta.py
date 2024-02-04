@@ -34,7 +34,6 @@ def instagram(m, attrs):
         m.reply_chat_action(rv)
         links, files, is_video = IGDL(url)
         if not is_video:
-            print(links)
             send_photos(m, links, button, caption)
         else:
             try:
