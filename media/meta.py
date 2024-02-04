@@ -21,7 +21,7 @@ def facebook(m, attrs):
             m.reply_video(links, caption=caption, reply_markup=button)
         except Exception:
             m.reply_video(files, caption=caption, reply_markup=button)
-        os.system("echo Completed")
+        print("Completed")
     except Exception as e:
         logging.error(e)
         raise Exception(e)
