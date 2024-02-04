@@ -18,12 +18,12 @@ def IGDL(url):
     links = data["url"]
     is_video = data["is_video"]
     if is_video:
-        for link in data["url"]:
-            content = requests.get(link).content
-            file = BytesIO(content)
+        for link in links:
+            req = requests.get(link).content
+            file = BytesIO(req.content)
             file.name = "instagram.mp4"
             files.append(file)
     else:
         files = data["url"]
         print("Instagram")
-    return (files, links), is_video
+    return links, files, is_video
