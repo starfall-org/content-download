@@ -31,7 +31,7 @@ def save(m):
 def send_photos(m, photo_links: List[str], button, caption):
     m.reply_chat_action(sp)
     if len(photo_links) == 1:
-        m.reply_photo(photo_links, reply_markup=button, caption=caption)
+        m.reply_photo(photo_links[0], reply_markup=button, caption=caption)
     else:
         for i in range(0, len(photo_links) - 1, 10):
             media_group = [InputMediaPhoto(link)
@@ -44,7 +44,7 @@ def send_photos(m, photo_links: List[str], button, caption):
 def send_videos(m, video_links: List[str], button, caption):
     m.reply_chat_action(sv)
     if len(video_links) == 1:
-        m.reply_video(video_links, reply_markup=button, caption=caption)
+        m.reply_video(video_links[0], reply_markup=button, caption=caption)
     else:
         for i in range(0, len(video_links) - 1, 10):
             media_group = [InputMediaVideo(link)
