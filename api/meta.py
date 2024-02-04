@@ -27,7 +27,6 @@ def IGDL(url):
             except Exception as e:
                 logging.critical(e)
                 continue
-                    
             files.append(file)
     
     print("Instagram")
