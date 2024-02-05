@@ -21,7 +21,7 @@ def music_download(c, m):
             raise Exception(e)
     except Exception as e:
         m.reply_chat_action(typing)
-        m.reply("__--**INACCESSIBLE RESOURCES**--__", quote=True)
+        m.reply("__--**resource unavailable**--__", quote=True)
         logging.critical(e)
 
 @Client.on_message(((filters.regex("http://|https://") & filter_on) | filters.command('download')) & filters.incoming & channel_post)
@@ -44,7 +44,7 @@ def all_media_download(c, m):
                 m.delete()
             except Exception as e:
                 m.reply_chat_action(typing)
-                m.reply("__--**INACCESSIBLE RESOURCES**--__", quote=True)
+                m.reply("__--**resource unavailable**--__", quote=True)
                 logging.critical(e)
         else:
             try:
