@@ -45,7 +45,7 @@ def TDDL(url):
     os.system("echo TikTok/Douyin")
     return (link, file), (musiclink, musicfile), is_video
 
-def tikdou(m, attrs):
+def tiktokdouyin(m, attrs):
     try:
         url = attrs.url
         button = attrs.button
