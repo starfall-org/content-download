@@ -16,14 +16,11 @@ def YTDL(url):
     return file
 
 def youtube(m, attrs):
-    try:
-        url = attrs.url
-        button = attrs.button
-        caption = attrs.caption
-        m.reply_chat_action(ChatAction.RECORD_VIDEO)
-        file = YTDL(url)
-        m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-        m.reply_video(file, caption=caption, reply_markup=button)
-        print("Completed")
-    except Exception as e:
-        logging.critical(e)
+    url = attrs.url
+    button = attrs.button
+    caption = attrs.caption
+    m.reply_chat_action(ChatAction.RECORD_VIDEO)
+    file = YTDL(url)
+    m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
+    m.reply_video(file, caption=caption, reply_markup=button)
+    print("Completed")
