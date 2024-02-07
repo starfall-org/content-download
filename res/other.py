@@ -4,7 +4,6 @@ from io import BytesIO
 from ext import Formats
 import logging, requests, re
 
-
 def ODL(url):
     data = requests.get(f"{dapi}/other", params={"url": url}, timeout=60).json()
     r = requests.get(data["url"])
@@ -27,6 +26,7 @@ def ODL(url):
             return None, None
         else:
             types = "other"
+    print("Other")
     return file, types
 
 def other(m, attrs):
@@ -49,4 +49,4 @@ def other(m, attrs):
             m.reply_document(file, reply_markup=button, caption=caption)
         print("Completed")
     except Exception as e:
-        logging.error(e)
+        logging.critical(e)
