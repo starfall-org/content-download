@@ -12,13 +12,10 @@ def YTM(url):
     return file
 
 def music(m, attrs):
-    try:
-        url = attrs.url
-        caption = attrs.caption
-        m.reply_chat_action(ChatAction.RECORD_AUDIO)
-        audio = YTM(url)
-        m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-        m.reply_audio(audio, caption=caption)
-        print("Completed")
-    except Exception as e:
-        logging.critical(e)
+    url = attrs.url
+    caption = attrs.caption
+    m.reply_chat_action(ChatAction.RECORD_AUDIO)
+    audio = YTM(url)
+    m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
+    m.reply_audio(audio, caption=caption)
+    print("Completed")
