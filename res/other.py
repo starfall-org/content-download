@@ -30,23 +30,20 @@ def ODL(url):
     return file, types
 
 def other(m, attrs):
-    try:
-        url = attrs.url
-        button = attrs.button
-        caption = attrs.caption
-        file, types = ODL(url)
-        if types == "image":
-            m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
-            m.reply_photo(file, caption=caption, reply_markup=button)
-        elif types == "video":
-            m.reply_chat_action(ChatAction.UPLOA_VIDEO)
-            m.reply_video(file, caption=caption, reply_markup=button)
-        elif types == "audio":
-            m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-            m.reply_audio(file, caption=caption)
-        else:
-            m.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
-            m.reply_document(file, reply_markup=button, caption=caption)
-        print("Completed")
-    except Exception as e:
-        logging.critical(e)
+    url = attrs.url
+    button = attrs.button
+    caption = attrs.caption
+    file, types = ODL(url)
+    if types == "image":
+        m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
+        m.reply_photo(file, caption=caption, reply_markup=button)
+    elif types == "video":
+        m.reply_chat_action(ChatAction.UPLOA_VIDEO)
+        m.reply_video(file, caption=caption, reply_markup=button)
+    elif types == "audio":
+        m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
+        m.reply_audio(file, caption=caption)
+    else:
+        m.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
+        m.reply_document(file, reply_markup=button, caption=caption)
+    print("Completed")
