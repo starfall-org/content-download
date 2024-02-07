@@ -8,6 +8,7 @@ def YTM(url):
     content = requests.get(data["url"]).content
     file = BytesIO(content)
     file.name = "music.mp3"
+    print("Music")
     return file
 
 def music(m, attrs):
