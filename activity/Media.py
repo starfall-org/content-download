@@ -1,15 +1,14 @@
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
-from media import tikdou, facebook, instagram, youtube, music, other
-from api import ODL
+from res import tiktokdouyin, facebook, instagram, youtube, music, other
 from ext import Attrs, save, channel_post, filter_on
 import logging
 import os
 
 typing = ChatAction.TYPING
 
-@Client.on_message(filters.command("music") & channel_post)
+@Client.on_message(filters.command("music"))
 def music_download(c, m):
     save(m)
     try:
