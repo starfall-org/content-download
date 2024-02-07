@@ -22,7 +22,7 @@ def music_download(c, m):
         m.reply("__--**resource unavailable**--__", quote=True)
         logging.critical(e)
 
-@Client.on_message(((filters.regex("youtube.|youtu.be") & filter_on) | filters.command('youtube')) & filters.incoming & channel_post)
+@Client.on_message((((filters.regex("http|https") & filters.regex("youtube.|youtu.be")) & filter_on) | filters.command('youtube')) & filters.incoming & channel_post)
 def youtube_download(c, m):
     save(m)
     try:
@@ -36,7 +36,7 @@ def youtube_download(c, m):
     except Exception as e:
         logging.critical(e)
     
-@Client.on_message(((filters.regex("facebook.|fb.") & filter_on) | filters.command('facebook')) & filters.incoming & channel_post)
+@Client.on_message((((filters.regex("http|https") & filters.regex("facebook.|fb.")) & filter_on) | filters.command('facebook')) & filters.incoming & channel_post)
 def facebook_download(c, m):
     save(m)
     try:
@@ -50,7 +50,7 @@ def facebook_download(c, m):
     except Exception as e:
         logging.critical(e)
     
-@Client.on_message(((filters.regex("instagram.") & filter_on) | filters.command('instagram')) & filters.incoming & channel_post)
+@Client.on_message((((filters.regex("http|https") & filters.regex("instagram.")) & filter_on) | filters.command('instagram')) & filters.incoming & channel_post)
 def instagram_download(c, m):
     save(m)
     try:
@@ -64,7 +64,7 @@ def instagram_download(c, m):
     except Exception as e:
         logging.critical(e)
     
-@Client.on_message(((filters.regex("tiktok.|douyin.") & filter_on) | filters.command('facebook')) & filters.incoming & channel_post)
+@Client.on_message((((filters.regex("http|https") & filters.regex("tiktok.|douyin.")) & filter_on) | filters.command('facebook')) & filters.incoming & channel_post)
 def tiktokdouyin_download(c, m):
     save(m)
     try:
