@@ -12,8 +12,7 @@ typing = ChatAction.TYPING
 def music_download(c, m):
     save(m)
     try:
-        attrs = Attrs(m)
-        music(m, attrs)
+        music(m, Attrs(m))
         try:
             m.delete()
         except Exception as e:
@@ -23,33 +22,67 @@ def music_download(c, m):
         m.reply("__--**resource unavailable**--__", quote=True)
         logging.critical(e)
 
+@Client.on_message(((filters.regex("youtube.|youtu.be") & filter_on) | filters.command('youtube')) & filters.incoming & channel_post)
+def youtube_download(c, m):
+    save(m)
+    try:
+        youtube(m, Attrs(m))
+    except Exception as e:
+        m.reply_chat_action(typing)
+        m.reply("__--**resource unavailable**--__", quote=True)
+        logging.critical(e)
+    try:
+        m.delete()
+    except Exception as e:
+        logging.critical(e)
+    
+@Client.on_message(((filters.regex("facebook.|fb.") & filter_on) | filters.command('facebook')) & filters.incoming & channel_post)
+def facebook_download(c, m):
+    save(m)
+    try:
+        facebook(m, Attrs(m))
+    except Exception as e:
+        m.reply_chat_action(typing)
+        m.reply("__--**resource unavailable**--__", quote=True)
+        logging.critical(e)
+    try:
+        m.delete()
+    except Exception as e:
+        logging.critical(e)
+    
+@Client.on_message(((filters.regex("instagram.") & filter_on) | filters.command('instagram')) & filters.incoming & channel_post)
+def instagram_download(c, m):
+    save(m)
+    try:
+        instagram(m, Attrs(m))
+    except Exception as e:
+        m.reply_chat_action(typing)
+        m.reply("__--**resource unavailable**--__", quote=True)
+        logging.critical(e)
+    try:
+        m.delete()
+    except Exception as e:
+        logging.critical(e)
+    
+@Client.on_message(((filters.regex("tiktok.|douyin.") & filter_on) | filters.command('facebook')) & filters.incoming & channel_post)
+def tiktokdouyin_download(c, m):
+    save(m)
+    try:
+        tiktokdouyin(m, Attrs(m))
+    except Exception as e:
+        m.reply_chat_action(typing)
+        m.reply("__--**resource unavailable**--__", quote=True)
+        logging.critical(e)
+    try:
+        m.delete()
+    except Exception as e:
+        logging.critical(e)
+   
 @Client.on_message(((filters.regex("http://|https://") & filter_on) | filters.command('download')) & filters.incoming & channel_post)
-def all_media_download(c, m):
-    attrs = Attrs(m)
-    if attrs.url:
-        media_group = ["youtube", "youtu.be", "tiktok", "douyin", "iesdouyin", "facebook", "fb.com", "instagram"]
-        url = attrs.url
-        if any(media in url for media in media_group):
-            save(m)
-            try:
-                if any(reg in url for reg in ["youtube", "youtu.be"]):
-                    youtube(m, attrs)
-                elif any(reg in url for reg in ["facebook", "fb"]):
-                    facebook(m, attrs)
-                elif "instagram" in url:
-                    instagram(m, attrs)
-                else:
-                    tikdou(m, attrs)
-                m.delete()
-            except Exception as e:
-                m.reply_chat_action(typing)
-                m.reply("__--**resource unavailable**--__", quote=True)
-                logging.critical(e)
-        else:
-            try:
-                file, types = ODL(url)
-                if file:
-                    save(m)
-                    other(m, file, types,  attrs)
-            except Exception as e:
-                logging.critical(e)
+def other_download(c, m):
+    try:
+        other(m, Attrs(m))
+        save(m)
+    except Exception:
+        pass
+        
