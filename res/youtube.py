@@ -1,9 +1,7 @@
 from hydrogram.enums import ChatAction
-import requests, random
 from environ import dapi
 from io import BytesIO
-from ext import Formats
-import logging, os
+import logging, requests, os
 
 def YTDL(url):
     data = requests.get(f"{dapi}/youtube", params={"url":url}, timeout=60).json()
