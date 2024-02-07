@@ -3,6 +3,14 @@ from io import BytesIO
 from data import dapi
 import logging, requests
 
+def FBDL(url):
+    data = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=180).json()
+    link = data["url"][0]
+    req = requests.get(link)
+    file = BytesIO(req.content)
+    file.name = "video.mp4"
+    print("Facebook")
+    return file, link
 
 def facebook(m, attrs):
     try:
