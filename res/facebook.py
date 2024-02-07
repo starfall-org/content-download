@@ -22,8 +22,9 @@ def facebook(m, attrs):
         m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
         try:
             m.reply_video(links, caption=caption, reply_markup=button)
-        except Exception:
+        except Exception as e:
+            logging.critical(e)
             m.reply_video(files, caption=caption, reply_markup=button)
         print("Completed")
     except Exception as e:
-        logging.error(e)
+        logging.critical(e)
