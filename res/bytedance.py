@@ -102,4 +102,4 @@ def tdmusic(m, attrs):
         print("Completed")
         return
     except Exception as e:
-        raise Exception(e)
+        logging.critical(e)
