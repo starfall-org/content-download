@@ -20,4 +20,4 @@ def music(m, attrs):
         m.reply_audio(audio, caption=caption)
         print("Completed")
     except Exception as e:
-        logging.error(e)
+        logging.critical(e)
