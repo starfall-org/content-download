@@ -13,18 +13,15 @@ def FBDL(url):
     return file, link
 
 def facebook(m, attrs):
+    url = attrs.url
+    button = attrs.button
+    caption = attrs.caption
+    m.reply_chat_action(ChatAction.RECORD_VIDEO)
+    files, links = FBDL(url)
+    m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
     try:
-        url = attrs.url
-        button = attrs.button
-        caption = attrs.caption
-        m.reply_chat_action(ChatAction.RECORD_VIDEO)
-        files, links = FBDL(url)
-        m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-        try:
-            m.reply_video(links, caption=caption, reply_markup=button)
-        except Exception as e:
-            logging.critical(e)
-            m.reply_video(files, caption=caption, reply_markup=button)
-        print("Completed")
+        m.reply_video(links, caption=caption, reply_markup=button)
     except Exception as e:
         logging.critical(e)
+        m.reply_video(files, caption=caption, reply_markup=button)
+    print("Completed")
