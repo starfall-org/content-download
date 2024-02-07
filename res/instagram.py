@@ -24,19 +24,16 @@ def IGDL(url):
     return links, files, is_video
 
 def instagram(m, attrs):
-    try:
-        url = attrs.url
-        button = attrs.button
-        caption = attrs.caption
-        m.reply_chat_action(ChatAction.RECORD_VIDEO)
-        links, files, is_video = IGDL(url)
-        if not is_video:
-            send_photos(m, links, button, caption)
-        else:
-            try:
-                send_videos(m, links, button, caption)
-            except Exception:
-                send_videos(m, files, button, caption)
-        print("Completed")
-    except Exception as e:
-        logging.critical(e)
+    url = attrs.url
+    button = attrs.button
+    caption = attrs.caption
+    m.reply_chat_action(ChatAction.RECORD_VIDEO)
+    links, files, is_video = IGDL(url)
+    if not is_video:
+        send_photos(m, links, button, caption)
+    else:
+        try:
+            send_videos(m, links, button, caption)
+        except Exception:
+            send_videos(m, files, button, caption)
+    print("Completed")
