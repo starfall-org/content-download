@@ -1,7 +1,7 @@
 from hydrogram.enums import ChatAction
 from ext import send_photos, upload
 from io import BytesIO
-from environ import dapi
+from data import dapi
 from .tiktokuser import TikTokUser
 import requests, logging, os
 
