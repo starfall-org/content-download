@@ -1,5 +1,5 @@
 from hydrogram.enums import ChatAction
-from environ import dapi
+from data import dapi
 from io import BytesIO
 import logging, requests
 
@@ -12,6 +12,7 @@ def YTDL(url):
     except Exception as e:
         logging.critical(e)
         file = data["url"]
+    print("Youtube")
     return file
 
 def youtube(m, attrs):
@@ -26,4 +27,3 @@ def youtube(m, attrs):
         print("Completed")
     except Exception as e:
         logging.critical(e)
-        raise Exception(e)
