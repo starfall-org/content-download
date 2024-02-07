@@ -17,7 +17,7 @@ def tikdou(m, attrs):
             media, music, is_video = TDDL(url)
         except Exception as e:
             logging.critical(e)
-            TikTokUser(m, url, caption)
+            TikTokUser(m, url, caption, TDDL)
             return
         if not is_video:
             try:
