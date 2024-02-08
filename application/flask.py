@@ -22,7 +22,8 @@ def update_system():
 
 @app.route("/")
 def web_app_home():
-    return """
+    return ""
+"""
 <!DOCTYPE html>
 <html>
 <head>
