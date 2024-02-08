@@ -22,8 +22,7 @@ def update_system():
 
 @app.route("/")
 def web_app_home():
-    return ""
-"""
+    return """
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +59,7 @@ def web_app_home():
   </script>
 </head>
 <body>
-<b>Content</b>
+<b></b>
 </body>
 </html>
 """
