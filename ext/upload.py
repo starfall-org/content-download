@@ -17,7 +17,7 @@ def upload(file_data, file_link):
 
 def upload_file(file_data, file_name):
     raw_bytes = file_data.getvalue()
-    response = requests.post(f"{collection}/{file_name}",
+    response = requests.post(f"{collection}/s3/upload/{file_name}",
                           data=raw_bytes)
     os.system(f'echo "{response.text}"')
     
