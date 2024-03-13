@@ -19,7 +19,7 @@ def upload_file(file_data, file_name):
     raw_bytes = file_data.getvalue()
     response = requests.post(f"{collection}/s3/upload/{file_name}",
                           data=raw_bytes)
-    os.system(f'echo "{response.text}"')
+    print(response.text)
     
 def upload_web(file_data, file_name):
     base = deta.Base("files")
