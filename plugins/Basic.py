@@ -1,5 +1,7 @@
 from hydrogram.enums import ChatAction
-from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from hydrogram.types import (
+    InlineKeyboardMarkup, InlineKeyboardButton
+)
 from hydrogram import Client, filters
 from ext import save
 
@@ -14,7 +16,8 @@ Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các tran
 start_en = '''__--**Content Download bot**--__ allows you to download content from various sources on social media. 
 You can download videos, images, audio, or file from websites such as __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, and more.'''
 
-@Client.on_message(filters.command(["start","help"]) & (filters.private|filters.chat(-1001832458549)))
+@Client.on_message(
+    filters.command(["start","help"]) & (filters.private|filters.chat(-1001832458549)))
 def reply_start(c, m):
     save(m)
     m.reply_chat_action(typing)
