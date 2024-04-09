@@ -12,15 +12,15 @@ import re
 typing = ChatAction.TYPING
 
 @Client.on_message(filters.command("album"))
-def cloud_list(c, m):
-    m.reply_chat_action(typing)
-    m.reply(f"__--**COLLECTION**--__",
+async def cloud_list(c, m):
+    await m.reply_chat_action(typing)
+    await m.reply(f"__--**COLLECTION**--__",
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("COLLECTION", url=collection)]]))
 
 
 @Client.on_message(filters.command("upload"))
-def upload_to_cloud(c, m):
-    m.reply_chat_action(typing)
+async def upload_to_cloud(c, m):
+    await m.reply_chat_action(typing)
     current_time = datetime.now(timezone("Asia/Ho_Chi_Minh"))
     formatted = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
     if not m.reply_to_message:
@@ -53,17 +53,16 @@ def upload_to_cloud(c, m):
     if set_filename:
         file_name = set_filename.group(1)
     file_data = c.download_media(file_id, in_memory=True)
-    m.reply_chat_action(typing)
+    await m.reply_chat_action(typing)
     file_url = upload_web(file_data, file_name)
-    m.reply(f"`Result:` \n{quote(file_url, safe=":/")}")
+    await m.reply(f"`Result:` \n{quote(file_url, safe=":/")}")
   
 @Client.on_message(filters.command("delete"))
-def request_delete_file(c, m):
-    m.reply_chat_action(typing)
+async def request_delete_file(c, m):
+    await m.reply_chat_action(typing)
     if m.reply_to_message:
         url = Attrs(m.reply_to_message).url
     else:
         url = Attrs(m).url
     res = requests.delete(url).text
-    m.reply(res)
-  
+    await m.reply(res)

@@ -4,8 +4,8 @@ from hydrogram.enums import ChatAction
 import platform
 
 @Client.on_message(filters.command('server'))
-def bot_server_info(c, m):
-    m.reply_chat_action(ChatAction.TYPING)
+async def bot_server_info(c, m):
+    await m.reply_chat_action(ChatAction.TYPING)
     ver = platform.version()
     name = platform.uname()
     system = platform.system()
@@ -15,4 +15,4 @@ def bot_server_info(c, m):
               f"VERSION:\n{ver}\n\n"
               f"SERVER:\n{server}\n"
               "```")
-    m.reply(msg_text)
+    await m.reply(msg_text)
