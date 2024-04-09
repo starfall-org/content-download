@@ -5,7 +5,7 @@ from hydrogram.types import (
 from hydrogram import Client, filters
 from ext import save
 
-typing = ChatAction.TYPING
+
 button = InlineKeyboardMarkup([[
         InlineKeyboardButton("Youtube",url="https://youtube.com/@tiktokdouyin-share")],[
         InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
@@ -13,16 +13,17 @@ button = InlineKeyboardMarkup([[
 
 start_vn = '''__--**Content Download bot**--__ cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
 Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, và nhiều trang web khác.'''
+
 start_en = '''__--**Content Download bot**--__ allows you to download content from various sources on social media. 
 You can download videos, images, audio, or file from websites such as __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, and more.'''
 
 @Client.on_message(
     filters.command(["start","help"]) & (filters.private|filters.chat(-1001832458549)))
-def reply_start(c, m):
+async def reply_start(c, m):
     save(m)
-    m.reply_chat_action(typing)
+    await m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.language_code == "vi":
         msg = start_vn
     else:
         msg = start_en
-    m.reply(msg, reply_markup=button)
+    await m.reply(msg, reply_markup=button)
