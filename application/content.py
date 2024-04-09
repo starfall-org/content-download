@@ -8,7 +8,7 @@ class Content(Client):
         api_id=Token.id,
         api_hash=Token.hash,
         bot_token=Token.token,
-        plugins=dict(root="activity"),
+        plugins=dict(root="plugins"),
         max_concurrent_transmissions=100)
     def run(self):
         self.client.start()
