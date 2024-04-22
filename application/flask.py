@@ -1,24 +1,28 @@
-from flask import Flask
-from threading import Thread
-import subprocess
-import time
-import sys
 import os
+import subprocess
+import sys
+import time
+from flask import Flask
+
 
 class Webapp(Flask):
     def __init__(self):
-        super().__init__('webapp')
+        super().__init__("webapp")
+
 
 app = Webapp()
+
 
 def restart():
     time.sleep(5)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
+
 @app.route("/update")
 def update_system():
     result = subprocess.run(["bash", "update.sh"], stdout=subprocess.PIPE, text=True)
     return f"<pre>{result.stdout}</pre>"
+
 
 @app.route("/")
 def web_app_home():

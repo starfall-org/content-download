@@ -1,29 +1,39 @@
 from hydrogram.enums import ChatAction
-from hydrogram.types import (
-    InlineKeyboardMarkup, InlineKeyboardButton
-)
+from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from hydrogram import Client, filters
-from ext import save
+from misc import save
 
 
-button = InlineKeyboardMarkup([[
-        InlineKeyboardButton("Youtube",url="https://youtube.com/@tiktokdouyin-share")],[
-        InlineKeyboardButton("Group",url="https://t.me/contentdownload_group"),
-        InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
+button = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton(
+                "Youtube", url="https://youtube.com/@tiktokdouyin-share"
+            )
+        ],
+        [
+            InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),
+            InlineKeyboardButton("Channel", url="https://t.me/contentdownload"),
+        ],
+    ]
+)
 
-start_vn = '''__--**Content Download bot**--__ cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
-Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, và nhiều trang web khác.'''
+start_vn = """__--**Content Download bot**--__ cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. 
+Bạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, và nhiều trang web khác."""
 
-start_en = '''__--**Content Download bot**--__ allows you to download content from various sources on social media. 
-You can download videos, images, audio, or file from websites such as __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, and more.'''
+start_en = """__--**Content Download bot**--__ allows you to download content from various sources on social media. 
+You can download videos, images, audio, or file from websites such as __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, and more."""
+
 
 @Client.on_message(
-    filters.command(["start","help"]) & (filters.private|filters.chat(-1001832458549)))
-async def reply_start(c, m):
+    filters.command(["start", "help"])
+    & (filters.private | filters.chat(-1001832458549))
+)
+def reply_start(c, m):
     save(m)
-    await m.reply_chat_action(ChatAction.TYPING)
+    m.reply_chat_action(ChatAction.TYPING)
     if m.from_user.language_code == "vi":
         msg = start_vn
     else:
         msg = start_en
-    await m.reply(msg, reply_markup=button)
+    m.reply(msg, reply_markup=button)

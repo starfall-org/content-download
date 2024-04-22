@@ -1,16 +1,21 @@
-from hydrogram.enums import ChatAction
+import logging
 from io import BytesIO
+
+import requests
+from hydrogram.enums import ChatAction
+
 from data import dapi
-import logging, requests
+
 
 def FBDL(url):
-    data = requests.get(f"{dapi}/facebook", params={"url":url}, timeout=180).json()
+    data = requests.get(f"{dapi}/facebook", params={"url": url}, timeout=180).json()
     link = data["url"][0]
     req = requests.get(link)
     file = BytesIO(req.content)
     file.name = "video.mp4"
     print("Facebook")
     return file, link
+
 
 def facebook(m, attrs):
     url = attrs.url

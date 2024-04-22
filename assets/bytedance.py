@@ -1,14 +1,15 @@
 from hydrogram.enums import ChatAction
-from ext import send_photos, upload
+from misc import send_photos, upload
 from io import BytesIO
 from data import dapi
 from .tiktokuser import TikTokUser
 import requests, logging, os
 
+
 def TDDL(url):
     data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=180).json()
     link = data["url"]
-    if data['is_video']:
+    if data["is_video"]:
         try:
             content = requests.get(link).content
             file = BytesIO(content)
@@ -44,6 +45,7 @@ def TDDL(url):
         musicfile = None
     os.system("echo TikTok/Douyin")
     return (link, file), (musiclink, musicfile), is_video
+
 
 def tiktokdouyin(m, attrs):
     url = attrs.url
@@ -81,7 +83,8 @@ def tiktokdouyin(m, attrs):
             upload(media[1], media[0])
         except Exception as e:
             logging.critical(e)
-      
+
+
 def tdmusic(m, attrs):
     url = attrs.url
     caption = attrs.caption

@@ -1,11 +1,15 @@
-from hydrogram.enums import ChatAction
-from ext import send_videos, send_photos
+import logging
 from io import BytesIO
+
+import requests
+from hydrogram.enums import ChatAction
+
 from data import dapi
-import logging, requests
+from misc import send_photos, send_videos
+
 
 def IGDL(url):
-    data = requests.get(f"{dapi}/instagram", params={"url":url}, timeout=180).json()
+    data = requests.get(f"{dapi}/instagram", params={"url": url}, timeout=180).json()
     files = []
     links = data["url"]
     is_video = data["is_video"]
@@ -19,9 +23,10 @@ def IGDL(url):
                 logging.critical(e)
                 continue
             files.append(file)
-    
+
     print("Instagram")
     return links, files, is_video
+
 
 def instagram(m, attrs):
     url = attrs.url

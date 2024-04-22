@@ -4,27 +4,31 @@ from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote
-from ext import Attrs, upload_web
+from misc import Attrs, upload_web
 from data import collection
 import requests
 import re
 
 typing = ChatAction.TYPING
 
+class NotFileErr(Exception):
+            """"""
+            pass
+
 @Client.on_message(filters.command("album"))
-async def cloud_list(c, m):
-    await m.reply_chat_action(typing)
-    await m.reply(f"__--**COLLECTION**--__",
+def cloud_list(c, m):
+    m.reply_chat_action(typing)
+    m.reply("__--**COLLECTION**--__",
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("COLLECTION", url=collection)]]))
 
 
 @Client.on_message(filters.command("upload"))
-async def upload_to_cloud(c, m):
-    await m.reply_chat_action(typing)
+def upload_to_cloud(c, m):
+    m.reply_chat_action(typing)
     current_time = datetime.now(timezone("Asia/Ho_Chi_Minh"))
     formatted = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
     if not m.reply_to_message:
-        raise Exception("Please reply to a message containing a file to upload.")
+        raise NotFileErr("Please reply to a message containing a file to upload.")
     words = f"date: {formatted}"
     file_id = None
     file_name = words
@@ -48,21 +52,21 @@ async def upload_to_cloud(c, m):
         file_name = f"music {words}.mp3"
         headers = {"Content-type": "audio/mpeg"}
     if not file_id:
-        raise Exception("Vui lòng phản hồi lại tin nhắn chứa tệp")
+        raise NotFileErr("Vui lòng phản hồi lại tin nhắn chứa tệp")
     set_filename = re.search(r"\?(.*)", m.text)
     if set_filename:
         file_name = set_filename.group(1)
     file_data = c.download_media(file_id, in_memory=True)
-    await m.reply_chat_action(typing)
+    m.reply_chat_action(typing)
     file_url = upload_web(file_data, file_name)
-    await m.reply(f"`Result:` \n{quote(file_url, safe=":/")}")
+    m.reply(f"`Result:` \n{quote(file_url, safe=":/")}")
   
 @Client.on_message(filters.command("delete"))
-async def request_delete_file(c, m):
-    await m.reply_chat_action(typing)
+def request_delete_file(c, m):
+    m.reply_chat_action(typing)
     if m.reply_to_message:
         url = Attrs(m.reply_to_message).url
     else:
         url = Attrs(m).url
     res = requests.delete(url).text
-    await m.reply(res)
+    m.reply(res)

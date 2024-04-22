@@ -1,15 +1,20 @@
-from hydrogram.enums import ChatAction
-from data import dapi
+import logging
+import re
 from io import BytesIO
-from ext import Formats
-import logging, requests, re
+
+import requests
+from hydrogram.enums import ChatAction
+
+from data import dapi
+from misc import Formats
+
 
 def ODL(url):
     data = requests.get(f"{dapi}/other", params={"url": url}, timeout=60).json()
     r = requests.get(data["url"])
     content = r.content
     try:
-        header = r.headers['Content-Disposition']
+        header = r.headers["Content-Disposition"]
         filename = re.findall("filename=(.+)", header)[0]
     except Exception:
         filename = "download"
@@ -28,6 +33,7 @@ def ODL(url):
             types = "other"
     print("Other")
     return file, types
+
 
 def other(m, attrs):
     url = attrs.url

@@ -1,10 +1,21 @@
-from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from hydrogram.enums import ChatAction
-from ext import send_videos, send_photos, get_media_links
 import logging
 
+from hydrogram.enums import ChatAction
+from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+from misc import get_media_links, send_photos, send_videos
+
+
 def TikTokUser(m, url, caption, TDDL):
-    button = InlineKeyboardMarkup([[InlineKeyboardButton("TikTok User",url=url), InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),InlineKeyboardButton("Channel", url="https://t.me/contentdownload")]])
+    button = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("TikTok User", url=url),
+                InlineKeyboardButton("Group", url="https://t.me/contentdownload_group"),
+                InlineKeyboardButton("Channel", url="https://t.me/contentdownload"),
+            ]
+        ]
+    )
     media_links = get_media_links(url)
     list_video = []
     list_photo = []

@@ -1,10 +1,14 @@
-from hydrogram.enums import ChatAction
-from data import dapi
+import logging
 from io import BytesIO
-import logging, requests
+
+import requests
+from hydrogram.enums import ChatAction
+
+from data import dapi
+
 
 def YTDL(url):
-    data = requests.get(f"{dapi}/youtube", params={"url":url}, timeout=60).json()
+    data = requests.get(f"{dapi}/youtube", params={"url": url}, timeout=60).json()
     try:
         content = requests.get(data["url"]).content
         file = BytesIO(content)
@@ -14,6 +18,7 @@ def YTDL(url):
         file = data["url"]
     print("Youtube")
     return file
+
 
 def youtube(m, attrs):
     url = attrs.url

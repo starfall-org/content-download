@@ -1,15 +1,21 @@
-from hydrogram import Client, idle
-from data import Token
 import os
+
+from hydrogram import Client, idle
+
+from data import Token
+
 
 class Content(Client):
     def __init__(self):
-        self.client = Client("Content Download",
-        api_id=Token.id,
-        api_hash=Token.hash,
-        bot_token=Token.token,
-        plugins=dict(root="plugins"),
-        max_concurrent_transmissions=100)
+        self.client = Client(
+            "Content Download",
+            api_id=Token.id,
+            api_hash=Token.hash,
+            bot_token=Token.token,
+            plugins=dict(root="plugins"),
+            max_concurrent_transmissions=100,
+        )
+
     def run(self):
         self.client.start()
         os.system("echo Content Download")
