@@ -1,13 +1,16 @@
-from .environ import pg
 from datetime import datetime
-from pytz import timezone
+
 from hydrogram.enums import ChatType
+from pytz import timezone
+
+from .environment import pg
+
 
 class Save:
     @staticmethod
     def user(m):
         conn, cursor = pg()
-        current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
+        current_time = datetime.now(timezone("Asia/Ho_Chi_Minh"))
         date = current_time.strftime("%d - %m - %Y")
         if m.chat.username:
             first_on_chat = f"{m.chat.title}({m.chat.username}) - {m.chat.id}"
@@ -18,8 +21,9 @@ class Save:
         first_name = m.from_user.first_name
         username = m.from_user.username
         user_id = str(m.from_user.id)
-        
-        cursor.execute("""
+
+        cursor.execute(
+            """
             INSERT INTO users (user_id, username, first_name, update_time, update_by, message_count, first_time, first_on_chat, first_with)
             VALUES (%s, %s, %s, %s, %s, 1, %s, %s, %s)
             ON CONFLICT (user_id) DO UPDATE 
@@ -29,21 +33,33 @@ class Save:
                 update_time = EXCLUDED.update_time,
                 update_by = EXCLUDED.update_by,
                 message_count = users.message_count + 1
-        """, (user_id, username, first_name, date, "Content Download", date, first_on_chat, "Content Download"))
-        
+        """,
+            (
+                user_id,
+                username,
+                first_name,
+                date,
+                "Content Download",
+                date,
+                first_on_chat,
+                "Content Download",
+            ),
+        )
+
         conn.commit()
         conn.close()
-        
+
     @staticmethod
     def chat(m):
         conn, cursor = pg()
-        current_time = datetime.now(timezone('Asia/Ho_Chi_Minh'))
+        current_time = datetime.now(timezone("Asia/Ho_Chi_Minh"))
         date = current_time.strftime("%d - %B - %Y")
         title = m.chat.title
         username = m.chat.username
         chat_id = str(m.chat.id)
-        
-        cursor.execute("""
+
+        cursor.execute(
+            """
             INSERT INTO chats (chat_id, username, title, update_time, update_by, first_time, first_with)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (chat_id) DO UPDATE 
@@ -52,10 +68,21 @@ class Save:
                 title = EXCLUDED.title,
                 update_time = EXCLUDED.update_time,
                 update_by = EXCLUDED.update_by
-        """, (chat_id, username, title, date, "Content Download", date, "Content Download"))
-        
+        """,
+            (
+                chat_id,
+                username,
+                title,
+                date,
+                "Content Download",
+                date,
+                "Content Download",
+            ),
+        )
+
         conn.commit()
         conn.close()
+
 
 class Get:
     @staticmethod
@@ -69,13 +96,15 @@ class Get:
             first_name = user[2]
             if username is None:
                 result.append(
-                    f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)")
+                    f"<a href='tg://user?id={user_id}'><b>{first_name}</b></a> (ID: <code>{user_id}</code>)"
+                )
             else:
                 result.append(
-                    f"<a href='https://t.me/{username}'><b>{first_name}</b></a> (ID: (<code>{user_id}</code>)")
+                    f"<a href='https://t.me/{username}'><b>{first_name}</b></a> (ID: (<code>{user_id}</code>)"
+                )
         conn.close()
         return len(result), result
-    
+
     @staticmethod
     def chats_list():
         conn, cursor = pg()
@@ -87,13 +116,15 @@ class Get:
             title = chat[2]
             if username is None:
                 result.append(
-                    f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
+                    f"<a href='tg://user?id={chat_id}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)"
+                )
             else:
                 result.append(
-                    f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)")
+                    f"<a href='https://t.me/{username}'><b>{title}</b></a> (ID: <code>{chat_id}</code>)"
+                )
         conn.close()
         return len(result), result
-    
+
     @staticmethod
     def get_count():
         conn, cursor = pg()
@@ -103,7 +134,7 @@ class Get:
         chats_count = cursor.fetchone()[0]
         conn.close()
         return users_count, chats_count
-        
+
     @staticmethod
     def user_history(user_id):
         conn, cursor = pg()
