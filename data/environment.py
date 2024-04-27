@@ -13,13 +13,13 @@ def res():
 
 
 res = res()
-dapi = res.api.dapi_url
-collection = res.api.collection_url
+dapi = res.api.dapi
+collection = res.api.collection
 deta = Deta(res.key.web_collection)
 
 
 def pg():
-    conn = psycopg2.connect(res.data.cr_pg)
+    conn = psycopg2.connect(res.data.cockroach)
     return conn, conn.cursor()
 
 
