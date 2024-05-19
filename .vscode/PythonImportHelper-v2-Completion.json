@@ -565,15 +565,6 @@
         "documentation": {}
     },
     {
-        "label": "psycopg2",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "psycopg2",
-        "description": "psycopg2",
-        "detail": "psycopg2",
-        "documentation": {}
-    },
-    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -1119,16 +1110,7 @@
         "kind": 2,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "def res():\n    secret = requests.get(os.getenv(\"SECRET\")).text\n    return json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nres = res()\ndapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
-        "label": "pg",
-        "kind": 2,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "def pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "def res():\n    secret = requests.get(os.getenv(\"SECRET\")).text\n    return json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nres = res()\ndapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1137,7 +1119,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "res = res()\ndapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash",
+        "peekOfCode": "res = res()\ndapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1146,7 +1128,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "dapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "dapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1155,7 +1137,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "collection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "collection = res.api.collection\ndeta = Deta(res.key.web_collection)\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1164,7 +1146,16 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "deta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "deta = Deta(res.key.web_collection)\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "DATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },

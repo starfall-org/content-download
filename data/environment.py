@@ -1,8 +1,6 @@
 import json
 import os
 from types import SimpleNamespace
-
-import psycopg2
 import requests
 from deta import Deta
 
@@ -18,9 +16,7 @@ collection = res.api.collection
 deta = Deta(res.key.web_collection)
 
 
-def pg():
-    conn = psycopg2.connect(res.data.cockroach)
-    return conn, conn.cursor()
+DATABASE_URL = res.data.cockroach
 
 
 class Token:
