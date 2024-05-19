@@ -1,7 +1,7 @@
 import logging
 from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
-from assets import tiktokdouyin, facebook, instagram, youtube, music, other
+from .assets import tiktokdouyin, facebook, instagram, youtube, music, other
 from misc import Attrs, save, channel_post, filter_on
 
 

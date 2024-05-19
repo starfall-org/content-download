@@ -1,5 +1,4 @@
 import os
-
 from hydrogram import Client, idle
 
 from data import Token

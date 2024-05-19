@@ -1,0 +1,1630 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "idle",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "enums",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "check_listoff",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "deta",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "Save",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "add_off",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "rm_off",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "Get",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "ChatType",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMemberStatus",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "SimpleNamespace",
+        "importPath": "types",
+        "description": "types",
+        "isExtraImport": true,
+        "detail": "types",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
+        "label": "Thread",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Thread",
+        "importPath": "threading",
+        "description": "threading",
+        "isExtraImport": true,
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "quote",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urljoin",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "quote",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "InputMediaPhoto",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InputMediaVideo",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_videos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "Formats",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "get_media_links",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_videos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "owner",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "filter_right",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "server_info",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "owner",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "owner",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "upload_web",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "channel_post",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "filter_on",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "platform",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "platform",
+        "description": "platform",
+        "detail": "platform",
+        "documentation": {}
+    },
+    {
+        "label": "uvloop",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvloop",
+        "description": "uvloop",
+        "detail": "uvloop",
+        "documentation": {}
+    },
+    {
+        "label": "Content",
+        "kind": 6,
+        "importPath": "application.content",
+        "description": "application.content",
+        "peekOfCode": "class Content(Client):\n    def __init__(self):\n        self.client = Client(\n            \"Content Download\",\n            api_id=Token.id,\n            api_hash=Token.hash,\n            bot_token=Token.token,\n            plugins=dict(root=\"plugins\"),\n            max_concurrent_transmissions=100,\n        )",
+        "detail": "application.content",
+        "documentation": {}
+    },
+    {
+        "label": "Webapp",
+        "kind": 6,
+        "importPath": "application.flask",
+        "description": "application.flask",
+        "peekOfCode": "class Webapp(Flask):\n    def __init__(self):\n        super().__init__(\"webapp\")\napp = Webapp()\ndef restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)",
+        "detail": "application.flask",
+        "documentation": {}
+    },
+    {
+        "label": "restart",
+        "kind": 2,
+        "importPath": "application.flask",
+        "description": "application.flask",
+        "peekOfCode": "def restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():\n    return \"\"\"",
+        "detail": "application.flask",
+        "documentation": {}
+    },
+    {
+        "label": "update_system",
+        "kind": 2,
+        "importPath": "application.flask",
+        "description": "application.flask",
+        "peekOfCode": "def update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():\n    return \"\"\"\n<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+        "detail": "application.flask",
+        "documentation": {}
+    },
+    {
+        "label": "web_app_home",
+        "kind": 2,
+        "importPath": "application.flask",
+        "description": "application.flask",
+        "peekOfCode": "def web_app_home():\n    return \"\"\"\n<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      background-color: white;\n      color: black;",
+        "detail": "application.flask",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "application.flask",
+        "description": "application.flask",
+        "peekOfCode": "app = Webapp()\ndef restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():",
+        "detail": "application.flask",
+        "documentation": {}
+    },
+    {
+        "label": "Save",
+        "kind": 6,
+        "importPath": "data.database",
+        "description": "data.database",
+        "peekOfCode": "class Save:\n    @staticmethod\n    def user(m):\n        conn, cursor = pg()\n        current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n        date = current_time.strftime(\"%d - %m - %Y\")\n        if m.chat.username:\n            first_on_chat = f\"{m.chat.title}({m.chat.username}) - {m.chat.id}\"\n        else:\n            first_on_chat = f\"{m.chat.title} - {m.chat.id}\"",
+        "detail": "data.database",
+        "documentation": {}
+    },
+    {
+        "label": "Get",
+        "kind": 6,
+        "importPath": "data.database",
+        "description": "data.database",
+        "peekOfCode": "class Get:\n    @staticmethod\n    def users_list():\n        conn, cursor = pg()\n        result = []\n        cursor.execute(\"SELECT * FROM users\")\n        for user in cursor.fetchall():\n            user_id = user[0]\n            username = user[1]\n            first_name = user[2]",
+        "detail": "data.database",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "kind": 6,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "class Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "res",
+        "kind": 2,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "def res():\n    secret = requests.get(os.getenv(\"SECRET\")).text\n    return json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nres = res()\ndapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "pg",
+        "kind": 2,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "def pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "res",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "res = res()\ndapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "dapi",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "dapi = res.api.dapi\ncollection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "collection = res.api.collection\ndeta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "deta",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "deta = Deta(res.key.web_collection)\ndef pg():\n    conn = psycopg2.connect(res.data.cockroach)\n    return conn, conn.cursor()\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
+        "label": "add_off",
+        "kind": 2,
+        "importPath": "data.off_download",
+        "description": "data.off_download",
+        "peekOfCode": "def add_off(chat_id):\n    if os.path.exists(\"listoff.txt\"):\n        with open(\"listoff.txt\", \"r\") as f:\n            chat_ids = f.read().splitlines()\n            if str(chat_id) not in chat_ids:\n                with open(\"listoff.txt\", \"a\") as w:\n                    w.write(\"\\n\" + str(chat_id))\n                return True\n            else:\n                return False",
+        "detail": "data.off_download",
+        "documentation": {}
+    },
+    {
+        "label": "rm_off",
+        "kind": 2,
+        "importPath": "data.off_download",
+        "description": "data.off_download",
+        "peekOfCode": "def rm_off(chat_id):\n    if os.path.exists(\"listoff.txt\"):\n        with open(\"listoff.txt\", \"r\") as f:\n            chat_ids = f.read().splitlines()\n            if str(chat_id) in chat_ids:\n                chat_ids.remove(str(chat_id))\n                with open(\"listoff.txt\", \"w\") as w:\n                    w.write(\"\\n\".join(chat_ids))\n                    return True\n            else:",
+        "detail": "data.off_download",
+        "documentation": {}
+    },
+    {
+        "label": "check_listoff",
+        "kind": 2,
+        "importPath": "data.off_download",
+        "description": "data.off_download",
+        "peekOfCode": "def check_listoff(chat_id):\n    if os.path.exists(\"listoff.txt\"):\n        with open(\"listoff.txt\", \"r\") as f:\n            chat_ids = f.read().splitlines()\n            return str(chat_id) in chat_ids\n    else:\n        return False",
+        "detail": "data.off_download",
+        "documentation": {}
+    },
+    {
+        "label": "filter_owner",
+        "kind": 2,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "def filter_owner(_, __, m):\n    return (\n        m.from_user.id == 5665225938\n        if m.from_user\n        else m.sender_chat.username == \"contentdownload\"\n    )\ndef content_download_channel(_, __, m):\n    return (\n        not m.sender_chat.username == \"contentdownload\"\n        if m.sender_chat",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "content_download_channel",
+        "kind": 2,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "def content_download_channel(_, __, m):\n    return (\n        not m.sender_chat.username == \"contentdownload\"\n        if m.sender_chat\n        and m.forward_from_chat\n        and m.chat.username == \"contentdownload_group\"\n        else True\n    )\ndef check_listoff_filter(_, __, m):\n    return not check_listoff(m.chat.id)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "check_listoff_filter",
+        "kind": 2,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "def check_listoff_filter(_, __, m):\n    return not check_listoff(m.chat.id)\ndef filter_group_admin(_, __, m):\n    if m.from_user:\n        user_status = m.chat.get_member(m.from_user.id).status\n        return user_status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]\n    return False\nowner = filters.create(filter_owner)\nchannel_post = filters.create(content_download_channel)\nfilter_on = filters.create(check_listoff_filter)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "filter_group_admin",
+        "kind": 2,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "def filter_group_admin(_, __, m):\n    if m.from_user:\n        user_status = m.chat.get_member(m.from_user.id).status\n        return user_status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]\n    return False\nowner = filters.create(filter_owner)\nchannel_post = filters.create(content_download_channel)\nfilter_on = filters.create(check_listoff_filter)\nfilter_right = filters.create(filter_group_admin)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "owner",
+        "kind": 5,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "owner = filters.create(filter_owner)\nchannel_post = filters.create(content_download_channel)\nfilter_on = filters.create(check_listoff_filter)\nfilter_right = filters.create(filter_group_admin)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "channel_post",
+        "kind": 5,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "channel_post = filters.create(content_download_channel)\nfilter_on = filters.create(check_listoff_filter)\nfilter_right = filters.create(filter_group_admin)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "filter_on",
+        "kind": 5,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "filter_on = filters.create(check_listoff_filter)\nfilter_right = filters.create(filter_group_admin)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "filter_right",
+        "kind": 5,
+        "importPath": "misc.filters",
+        "description": "misc.filters",
+        "peekOfCode": "filter_right = filters.create(filter_group_admin)",
+        "detail": "misc.filters",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def upload(file_data, file_link):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    file_name = f\"video {formatted_time}.mp4\"\n    Thread(\n        target=upload_file,\n        args=(\n            file_data,\n            file_name,\n        ),",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_file",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def upload_file(file_data, file_name):\n    raw_bytes = file_data.getvalue()\n    response = requests.post(f\"{collection}/s3/upload/{file_name}\", data=raw_bytes)\n    print(response.text)\ndef upload_web(file_data, file_name):\n    base = deta.Base(\"files\")\n    drive = deta.Drive(\"files\")\n    file_data = file_data.getvalue()\n    base.put({\"key\": file_name, \"name\": file_name})\n    drive.put(name=file_name, data=file_data)",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_web",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def upload_web(file_data, file_name):\n    base = deta.Base(\"files\")\n    drive = deta.Drive(\"files\")\n    file_data = file_data.getvalue()\n    base.put({\"key\": file_name, \"name\": file_name})\n    drive.put(name=file_name, data=file_data)\n    return f\"{collection}/play/{quote(file_name)}\"\ndef youtube_upload(url, title=\"TikTok & Douyin\", des=\"Welcome to my channel!\"):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "youtube_upload",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def youtube_upload(url, title=\"TikTok & Douyin\", des=\"Welcome to my channel!\"):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    des = f\"{title} - {formatted_time}\\n\\n{des}\"\n    r = requests.post(\n        \"https://eohejw5exru9jhs.m.pipedream.net\",\n        json={\"url\": url, \"title\": title, \"des\": des},\n    )\n    print(r.text)",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "get_media_links",
+        "kind": 2,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "def get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links\ndef save(m):\n    if str(m.chat.id).startswith(\"-100\"):",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "kind": 2,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "def save(m):\n    if str(m.chat.id).startswith(\"-100\"):\n        Thread(target=Save.chat, args=(m,)).start()\n    if m.from_user:\n        Thread(target=Save.user, args=(m,)).start()\n        print(f\"{m.from_user.first_name} ID:{m.from_user.id}\")\n    else:\n        print(f\"{m.sender_chat.title} ID:{m.sender_chat.id}\")\ndef send_photos(m, photo_links: List[str], button, caption):\n    m.reply_chat_action(sp)",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "kind": 2,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "def send_photos(m, photo_links: List[str], button, caption):\n    m.reply_chat_action(sp)\n    if len(photo_links) == 1:\n        m.reply_photo(photo_links[0], reply_markup=button, caption=caption)\n    else:\n        for i in range(0, len(photo_links) - 1, 10):\n            media_group = [\n                InputMediaPhoto(link)\n                for link in photo_links[i : min(i + 10, len(photo_links) - 1)]\n            ]",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "send_videos",
+        "kind": 2,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "def send_videos(m, video_links: List[str], button, caption):\n    m.reply_chat_action(sv)\n    if len(video_links) == 1:\n        m.reply_video(video_links[0], reply_markup=button, caption=caption)\n    else:\n        for i in range(0, len(video_links) - 1, 10):\n            media_group = [\n                InputMediaVideo(link)\n                for link in video_links[i : min(i + 10, len(video_links) - 1)]\n            ]",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "server_info",
+        "kind": 2,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "def server_info():\n    try:\n        response = requests.get(\"https://ipinfo.io\", proxies=proxies)\n        data = response.json()\n        ip = data.get(\"ip\", \"N/A\")\n        city = data.get(\"city\", \"N/A\")\n        region = data.get(\"region\", \"N/A\")\n        country = data.get(\"country\", \"N/A\")\n        provider = data.get(\"org\", \"N/A\")\n        server_info = f\"IP: {ip}\\nCity: {city}\\nRegion: {region}\\nCountry: {country}\\nProvider: {provider}\"",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "sp",
+        "kind": 5,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "sp = ChatAction.UPLOAD_PHOTO\nsv = ChatAction.UPLOAD_VIDEO\ndef get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "sv",
+        "kind": 5,
+        "importPath": "misc.util",
+        "description": "misc.util",
+        "peekOfCode": "sv = ChatAction.UPLOAD_VIDEO\ndef get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links\ndef save(m):",
+        "detail": "misc.util",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "kind": 6,
+        "importPath": "misc.var",
+        "description": "misc.var",
+        "peekOfCode": "class Attrs:\n    def __init__(self, m):\n        try:\n            url = re.search(r\"(?P<url>https?://[^\\s]+)\", m.text).group(\"url\")\n        except:\n            url = re.search(r\"(?P<url>https?://[^\\s]+)\", m.reply_to_message.text).group(\n                \"url\"\n            )\n        self.url = url\n        self.button = InlineKeyboardMarkup(",
+        "detail": "misc.var",
+        "documentation": {}
+    },
+    {
+        "label": "Formats",
+        "kind": 6,
+        "importPath": "misc.var",
+        "description": "misc.var",
+        "peekOfCode": "class Formats:\n    def __init__(self):\n        self.image = [\n            \"image/png\",\n            \"image/jpeg\",\n            \"image/jpg\",\n            \"image/gif\",\n            \"image/webp\",\n            \"image/svg+xml\",\n            \"image/bmp\",",
+        "detail": "misc.var",
+        "documentation": {}
+    },
+    {
+        "label": "proxies",
+        "kind": 5,
+        "importPath": "misc.var",
+        "description": "misc.var",
+        "peekOfCode": "proxies = {\"http\": \"http://127.0.0.1:8090\", \"https\": \"http://127.0.0.1:8090\"}\nclass Attrs:\n    def __init__(self, m):\n        try:\n            url = re.search(r\"(?P<url>https?://[^\\s]+)\", m.text).group(\"url\")\n        except:\n            url = re.search(r\"(?P<url>https?://[^\\s]+)\", m.reply_to_message.text).group(\n                \"url\"\n            )\n        self.url = url",
+        "detail": "misc.var",
+        "documentation": {}
+    },
+    {
+        "label": "reply_start",
+        "kind": 2,
+        "importPath": "plugins. basic.command",
+        "description": "plugins. basic.command",
+        "peekOfCode": "def reply_start(c, m):\n    save(m)\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.language_code == \"vi\":\n        msg = start_vn\n    else:\n        msg = start_en\n    m.reply(msg, reply_markup=button)",
+        "detail": "plugins. basic.command",
+        "documentation": {}
+    },
+    {
+        "label": "button",
+        "kind": 5,
+        "importPath": "plugins. basic.command",
+        "description": "plugins. basic.command",
+        "peekOfCode": "button = InlineKeyboardMarkup(\n    [\n        [\n            InlineKeyboardButton(\n                \"Youtube\", url=\"https://youtube.com/@tiktokdouyin-share\"\n            )\n        ],\n        [\n            InlineKeyboardButton(\"Group\", url=\"https://t.me/contentdownload_group\"),\n            InlineKeyboardButton(\"Channel\", url=\"https://t.me/contentdownload\"),",
+        "detail": "plugins. basic.command",
+        "documentation": {}
+    },
+    {
+        "label": "start_vn",
+        "kind": 5,
+        "importPath": "plugins. basic.command",
+        "description": "plugins. basic.command",
+        "peekOfCode": "start_vn = \"\"\"__--**Content Download bot**--__ cho phép bạn tải nội dung từ nhiều nguồn khác nhau trên mạng xã hội. \nBạn có thể tải video, hình ảnh, âm thanh, hoặc tệp từ các trang web như __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, và nhiều trang web khác.\"\"\"\nstart_en = \"\"\"__--**Content Download bot**--__ allows you to download content from various sources on social media. \nYou can download videos, images, audio, or file from websites such as __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, and more.\"\"\"\n@Client.on_message(\n    filters.command([\"start\", \"help\"])\n    & (filters.private | filters.chat(-1001832458549))\n)\ndef reply_start(c, m):\n    save(m)",
+        "detail": "plugins. basic.command",
+        "documentation": {}
+    },
+    {
+        "label": "start_en",
+        "kind": 5,
+        "importPath": "plugins. basic.command",
+        "description": "plugins. basic.command",
+        "peekOfCode": "start_en = \"\"\"__--**Content Download bot**--__ allows you to download content from various sources on social media. \nYou can download videos, images, audio, or file from websites such as __Youtube__, __TikTok/Douyin__, __Facebook__, __Twitter__, and more.\"\"\"\n@Client.on_message(\n    filters.command([\"start\", \"help\"])\n    & (filters.private | filters.chat(-1001832458549))\n)\ndef reply_start(c, m):\n    save(m)\n    m.reply_chat_action(ChatAction.TYPING)\n    if m.from_user.language_code == \"vi\":",
+        "detail": "plugins. basic.command",
+        "documentation": {}
+    },
+    {
+        "label": "TDDL",
+        "kind": 2,
+        "importPath": "plugins.assets.bytedance",
+        "description": "plugins.assets.bytedance",
+        "peekOfCode": "def TDDL(url):\n    data = requests.get(f\"{dapi}/tikdou\", params={\"url\": url}, timeout=180).json()\n    link = data[\"url\"]\n    if data[\"is_video\"]:\n        try:\n            content = requests.get(link).content\n            file = BytesIO(content)\n            file.name = \"tiktokdouyin.mp4\"\n        except Exception as e:\n            file = None",
+        "detail": "plugins.assets.bytedance",
+        "documentation": {}
+    },
+    {
+        "label": "tiktokdouyin",
+        "kind": 2,
+        "importPath": "plugins.assets.bytedance",
+        "description": "plugins.assets.bytedance",
+        "peekOfCode": "def tiktokdouyin(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    try:\n        media, music, is_video = TDDL(url)\n    except Exception as e:\n        logging.critical(e)\n        TikTokUser(m, url, caption, TDDL)",
+        "detail": "plugins.assets.bytedance",
+        "documentation": {}
+    },
+    {
+        "label": "tdmusic",
+        "kind": 2,
+        "importPath": "plugins.assets.bytedance",
+        "description": "plugins.assets.bytedance",
+        "peekOfCode": "def tdmusic(m, attrs):\n    url = attrs.url\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_AUDIO)\n    _, audio, __ = TDDL(url)\n    m.reply_chat_action(ChatAction.UPLOAD_AUDIO)\n    if not audio:\n        raise Exception(\"API error\")\n    try:\n        m.reply_audio(audio[0], caption=caption)",
+        "detail": "plugins.assets.bytedance",
+        "documentation": {}
+    },
+    {
+        "label": "FBDL",
+        "kind": 2,
+        "importPath": "plugins.assets.facebook",
+        "description": "plugins.assets.facebook",
+        "peekOfCode": "def FBDL(url):\n    data = requests.get(f\"{dapi}/facebook\", params={\"url\": url}, timeout=180).json()\n    link = data[\"url\"][0]\n    req = requests.get(link)\n    file = BytesIO(req.content)\n    file.name = \"video.mp4\"\n    print(\"Facebook\")\n    return file, link\ndef facebook(m, attrs):\n    url = attrs.url",
+        "detail": "plugins.assets.facebook",
+        "documentation": {}
+    },
+    {
+        "label": "facebook",
+        "kind": 2,
+        "importPath": "plugins.assets.facebook",
+        "description": "plugins.assets.facebook",
+        "peekOfCode": "def facebook(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    files, links = FBDL(url)\n    m.reply_chat_action(ChatAction.UPLOAD_VIDEO)\n    try:\n        m.reply_video(links, caption=caption, reply_markup=button)\n    except Exception as e:",
+        "detail": "plugins.assets.facebook",
+        "documentation": {}
+    },
+    {
+        "label": "IGDL",
+        "kind": 2,
+        "importPath": "plugins.assets.instagram",
+        "description": "plugins.assets.instagram",
+        "peekOfCode": "def IGDL(url):\n    data = requests.get(f\"{dapi}/instagram\", params={\"url\": url}, timeout=180).json()\n    files = []\n    links = data[\"url\"]\n    is_video = data[\"is_video\"]\n    if is_video:\n        for link in links:\n            try:\n                req = requests.get(link)\n                file = BytesIO(req.content)",
+        "detail": "plugins.assets.instagram",
+        "documentation": {}
+    },
+    {
+        "label": "instagram",
+        "kind": 2,
+        "importPath": "plugins.assets.instagram",
+        "description": "plugins.assets.instagram",
+        "peekOfCode": "def instagram(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    links, files, is_video = IGDL(url)\n    if not is_video:\n        send_photos(m, links, button, caption)\n    else:\n        try:",
+        "detail": "plugins.assets.instagram",
+        "documentation": {}
+    },
+    {
+        "label": "YTM",
+        "kind": 2,
+        "importPath": "plugins.assets.music",
+        "description": "plugins.assets.music",
+        "peekOfCode": "def YTM(url):\n    data = requests.get(f\"{dapi}/music\", params={\"url\": url}, timeout=60).json()\n    content = requests.get(data[\"url\"]).content\n    file = BytesIO(content)\n    file.name = \"music.mp3\"\n    print(\"Music\")\n    return file\ndef music(m, attrs):\n    url = attrs.url\n    caption = attrs.caption",
+        "detail": "plugins.assets.music",
+        "documentation": {}
+    },
+    {
+        "label": "music",
+        "kind": 2,
+        "importPath": "plugins.assets.music",
+        "description": "plugins.assets.music",
+        "peekOfCode": "def music(m, attrs):\n    url = attrs.url\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_AUDIO)\n    audio = YTM(url)\n    m.reply_chat_action(ChatAction.UPLOAD_AUDIO)\n    m.reply_audio(audio, caption=caption)\n    print(\"Completed\")",
+        "detail": "plugins.assets.music",
+        "documentation": {}
+    },
+    {
+        "label": "ODL",
+        "kind": 2,
+        "importPath": "plugins.assets.other",
+        "description": "plugins.assets.other",
+        "peekOfCode": "def ODL(url):\n    data = requests.get(f\"{dapi}/other\", params={\"url\": url}, timeout=60).json()\n    r = requests.get(data[\"url\"])\n    content = r.content\n    try:\n        header = r.headers[\"Content-Disposition\"]\n        filename = re.findall(\"filename=(.+)\", header)[0]\n    except Exception:\n        filename = \"download\"\n        if r.headers[\"Content-Type\"] in Formats().audio:",
+        "detail": "plugins.assets.other",
+        "documentation": {}
+    },
+    {
+        "label": "other",
+        "kind": 2,
+        "importPath": "plugins.assets.other",
+        "description": "plugins.assets.other",
+        "peekOfCode": "def other(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    file, types = ODL(url)\n    if types == \"image\":\n        m.reply_chat_action(ChatAction.UPLOAD_PHOTO)\n        m.reply_photo(file, caption=caption, reply_markup=button)\n    elif types == \"video\":\n        m.reply_chat_action(ChatAction.UPLOA_VIDEO)",
+        "detail": "plugins.assets.other",
+        "documentation": {}
+    },
+    {
+        "label": "TikTokUser",
+        "kind": 2,
+        "importPath": "plugins.assets.tiktokuser",
+        "description": "plugins.assets.tiktokuser",
+        "peekOfCode": "def TikTokUser(m, url, caption, TDDL):\n    button = InlineKeyboardMarkup(\n        [\n            [\n                InlineKeyboardButton(\"TikTok User\", url=url),\n                InlineKeyboardButton(\"Group\", url=\"https://t.me/contentdownload_group\"),\n                InlineKeyboardButton(\"Channel\", url=\"https://t.me/contentdownload\"),\n            ]\n        ]\n    )",
+        "detail": "plugins.assets.tiktokuser",
+        "documentation": {}
+    },
+    {
+        "label": "YTDL",
+        "kind": 2,
+        "importPath": "plugins.assets.youtube",
+        "description": "plugins.assets.youtube",
+        "peekOfCode": "def YTDL(url):\n    data = requests.get(f\"{dapi}/youtube\", params={\"url\": url}, timeout=60).json()\n    try:\n        content = requests.get(data[\"url\"]).content\n        file = BytesIO(content)\n        file.name = \"video.mp4\"\n    except Exception as e:\n        logging.critical(e)\n        file = data[\"url\"]\n    print(\"Youtube\")",
+        "detail": "plugins.assets.youtube",
+        "documentation": {}
+    },
+    {
+        "label": "youtube",
+        "kind": 2,
+        "importPath": "plugins.assets.youtube",
+        "description": "plugins.assets.youtube",
+        "peekOfCode": "def youtube(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    file = YTDL(url)\n    m.reply_chat_action(ChatAction.UPLOAD_VIDEO)\n    m.reply_video(file, caption=caption, reply_markup=button)\n    print(\"Completed\")",
+        "detail": "plugins.assets.youtube",
+        "documentation": {}
+    },
+    {
+        "label": "set_auto_download_off",
+        "kind": 2,
+        "importPath": "plugins.manage.manage",
+        "description": "plugins.manage.manage",
+        "peekOfCode": "def set_auto_download_off(c, m):\n    status = add_off(m.chat.id)\n    if status:\n        if m.from_user.language_code == \"vi\":\n            m.reply(\n                \"Tự động tải xuống đã được tắt cho nhóm chat này. Bạn vẫn có thể tải xuống bằng cách dùng lệnh /download\"\n            )\n        else:\n            m.reply(\n                \"Auto downloads for this group was disabled. You still can download by using command /download\"",
+        "detail": "plugins.manage.manage",
+        "documentation": {}
+    },
+    {
+        "label": "set_auto_download_on",
+        "kind": 2,
+        "importPath": "plugins.manage.manage",
+        "description": "plugins.manage.manage",
+        "peekOfCode": "def set_auto_download_on(c, m):\n    status = rm_off(m.chat.id)\n    if status:\n        if m.from_user.language_code == \"vi\":\n            m.reply(\"Tự động tải xuống cho nhóm chat này đã được khôi phục\")\n        else:\n            m.reply(\"Auto downloads for this group have been restored\")\n    else:\n        if m.from_user.language_code == \"vi\":\n            m.reply(\"Tự động tải xuống không bị tắt\")",
+        "detail": "plugins.manage.manage",
+        "documentation": {}
+    },
+    {
+        "label": "bot_server_info",
+        "kind": 2,
+        "importPath": "plugins.manage.server",
+        "description": "plugins.manage.server",
+        "peekOfCode": "def bot_server_info(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    ver = platform.version()\n    name = platform.uname()\n    system = platform.system()\n    server = server_info()\n    msg_text = (\n        f\"```{system}\\n\"\n        f\"INFO:\\n{name}\\n\\n\"\n        f\"VERSION:\\n{ver}\\n\\n\"",
+        "detail": "plugins.manage.server",
+        "documentation": {}
+    },
+    {
+        "label": "count_uses",
+        "kind": 2,
+        "importPath": "plugins.other.extend",
+        "description": "plugins.other.extend",
+        "peekOfCode": "def count_uses(c, m):\n    m.reply_chat_action(typing)\n    user, chat = Get.get_count()\n    m.reply(f\"Chats: {chat}\\nUsers: {user}\")\n@Client.on_message(filters.command(\"users\") & owner)\ndef users_list(c, m):\n    m.reply_chat_action(typing)\n    count, users = Get.users_list()\n    m.reply(f\"__--**{count}**--__\")\n    message = \"\"",
+        "detail": "plugins.other.extend",
+        "documentation": {}
+    },
+    {
+        "label": "users_list",
+        "kind": 2,
+        "importPath": "plugins.other.extend",
+        "description": "plugins.other.extend",
+        "peekOfCode": "def users_list(c, m):\n    m.reply_chat_action(typing)\n    count, users = Get.users_list()\n    m.reply(f\"__--**{count}**--__\")\n    message = \"\"\n    for i, user in enumerate(users):\n        message += f\"{i+1}) {user}\\n\"\n        if len(message) >= 4090:\n            m.reply_chat_action(typing)\n            m.reply(message, quote=True, parse_mode=enums.ParseMode.HTML)",
+        "detail": "plugins.other.extend",
+        "documentation": {}
+    },
+    {
+        "label": "chats_list",
+        "kind": 2,
+        "importPath": "plugins.other.extend",
+        "description": "plugins.other.extend",
+        "peekOfCode": "def chats_list(c, m):\n    m.reply_chat_action(typing)\n    count, chats = Get.chats_list()\n    m.reply(f\"__--**{count}**--__\")\n    message = \"\"\n    for i, chat in enumerate(chats):\n        message += f\"{i+1}) {chat}\\n\"\n        if len(message) >= 4090:\n            m.reply_chat_action(typing)\n            m.reply(message, quote=True, parse_mode=enums.ParseMode.HTML)",
+        "detail": "plugins.other.extend",
+        "documentation": {}
+    },
+    {
+        "label": "get_start_time",
+        "kind": 2,
+        "importPath": "plugins.other.extend",
+        "description": "plugins.other.extend",
+        "peekOfCode": "def get_start_time(c, m):\n    if m.from_user:\n        first_time, on_chat, on_with, msg_count = Get.user_history(m.from_user.id)\n        if m.from_user.language_code == \"vi\":\n            m.reply(\n                f\"Bạn bắt đầu sử dụng bot **{on_with}** từ ngày --**{first_time}**-- tại cuộc trò chuyện __--**{on_chat}**--__.\\nBạn đã nhắn tổng cộng __--{msg_count}--__ tin nhắn\",\n                quote=True,\n            )",
+        "detail": "plugins.other.extend",
+        "documentation": {}
+    },
+    {
+        "label": "typing",
+        "kind": 5,
+        "importPath": "plugins.other.extend",
+        "description": "plugins.other.extend",
+        "peekOfCode": "typing = enums.ChatAction.TYPING\n@Client.on_message(filters.command(\"count\") & owner)\ndef count_uses(c, m):\n    m.reply_chat_action(typing)\n    user, chat = Get.get_count()\n    m.reply(f\"Chats: {chat}\\nUsers: {user}\")\n@Client.on_message(filters.command(\"users\") & owner)\ndef users_list(c, m):\n    m.reply_chat_action(typing)\n    count, users = Get.users_list()",
+        "detail": "plugins.other.extend",
+        "documentation": {}
+    },
+    {
+        "label": "system_update",
+        "kind": 2,
+        "importPath": "plugins.other.update",
+        "description": "plugins.other.update",
+        "peekOfCode": "def system_update(c, m):\n    m.reply_chat_action(typing)\n    result = subprocess.run(\n        [\"./update.sh\"],\n        stdout=subprocess.PIPE,\n        stderr=subprocess.STDOUT,\n        text=True,\n        shell=True,\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
+        "detail": "plugins.other.update",
+        "documentation": {}
+    },
+    {
+        "label": "run_shell",
+        "kind": 2,
+        "importPath": "plugins.other.update",
+        "description": "plugins.other.update",
+        "peekOfCode": "def run_shell(c, m):\n    m.reply_chat_action(typing)\n    command = m.text.replace(\"/shell \", \"\")\n    result = subprocess.run(\n        command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
+        "detail": "plugins.other.update",
+        "documentation": {}
+    },
+    {
+        "label": "typing",
+        "kind": 5,
+        "importPath": "plugins.other.update",
+        "description": "plugins.other.update",
+        "peekOfCode": "typing = ChatAction.TYPING\n@Client.on_message(filters.command(\"update\") & filters.private & owner)\ndef system_update(c, m):\n    m.reply_chat_action(typing)\n    result = subprocess.run(\n        [\"./update.sh\"],\n        stdout=subprocess.PIPE,\n        stderr=subprocess.STDOUT,\n        text=True,\n        shell=True,",
+        "detail": "plugins.other.update",
+        "documentation": {}
+    },
+    {
+        "label": "NotFileErr",
+        "kind": 6,
+        "importPath": "plugins.other.upload",
+        "description": "plugins.other.upload",
+        "peekOfCode": "class NotFileErr(Exception):\n            \"\"\"\"\"\"\n            pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(\"COLLECTION\", url=collection)]]))\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):",
+        "detail": "plugins.other.upload",
+        "documentation": {}
+    },
+    {
+        "label": "cloud_list",
+        "kind": 2,
+        "importPath": "plugins.other.upload",
+        "description": "plugins.other.upload",
+        "peekOfCode": "def cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(\"COLLECTION\", url=collection)]]))\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):\n    m.reply_chat_action(typing)\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    if not m.reply_to_message:",
+        "detail": "plugins.other.upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_to_cloud",
+        "kind": 2,
+        "importPath": "plugins.other.upload",
+        "description": "plugins.other.upload",
+        "peekOfCode": "def upload_to_cloud(c, m):\n    m.reply_chat_action(typing)\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    if not m.reply_to_message:\n        raise NotFileErr(\"Please reply to a message containing a file to upload.\")\n    words = f\"date: {formatted}\"\n    file_id = None\n    file_name = words\n    headers = {\"Content-type\": \"application/octet-stream\"}",
+        "detail": "plugins.other.upload",
+        "documentation": {}
+    },
+    {
+        "label": "request_delete_file",
+        "kind": 2,
+        "importPath": "plugins.other.upload",
+        "description": "plugins.other.upload",
+        "peekOfCode": "def request_delete_file(c, m):\n    m.reply_chat_action(typing)\n    if m.reply_to_message:\n        url = Attrs(m.reply_to_message).url\n    else:\n        url = Attrs(m).url\n    res = requests.delete(url).text\n    m.reply(res)",
+        "detail": "plugins.other.upload",
+        "documentation": {}
+    },
+    {
+        "label": "typing",
+        "kind": 5,
+        "importPath": "plugins.other.upload",
+        "description": "plugins.other.upload",
+        "peekOfCode": "typing = ChatAction.TYPING\nclass NotFileErr(Exception):\n            \"\"\"\"\"\"\n            pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(\"COLLECTION\", url=collection)]]))\n@Client.on_message(filters.command(\"upload\"))",
+        "detail": "plugins.other.upload",
+        "documentation": {}
+    },
+    {
+        "label": "music_download",
+        "kind": 2,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "def music_download(c, m):\n    save(m)\n    try:\n        music(m, Attrs(m))\n        try:\n            m.delete()\n        except Exception as e:\n            raise\n    except Exception as e:\n        m.reply_chat_action(typing)",
+        "detail": "plugins.download",
+        "documentation": {}
+    },
+    {
+        "label": "youtube_download",
+        "kind": 2,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "def youtube_download(c, m):\n    save(m)\n    try:\n        youtube(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
+        "detail": "plugins.download",
+        "documentation": {}
+    },
+    {
+        "label": "facebook_download",
+        "kind": 2,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "def facebook_download(c, m):\n    save(m)\n    try:\n        facebook(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
+        "detail": "plugins.download",
+        "documentation": {}
+    },
+    {
+        "label": "instagram_download",
+        "kind": 2,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "def instagram_download(c, m):\n    save(m)\n    try:\n        instagram(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
+        "detail": "plugins.download",
+        "documentation": {}
+    },
+    {
+        "label": "tiktokdouyin_download",
+        "kind": 2,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "def tiktokdouyin_download(c, m):\n    save(m)\n    try:\n        tiktokdouyin(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
+        "detail": "plugins.download",
+        "documentation": {}
+    },
+    {
+        "label": "other_download",
+        "kind": 2,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "def other_download(c, m):\n    try:\n        other(m, Attrs(m))\n        save(m)\n    except Exception:\n        pass",
+        "detail": "plugins.download",
+        "documentation": {}
+    },
+    {
+        "label": "typing",
+        "kind": 5,
+        "importPath": "plugins.download",
+        "description": "plugins.download",
+        "peekOfCode": "typing = ChatAction.TYPING\n@Client.on_message(filters.command(\"music\"))\ndef music_download(c, m):\n    save(m)\n    try:\n        music(m, Attrs(m))\n        try:\n            m.delete()\n        except Exception as e:\n            raise",
+        "detail": "plugins.download",
+        "documentation": {}
+    }
+]
