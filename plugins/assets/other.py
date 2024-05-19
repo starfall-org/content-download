@@ -1,16 +1,13 @@
-import logging
 import re
 from io import BytesIO
-
 import requests
 from hydrogram.enums import ChatAction
-
-from data import dapi
+from data import DAPI
 from misc import Formats
 
 
 def ODL(url):
-    data = requests.get(f"{dapi}/other", params={"url": url}, timeout=60).json()
+    data = requests.get(f"{DAPI}/other", params={"url": url}, timeout=60).json()
     r = requests.get(data["url"])
     content = r.content
     try:

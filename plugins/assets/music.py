@@ -1,14 +1,11 @@
-import logging
 from io import BytesIO
-
 import requests
 from hydrogram.enums import ChatAction
-
-from data import dapi
+from data import DAPI
 
 
 def YTM(url):
-    data = requests.get(f"{dapi}/music", params={"url": url}, timeout=60).json()
+    data = requests.get(f"{DAPI}/music", params={"url": url}, timeout=60).json()
     content = requests.get(data["url"]).content
     file = BytesIO(content)
     file.name = "music.mp3"

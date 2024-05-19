@@ -1,11 +1,12 @@
+import requests
 from datetime import datetime
 from threading import Thread
 from urllib.parse import quote
-
-import requests
 from pytz import timezone
+from deta import Deta
+from data import COLLECTON, WEB_COLLECTION
 
-from data import collection, deta
+deta = Deta(WEB_COLLECTION)
 
 
 def upload(file_data, file_link):
@@ -31,7 +32,7 @@ def upload(file_data, file_link):
 
 def upload_file(file_data, file_name):
     raw_bytes = file_data.getvalue()
-    response = requests.post(f"{collection}/s3/upload/{file_name}", data=raw_bytes)
+    response = requests.post(f"{COLLECTON}/s3/upload/{file_name}", data=raw_bytes)
     print(response.text)
 
 
@@ -41,7 +42,7 @@ def upload_web(file_data, file_name):
     file_data = file_data.getvalue()
     base.put({"key": file_name, "name": file_name})
     drive.put(name=file_name, data=file_data)
-    return f"{collection}/play/{quote(file_name)}"
+    return f"{COLLECTON}/play/{quote(file_name)}"
 
 
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):

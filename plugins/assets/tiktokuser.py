@@ -1,8 +1,6 @@
 import logging
-
 from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 from misc import get_media_links, send_photos, send_videos
 
 

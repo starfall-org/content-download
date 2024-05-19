@@ -3,13 +3,13 @@ import os
 from io import BytesIO
 import requests
 from hydrogram.enums import ChatAction
-from data import dapi
+from data import DAPI
 from misc import send_photos, upload
 from .tiktokuser import TikTokUser
 
 
 def TDDL(url):
-    data = requests.get(f"{dapi}/tikdou", params={"url": url}, timeout=180).json()
+    data = requests.get(f"{DAPI}/tikdou", params={"url": url}, timeout=180).json()
     link = data["url"]
     if data["is_video"]:
         try:
