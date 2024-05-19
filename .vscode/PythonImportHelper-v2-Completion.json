@@ -332,6 +332,22 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "ChatType",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
         "label": "ChatType",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
@@ -473,6 +489,62 @@
         "description": "pytz",
         "isExtraImport": true,
         "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -950,6 +1022,69 @@
         "description": "application.flask",
         "peekOfCode": "app = Webapp()\ndef restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():",
         "detail": "application.flask",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"users\"\n    user_id = Column(String, primary_key=True, index=True)\n    username = Column(String)\n    first_name = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)\n    message_count = Column(Integer, default=1)\n    first_time = Column(String)\n    first_on_chat = Column(String)",
+        "detail": "data.base_model",
+        "documentation": {}
+    },
+    {
+        "label": "Chat",
+        "kind": 6,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "class Chat(Base):\n    __tablename__ = \"chats\"\n    username = Column(String)\n    title = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)\n    first_time = Column(String)\n    first_with = Column(String)\nclass Save:\n    @staticmethod",
+        "detail": "data.base_model",
+        "documentation": {}
+    },
+    {
+        "label": "Save",
+        "kind": 6,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "class Save:\n    @staticmethod\n    def user(m):\n        session = SessionLocal()\n        try:\n            current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n            date = current_time.strftime(\"%d - %m - %Y\")\n            if m.chat.username:\n                first_on_chat = f\"{m.chat.title}({m.chat.username}) - {m.chat.id}\"\n            else:",
+        "detail": "data.base_model",
+        "documentation": {}
+    },
+    {
+        "label": "Get",
+        "kind": 6,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "class Get:\n    @staticmethod\n    def users_list():\n        session = SessionLocal()\n        try:\n            result = []\n            users = session.query(User).all()\n            for user in users:\n                user_id = user.user_id\n                username = user.username",
+        "detail": "data.base_model",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "Base = declarative_base()\nengine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass User(Base):\n    __tablename__ = \"users\"\n    user_id = Column(String, primary_key=True, index=True)\n    username = Column(String)\n    first_name = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)",
+        "detail": "data.base_model",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "engine = create_engine(DATABASE_URL)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass User(Base):\n    __tablename__ = \"users\"\n    user_id = Column(String, primary_key=True, index=True)\n    username = Column(String)\n    first_name = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)\n    message_count = Column(Integer, default=1)",
+        "detail": "data.base_model",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "data.base_model",
+        "description": "data.base_model",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nclass User(Base):\n    __tablename__ = \"users\"\n    user_id = Column(String, primary_key=True, index=True)\n    username = Column(String)\n    first_name = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)\n    message_count = Column(Integer, default=1)\n    first_time = Column(String)",
+        "detail": "data.base_model",
         "documentation": {}
     },
     {

@@ -9,3 +9,4 @@ psutil
 pytz
 bs4
 psycopg2
+sqlalchemy
