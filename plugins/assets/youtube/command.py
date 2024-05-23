@@ -52,6 +52,7 @@ def music_download(c, m):
     m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
     m.reply_audio(audio, caption=caption)
     print("Music Done")
+    m.delete()
 
 
 @Client.on_message(
@@ -70,3 +71,4 @@ def youtube_download(c, m):
     m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
     m.reply_video(file, caption=caption, reply_markup=button)
     print("Youtube Done")
+    m.delete()

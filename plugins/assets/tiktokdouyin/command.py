@@ -68,5 +68,6 @@ def tiktokdouyin_download(c, m):
         m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
         m.reply_video(media[0], caption=caption, reply_markup=button)
     print("TikTok and Douyin Done")
+    m.delete()
     if m.chat.username == "contentdownload":
         upload(media[1], media[0])
