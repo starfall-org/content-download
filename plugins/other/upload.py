@@ -6,21 +6,29 @@ from datetime import datetime
 from urllib.parse import quote
 from plugins.var import Attrs
 from plugins.upload import upload_web
-from data import collection
+from data import COLLECTON
 import requests
 import re
+from data.environment import COLLECTON
 
 typing = ChatAction.TYPING
 
+
 class NotFileErr(Exception):
-            """"""
-            pass
+    """"""
+
+    pass
+
 
 @Client.on_message(filters.command("album"))
 def cloud_list(c, m):
     m.reply_chat_action(typing)
-    m.reply("__--**COLLECTION**--__",
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("COLLECTION", url=collection)]]))
+    m.reply(
+        "__--**COLLECTION**--__",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("COLLECTION", url=COLLECTON)]]
+        ),
+    )
 
 
 @Client.on_message(filters.command("upload"))
@@ -60,8 +68,9 @@ def upload_to_cloud(c, m):
     file_data = c.download_media(file_id, in_memory=True)
     m.reply_chat_action(typing)
     file_url = upload_web(file_data, file_name)
-    m.reply(f"`Result:` \n{quote(file_url, safe=":/")}")
-  
+    m.reply(f"`Result:` \n{quote(file_url, safe=':/')}")
+
+
 @Client.on_message(filters.command("delete"))
 def request_delete_file(c, m):
     m.reply_chat_action(typing)

@@ -153,6 +153,14 @@
         "documentation": {}
     },
     {
+        "label": "COLLECTON",
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "isExtraImport": true,
+        "detail": "data.environment",
+        "documentation": {}
+    },
+    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -556,7 +564,7 @@
         "documentation": {}
     },
     {
-        "label": "collection",
+        "label": "COLLECTON",
         "importPath": "data",
         "description": "data",
         "isExtraImport": true,
@@ -1297,7 +1305,7 @@
         "kind": 6,
         "importPath": "plugins.other.upload",
         "description": "plugins.other.upload",
-        "peekOfCode": "class NotFileErr(Exception):\n            \"\"\"\"\"\"\n            pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(\"COLLECTION\", url=collection)]]))\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):",
+        "peekOfCode": "class NotFileErr(Exception):\n    \"\"\"\"\"\"\n    pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(\n            [[InlineKeyboardButton(\"COLLECTION\", url=COLLECTON)]]",
         "detail": "plugins.other.upload",
         "documentation": {}
     },
@@ -1306,7 +1314,7 @@
         "kind": 2,
         "importPath": "plugins.other.upload",
         "description": "plugins.other.upload",
-        "peekOfCode": "def cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(\"COLLECTION\", url=collection)]]))\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):\n    m.reply_chat_action(typing)\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    if not m.reply_to_message:",
+        "peekOfCode": "def cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(\n            [[InlineKeyboardButton(\"COLLECTION\", url=COLLECTON)]]\n        ),\n    )\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):",
         "detail": "plugins.other.upload",
         "documentation": {}
     },
@@ -1333,7 +1341,7 @@
         "kind": 5,
         "importPath": "plugins.other.upload",
         "description": "plugins.other.upload",
-        "peekOfCode": "typing = ChatAction.TYPING\nclass NotFileErr(Exception):\n            \"\"\"\"\"\"\n            pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(\"COLLECTION\", url=collection)]]))\n@Client.on_message(filters.command(\"upload\"))",
+        "peekOfCode": "typing = ChatAction.TYPING\nclass NotFileErr(Exception):\n    \"\"\"\"\"\"\n    pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(",
         "detail": "plugins.other.upload",
         "documentation": {}
     },
