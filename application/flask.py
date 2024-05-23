@@ -6,4 +6,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def web_app_home():
-    return "", 204
+    return "OK"

@@ -900,7 +900,7 @@
         "kind": 2,
         "importPath": "application.flask",
         "description": "application.flask",
-        "peekOfCode": "def web_app_home():\n    return \"\", 204",
+        "peekOfCode": "def web_app_home():\n    return \"OK\"",
         "detail": "application.flask",
         "documentation": {}
     },
@@ -909,7 +909,7 @@
         "kind": 5,
         "importPath": "application.flask",
         "description": "application.flask",
-        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\")\ndef web_app_home():\n    return \"\", 204",
+        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\")\ndef web_app_home():\n    return \"OK\"",
         "detail": "application.flask",
         "documentation": {}
     },
