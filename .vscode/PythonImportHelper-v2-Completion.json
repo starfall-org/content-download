@@ -612,22 +612,6 @@
         "documentation": {}
     },
     {
-        "label": "Attrs",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "upload_web",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
         "label": "re",
         "kind": 6,
         "isExtraImport": true,
@@ -789,7 +773,23 @@
         "documentation": {}
     },
     {
+        "label": "Attrs",
+        "importPath": "plugins.var",
+        "description": "plugins.var",
+        "isExtraImport": true,
+        "detail": "plugins.var",
+        "documentation": {}
+    },
+    {
         "label": "upload",
+        "importPath": "plugins.upload",
+        "description": "plugins.upload",
+        "isExtraImport": true,
+        "detail": "plugins.upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_web",
         "importPath": "plugins.upload",
         "description": "plugins.upload",
         "isExtraImport": true,
