@@ -2,7 +2,9 @@ from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
 
 
-@Client.on_message(filters.regex("http|https") & filters.regex("facebook.|fb.|instagram."))
+@Client.on_message(
+    filters.regex("http|https")
+    & filters.regex("facebook.|fb.|instagram.")
     & filters.incoming
 )
 def facebook_download(c, m):

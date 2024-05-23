@@ -1,5 +1,4 @@
 import re
-
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 proxies = {"http": "http://127.0.0.1:8090", "https": "http://127.0.0.1:8090"}
@@ -28,7 +27,7 @@ class Attrs:
         try:
             user_name = m.sender_chat.title
             user_id = m.sender_chat.id
-        except:
+        except Exception:
             user_name = m.from_user.first_name
             user_id = m.from_user.id
         self.caption = f"**Sent by --__[{user_name}](tg://user?id={user_id})__--**"
