@@ -1730,7 +1730,7 @@
         "kind": 2,
         "importPath": "plugins.download",
         "description": "plugins.download",
-        "peekOfCode": "def facebook_download(c, m):\n    save(m)\n    try:\n        facebook(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
+        "peekOfCode": "def facebook_download(c, m):\n    m.reply(\n        \"Facebook API has no endpoint server to run. If you want to contribute, contact admin.\",\n        quote=True,\n    )\n    m.delete()\n    return\n    save(m)\n    try:\n        facebook(m, Attrs(m))",
         "detail": "plugins.download",
         "documentation": {}
     },
@@ -1739,7 +1739,7 @@
         "kind": 2,
         "importPath": "plugins.download",
         "description": "plugins.download",
-        "peekOfCode": "def instagram_download(c, m):\n    save(m)\n    try:\n        instagram(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
+        "peekOfCode": "def instagram_download(c, m):\n    m.reply(\n        \"Instagram API has no endpoint server to run. If you want to contribute, contact admin.\",\n        quote=True,\n    )\n    m.delete()\n    return\n    save(m)\n    try:\n        instagram(m, Attrs(m))",
         "detail": "plugins.download",
         "documentation": {}
     },
@@ -1757,7 +1757,7 @@
         "kind": 2,
         "importPath": "plugins.download",
         "description": "plugins.download",
-        "peekOfCode": "def other_download(c, m):\n    try:\n        other(m, Attrs(m))\n        save(m)\n    except Exception:\n        pass",
+        "peekOfCode": "def other_download(c, m):\n    return\n    try:\n        other(m, Attrs(m))\n        save(m)\n    except Exception:\n        pass",
         "detail": "plugins.download",
         "documentation": {}
     },

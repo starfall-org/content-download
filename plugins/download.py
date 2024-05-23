@@ -54,6 +54,12 @@ def youtube_download(c, m):
     & channel_post
 )
 def facebook_download(c, m):
+    m.reply(
+        "Facebook API has no endpoint server to run. If you want to contribute, contact admin.",
+        quote=True,
+    )
+    m.delete()
+    return
     save(m)
     try:
         facebook(m, Attrs(m))
@@ -76,6 +82,12 @@ def facebook_download(c, m):
     & channel_post
 )
 def instagram_download(c, m):
+    m.reply(
+        "Instagram API has no endpoint server to run. If you want to contribute, contact admin.",
+        quote=True,
+    )
+    m.delete()
+    return
     save(m)
     try:
         instagram(m, Attrs(m))
@@ -117,6 +129,7 @@ def tiktokdouyin_download(c, m):
     & channel_post
 )
 def other_download(c, m):
+    return
     try:
         other(m, Attrs(m))
         save(m)
