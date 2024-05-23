@@ -4,8 +4,8 @@ from hydrogram import Client, filters
 
 @Client.on_message(
     (
-        ((filters.regex("http|https") & filters.regex("facebook.|fb.|instagram.")))
-        | filters.command("facebook")
+        filters.regex("http|https") & filters.regex("facebook.|fb.|instagram."))
+        | filters.command("facebook"
     )
     & filters.incoming
 )
