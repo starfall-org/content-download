@@ -1,4 +1,4 @@
-from .bytedance import tiktokdouyin
+from .tiktokdouyin.command import tiktokdouyin
 from .youtube import youtube
 from .facebook import facebook
 from .instagram import instagram

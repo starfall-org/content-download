@@ -81,6 +81,38 @@
         "documentation": {}
     },
     {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
         "label": "filters",
         "importPath": "hydrogram",
         "description": "hydrogram",
@@ -186,6 +218,14 @@
     },
     {
         "label": "Save",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
         "importPath": "data",
         "description": "data",
         "isExtraImport": true,
@@ -357,6 +397,30 @@
     },
     {
         "label": "ChatMemberStatus",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
+        "importPath": "hydrogram.enums",
+        "description": "hydrogram.enums",
+        "isExtraImport": true,
+        "detail": "hydrogram.enums",
+        "documentation": {}
+    },
+    {
+        "label": "ChatAction",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
         "isExtraImport": true,
@@ -759,7 +823,7 @@
         "documentation": {}
     },
     {
-        "label": "send_photos",
+        "label": "Attrs",
         "importPath": "misc",
         "description": "misc",
         "isExtraImport": true,
@@ -767,15 +831,7 @@
         "documentation": {}
     },
     {
-        "label": "send_videos",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "Formats",
+        "label": "save",
         "importPath": "misc",
         "description": "misc",
         "isExtraImport": true,
@@ -800,6 +856,46 @@
     },
     {
         "label": "send_videos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "send_videos",
+        "importPath": "misc",
+        "description": "misc",
+        "isExtraImport": true,
+        "detail": "misc",
+        "documentation": {}
+    },
+    {
+        "label": "Formats",
         "importPath": "misc",
         "description": "misc",
         "isExtraImport": true,
@@ -863,44 +959,20 @@
         "documentation": {}
     },
     {
-        "label": "Attrs",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "save",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "channel_post",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "filter_on",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
         "label": "logging",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
         "documentation": {}
     },
     {
@@ -1438,30 +1510,66 @@
         "documentation": {}
     },
     {
-        "label": "TDDL",
+        "label": "get",
         "kind": 2,
-        "importPath": "plugins.assets.bytedance",
-        "description": "plugins.assets.bytedance",
-        "peekOfCode": "def TDDL(url):\n    data = requests.get(f\"{DAPI}/tikdou\", params={\"url\": url}, timeout=180).json()\n    link = data[\"url\"]\n    if data[\"is_video\"]:\n        try:\n            content = requests.get(link).content\n            file = BytesIO(content)\n            file.name = \"tiktokdouyin.mp4\"\n        except Exception as e:\n            file = None",
-        "detail": "plugins.assets.bytedance",
+        "importPath": "plugins.assets.tiktokdouyin.command",
+        "description": "plugins.assets.tiktokdouyin.command",
+        "peekOfCode": "def get(url):\n    data = requests.get(f\"{DAPI}/tikdou\", params={\"url\": url}, timeout=180).json()\n    link = data[\"url\"]\n    if data[\"is_video\"]:\n        content = requests.get(link, timeout=120).content\n        file_obj = BytesIO(content)\n        file_obj.name = \"tiktokdouyin.mp4\"\n        is_video = True\n    else:\n        file_obj = []",
+        "detail": "plugins.assets.tiktokdouyin.command",
         "documentation": {}
     },
     {
-        "label": "tiktokdouyin",
+        "label": "tiktokdouyin_download",
         "kind": 2,
-        "importPath": "plugins.assets.bytedance",
-        "description": "plugins.assets.bytedance",
-        "peekOfCode": "def tiktokdouyin(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    try:\n        media, music, is_video = TDDL(url)\n    except Exception as e:\n        logging.critical(e)\n        TikTokUser(m, url, caption, TDDL)",
-        "detail": "plugins.assets.bytedance",
+        "importPath": "plugins.assets.tiktokdouyin.command",
+        "description": "plugins.assets.tiktokdouyin.command",
+        "peekOfCode": "def tiktokdouyin_download(c, m):\n    save(m)\n    attrs = Attrs(m)\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    try:\n        media, is_video = get(url)\n    except Exception:",
+        "detail": "plugins.assets.tiktokdouyin.command",
         "documentation": {}
     },
     {
-        "label": "tdmusic",
+        "label": "TikTokUser",
         "kind": 2,
-        "importPath": "plugins.assets.bytedance",
-        "description": "plugins.assets.bytedance",
-        "peekOfCode": "def tdmusic(m, attrs):\n    url = attrs.url\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_AUDIO)\n    _, audio, __ = TDDL(url)\n    m.reply_chat_action(ChatAction.UPLOAD_AUDIO)\n    if not audio:\n        raise Exception(\"API error\")\n    try:\n        m.reply_audio(audio[0], caption=caption)",
-        "detail": "plugins.assets.bytedance",
+        "importPath": "plugins.assets.tiktokdouyin.tiktokuser",
+        "description": "plugins.assets.tiktokdouyin.tiktokuser",
+        "peekOfCode": "def TikTokUser(m, url, caption, TDDL):\n    button = InlineKeyboardMarkup(\n        [\n            [\n                InlineKeyboardButton(\"TikTok User\", url=url),\n                InlineKeyboardButton(\"Group\", url=\"https://t.me/contentdownload_group\"),\n                InlineKeyboardButton(\"Channel\", url=\"https://t.me/contentdownload\"),\n            ]\n        ]\n    )",
+        "detail": "plugins.assets.tiktokdouyin.tiktokuser",
+        "documentation": {}
+    },
+    {
+        "label": "get",
+        "kind": 2,
+        "importPath": "plugins.assets.youtube.command",
+        "description": "plugins.assets.youtube.command",
+        "peekOfCode": "def get(url):\n    data = requests.get(f\"{DAPI}/youtube\", params={\"url\": url}, timeout=60).json()\n    try:\n        content = requests.get(data[\"url\"], timeout=120).content\n        file = BytesIO(content)\n        file.name = \"video.mp4\"\n    except Exception as e:\n        logging.critical(e)\n        file = data[\"url\"]\n    print(\"Youtube\")",
+        "detail": "plugins.assets.youtube.command",
+        "documentation": {}
+    },
+    {
+        "label": "music",
+        "kind": 2,
+        "importPath": "plugins.assets.youtube.command",
+        "description": "plugins.assets.youtube.command",
+        "peekOfCode": "def music(url):\n    data = requests.get(f\"{DAPI}/music\", params={\"url\": url}, timeout=60).json()\n    content = requests.get(data[\"url\"], timeout=120).content\n    file = BytesIO(content)\n    file.name = f\"{data['title']}.mp3\"\n    print(\"Music\")\n    return file\ndef _channel(_, __, m):\n    return (\n        not m.sender_chat.username == \"contentdownload\"",
+        "detail": "plugins.assets.youtube.command",
+        "documentation": {}
+    },
+    {
+        "label": "music_download",
+        "kind": 2,
+        "importPath": "plugins.assets.youtube.command",
+        "description": "plugins.assets.youtube.command",
+        "peekOfCode": "def music_download(c, m):\n    save(m)\n    attrs = Attrs(m)\n    url = attrs.url\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_AUDIO)\n    audio = music(url)\n    m.reply_chat_action(ChatAction.UPLOAD_AUDIO)\n    m.reply_audio(audio, caption=caption)\n    print(\"Music Done\")",
+        "detail": "plugins.assets.youtube.command",
+        "documentation": {}
+    },
+    {
+        "label": "youtube_download",
+        "kind": 2,
+        "importPath": "plugins.assets.youtube.command",
+        "description": "plugins.assets.youtube.command",
+        "peekOfCode": "def youtube_download(c, m):\n    save(m)\n    attrs = Attrs(m)\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    file = get(url)\n    m.reply_chat_action(ChatAction.UPLOAD_VIDEO)\n    m.reply_video(file, caption=caption, reply_markup=button)",
+        "detail": "plugins.assets.youtube.command",
         "documentation": {}
     },
     {
@@ -1534,15 +1642,6 @@
         "description": "plugins.assets.other",
         "peekOfCode": "def other(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    file, types = ODL(url)\n    if types == \"image\":\n        m.reply_chat_action(ChatAction.UPLOAD_PHOTO)\n        m.reply_photo(file, caption=caption, reply_markup=button)\n    elif types == \"video\":\n        m.reply_chat_action(ChatAction.UPLOA_VIDEO)",
         "detail": "plugins.assets.other",
-        "documentation": {}
-    },
-    {
-        "label": "TikTokUser",
-        "kind": 2,
-        "importPath": "plugins.assets.tiktokuser",
-        "description": "plugins.assets.tiktokuser",
-        "peekOfCode": "def TikTokUser(m, url, caption, TDDL):\n    button = InlineKeyboardMarkup(\n        [\n            [\n                InlineKeyboardButton(\"TikTok User\", url=url),\n                InlineKeyboardButton(\"Group\", url=\"https://t.me/contentdownload_group\"),\n                InlineKeyboardButton(\"Channel\", url=\"https://t.me/contentdownload\"),\n            ]\n        ]\n    )",
-        "detail": "plugins.assets.tiktokuser",
         "documentation": {}
     },
     {
@@ -1708,66 +1807,12 @@
         "documentation": {}
     },
     {
-        "label": "music_download",
-        "kind": 2,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "def music_download(c, m):\n    save(m)\n    try:\n        music(m, Attrs(m))\n        try:\n            m.delete()\n        except Exception as e:\n            raise\n    except Exception as e:\n        m.reply_chat_action(typing)",
-        "detail": "plugins.download",
-        "documentation": {}
-    },
-    {
-        "label": "youtube_download",
-        "kind": 2,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "def youtube_download(c, m):\n    save(m)\n    try:\n        youtube(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
-        "detail": "plugins.download",
-        "documentation": {}
-    },
-    {
         "label": "facebook_download",
         "kind": 2,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "def facebook_download(c, m):\n    m.reply(\n        \"Facebook API has no endpoint server to run. If you want to contribute, contact admin.\",\n        quote=True,\n    )\n    m.delete()\n    return\n    save(m)\n    try:\n        facebook(m, Attrs(m))",
-        "detail": "plugins.download",
-        "documentation": {}
-    },
-    {
-        "label": "instagram_download",
-        "kind": 2,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "def instagram_download(c, m):\n    m.reply(\n        \"Instagram API has no endpoint server to run. If you want to contribute, contact admin.\",\n        quote=True,\n    )\n    m.delete()\n    return\n    save(m)\n    try:\n        instagram(m, Attrs(m))",
-        "detail": "plugins.download",
-        "documentation": {}
-    },
-    {
-        "label": "tiktokdouyin_download",
-        "kind": 2,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "def tiktokdouyin_download(c, m):\n    save(m)\n    try:\n        tiktokdouyin(m, Attrs(m))\n    except Exception as e:\n        m.reply_chat_action(typing)\n        m.reply(\"__--**resource unavailable**--__\", quote=True)\n        logging.critical(e)\n    try:\n        m.delete()",
-        "detail": "plugins.download",
-        "documentation": {}
-    },
-    {
-        "label": "other_download",
-        "kind": 2,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "def other_download(c, m):\n    return\n    try:\n        other(m, Attrs(m))\n        save(m)\n    except Exception:\n        pass",
-        "detail": "plugins.download",
-        "documentation": {}
-    },
-    {
-        "label": "typing",
-        "kind": 5,
-        "importPath": "plugins.download",
-        "description": "plugins.download",
-        "peekOfCode": "typing = ChatAction.TYPING\n@Client.on_message(filters.command(\"music\"))\ndef music_download(c, m):\n    save(m)\n    try:\n        music(m, Attrs(m))\n        try:\n            m.delete()\n        except Exception as e:\n            raise",
-        "detail": "plugins.download",
+        "importPath": "plugins.deprecated",
+        "description": "plugins.deprecated",
+        "peekOfCode": "def facebook_download(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\n        \"Facebook API has no endpoint server to run. If you want to contribute, contact admin.\\n\\nHiện chúng tôi đã ngừng cung cấp dịch vụ tải nội dung từ những nền tảng này do thiếu máy chủ API. Nếu bạn có nhu cầu đóng góp, hãy liên hệ nhà sáng lập bot\",\n        quote=True,\n    )",
+        "detail": "plugins.deprecated",
         "documentation": {}
     }
 ]
