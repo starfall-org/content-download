@@ -1,7 +1,14 @@
 from datetime import datetime
 from hydrogram.enums import ChatType
 from pytz import timezone
-from .environment import pg
+from .environment import DATABASE_URL
+import psycopg2
+
+
+def pg():
+    conn = psycopg2.connect(DATABASE_URL)
+    cur = conn.cursor()
+    return conn, cur
 
 
 class Save:

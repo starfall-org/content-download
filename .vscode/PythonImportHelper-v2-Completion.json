@@ -409,6 +409,15 @@
         "documentation": {}
     },
     {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -982,6 +991,15 @@
         "importPath": "data.database",
         "description": "data.database",
         "peekOfCode": "class Get:\n    @staticmethod\n    def users_list():\n        conn, cursor = pg()\n        result = []\n        cursor.execute(\"SELECT * FROM users\")\n        for user in cursor.fetchall():\n            user_id = user[0]\n            username = user[1]\n            first_name = user[2]",
+        "detail": "data.database",
+        "documentation": {}
+    },
+    {
+        "label": "pg",
+        "kind": 2,
+        "importPath": "data.database",
+        "description": "data.database",
+        "peekOfCode": "def pg():\n    conn = psycopg2.connect(DATABASE_URL)\n    cur = conn.cursor()\n    return conn, cur\nclass Save:\n    @staticmethod\n    def user(m):\n        conn, cursor = pg()\n        current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n        date = current_time.strftime(\"%d - %m - %Y\")",
         "detail": "data.database",
         "documentation": {}
     },
