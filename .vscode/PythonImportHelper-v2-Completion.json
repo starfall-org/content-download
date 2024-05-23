@@ -129,107 +129,27 @@
         "documentation": {}
     },
     {
-        "label": "Token",
-        "importPath": "data",
-        "description": "data",
+        "label": "api_id",
+        "importPath": "data.environment",
+        "description": "data.environment",
         "isExtraImport": true,
-        "detail": "data",
+        "detail": "data.environment",
         "documentation": {}
     },
     {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
+        "label": "api_hash",
+        "importPath": "data.environment",
+        "description": "data.environment",
         "isExtraImport": true,
-        "detail": "data",
+        "detail": "data.environment",
         "documentation": {}
     },
     {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
+        "label": "bot_token",
+        "importPath": "data.environment",
+        "description": "data.environment",
         "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "DAPI",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "Get",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "collection",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "COLLECTON",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "WEB_COLLECTION",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "Save",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
+        "detail": "data.environment",
         "documentation": {}
     },
     {
@@ -507,22 +427,6 @@
         "documentation": {}
     },
     {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
-        "documentation": {}
-    },
-    {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
-        "documentation": {}
-    },
-    {
         "label": "logging",
         "kind": 6,
         "isExtraImport": true,
@@ -585,6 +489,102 @@
         "description": "io",
         "isExtraImport": true,
         "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "DAPI",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "Get",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "COLLECTON",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "WEB_COLLECTION",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
+        "documentation": {}
+    },
+    {
+        "label": "Save",
+        "importPath": "data",
+        "description": "data",
+        "isExtraImport": true,
+        "detail": "data",
         "documentation": {}
     },
     {
@@ -733,14 +733,6 @@
         "documentation": {}
     },
     {
-        "label": "upload",
-        "importPath": "plugins.util",
-        "description": "plugins.util",
-        "isExtraImport": true,
-        "detail": "plugins.util",
-        "documentation": {}
-    },
-    {
         "label": "save",
         "importPath": "plugins.util",
         "description": "plugins.util",
@@ -797,6 +789,14 @@
         "documentation": {}
     },
     {
+        "label": "upload",
+        "importPath": "plugins.upload",
+        "description": "plugins.upload",
+        "isExtraImport": true,
+        "detail": "plugins.upload",
+        "documentation": {}
+    },
+    {
         "label": "quote",
         "importPath": "urllib.parse",
         "description": "urllib.parse",
@@ -837,6 +837,14 @@
         "documentation": {}
     },
     {
+        "label": "Deta",
+        "importPath": "deta",
+        "description": "deta",
+        "isExtraImport": true,
+        "detail": "deta",
+        "documentation": {}
+    },
+    {
         "label": "List",
         "importPath": "typing",
         "description": "typing",
@@ -866,7 +874,7 @@
         "kind": 6,
         "importPath": "application.content",
         "description": "application.content",
-        "peekOfCode": "class Content(Client):\n    def __init__(self):\n        self.client = Client(\n            \"Content Download\",\n            api_id=Token.id,\n            api_hash=Token.hash,\n            bot_token=Token.token,\n            plugins=dict(root=\"plugins\"),\n            max_concurrent_transmissions=100,\n        )",
+        "peekOfCode": "class Content(Client):\n    def __init__(self):\n        self.client = Client(\n            \"Content Download\",\n            api_id,\n            api_hash,\n            bot_token=bot_token,\n            plugins=dict(root=\"plugins\"),\n            max_concurrent_transmissions=100,\n        )",
         "detail": "application.content",
         "documentation": {}
     },
@@ -970,20 +978,11 @@
         "documentation": {}
     },
     {
-        "label": "Token",
-        "kind": 6,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "class Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
         "label": "secret",
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\")).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\")).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -992,7 +991,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1001,7 +1000,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "WEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "WEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1010,7 +1009,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1019,7 +1018,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "COLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "COLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1028,35 +1027,35 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DATABASE_URL = res.data.cockroach\nclass Token:\n    id = res.key.api_id\n    hash = res.key.api_hash\n    token = res.bot.cd_tg",
+        "peekOfCode": "DATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
     {
-        "label": "add_off",
-        "kind": 2,
-        "importPath": "data.off_download",
-        "description": "data.off_download",
-        "peekOfCode": "def add_off(chat_id):\n    if os.path.exists(\"listoff.txt\"):\n        with open(\"listoff.txt\", \"r\") as f:\n            chat_ids = f.read().splitlines()\n            if str(chat_id) not in chat_ids:\n                with open(\"listoff.txt\", \"a\") as w:\n                    w.write(\"\\n\" + str(chat_id))\n                return True\n            else:\n                return False",
-        "detail": "data.off_download",
+        "label": "api_id",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "api_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "detail": "data.environment",
         "documentation": {}
     },
     {
-        "label": "rm_off",
-        "kind": 2,
-        "importPath": "data.off_download",
-        "description": "data.off_download",
-        "peekOfCode": "def rm_off(chat_id):\n    if os.path.exists(\"listoff.txt\"):\n        with open(\"listoff.txt\", \"r\") as f:\n            chat_ids = f.read().splitlines()\n            if str(chat_id) in chat_ids:\n                chat_ids.remove(str(chat_id))\n                with open(\"listoff.txt\", \"w\") as w:\n                    w.write(\"\\n\".join(chat_ids))\n                    return True\n            else:",
-        "detail": "data.off_download",
+        "label": "api_hash",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "api_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "detail": "data.environment",
         "documentation": {}
     },
     {
-        "label": "check_listoff",
-        "kind": 2,
-        "importPath": "data.off_download",
-        "description": "data.off_download",
-        "peekOfCode": "def check_listoff(chat_id):\n    if os.path.exists(\"listoff.txt\"):\n        with open(\"listoff.txt\", \"r\") as f:\n            chat_ids = f.read().splitlines()\n            return str(chat_id) in chat_ids\n    else:\n        return False",
-        "detail": "data.off_download",
+        "label": "bot_token",
+        "kind": 5,
+        "importPath": "data.environment",
+        "description": "data.environment",
+        "peekOfCode": "bot_token = res.bot.cd_tg",
+        "detail": "data.environment",
         "documentation": {}
     },
     {

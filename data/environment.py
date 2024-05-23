@@ -2,8 +2,6 @@ import json
 import os
 from types import SimpleNamespace
 import requests
-from deta import Deta
-
 
 secret = requests.get(os.getenv("SECRET")).text
 res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))
@@ -14,7 +12,6 @@ COLLECTON = res.api.collection
 DATABASE_URL = res.data.cockroach
 
 
-class Token:
-    id = res.key.api_id
-    hash = res.key.api_hash
-    token = res.bot.cd_tg
+api_id = res.key.api_id
+api_hash = res.key.api_hash
+bot_token = res.bot.cd_tg
