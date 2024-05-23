@@ -1,2 +1,2 @@
-from .base_model import Save, Get
+from .database import Save, Get
 from .environment import *
