@@ -2,7 +2,7 @@
 
 chmod +x ./main.py
 
-gunicorn --log-level critical -b 0.0.0.0:8080 application:app &
+gunicorn --log-level critical -b 0.0.0.0:8080 application.flask:app &
 python -u main.py
 
 sleep 5
