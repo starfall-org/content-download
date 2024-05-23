@@ -1,4 +1,4 @@
-from .util import *
-from .var import *
+from ..plugins.util import *
+from ..plugins.var import *
 from .filters import *
-from .upload import *
+from ..plugins.upload import *
