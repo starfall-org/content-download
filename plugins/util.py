@@ -1,7 +1,6 @@
 from threading import Thread
 from typing import List
 from urllib.parse import urljoin
-
 import requests
 from bs4 import BeautifulSoup
 from hydrogram.enums import ChatAction
@@ -17,7 +16,7 @@ sv = ChatAction.UPLOAD_VIDEO
 
 def get_media_links(url):
     user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
-    html = requests.get(url, headers={"User-Agent": user_agent}).text
+    html = requests.get(url, headers={"User-Agent": user_agent}, timeout=120).text
     soup = BeautifulSoup(html, "html.parser")
     list_links = [
         urljoin(url, a["href"]) for a in soup.select("li.tiktok-18tsjrs-LiVideoItem a")
@@ -51,7 +50,6 @@ def send_photos(m, photo_links: List[str], button, caption):
         m.reply_photo(photo_links[-1], caption=caption, reply_markup=button)
 
 
-#
 def send_videos(m, video_links: List[str], button, caption):
     m.reply_chat_action(sv)
     if len(video_links) == 1:
@@ -66,20 +64,3 @@ def send_videos(m, video_links: List[str], button, caption):
             m.reply_media_group(media_group)
         m.reply_chat_action(sv)
         m.reply_video(video_links[-1], caption=caption, reply_markup=button)
-
-
-def server_info():
-    try:
-        response = requests.get("https://ipinfo.io", proxies=proxies)
-        data = response.json()
-        ip = data.get("ip", "N/A")
-        city = data.get("city", "N/A")
-        region = data.get("region", "N/A")
-        country = data.get("country", "N/A")
-        provider = data.get("org", "N/A")
-
-        server_info = f"IP: {ip}\nCity: {city}\nRegion: {region}\nCountry: {country}\nProvider: {provider}"
-
-    except Exception as e:
-        server_info = f"Error: {e}"
-    return server_info

@@ -73,38 +73,6 @@
         "documentation": {}
     },
     {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
         "label": "filters",
         "importPath": "hydrogram",
         "description": "hydrogram",
@@ -122,22 +90,6 @@
     },
     {
         "label": "enums",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
         "importPath": "hydrogram",
         "description": "hydrogram",
         "isExtraImport": true,
@@ -241,22 +193,6 @@
         "documentation": {}
     },
     {
-        "label": "add_off",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "rm_off",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
         "label": "Get",
         "importPath": "data",
         "description": "data",
@@ -294,33 +230,6 @@
         "description": "data",
         "isExtraImport": true,
         "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "subprocess",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "subprocess",
-        "description": "subprocess",
-        "detail": "subprocess",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
         "documentation": {}
     },
     {
@@ -373,22 +282,6 @@
     },
     {
         "label": "ChatType",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
-        "importPath": "hydrogram.enums",
-        "description": "hydrogram.enums",
-        "isExtraImport": true,
-        "detail": "hydrogram.enums",
-        "documentation": {}
-    },
-    {
-        "label": "ChatAction",
         "importPath": "hydrogram.enums",
         "description": "hydrogram.enums",
         "isExtraImport": true,
@@ -799,46 +692,6 @@
         "documentation": {}
     },
     {
-        "label": "owner",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "filter_right",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "server_info",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "owner",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "owner",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
         "label": "Attrs",
         "importPath": "misc",
         "description": "misc",
@@ -944,15 +797,6 @@
         "documentation": {}
     },
     {
-        "label": "platform",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "platform",
-        "description": "platform",
-        "detail": "platform",
-        "documentation": {}
-    },
-    {
         "label": "quote",
         "importPath": "urllib.parse",
         "description": "urllib.parse",
@@ -1027,38 +871,11 @@
         "documentation": {}
     },
     {
-        "label": "Webapp",
-        "kind": 6,
-        "importPath": "application.flask",
-        "description": "application.flask",
-        "peekOfCode": "class Webapp(Flask):\n    def __init__(self):\n        super().__init__(\"webapp\")\napp = Webapp()\ndef restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)",
-        "detail": "application.flask",
-        "documentation": {}
-    },
-    {
-        "label": "restart",
-        "kind": 2,
-        "importPath": "application.flask",
-        "description": "application.flask",
-        "peekOfCode": "def restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():\n    return \"\"\"",
-        "detail": "application.flask",
-        "documentation": {}
-    },
-    {
-        "label": "update_system",
-        "kind": 2,
-        "importPath": "application.flask",
-        "description": "application.flask",
-        "peekOfCode": "def update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():\n    return \"\"\"\n<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
-        "detail": "application.flask",
-        "documentation": {}
-    },
-    {
         "label": "web_app_home",
         "kind": 2,
         "importPath": "application.flask",
         "description": "application.flask",
-        "peekOfCode": "def web_app_home():\n    return \"\"\"\n<!DOCTYPE html>\n<html>\n<head>\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <style>\n    body {\n      background-color: white;\n      color: black;",
+        "peekOfCode": "def web_app_home():\n    return \"\", 204",
         "detail": "application.flask",
         "documentation": {}
     },
@@ -1067,7 +884,7 @@
         "kind": 5,
         "importPath": "application.flask",
         "description": "application.flask",
-        "peekOfCode": "app = Webapp()\ndef restart():\n    time.sleep(5)\n    os.execl(sys.executable, sys.executable, *sys.argv)\n@app.route(\"/update\")\ndef update_system():\n    result = subprocess.run([\"bash\", \"update.sh\"], stdout=subprocess.PIPE, text=True)\n    return f\"<pre>{result.stdout}</pre>\"\n@app.route(\"/\")\ndef web_app_home():",
+        "peekOfCode": "app = Flask(__name__)\n@app.route(\"/\")\ndef web_app_home():\n    return \"\", 204",
         "detail": "application.flask",
         "documentation": {}
     },
@@ -1432,38 +1249,11 @@
         "documentation": {}
     },
     {
-        "label": "set_auto_download_off",
-        "kind": 2,
-        "importPath": "plugins.manage.manage",
-        "description": "plugins.manage.manage",
-        "peekOfCode": "def set_auto_download_off(c, m):\n    status = add_off(m.chat.id)\n    if status:\n        if m.from_user.language_code == \"vi\":\n            m.reply(\n                \"Tự động tải xuống đã được tắt cho nhóm chat này. Bạn vẫn có thể tải xuống bằng cách dùng lệnh /download\"\n            )\n        else:\n            m.reply(\n                \"Auto downloads for this group was disabled. You still can download by using command /download\"",
-        "detail": "plugins.manage.manage",
-        "documentation": {}
-    },
-    {
-        "label": "set_auto_download_on",
-        "kind": 2,
-        "importPath": "plugins.manage.manage",
-        "description": "plugins.manage.manage",
-        "peekOfCode": "def set_auto_download_on(c, m):\n    status = rm_off(m.chat.id)\n    if status:\n        if m.from_user.language_code == \"vi\":\n            m.reply(\"Tự động tải xuống cho nhóm chat này đã được khôi phục\")\n        else:\n            m.reply(\"Auto downloads for this group have been restored\")\n    else:\n        if m.from_user.language_code == \"vi\":\n            m.reply(\"Tự động tải xuống không bị tắt\")",
-        "detail": "plugins.manage.manage",
-        "documentation": {}
-    },
-    {
-        "label": "bot_server_info",
-        "kind": 2,
-        "importPath": "plugins.manage.server",
-        "description": "plugins.manage.server",
-        "peekOfCode": "def bot_server_info(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    ver = platform.version()\n    name = platform.uname()\n    system = platform.system()\n    server = server_info()\n    msg_text = (\n        f\"```{system}\\n\"\n        f\"INFO:\\n{name}\\n\\n\"\n        f\"VERSION:\\n{ver}\\n\\n\"",
-        "detail": "plugins.manage.server",
-        "documentation": {}
-    },
-    {
         "label": "count_uses",
         "kind": 2,
         "importPath": "plugins.other.extend",
         "description": "plugins.other.extend",
-        "peekOfCode": "def count_uses(c, m):\n    m.reply_chat_action(typing)\n    user, chat = Get.get_count()\n    m.reply(f\"Chats: {chat}\\nUsers: {user}\")\n@Client.on_message(filters.command(\"users\") & owner)\ndef users_list(c, m):\n    m.reply_chat_action(typing)\n    count, users = Get.users_list()\n    m.reply(f\"__--**{count}**--__\")\n    message = \"\"",
+        "peekOfCode": "def count_uses(c, m):\n    m.reply_chat_action(typing)\n    user, chat = Get.get_count()\n    m.reply(f\"Chats: {chat}\\nUsers: {user}\")\n@Client.on_message(filters.command(\"users\") & filters.create(_owner))\ndef users_list(c, m):\n    m.reply_chat_action(typing)\n    count, users = Get.users_list()\n    m.reply(f\"__--**{count}**--__\")\n    message = \"\"",
         "detail": "plugins.other.extend",
         "documentation": {}
     },
@@ -1499,35 +1289,8 @@
         "kind": 5,
         "importPath": "plugins.other.extend",
         "description": "plugins.other.extend",
-        "peekOfCode": "typing = enums.ChatAction.TYPING\n@Client.on_message(filters.command(\"count\") & owner)\ndef count_uses(c, m):\n    m.reply_chat_action(typing)\n    user, chat = Get.get_count()\n    m.reply(f\"Chats: {chat}\\nUsers: {user}\")\n@Client.on_message(filters.command(\"users\") & owner)\ndef users_list(c, m):\n    m.reply_chat_action(typing)\n    count, users = Get.users_list()",
+        "peekOfCode": "typing = enums.ChatAction.TYPING\ndef _owner(_, __, m):\n    return (\n        m.from_user.id == 5665225938\n        if m.from_user\n        else m.sender_chat.username == \"contentdownload\"\n    )\n@Client.on_message(filters.command(\"count\") & filters.create(_owner))\ndef count_uses(c, m):\n    m.reply_chat_action(typing)",
         "detail": "plugins.other.extend",
-        "documentation": {}
-    },
-    {
-        "label": "system_update",
-        "kind": 2,
-        "importPath": "plugins.other.update",
-        "description": "plugins.other.update",
-        "peekOfCode": "def system_update(c, m):\n    m.reply_chat_action(typing)\n    result = subprocess.run(\n        [\"./update.sh\"],\n        stdout=subprocess.PIPE,\n        stderr=subprocess.STDOUT,\n        text=True,\n        shell=True,\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
-        "detail": "plugins.other.update",
-        "documentation": {}
-    },
-    {
-        "label": "run_shell",
-        "kind": 2,
-        "importPath": "plugins.other.update",
-        "description": "plugins.other.update",
-        "peekOfCode": "def run_shell(c, m):\n    m.reply_chat_action(typing)\n    command = m.text.replace(\"/shell \", \"\")\n    result = subprocess.run(\n        command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, shell=True\n    )\n    m.reply(f\"```bash\\n{result.stdout}\\n```\")",
-        "detail": "plugins.other.update",
-        "documentation": {}
-    },
-    {
-        "label": "typing",
-        "kind": 5,
-        "importPath": "plugins.other.update",
-        "description": "plugins.other.update",
-        "peekOfCode": "typing = ChatAction.TYPING\n@Client.on_message(filters.command(\"update\") & filters.private & owner)\ndef system_update(c, m):\n    m.reply_chat_action(typing)\n    result = subprocess.run(\n        [\"./update.sh\"],\n        stdout=subprocess.PIPE,\n        stderr=subprocess.STDOUT,\n        text=True,\n        shell=True,",
-        "detail": "plugins.other.update",
         "documentation": {}
     },
     {
@@ -1634,7 +1397,7 @@
         "kind": 2,
         "importPath": "plugins.util",
         "description": "plugins.util",
-        "peekOfCode": "def get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links\ndef save(m):\n    if str(m.chat.id).startswith(\"-100\"):",
+        "peekOfCode": "def get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}, timeout=120).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links\ndef save(m):\n    if str(m.chat.id).startswith(\"-100\"):",
         "detail": "plugins.util",
         "documentation": {}
     },
@@ -1666,20 +1429,11 @@
         "documentation": {}
     },
     {
-        "label": "server_info",
-        "kind": 2,
-        "importPath": "plugins.util",
-        "description": "plugins.util",
-        "peekOfCode": "def server_info():\n    try:\n        response = requests.get(\"https://ipinfo.io\", proxies=proxies)\n        data = response.json()\n        ip = data.get(\"ip\", \"N/A\")\n        city = data.get(\"city\", \"N/A\")\n        region = data.get(\"region\", \"N/A\")\n        country = data.get(\"country\", \"N/A\")\n        provider = data.get(\"org\", \"N/A\")\n        server_info = f\"IP: {ip}\\nCity: {city}\\nRegion: {region}\\nCountry: {country}\\nProvider: {provider}\"",
-        "detail": "plugins.util",
-        "documentation": {}
-    },
-    {
         "label": "sp",
         "kind": 5,
         "importPath": "plugins.util",
         "description": "plugins.util",
-        "peekOfCode": "sp = ChatAction.UPLOAD_PHOTO\nsv = ChatAction.UPLOAD_VIDEO\ndef get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links",
+        "peekOfCode": "sp = ChatAction.UPLOAD_PHOTO\nsv = ChatAction.UPLOAD_VIDEO\ndef get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}, timeout=120).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links",
         "detail": "plugins.util",
         "documentation": {}
     },
@@ -1688,7 +1442,7 @@
         "kind": 5,
         "importPath": "plugins.util",
         "description": "plugins.util",
-        "peekOfCode": "sv = ChatAction.UPLOAD_VIDEO\ndef get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links\ndef save(m):",
+        "peekOfCode": "sv = ChatAction.UPLOAD_VIDEO\ndef get_media_links(url):\n    user_agent = \"Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1\"\n    html = requests.get(url, headers={\"User-Agent\": user_agent}, timeout=120).text\n    soup = BeautifulSoup(html, \"html.parser\")\n    list_links = [\n        urljoin(url, a[\"href\"]) for a in soup.select(\"li.tiktok-18tsjrs-LiVideoItem a\")\n    ]\n    return list_links\ndef save(m):",
         "detail": "plugins.util",
         "documentation": {}
     },

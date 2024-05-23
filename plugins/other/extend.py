@@ -1,18 +1,25 @@
 from hydrogram import filters, Client, enums
 from data import Get
-from misc import owner
 
 typing = enums.ChatAction.TYPING
 
 
-@Client.on_message(filters.command("count") & owner)
+def _owner(_, __, m):
+    return (
+        m.from_user.id == 5665225938
+        if m.from_user
+        else m.sender_chat.username == "contentdownload"
+    )
+
+
+@Client.on_message(filters.command("count") & filters.create(_owner))
 def count_uses(c, m):
     m.reply_chat_action(typing)
     user, chat = Get.get_count()
     m.reply(f"Chats: {chat}\nUsers: {user}")
 
 
-@Client.on_message(filters.command("users") & owner)
+@Client.on_message(filters.command("users") & filters.create(_owner))
 def users_list(c, m):
     m.reply_chat_action(typing)
     count, users = Get.users_list()
@@ -29,7 +36,7 @@ def users_list(c, m):
         m.reply(message, quote=True, parse_mode=enums.ParseMode.HTML)
 
 
-@Client.on_message(filters.command("chats") & owner)
+@Client.on_message(filters.command("chats") & filters.create(_owner))
 def chats_list(c, m):
     m.reply_chat_action(typing)
     count, chats = Get.chats_list()
@@ -46,7 +53,7 @@ def chats_list(c, m):
         m.reply(message, quote=True, parse_mode=enums.ParseMode.HTML)
 
 
-@Client.on_message(filters.command("when"))
+@Client.on_message(filters.command("myactivity"))
 def get_start_time(c, m):
     if m.from_user:
         first_time, on_chat, on_with, msg_count = Get.user_history(m.from_user.id)
