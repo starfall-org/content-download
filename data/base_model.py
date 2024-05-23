@@ -28,7 +28,7 @@ class User(Base):
 
 class Chat(Base):
     __tablename__ = "chats"
-
+    chat_id = Column(String, primary_key=True)
     username = Column(String)
     title = Column(String)
     update_time = Column(String)

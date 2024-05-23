@@ -902,7 +902,7 @@
         "kind": 6,
         "importPath": "data.base_model",
         "description": "data.base_model",
-        "peekOfCode": "class Chat(Base):\n    __tablename__ = \"chats\"\n    username = Column(String)\n    title = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)\n    first_time = Column(String)\n    first_with = Column(String)\nclass Save:\n    @staticmethod",
+        "peekOfCode": "class Chat(Base):\n    __tablename__ = \"chats\"\n    chat_id = Column(String, primary_key=True)\n    username = Column(String)\n    title = Column(String)\n    update_time = Column(String)\n    update_by = Column(String)\n    first_time = Column(String)\n    first_with = Column(String)\nclass Save:",
         "detail": "data.base_model",
         "documentation": {}
     },
