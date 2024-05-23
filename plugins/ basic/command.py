@@ -1,7 +1,7 @@
 from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from hydrogram import Client, filters
-from misc import save
+from plugins.util import save
 
 
 button = InlineKeyboardMarkup(

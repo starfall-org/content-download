@@ -3,10 +3,11 @@ from io import BytesIO
 import requests
 from hydrogram.enums import ChatAction
 from data import DAPI
-from misc import send_photos, upload
+from plugins.util import send_photos, upload
 from hydrogram.enums import ChatAction
 from hydrogram import Client, filters
-from misc import Attrs, save
+from plugins.var import Attrs
+from plugins.util import save
 from .tiktokuser import TikTokUser
 
 

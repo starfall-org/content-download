@@ -612,86 +612,6 @@
         "documentation": {}
     },
     {
-        "label": "save",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "send_photos",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "upload",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "Attrs",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "save",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "get_media_links",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "send_photos",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "send_videos",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "Attrs",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
-        "label": "save",
-        "importPath": "misc",
-        "description": "misc",
-        "isExtraImport": true,
-        "detail": "misc",
-        "documentation": {}
-    },
-    {
         "label": "Attrs",
         "importPath": "misc",
         "description": "misc",
@@ -794,6 +714,86 @@
         "description": "hydrogram.types",
         "isExtraImport": true,
         "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "get_media_links",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "send_photos",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "send_videos",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "save",
+        "importPath": "plugins.util",
+        "description": "plugins.util",
+        "isExtraImport": true,
+        "detail": "plugins.util",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "plugins.var",
+        "description": "plugins.var",
+        "isExtraImport": true,
+        "detail": "plugins.var",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "plugins.var",
+        "description": "plugins.var",
+        "isExtraImport": true,
+        "detail": "plugins.var",
         "documentation": {}
     },
     {

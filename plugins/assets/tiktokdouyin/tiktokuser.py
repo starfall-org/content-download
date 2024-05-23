@@ -1,7 +1,7 @@
 import logging
 from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from misc import get_media_links, send_photos, send_videos
+from plugins.util import get_media_links, send_photos, send_videos
 
 
 def TikTokUser(m, url, caption, TDDL):
