@@ -50,7 +50,7 @@ def _channel(_, __, m):
     & filters.incoming
     & filters.create(_channel)
 )
-def tiktokdouyin_download(c, m):
+def tikdou_download(c, m):
     save(m)
     attrs = Attrs(m)
     url = attrs.url
@@ -66,7 +66,10 @@ def tiktokdouyin_download(c, m):
         send_photos(m, media[0], button, caption)
     else:
         m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-        m.reply_video(media[0], caption=caption, reply_markup=button)
+        try:
+            m.reply_video(media[0], caption=caption, reply_markup=button)
+        except Exception:
+            m.reply_video(media[1], caption=caption, reply_markup=button)
     print("TikTok and Douyin Done")
     m.delete()
     if m.chat.username == "contentdownload":

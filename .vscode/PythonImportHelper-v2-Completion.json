@@ -1220,11 +1220,11 @@
         "documentation": {}
     },
     {
-        "label": "tiktokdouyin_download",
+        "label": "tikdou_download",
         "kind": 2,
         "importPath": "plugins.assets.tiktokdouyin.command",
         "description": "plugins.assets.tiktokdouyin.command",
-        "peekOfCode": "def tiktokdouyin_download(c, m):\n    save(m)\n    attrs = Attrs(m)\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    try:\n        media, is_video = get(url)\n    except Exception:",
+        "peekOfCode": "def tikdou_download(c, m):\n    save(m)\n    attrs = Attrs(m)\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    m.reply_chat_action(ChatAction.RECORD_VIDEO)\n    try:\n        media, is_video = get(url)\n    except Exception:",
         "detail": "plugins.assets.tiktokdouyin.command",
         "documentation": {}
     },
