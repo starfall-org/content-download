@@ -10,8 +10,4 @@ WEB_COLLECTION = res.key.web_collection
 DAPI = res.api.dapi
 COLLECTON = res.api.collection
 DATABASE_URL = res.data.cockroach
-
-
-api_id = res.key.api_id
-api_hash = res.key.api_hash
 bot_token = res.bot.cd_tg

@@ -129,22 +129,6 @@
         "documentation": {}
     },
     {
-        "label": "api_id",
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "isExtraImport": true,
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_hash",
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "isExtraImport": true,
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
         "label": "bot_token",
         "importPath": "data.environment",
         "description": "data.environment",
@@ -891,7 +875,7 @@
         "kind": 6,
         "importPath": "application.content",
         "description": "application.content",
-        "peekOfCode": "class Content(Client):\n    def __init__(self):\n        self.client = Client(\n            \"Content Download\",\n            api_id,\n            api_hash,\n            bot_token=bot_token,\n            plugins=dict(root=\"plugins\"),\n            max_concurrent_transmissions=100,\n        )",
+        "peekOfCode": "class Content(Client):\n    def __init__(self):\n        self.client = Client(\n            \"Content Download\",\n            21021245,\n            \"7b32ea92719781c5e22ede319c5dbde5\",\n            bot_token=bot_token,\n            plugins=dict(root=\"plugins\"),\n            max_concurrent_transmissions=100,\n        )",
         "detail": "application.content",
         "documentation": {}
     },
@@ -1008,7 +992,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\")).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\")).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1017,7 +1001,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1026,7 +1010,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "WEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "WEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1035,7 +1019,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1044,7 +1028,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "COLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "COLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1053,25 +1037,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DATABASE_URL = res.data.cockroach\napi_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_id",
-        "kind": 5,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "api_id = res.key.api_id\napi_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
-        "label": "api_hash",
-        "kind": 5,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "api_hash = res.key.api_hash\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "DATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
         "detail": "data.environment",
         "documentation": {}
     },
