@@ -992,7 +992,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\")).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\"), timeout=99).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.deta.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.postgres.cockroach\nbot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1001,7 +1001,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = res.deta.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.postgres.cockroach\nbot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1010,7 +1010,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "WEB_COLLECTION = res.key.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "WEB_COLLECTION = res.deta.web_collection\nDAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.postgres.cockroach\nbot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1019,7 +1019,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = res.api.collection\nDATABASE_URL = res.postgres.cockroach\nbot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1028,7 +1028,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "COLLECTON = res.api.collection\nDATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "COLLECTON = res.api.collection\nDATABASE_URL = res.postgres.cockroach\nbot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1037,7 +1037,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DATABASE_URL = res.data.cockroach\nbot_token = res.bot.cd_tg",
+        "peekOfCode": "DATABASE_URL = res.postgres.cockroach\nbot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1046,7 +1046,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "bot_token = res.bot.cd_tg",
+        "peekOfCode": "bot_token = res.bot.contentdownload",
         "detail": "data.environment",
         "documentation": {}
     },
