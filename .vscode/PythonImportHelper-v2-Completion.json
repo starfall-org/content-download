@@ -73,6 +73,38 @@
         "documentation": {}
     },
     {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
+        "label": "filters",
+        "importPath": "hydrogram",
+        "description": "hydrogram",
+        "isExtraImport": true,
+        "detail": "hydrogram",
+        "documentation": {}
+    },
+    {
         "label": "filters",
         "importPath": "hydrogram",
         "description": "hydrogram",
@@ -90,38 +122,6 @@
     },
     {
         "label": "enums",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "Client",
-        "importPath": "hydrogram",
-        "description": "hydrogram",
-        "isExtraImport": true,
-        "detail": "hydrogram",
-        "documentation": {}
-    },
-    {
-        "label": "filters",
         "importPath": "hydrogram",
         "description": "hydrogram",
         "isExtraImport": true,
@@ -402,23 +402,6 @@
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "SimpleNamespace",
-        "importPath": "types",
-        "description": "types",
-        "isExtraImport": true,
-        "detail": "types",
-        "documentation": {}
-    },
-    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -557,30 +540,6 @@
         "documentation": {}
     },
     {
-        "label": "COLLECTON",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "COLLECTON",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
-        "label": "WEB_COLLECTION",
-        "importPath": "data",
-        "description": "data",
-        "isExtraImport": true,
-        "detail": "data",
-        "documentation": {}
-    },
-    {
         "label": "Save",
         "importPath": "data",
         "description": "data",
@@ -638,22 +597,6 @@
         "documentation": {}
     },
     {
-        "label": "InlineKeyboardButton",
-        "importPath": "hydrogram.types",
-        "description": "hydrogram.types",
-        "isExtraImport": true,
-        "detail": "hydrogram.types",
-        "documentation": {}
-    },
-    {
-        "label": "InlineKeyboardMarkup",
-        "importPath": "hydrogram.types",
-        "description": "hydrogram.types",
-        "isExtraImport": true,
-        "detail": "hydrogram.types",
-        "documentation": {}
-    },
-    {
         "label": "InlineKeyboardMarkup",
         "importPath": "hydrogram.types",
         "description": "hydrogram.types",
@@ -663,6 +606,22 @@
     },
     {
         "label": "InlineKeyboardButton",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardButton",
+        "importPath": "hydrogram.types",
+        "description": "hydrogram.types",
+        "isExtraImport": true,
+        "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "InlineKeyboardMarkup",
         "importPath": "hydrogram.types",
         "description": "hydrogram.types",
         "isExtraImport": true,
@@ -699,6 +658,62 @@
         "description": "hydrogram.types",
         "isExtraImport": true,
         "detail": "hydrogram.types",
+        "documentation": {}
+    },
+    {
+        "label": "quote",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "urljoin",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "plugins.var",
+        "description": "plugins.var",
+        "isExtraImport": true,
+        "detail": "plugins.var",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "plugins.var",
+        "description": "plugins.var",
+        "isExtraImport": true,
+        "detail": "plugins.var",
+        "documentation": {}
+    },
+    {
+        "label": "Attrs",
+        "importPath": "plugins.var",
+        "description": "plugins.var",
+        "isExtraImport": true,
+        "detail": "plugins.var",
+        "documentation": {}
+    },
+    {
+        "label": "upload_web",
+        "importPath": "plugins.upload",
+        "description": "plugins.upload",
+        "isExtraImport": true,
+        "detail": "plugins.upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload",
+        "importPath": "plugins.upload",
+        "description": "plugins.upload",
+        "isExtraImport": true,
+        "detail": "plugins.upload",
         "documentation": {}
     },
     {
@@ -758,70 +773,6 @@
         "documentation": {}
     },
     {
-        "label": "Attrs",
-        "importPath": "plugins.var",
-        "description": "plugins.var",
-        "isExtraImport": true,
-        "detail": "plugins.var",
-        "documentation": {}
-    },
-    {
-        "label": "Attrs",
-        "importPath": "plugins.var",
-        "description": "plugins.var",
-        "isExtraImport": true,
-        "detail": "plugins.var",
-        "documentation": {}
-    },
-    {
-        "label": "Attrs",
-        "importPath": "plugins.var",
-        "description": "plugins.var",
-        "isExtraImport": true,
-        "detail": "plugins.var",
-        "documentation": {}
-    },
-    {
-        "label": "upload",
-        "importPath": "plugins.upload",
-        "description": "plugins.upload",
-        "isExtraImport": true,
-        "detail": "plugins.upload",
-        "documentation": {}
-    },
-    {
-        "label": "upload_web",
-        "importPath": "plugins.upload",
-        "description": "plugins.upload",
-        "isExtraImport": true,
-        "detail": "plugins.upload",
-        "documentation": {}
-    },
-    {
-        "label": "quote",
-        "importPath": "urllib.parse",
-        "description": "urllib.parse",
-        "isExtraImport": true,
-        "detail": "urllib.parse",
-        "documentation": {}
-    },
-    {
-        "label": "quote",
-        "importPath": "urllib.parse",
-        "description": "urllib.parse",
-        "isExtraImport": true,
-        "detail": "urllib.parse",
-        "documentation": {}
-    },
-    {
-        "label": "urljoin",
-        "importPath": "urllib.parse",
-        "description": "urllib.parse",
-        "isExtraImport": true,
-        "detail": "urllib.parse",
-        "documentation": {}
-    },
-    {
         "label": "Thread",
         "importPath": "threading",
         "description": "threading",
@@ -835,14 +786,6 @@
         "description": "threading",
         "isExtraImport": true,
         "detail": "threading",
-        "documentation": {}
-    },
-    {
-        "label": "Deta",
-        "importPath": "deta",
-        "description": "deta",
-        "isExtraImport": true,
-        "detail": "deta",
         "documentation": {}
     },
     {
@@ -988,29 +931,11 @@
         "documentation": {}
     },
     {
-        "label": "secret",
-        "kind": 5,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "secret = requests.get(os.getenv(\"SECRET\"), timeout=99).text\nres = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = \"\"\nDAPI = res.api.dapi\nCOLLECTON = \"\"\nDATABASE_URL = res.database.contentdownload\nbot_token = res.bot.contentdownload",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
         "label": "res",
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "res = json.loads(secret, object_hook=lambda _: SimpleNamespace(**_))\nWEB_COLLECTION = \"\"\nDAPI = res.api.dapi\nCOLLECTON = \"\"\nDATABASE_URL = res.database.contentdownload\nbot_token = res.bot.contentdownload",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
-        "label": "WEB_COLLECTION",
-        "kind": 5,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "WEB_COLLECTION = \"\"\nDAPI = res.api.dapi\nCOLLECTON = \"\"\nDATABASE_URL = res.database.contentdownload\nbot_token = res.bot.contentdownload",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).text\nDAPI = res[\"api\"][\"dapi\"]\nDATABASE_URL = res[\"database\"][\"contentdownload\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1019,16 +944,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DAPI = res.api.dapi\nCOLLECTON = \"\"\nDATABASE_URL = res.database.contentdownload\nbot_token = res.bot.contentdownload",
-        "detail": "data.environment",
-        "documentation": {}
-    },
-    {
-        "label": "COLLECTON",
-        "kind": 5,
-        "importPath": "data.environment",
-        "description": "data.environment",
-        "peekOfCode": "COLLECTON = \"\"\nDATABASE_URL = res.database.contentdownload\nbot_token = res.bot.contentdownload",
+        "peekOfCode": "DAPI = res[\"api\"][\"dapi\"]\nDATABASE_URL = res[\"database\"][\"contentdownload\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1037,7 +953,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DATABASE_URL = res.database.contentdownload\nbot_token = res.bot.contentdownload",
+        "peekOfCode": "DATABASE_URL = res[\"database\"][\"contentdownload\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1046,7 +962,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "bot_token = res.bot.contentdownload",
+        "peekOfCode": "bot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -1120,6 +1036,51 @@
         "description": "misc.other",
         "peekOfCode": "def other(m, attrs):\n    url = attrs.url\n    button = attrs.button\n    caption = attrs.caption\n    file, types = ODL(url)\n    if types == \"image\":\n        m.reply_chat_action(ChatAction.UPLOAD_PHOTO)\n        m.reply_photo(file, caption=caption, reply_markup=button)\n    elif types == \"video\":\n        m.reply_chat_action(ChatAction.UPLOA_VIDEO)",
         "detail": "misc.other",
+        "documentation": {}
+    },
+    {
+        "label": "NotFileErr",
+        "kind": 6,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "class NotFileErr(Exception):\n    \"\"\"\"\"\"\n    pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(\n            [[InlineKeyboardButton(\"COLLECTION\", url=COLLECTON)]]",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "cloud_list",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(\n            [[InlineKeyboardButton(\"COLLECTION\", url=COLLECTON)]]\n        ),\n    )\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "upload_to_cloud",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def upload_to_cloud(c, m):\n    m.reply_chat_action(typing)\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    if not m.reply_to_message:\n        raise NotFileErr(\"Please reply to a message containing a file to upload.\")\n    words = f\"date: {formatted}\"\n    file_id = None\n    file_name = words\n    headers = {\"Content-type\": \"application/octet-stream\"}",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "request_delete_file",
+        "kind": 2,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "def request_delete_file(c, m):\n    m.reply_chat_action(typing)\n    if m.reply_to_message:\n        url = Attrs(m.reply_to_message).url\n    else:\n        url = Attrs(m).url\n    res = requests.delete(url).text\n    m.reply(res)",
+        "detail": "misc.upload",
+        "documentation": {}
+    },
+    {
+        "label": "typing",
+        "kind": 5,
+        "importPath": "misc.upload",
+        "description": "misc.upload",
+        "peekOfCode": "typing = ChatAction.TYPING\nclass NotFileErr(Exception):\n    \"\"\"\"\"\"\n    pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(",
+        "detail": "misc.upload",
         "documentation": {}
     },
     {
@@ -1240,6 +1201,15 @@
         "documentation": {}
     },
     {
+        "label": "facebook_download",
+        "kind": 2,
+        "importPath": "plugins.assets.deprecated",
+        "description": "plugins.assets.deprecated",
+        "peekOfCode": "def facebook_download(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\n        \"Facebook API has no endpoint server to run. If you want to contribute, contact admin.\\n\\nHiện chúng tôi đã ngừng cung cấp dịch vụ tải nội dung từ những nền tảng này do thiếu máy chủ API. Nếu bạn có nhu cầu đóng góp, hãy liên hệ nhà sáng lập bot\",\n        quote=True,\n    )",
+        "detail": "plugins.assets.deprecated",
+        "documentation": {}
+    },
+    {
         "label": "count_uses",
         "kind": 2,
         "importPath": "plugins.other.extend",
@@ -1285,83 +1255,11 @@
         "documentation": {}
     },
     {
-        "label": "NotFileErr",
-        "kind": 6,
-        "importPath": "plugins.other.upload",
-        "description": "plugins.other.upload",
-        "peekOfCode": "class NotFileErr(Exception):\n    \"\"\"\"\"\"\n    pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(\n            [[InlineKeyboardButton(\"COLLECTION\", url=COLLECTON)]]",
-        "detail": "plugins.other.upload",
-        "documentation": {}
-    },
-    {
-        "label": "cloud_list",
-        "kind": 2,
-        "importPath": "plugins.other.upload",
-        "description": "plugins.other.upload",
-        "peekOfCode": "def cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(\n            [[InlineKeyboardButton(\"COLLECTION\", url=COLLECTON)]]\n        ),\n    )\n@Client.on_message(filters.command(\"upload\"))\ndef upload_to_cloud(c, m):",
-        "detail": "plugins.other.upload",
-        "documentation": {}
-    },
-    {
-        "label": "upload_to_cloud",
-        "kind": 2,
-        "importPath": "plugins.other.upload",
-        "description": "plugins.other.upload",
-        "peekOfCode": "def upload_to_cloud(c, m):\n    m.reply_chat_action(typing)\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    if not m.reply_to_message:\n        raise NotFileErr(\"Please reply to a message containing a file to upload.\")\n    words = f\"date: {formatted}\"\n    file_id = None\n    file_name = words\n    headers = {\"Content-type\": \"application/octet-stream\"}",
-        "detail": "plugins.other.upload",
-        "documentation": {}
-    },
-    {
-        "label": "request_delete_file",
-        "kind": 2,
-        "importPath": "plugins.other.upload",
-        "description": "plugins.other.upload",
-        "peekOfCode": "def request_delete_file(c, m):\n    m.reply_chat_action(typing)\n    if m.reply_to_message:\n        url = Attrs(m.reply_to_message).url\n    else:\n        url = Attrs(m).url\n    res = requests.delete(url).text\n    m.reply(res)",
-        "detail": "plugins.other.upload",
-        "documentation": {}
-    },
-    {
-        "label": "typing",
-        "kind": 5,
-        "importPath": "plugins.other.upload",
-        "description": "plugins.other.upload",
-        "peekOfCode": "typing = ChatAction.TYPING\nclass NotFileErr(Exception):\n    \"\"\"\"\"\"\n    pass\n@Client.on_message(filters.command(\"album\"))\ndef cloud_list(c, m):\n    m.reply_chat_action(typing)\n    m.reply(\n        \"__--**COLLECTION**--__\",\n        reply_markup=InlineKeyboardMarkup(",
-        "detail": "plugins.other.upload",
-        "documentation": {}
-    },
-    {
-        "label": "facebook_download",
-        "kind": 2,
-        "importPath": "plugins.deprecated",
-        "description": "plugins.deprecated",
-        "peekOfCode": "def facebook_download(c, m):\n    m.reply_chat_action(ChatAction.TYPING)\n    m.reply(\n        \"Facebook API has no endpoint server to run. If you want to contribute, contact admin.\\n\\nHiện chúng tôi đã ngừng cung cấp dịch vụ tải nội dung từ những nền tảng này do thiếu máy chủ API. Nếu bạn có nhu cầu đóng góp, hãy liên hệ nhà sáng lập bot\",\n        quote=True,\n    )",
-        "detail": "plugins.deprecated",
-        "documentation": {}
-    },
-    {
         "label": "upload",
         "kind": 2,
         "importPath": "plugins.upload",
         "description": "plugins.upload",
-        "peekOfCode": "def upload(file_data, file_link):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    file_name = f\"video {formatted_time}.mp4\"\n    Thread(\n        target=upload_file,\n        args=(\n            file_data,\n            file_name,\n        ),",
-        "detail": "plugins.upload",
-        "documentation": {}
-    },
-    {
-        "label": "upload_file",
-        "kind": 2,
-        "importPath": "plugins.upload",
-        "description": "plugins.upload",
-        "peekOfCode": "def upload_file(file_data, file_name):\n    raw_bytes = file_data.getvalue()\n    response = requests.post(f\"{COLLECTON}/s3/upload/{file_name}\", data=raw_bytes)\n    print(response.text)\ndef upload_web(file_data, file_name):\n    base = deta.Base(\"files\")\n    drive = deta.Drive(\"files\")\n    file_data = file_data.getvalue()\n    base.put({\"key\": file_name, \"name\": file_name})\n    drive.put(name=file_name, data=file_data)",
-        "detail": "plugins.upload",
-        "documentation": {}
-    },
-    {
-        "label": "upload_web",
-        "kind": 2,
-        "importPath": "plugins.upload",
-        "description": "plugins.upload",
-        "peekOfCode": "def upload_web(file_data, file_name):\n    base = deta.Base(\"files\")\n    drive = deta.Drive(\"files\")\n    file_data = file_data.getvalue()\n    base.put({\"key\": file_name, \"name\": file_name})\n    drive.put(name=file_name, data=file_data)\n    return f\"{COLLECTON}/play/{quote(file_name)}\"\ndef youtube_upload(url, title=\"TikTok & Douyin\", des=\"Welcome to my channel!\"):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")",
+        "peekOfCode": "def upload(file_data, file_link):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    file_name = f\"video {formatted_time}.mp4\"\n    Thread(target=youtube_upload, args=(file_link,)).start()\ndef youtube_upload(url, title=\"TikTok & Douyin\", des=\"Welcome to my channel!\"):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    des = f\"{title} - {formatted_time}\\n\\n{des}\"\n    r = requests.post(",
         "detail": "plugins.upload",
         "documentation": {}
     },
@@ -1370,16 +1268,7 @@
         "kind": 2,
         "importPath": "plugins.upload",
         "description": "plugins.upload",
-        "peekOfCode": "def youtube_upload(url, title=\"TikTok & Douyin\", des=\"Welcome to my channel!\"):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    des = f\"{title} - {formatted_time}\\n\\n{des}\"\n    r = requests.post(\n        \"https://eohejw5exru9jhs.m.pipedream.net\",\n        json={\"url\": url, \"title\": title, \"des\": des},\n    )\n    print(r.text)",
-        "detail": "plugins.upload",
-        "documentation": {}
-    },
-    {
-        "label": "deta",
-        "kind": 5,
-        "importPath": "plugins.upload",
-        "description": "plugins.upload",
-        "peekOfCode": "deta = Deta(WEB_COLLECTION)\ndef upload(file_data, file_link):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    file_name = f\"video {formatted_time}.mp4\"\n    Thread(\n        target=upload_file,\n        args=(\n            file_data,\n            file_name,",
+        "peekOfCode": "def youtube_upload(url, title=\"TikTok & Douyin\", des=\"Welcome to my channel!\"):\n    current_time = datetime.now(timezone(\"Asia/Ho_Chi_Minh\"))\n    formatted_time = current_time.strftime(\"%H:%M:%S(%d-%B-%Y)\")\n    des = f\"{title} - {formatted_time}\\n\\n{des}\"\n    r = requests.post(\n        \"https://eohejw5exru9jhs.m.pipedream.net\",\n        json={\"url\": url, \"title\": title, \"des\": des},\n        timeout=999,\n    )\n    print(r.text)",
         "detail": "plugins.upload",
         "documentation": {}
     },

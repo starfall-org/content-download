@@ -6,7 +6,6 @@ from datetime import datetime
 from urllib.parse import quote
 from plugins.var import Attrs
 from plugins.upload import upload_web
-from data import COLLECTON
 import requests
 import re
 from data.environment import COLLECTON
