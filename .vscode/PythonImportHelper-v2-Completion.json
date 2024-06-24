@@ -935,7 +935,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nDAPI = res[\"api\"][\"dapi\"]\nDATABASE_URL = res[\"database\"][\"contentdownload\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
+        "peekOfCode": "res = requests.get(os.getenv(\"SECRET\"), timeout=99).json()\nDAPI = res[\"api\"][\"dapi\"]\nDATABASE_URL = res[\"postgres\"][\"cockroach\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -944,7 +944,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DAPI = res[\"api\"][\"dapi\"]\nDATABASE_URL = res[\"database\"][\"contentdownload\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
+        "peekOfCode": "DAPI = res[\"api\"][\"dapi\"]\nDATABASE_URL = res[\"postgres\"][\"cockroach\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
@@ -953,7 +953,7 @@
         "kind": 5,
         "importPath": "data.environment",
         "description": "data.environment",
-        "peekOfCode": "DATABASE_URL = res[\"database\"][\"contentdownload\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
+        "peekOfCode": "DATABASE_URL = res[\"postgres\"][\"cockroach\"]\nbot_token = res[\"bot\"][\"contentdownload\"]",
         "detail": "data.environment",
         "documentation": {}
     },
