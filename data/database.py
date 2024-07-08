@@ -1,5 +1,5 @@
 from datetime import datetime
-from hydrogram.enums import ChatType
+from pyrogram.enums import ChatType
 from pytz import timezone
 from .environment import DATABASE_URL
 import psycopg2

@@ -1,4 +1,4 @@
-hydrogram
+pyrogram
 requests
 tgcrypto
 uvloop

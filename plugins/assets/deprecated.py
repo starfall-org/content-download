@@ -1,5 +1,5 @@
-from hydrogram.enums import ChatAction
-from hydrogram import Client, filters
+from pyrogram.enums import ChatAction
+from pyrogram import Client, filters
 
 
 @Client.on_message(

@@ -1,6 +1,6 @@
-from hydrogram import Client, filters
-from hydrogram.enums import ChatAction
-from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import Client, filters
+from pyrogram.enums import ChatAction
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pytz import timezone
 from datetime import datetime
 from urllib.parse import quote

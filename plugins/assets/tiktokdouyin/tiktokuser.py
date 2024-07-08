@@ -1,6 +1,6 @@
 import logging
-from hydrogram.enums import ChatAction
-from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.enums import ChatAction
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from plugins.util import get_media_links, send_photos, send_videos
 
 

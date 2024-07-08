@@ -1,5 +1,5 @@
 from datetime import datetime
-from hydrogram.enums import ChatType
+from pyrogram.enums import ChatType
 from pytz import timezone
 from sqlalchemy import create_engine, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base

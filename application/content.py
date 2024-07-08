@@ -1,5 +1,5 @@
 import os
-from hydrogram import Client, idle
+from pyrogram import Client, idle
 from data.environment import bot_token
 
 

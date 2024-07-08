@@ -1,11 +1,11 @@
 import logging
 from io import BytesIO
 import requests
-from hydrogram.enums import ChatAction
+from pyrogram.enums import ChatAction
 from data import DAPI
 from plugins.util import send_photos, save
-from hydrogram.enums import ChatAction
-from hydrogram import Client, filters
+from pyrogram.enums import ChatAction
+from pyrogram import Client, filters
 from plugins.var import Attrs
 from plugins.upload import upload
 from .tiktokuser import TikTokUser

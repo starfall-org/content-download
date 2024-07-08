@@ -1,5 +1,5 @@
 import re
-from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 proxies = {"http": "http://127.0.0.1:8090", "https": "http://127.0.0.1:8090"}
 

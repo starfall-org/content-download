@@ -1,6 +1,6 @@
-from hydrogram.enums import ChatAction
-from hydrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from hydrogram import Client, filters
+from pyrogram.enums import ChatAction
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import Client, filters
 from plugins.util import save
 
 

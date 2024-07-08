@@ -3,8 +3,8 @@ from typing import List
 from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
-from hydrogram.enums import ChatAction
-from hydrogram.types import InputMediaPhoto, InputMediaVideo
+from pyrogram.enums import ChatAction
+from pyrogram.types import InputMediaPhoto, InputMediaVideo
 
 from data import Save
 
