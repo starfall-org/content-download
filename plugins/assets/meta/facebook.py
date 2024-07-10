@@ -2,20 +2,28 @@ import logging
 from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
-from data import DAPI
+from pyrogram import Client, filters
+from plugins.var import Attrs
+from plugins.util import save
+from data import DAPI_FB
 
 
 def FBDL(url):
-    data = requests.get(f"{DAPI}/facebook", params={"url": url}, timeout=180).json()
+    data = requests.get(DAPI_FB, params={"url": url}, timeout=180).json()
     link = data["url"][0]
-    req = requests.get(link)
+    req = requests.get(link, timeout=120)
     file = BytesIO(req.content)
     file.name = "video.mp4"
     print("Facebook")
     return file, link
 
 
-def facebook(m, attrs):
+@Client.on_message(
+    filters.regex("http|https") & filters.regex("facebook.|fb.") & filters.incoming
+)
+def facebook_dl(c, m):
+    save(m)
+    attrs = Attrs(m)
     url = attrs.url
     button = attrs.button
     caption = attrs.caption

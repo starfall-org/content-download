@@ -2,19 +2,21 @@ import logging
 from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
-from data import DAPI
-from misc import send_photos, send_videos
+from data import DAPI_IG
+from plugins.util import send_photos, send_videos, save
+from pyrogram import Client, filters
+from plugins.var import Attrs
 
 
 def IGDL(url):
-    data = requests.get(f"{DAPI}/instagram", params={"url": url}, timeout=180).json()
+    data = requests.get(DAPI_IG, params={"url": url}, timeout=180).json()
     files = []
     links = data["url"]
     is_video = data["is_video"]
     if is_video:
         for link in links:
             try:
-                req = requests.get(link)
+                req = requests.get(link, timeout=120)
                 file = BytesIO(req.content)
                 file.name = "instagram.mp4"
             except Exception as e:
@@ -26,7 +28,12 @@ def IGDL(url):
     return links, files, is_video
 
 
-def instagram(m, attrs):
+@Client.on_message(
+    filters.regex("http|https") & filters.regex("instagram.") & filters.incoming
+)
+def instagram_dl(c, m):\
+    save(m)
+    attrs = Attrs(m)
     url = attrs.url
     button = attrs.button
     caption = attrs.caption

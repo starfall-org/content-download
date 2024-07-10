@@ -2,7 +2,7 @@ import logging
 from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
-from data import DAPI
+from data import DAPI_TD
 from plugins.util import send_photos, save
 from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
@@ -12,7 +12,7 @@ from .tiktokuser import TikTokUser
 
 
 def get(url):
-    data = requests.get(f"{DAPI}/tikdou", params={"url": url}, timeout=180).json()
+    data = requests.get(DAPI_TD, params={"url": url}, timeout=180).json()
     link = data["url"]
     if data["is_video"]:
         content = requests.get(link, timeout=120).content

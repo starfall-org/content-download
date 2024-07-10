@@ -18,7 +18,7 @@ def TikTokUser(m, url, caption, TDDL):
     list_video = []
     list_photo = []
     for media_link in media_links:
-        media, music, is_video = TDDL(media_link)
+        media, is_video = TDDL(media_link)
         if is_video:
             m.reply_chat_action(ChatAction.RECORD_VIDEO)
             list_video.append(media[0])

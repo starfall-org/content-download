@@ -6,11 +6,11 @@ from pyrogram import Client, filters
 from plugins.var import Attrs
 from plugins.util import save
 from pyrogram.enums import ChatAction
-from data import DAPI
+from data import DAPI_YT, DAPI_YTM
 
 
 def get(url):
-    data = requests.get(f"{DAPI}/youtube", params={"url": url}, timeout=60).json()
+    data = requests.get(DAPI_YT, params={"url": url}, timeout=60).json()
     try:
         content = requests.get(data["url"], timeout=120).content
         file = BytesIO(content)
@@ -23,7 +23,7 @@ def get(url):
 
 
 def music(url):
-    data = requests.get(f"{DAPI}/music", params={"url": url}, timeout=60).json()
+    data = requests.get(DAPI_YTM, params={"url": url}, timeout=60).json()
     content = requests.get(data["url"], timeout=120).content
     file = BytesIO(content)
     file.name = f"{data['title']}.mp3"
