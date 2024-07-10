@@ -31,7 +31,7 @@ def IGDL(url):
 @Client.on_message(
     filters.regex("http|https") & filters.regex("instagram.") & filters.incoming
 )
-def instagram_dl(c, m):\
+def instagram_dl(c, m):
     save(m)
     attrs = Attrs(m)
     url = attrs.url
