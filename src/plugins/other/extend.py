@@ -1,5 +1,5 @@
 from pyrogram import filters, Client, enums
-from data import Get
+from database import Get
 
 typing = enums.ChatAction.TYPING
 

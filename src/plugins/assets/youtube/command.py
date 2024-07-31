@@ -3,10 +3,10 @@ from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
-from plugins.var import Attrs
-from plugins.util import save
 from pyrogram.enums import ChatAction
-from data import DAPI_YT, DAPI_YTM
+from assets.var import Attrs
+from assets.util import save
+from environment import DAPI_YT, DAPI_YTM
 
 
 def get(url):

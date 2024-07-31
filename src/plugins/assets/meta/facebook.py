@@ -3,9 +3,9 @@ from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
-from plugins.var import Attrs
-from plugins.util import save
-from data import DAPI_FB
+from assets.var import Attrs
+from assets.util import save
+from environment import DAPI_FB
 
 
 def FBDL(url):

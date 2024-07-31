@@ -2,13 +2,13 @@ import logging
 from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
-from data import DAPI_TD
-from plugins.util import send_photos, save
 from pyrogram.enums import ChatAction
 from pyrogram import Client, filters
-from plugins.var import Attrs
-from plugins.upload import upload
+from assets.var import Attrs
+from assets.upload import upload
 from .tiktokuser import TikTokUser
+from assets.util import send_photos, save
+from environment import DAPI_TD
 
 
 def get(url):

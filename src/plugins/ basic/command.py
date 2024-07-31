@@ -1,7 +1,7 @@
 from pyrogram.enums import ChatAction
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
-from plugins.util import save
+from assets.util import save
 
 
 button = InlineKeyboardMarkup(

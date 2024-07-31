@@ -2,10 +2,10 @@ import logging
 from io import BytesIO
 import requests
 from pyrogram.enums import ChatAction
-from data import DAPI_IG
-from plugins.util import send_photos, send_videos, save
 from pyrogram import Client, filters
-from plugins.var import Attrs
+from assets.var import Attrs
+from environment import DAPI_IG
+from assets.util import send_photos, send_videos, save
 
 
 def IGDL(url):

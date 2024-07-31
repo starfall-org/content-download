@@ -5,10 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from pyrogram.enums import ChatAction
 from pyrogram.types import InputMediaPhoto, InputMediaVideo
-
-from data import Save
-
-from .var import proxies
+from database import Save
 
 sp = ChatAction.UPLOAD_PHOTO
 sv = ChatAction.UPLOAD_VIDEO

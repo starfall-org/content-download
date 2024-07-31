@@ -1,7 +1,7 @@
 import logging
 from pyrogram.enums import ChatAction
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from plugins.util import get_media_links, send_photos, send_videos
+from assets.util import get_media_links, send_photos, send_videos
 
 
 def TikTokUser(m, url, caption, TDDL):

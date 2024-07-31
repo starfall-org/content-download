@@ -7,8 +7,9 @@ from pytz import timezone
 def upload(file_data, file_link):
     current_time = datetime.now(timezone("Asia/Ho_Chi_Minh"))
     formatted_time = current_time.strftime("%H:%M:%S(%d-%B-%Y)")
-    file_name = f"video {formatted_time}.mp4"
+    des = f"Uploaded at {formatted_time}"
     Thread(target=youtube_upload, args=(file_link,)).start()
+    return {"status": "success", "description": des}
 
 
 def youtube_upload(url, title="TikTok & Douyin", des="Welcome to my channel!"):
