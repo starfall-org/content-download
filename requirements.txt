@@ -1,7 +1,6 @@
 pyrogram
 requests
 tgcrypto
-uvloop
 flask
 gunicorn
 deta

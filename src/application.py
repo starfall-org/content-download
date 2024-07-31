@@ -1,5 +1,4 @@
 import os
-import uvloop
 from pyrogram import Client, idle
 from environment import bot_token
 
@@ -22,6 +21,5 @@ class Content(Client):
 
 
 if __name__ == "__main__":
-    uvloop.install()
     app = Content()
     app.run()
