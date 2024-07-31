@@ -1,7 +1,7 @@
 from datetime import datetime
 from pyrogram.enums import ChatType
 from pytz import timezone
-from .environment import DATABASE_URL
+from environment import DATABASE_URL
 import psycopg2
 
 
