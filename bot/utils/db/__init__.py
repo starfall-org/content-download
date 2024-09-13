@@ -3,6 +3,7 @@ from threading import Thread
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from pyrogram.types import Message
+from pyrogram.enums import ChatType
 from config import keys
 from .models import Base, User, Chat
 
@@ -40,9 +41,10 @@ class Database:
 
     def save(self, m: Message):
         user = self.user_obj(m)
-        chat = self.chat_obj(m)
+        if m.chat.type != ChatType.PRIVATE:
+            chat = self.chat_obj(m)
+            self.session.merge(chat)
         self.session.merge(user)
-        self.session.merge(chat)
         self.session.commit()
 
     def set_status(
