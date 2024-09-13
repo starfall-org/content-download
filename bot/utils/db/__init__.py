@@ -1,4 +1,6 @@
 from datetime import datetime
+from threading import Thread
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from pyrogram.types import Message
@@ -62,3 +64,22 @@ class Database:
 
     def chats_count(self):
         return self.session.query(Chat).count()
+
+
+def save(m: Message, is_banned: bool | None = None, is_blocked: bool | None = None):
+    db = Database()
+    if is_banned or is_blocked:
+        db.set_status(m, is_banned, is_blocked)
+    else:
+        Thread(target=db.save, args=(m,)).start()
+    db.session.close()
+
+
+def count():
+    db = Database()
+
+    class Count:
+        users = db.users_count()
+        chats = db.chats_count()
+
+    return Count
