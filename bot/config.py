@@ -3,18 +3,18 @@ import shelve
 import requests
 
 
-secret_url = os.environ["SECRET"]
 shelf = shelve.open("config")
 
 
 def init():
+    secret_url = os.environ["SECRET"]
     req = requests.get(secret_url, timeout=10)
     data = req.json()
     shelf["config_data"] = data
 
 
 def get_keys():
-    data = shelf.get("config_data")
+    data = shelf["config_data"]
     dapi = data["api"]["dapi"]
 
     class Keys:
@@ -29,4 +29,6 @@ def get_keys():
     return Keys
 
 
+if not shelf.get("config_data"):
+    init()
 keys = get_keys()

@@ -7,7 +7,9 @@ from utils.methods import send_photos
 from config import keys
 
 
-@Client.on_message(filters.regex("http|https") & filters.regex("douyin."))
+@Client.on_message(
+    filters.regex("http|https") & filters.regex("douyin.|iesdouyin.|tiktok.")
+)
 async def download_douyin(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     print(
@@ -17,7 +19,9 @@ async def download_douyin(_: Client, m: Message):
     result = await api_handler(keys.douyin_api, m)
     if result.is_video:
         await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-        m.reply_video(result.result, caption=result.caption, reply_markup=result.button)
+        await m.reply_video(
+            result.result, caption=result.caption, reply_markup=result.button
+        )
     else:
         await send_photos(m, result.result, result.button, result.caption)
     save(m)
