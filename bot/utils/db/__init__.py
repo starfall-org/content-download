@@ -64,12 +64,15 @@ class Database:
 
 
 def save(m: Message, is_banned: bool | None = None, is_blocked: bool | None = None):
-    db = Database()
-    if is_banned or is_blocked:
-        db.set_status(m, is_banned, is_blocked)
-    else:
-        Thread(target=db.save, args=(m,)).start()
-    db.session.close()
+    def backgroud():
+        db = Database()
+        if is_banned or is_blocked:
+            db.set_status(m, is_banned, is_blocked)
+        else:
+            db.save(m)
+        db.session.close()
+
+    Thread(target=backgroud).start()
 
 
 def count():
