@@ -1,4 +1,5 @@
 import re
+import io
 from aiohttp import ClientSession
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
@@ -36,9 +37,19 @@ async def api_handler(api_url: str, m: Message):
                 await session.close()
 
     class Result:
-        is_video: bool = content.get("is_video")
+        is_video: bool = content.get("is_video", True)
         result: list | str = content["url"]
         button: InlineKeyboardMarkup = atr.button
         caption: str = atr.caption
 
     return Result
+
+
+async def ionify(url: str):
+    async with ClientSession() as session:
+        async with session.get(url) as response:
+            if response.status == 200:
+                content = await response.read()
+                iofile = io.BytesIO(content)
+                iofile.name = "video.mp4"
+                return iofile

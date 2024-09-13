@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.enums import ChatAction
 from utils.db import save
-from utils.tools import api_handler
+from utils.tools import api_handler, ionify
 from config import keys
 
 
@@ -15,9 +15,13 @@ async def download_music(_: Client, m: Message):
     )
     result = await api_handler(keys.music_api, m)
     await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-    await m.reply_audio(
-        result.result, caption=result.caption, reply_markup=result.button
-    )
+    try:
+        await m.reply_audio(
+            result.result, caption=result.caption, reply_markup=result.button
+        )
+    except Exception:
+        iofile = await ionify(result.result)
+        await m.reply_audio(iofile, caption=result.caption, reply_markup=result.button)
     save(m)
     print("Music Done", flush=True)
     await m.delete()

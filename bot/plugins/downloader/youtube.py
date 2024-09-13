@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.enums import ChatAction
 from utils.db import save
-from utils.tools import api_handler
+from utils.tools import api_handler, ionify
 from config import keys
 
 
@@ -15,9 +15,13 @@ async def download_youtube(_: Client, m: Message):
     )
     result = await api_handler(keys.youtube_api, m)
     await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-    await m.reply_video(
-        result.result, caption=result.caption, reply_markup=result.button
-    )
+    try:
+        await m.reply_video(
+            result.result, caption=result.caption, reply_markup=result.button
+        )
+    except Exception:
+        iofile = await ionify(result.result)
+        await m.reply_video(iofile, caption=result.caption, reply_markup=result.button)
     save(m)
     print("Youtube Done", flush=True)
     await m.delete()
