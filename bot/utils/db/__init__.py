@@ -33,12 +33,11 @@ class Database:
             last_active=dateobj,
         )
 
-    def get_user(self, user_id:int):
+    def get_user(self, user_id: int):
         return self.session.query(User).filter_by(id=user_id).first()
 
-    def get_chat(self, chat_id:int):
+    def get_chat(self, chat_id: int):
         return self.session.query(Chat).filter_by(id=chat_id).first()
-
 
     def save(self, m: Message):
         user = self.user_obj(m)
@@ -46,9 +45,9 @@ class Database:
         self.session.merge(user)
         self.session.merge(chat)
         self.session.commit()
-    
+
     def set_status(
-        self, m:Message, is_banned: bool | None = False, is_blocked: bool | None = None
+        self, m: Message, is_banned: bool | None = False, is_blocked: bool | None = None
     ):
         if is_banned:
             chat = self.chat_obj(m, is_banned)
@@ -60,6 +59,6 @@ class Database:
 
     def users_count(self):
         return self.session.query(User).count()
-    
+
     def chats_count(self):
         return self.session.query(Chat).count()
