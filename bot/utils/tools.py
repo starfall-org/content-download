@@ -33,7 +33,7 @@ async def api_handler(api_url: str, m: Message):
         async with session.get(api_url, params={"url": url}) as response:
             if response.status == 200:
                 content = await response.json()
-                session.close()
+                await session.close()
 
     class Result:
         is_video: bool = content.get("is_video")
