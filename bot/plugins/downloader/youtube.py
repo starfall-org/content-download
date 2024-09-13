@@ -13,7 +13,7 @@ async def download_youtube(_: Client, m: Message):
         f"ACTION: youtube download\nCHAT: {m.chat.title} ({m.chat.id})\nUSER: {m.from_user.first_name} ({m.from_user.id})\nDATE: {m.date}",
         flush=True,
     )
-    result = await api_handler(keys.yapi, m)
+    result = await api_handler(keys.youtube_api, m)
     await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
     await m.reply_video(
         result.result, caption=result.caption, reply_markup=result.button

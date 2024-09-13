@@ -1,33 +1,32 @@
 import os
+import shelve
 import requests
-from pydantic import BaseModel
+
 
 secret_url = os.environ["SECRET"]
+shelf = shelve.open("config")
 
 
-class Keys(BaseModel):
-    bot_token: str
-    db_url: str
-    yt_api: str
-    ytm_api: str
-    fb_api: str
-    ig_api: str
-    td_api: str
+def init():
+    req = requests.get(secret_url, timeout=10)
+    data = req.json()
+    shelf["config_data"] = data
 
 
 def get_keys():
-    req = requests.get(secret_url, timeout=10)
-    data = req.json()
+    data = shelf.get("config_data")
     dapi = data["api"]["dapi"]
-    return Keys(
-        bot_token=data["access"]["telegram"]["cd"],
-        db_url=data["db"]["postgres"][0],
-        yt_api=dapi["yt"],
-        ytm_api=dapi["ytm"],
-        fb_api=dapi["fb"],
-        ig_api=dapi["ig"],
-        td_api=dapi["td"],
-    )
+
+    class Keys:
+        bot_token = data["access"]["telegram"]["cd"]
+        db_url = data["db"]["postgres"][0]
+        youtube_api = dapi["yt"]
+        music_api = dapi["ytm"]
+        facebook_api = dapi["fb"]
+        instagram_api = dapi["ig"]
+        douyin_api = dapi["td"]
+
+    return Keys
 
 
 keys = get_keys()

@@ -1,7 +1,9 @@
 import pyrogram
 from bot import Content
-from config import keys
+from config import init, keys
 
+
+init()
 app = Content()
 app.add_token(keys.bot_token)
 

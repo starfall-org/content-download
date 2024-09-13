@@ -2,10 +2,8 @@ pyrogram
 requests
 tgcrypto
 flask
-gunicorn
-deta
-psutil
-pytz
-bs4
 psycopg2
 sqlalchemy
+sqlalchemy-cockroachdb
+aiohttp
+asyncer

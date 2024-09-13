@@ -2,14 +2,16 @@ FROM python
 
 RUN useradd -m -u 1000 user
 RUN apt-get update && apt install -y git expect wget
-WORKDIR /home/user/content
+WORKDIR /content
 COPY . .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-RUN chown -R user:user /home/user/content
-RUN chmod +x ./start.sh
+RUN chown -R user:user /content
 
 USER user
 RUN curl --create-dirs -o $HOME/.postgresql/root.crt 'https://cockroachlabs.cloud/clusters/7616fc22-317d-43cf-bf87-4a51d4f339b6/cert'
 
+ENV SECRET=${SECRET}
+
 EXPOSE 8080
-ENTRYPOINT ["./start.sh"]
+WORKDIR /content/bot
+ENTRYPOINT ["/content/start.sh"]

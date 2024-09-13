@@ -14,7 +14,7 @@ async def download_douyin(_: Client, m: Message):
         f"ACTION: douyin download\nCHAT: {m.chat.title} ({m.chat.id})\nUSER: {m.from_user.first_name} ({m.from_user.id})\nDATE: {m.date}",
         flush=True,
     )
-    result = await api_handler(keys.dapi, m)
+    result = await api_handler(keys.douyin_api, m)
     if result.is_video:
         await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
         m.reply_video(result.result, caption=result.caption, reply_markup=result.button)

@@ -14,7 +14,7 @@ async def download_ig(_: Client, m: Message):
         f"ACTION: instagram download\nCHAT: {m.chat.title} ({m.chat.id})\nUSER: {m.from_user.first_name} ({m.from_user.id})\nDATE: {m.date}",
         flush=True,
     )
-    result = await api_handler(keys.igapi, m)
+    result = await api_handler(keys.instagram_api, m)
     if result.is_video:
         if isinstance(result.result, list):
             await send_videos(m, result.result, result.button, result.caption)
