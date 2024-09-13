@@ -10,6 +10,6 @@ async def status(c: Client, m: Message):
     result = await asyncify(count)()
     await c.send_chat_action(m.chat.id, ChatAction.TYPING)
     await m.reply(
-        f"**Chats:** `{result[0]}`\n**Users:** `{result[1]}`\n**Bot ID:** `{c.me.id}`",
+        f"**Chats:** `{result.chats}`\n**Users:** `{result.users}`\n**Bot ID:** `{c.me.id}`",
         quote=True,
     )
