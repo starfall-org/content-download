@@ -1,4 +1,3 @@
-from datetime import datetime
 from threading import Thread
 
 from sqlalchemy import create_engine
@@ -15,24 +14,22 @@ class Database:
         self.session = sessionmaker(bind=engine)()
 
     def user_obj(self, m: Message, is_blocked: bool = False):
-        dateobj = datetime.strptime(m.date, "%Y-%m-%d %H:%M:%S")
         return User(
             user_id=m.from_user.id,
             username=m.from_user.username,
             first_name=m.from_user.first_name,
             last_name=m.from_user.last_name,
             is_blocked=is_blocked,
-            last_active=dateobj,
+            last_active=m.date,
         )
 
     def chat_obj(self, m: Message, is_banned: bool = False):
-        dateobj = datetime.strptime(m.date, "%Y-%m-%d %H:%M:%S")
         return Chat(
             chat_id=m.chat.id,
             username=m.chat.username,
             title=m.chat.title,
             is_banned=is_banned,
-            last_active=dateobj,
+            last_active=m.date,
         )
 
     def get_user(self, user_id: int):
