@@ -15,7 +15,7 @@ class Database:
 
     def user_obj(self, m: Message, is_blocked: bool = False):
         return User(
-            user_id=m.from_user.id,
+            id=m.from_user.id,
             username=m.from_user.username,
             first_name=m.from_user.first_name,
             last_name=m.from_user.last_name,
@@ -25,7 +25,7 @@ class Database:
 
     def chat_obj(self, m: Message, is_banned: bool = False):
         return Chat(
-            chat_id=m.chat.id,
+            id=m.chat.id,
             username=m.chat.username,
             title=m.chat.title,
             is_banned=is_banned,
