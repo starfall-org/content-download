@@ -11,7 +11,10 @@ from config import keys
 async def download_ig(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     print(
-        f"ACTION: instagram download\nCHAT: {m.chat.title} ({m.chat.id})\nUSER: {m.from_user.first_name} ({m.from_user.id})\nDATE: {m.date}",
+        f"ACTION: instagram download\n"
+        f"CHAT: {m.chat.title} ({m.chat.id})\n"
+        f"USER: {m.from_user.first_name if m.from_user else m.sender_chat.title} ({m.from_user.id if m.from_user else m.sender_chat.id})\n"
+        f"DATE: {m.date}",
         flush=True,
     )
     result = await api_handler(keys.instagram_api, m)
