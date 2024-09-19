@@ -15,11 +15,11 @@ def init():
 
 def get_keys():
     data = shelf["config_data"]
-    dapi = data["api"]["dapi"]
+    dapi = data["api"]["content"]
 
     class Keys:
-        bot_token = data["access"]["telegram"]["cd"]
-        db_url = data["db"]["postgres"][0]
+        bot_token = data["telegram"]["bot"]["content"]
+        db_url = data["database"]["postgres"][0]
         youtube_api = dapi["yt"]
         music_api = dapi["ytm"]
         facebook_api = dapi["fb"]
