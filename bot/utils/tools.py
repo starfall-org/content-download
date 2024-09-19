@@ -1,5 +1,7 @@
 import re
 import io
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from aiohttp import ClientSession
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
@@ -46,10 +48,12 @@ async def api_handler(api_url: str, m: Message):
 
 
 async def ionify(url: str):
+    tz = ZoneInfo("Asia/Ho_Chi_Minh")
+    date = datetime.now(tz)
     async with ClientSession() as session:
         async with session.get(url) as response:
             if response.status == 200:
                 content = await response.read()
                 iofile = io.BytesIO(content)
-                iofile.name = "video.mp4"
+                iofile.name = f"{date}.mp4"
                 return iofile
