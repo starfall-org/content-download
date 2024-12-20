@@ -20,6 +20,7 @@ def get_keys():
     class Keys:
         bot_token = data["telegram"]["bot"]["content"]
         db_url = data["database"]["postgres"][0]
+        google_api = data["key"]["google_ai"]
         youtube_api = dapi["yt"]
         music_api = dapi["ytm"]
         facebook_api = dapi["fb"]

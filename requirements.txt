@@ -7,3 +7,4 @@ sqlalchemy
 sqlalchemy-cockroachdb
 aiohttp
 asyncer
+google-generativeai
