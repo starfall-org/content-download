@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-python -u /content/helloworld.py &
+python -u helloworld.py &
 python -u main.py

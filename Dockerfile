@@ -12,5 +12,5 @@ RUN curl --create-dirs -o $HOME/.postgresql/root.crt 'https://cockroachlabs.clou
 RUN chmod +x start.sh
 
 EXPOSE 8080
-WORKDIR /content/bot
+WORKDIR /content
 ENTRYPOINT ["/content/start.sh"]
