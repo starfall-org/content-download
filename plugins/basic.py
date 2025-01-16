@@ -23,3 +23,7 @@ async def reply_start(_: Client, m: Message):
         f"ACTION: start bot\nUSER: {m.from_user.first_name} ({m.from_user.id})\nCHAT: {m.chat.title} ({m.chat.id})\nDATE: {m.date}",
         flush=True,
     )
+
+
+def setup(bot: Client):
+    bot.add_handler(reply_start, filters.command(["start", "help"]) & filters.private)

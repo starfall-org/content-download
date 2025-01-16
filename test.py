@@ -1,5 +1,4 @@
-import asyncio
-from client import make_bot
+from client import make_bot, serve
 
 app = make_bot(
     "8003796122:AAEphkB5LNJ7vEqijXF2iAQa3BZf7T3_7ug",
@@ -8,4 +7,4 @@ app = make_bot(
 )
 
 if __name__ == "__main__":
-    asyncio.run(app.online())
+    app.run(serve(app))

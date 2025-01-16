@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from aiohttp import ClientSession
+from hydrogram import API
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from .models import Atributes, APIResult, Links, LinkInfo
 
@@ -30,7 +31,6 @@ def __attrs__(m: Message) -> Atributes:
 
 
 async def api_handler(endpoint: str, m: Message) -> APIResult:
-    API = os.environ["CONTENT_API"]
     api_url = f"{API}/{endpoint}"
     attrs: Atributes = __attrs__(m)
     url: str = attrs.url
