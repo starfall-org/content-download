@@ -1,5 +1,4 @@
-pyrogram
-requests
+Hydrogram
 tgcrypto
 flask
 psycopg2
@@ -7,4 +6,4 @@ sqlalchemy
 sqlalchemy-cockroachdb
 aiohttp
 asyncer
-google-generativeai
+pydantic

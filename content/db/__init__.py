@@ -1,16 +1,16 @@
 from threading import Thread
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from pyrogram.types import Message
-from pyrogram.enums import ChatType
-from config import keys
+from hydrogram.types import Message
+from hydrogram.enums import ChatType
+from hydrogram import DATABASE_URL
+from asyncer import asyncify
 from .models import Base, User, Chat
 
 
 class Database:
     def __init__(self):
-        engine = create_engine(keys.db_url)
+        engine = create_engine(DATABASE_URL)
         Base.metadata.create_all(engine)
         self.session = sessionmaker(bind=engine)()
 
@@ -65,7 +65,9 @@ class Database:
         return self.session.query(Chat).count()
 
 
-def save(m: Message, is_banned: bool | None = None, is_blocked: bool | None = None):
+async def save(
+    m: Message, is_banned: bool | None = None, is_blocked: bool | None = None
+):
     def backgroud():
         db = Database()
         if is_banned or is_blocked:
@@ -77,11 +79,11 @@ def save(m: Message, is_banned: bool | None = None, is_blocked: bool | None = No
     Thread(target=backgroud).start()
 
 
-def count():
-    db = Database()
-
-    class Count:
+async def count():
+    def func():
+        db = Database()
         users = db.users_count()
         chats = db.chats_count()
+        return users, chats
 
-    return Count
+    result = await asyncify(func)()

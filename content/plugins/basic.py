@@ -1,6 +1,6 @@
-from pyrogram import Client, filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram.enums import ChatAction
+from hydrogram import Client, filters
+from hydrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from hydrogram.enums import ChatAction
 
 
 @Client.on_message(filters.command(["start", "help"]) & filters.private)

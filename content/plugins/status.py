@@ -1,13 +1,12 @@
-from asyncer import asyncify
-from pyrogram import Client, filters
-from pyrogram.types import Message
-from pyrogram.enums import ChatAction
-from utils.db import count
+from hydrogram import Client, filters
+from hydrogram.types import Message
+from hydrogram.enums import ChatAction
+from db import count
 
 
 @Client.on_message(filters.command("status"))
 async def status(c: Client, m: Message):
-    result = await asyncify(count)()
+    result = await count()
     await c.send_chat_action(m.chat.id, ChatAction.TYPING)
     await m.reply(
         f"**Chats:** `{result.chats}`\n**Users:** `{result.users}`\n**Bot ID:** `{c.me.id}`",
