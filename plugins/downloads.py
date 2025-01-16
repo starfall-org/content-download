@@ -1,9 +1,9 @@
 from hydrogram import Client, filters, API
 from hydrogram.types import Message
 from hydrogram.enums import ChatAction
-from ..utils.tools import api_handler
-from ..utils.methods import send_media
-from ..db import save
+from utils.tools import api_handler
+from utils.methods import send_media
+from db import save
 
 
 def __print__(m: Message, platform: str):

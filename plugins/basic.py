@@ -12,11 +12,6 @@ async def reply_start(_: Client, m: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "Youtube", url="https://youtube.com/@tiktokdouyin-share"
-                    )
-                ],
-                [
-                    InlineKeyboardButton(
                         "Group", url="https://t.me/contentdownload_group"
                     ),
                     InlineKeyboardButton("Channel", url="https://t.me/contentdownload"),

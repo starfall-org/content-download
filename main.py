@@ -1,6 +1,6 @@
 import os
 import anyio
-from content.client import make_bot
+from client import make_bot
 from config import set_envs
 
 set_envs()
