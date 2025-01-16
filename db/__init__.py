@@ -87,3 +87,4 @@ async def count():
         return users, chats
 
     result = await asyncify(func)()
+    return result

@@ -4,7 +4,7 @@ RUN useradd -m -u 1000 user
 RUN apt-get update && apt install -y git expect wget
 WORKDIR /content
 COPY . .
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --upgrade -r requirements.txt
 RUN chown -R user:user /content
 
 USER user

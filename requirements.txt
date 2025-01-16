@@ -7,3 +7,4 @@ sqlalchemy-cockroachdb
 aiohttp
 asyncer
 pydantic
+requests

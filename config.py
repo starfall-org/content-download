@@ -5,7 +5,7 @@ import requests
 
 def set_envs():
     shelf = shelve.open("config")
-    if not shelf["config_data"]:
+    if not shelf.get("config_data"):
         secret_url = os.environ["SECRET"]
         req = requests.get(secret_url, timeout=10)
         data = req.json()
