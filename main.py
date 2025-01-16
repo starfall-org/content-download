@@ -1,6 +1,5 @@
 import os
-import anyio
-from client import make_bot
+from client import make_bot, serve
 from config import set_envs
 
 set_envs()
@@ -9,4 +8,4 @@ app = make_bot(
 )
 
 if __name__ == "__main__":
-    anyio.run(app.online())
+    app.run(serve(app))
