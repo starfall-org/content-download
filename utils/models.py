@@ -18,7 +18,7 @@ class LinkInfo(BaseModel):
 
 class Links(BaseModel):
     standalone: bool
-    content: list[LinkInfo] | str
+    content: list[LinkInfo] | LinkInfo
 
     class Config:
         arbitrary_types_allowed = True

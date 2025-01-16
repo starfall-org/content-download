@@ -45,28 +45,28 @@ async def api_handler(endpoint: str, m: Message) -> APIResult:
         for link in content["result"]:
             match endpoint:
                 case "instagram":
-                    result.append(LinkInfo(link["is_video"], link["url"]))
+                    result.append(LinkInfo(is_video=link["is_video"], url=link["url"]))
                 case _:
-                    result.append(LinkInfo(False, link))
+                    result.append(LinkInfo(is_video=False, url=link))
         result = Links(standalone=False, content=result)
     else:
-        link = LinkInfo(content.get("is_video"), content["result"])
+        link = LinkInfo(is_video=content.get("is_video", True), url=content["result"])
         result = Links(standalone=True, content=link)
-
     return APIResult(
-        result=Links,
+        result=result,
         button=attrs.button,
         caption=attrs.caption,
     )
 
 
-async def ionify(url: str) -> io.BytesIO:
+async def ionify(url: str, ext: str) -> io.BytesIO:
     tz = ZoneInfo("Asia/Ho_Chi_Minh")
     date = datetime.now(tz)
+    content = b""
     async with ClientSession() as session:
         async with session.get(url) as response:
             if response.status == 200:
                 content = await response.read()
                 iofile = io.BytesIO(content)
-                iofile.name = f"{date}.mp4"
+                iofile.name = f"{date}.{ext}"
                 return iofile
