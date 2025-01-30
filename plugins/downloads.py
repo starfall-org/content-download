@@ -2,7 +2,7 @@ from hydrogram import Client, filters, API
 from hydrogram.types import Message
 from hydrogram.enums import ChatAction
 from utils.tools import api_handler
-from utils.methods import send_media
+from utils.methods import send_media, send_audio
 from db import save
 
 
@@ -20,14 +20,10 @@ def __print__(m: Message, platform: str):
 @Client.on_message(filters.regex("http|https") & filters.regex("youtube.|youtu.be"))
 async def __youtube__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    if any(command.upper() in ["MUSIC", "AUDIO"] for command in m.command):
+    if any(command.upper() in ["MUSIC", "AUDIO"] for command in m.text.split()):
         result = await api_handler("music", m)
         await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-        await m.reply_audio(
-            result.result.content.url,
-            caption=result.caption,
-            reply_markup=result.button,
-        )
+        await send_audio(m, result.result, result.button, result.caption)
         __print__(m, "music")
     else:
         result = await api_handler("youtube", m)

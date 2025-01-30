@@ -80,3 +80,14 @@ async def send_media(
             except Exception:
                 file = await ionify(last_link.url, ext="jpg")
                 await m.reply_photo(file, caption=caption, reply_markup=button)
+
+
+async def send_audio(
+    m: Message, media: Links, button: InlineKeyboardMarkup, caption: str
+):
+    await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
+    try:
+        await m.reply_audio(media.content.url, caption=caption, reply_markup=button)
+    except Exception:
+        file = await ionify(media.content.url, ext="mp3")
+        await m.reply_audio(file, caption=caption, reply_markup=button)
