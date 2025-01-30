@@ -1,8 +1,8 @@
 import os
 from client import make_bot, serve
-from config import set_envs
+from dotenv import load_dotenv
 
-set_envs()
+load_dotenv()
 app = make_bot(
     os.environ["BOT_TOKEN"], os.environ["CONTENT_API"], os.environ["DATABASE_URL"]
 )
