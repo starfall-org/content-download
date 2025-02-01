@@ -1,9 +1,10 @@
-from hydrogram import Client, filters, API
-from hydrogram.types import Message
+import asyncio
+from hydrogram import API, Client, filters
 from hydrogram.enums import ChatAction
-from utils.tools import api_handler
-from utils.methods import send_media, send_audio
+from hydrogram.types import Message
 from db import save
+from utils.methods import send_audio, send_media
+from utils.tools import api_handler
 
 
 def __print__(m: Message, platform: str):
@@ -48,7 +49,7 @@ async def __instagram__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     retry_count = 0
     while True:
-        if retry_count > 5:
+        if retry_count > 9:
             print("RETRYING: TIMEOUT! ---> EXIT", flush=True)
             return
 
@@ -58,6 +59,7 @@ async def __instagram__(_: Client, m: Message):
         except Exception:
             retry_count += 1
             print(f"RETRYING: {retry_count} ---> CONTINUE", flush=True)
+        await asyncio.sleep(1)
 
     await send_media(m, result.result, result.button, result.caption)
     await save(m)
