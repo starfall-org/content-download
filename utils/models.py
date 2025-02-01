@@ -14,6 +14,7 @@ class Atributes(BaseModel):
 class LinkInfo(BaseModel):
     is_video: bool
     url: str
+    title: str | None = None
 
 
 class Links(BaseModel):

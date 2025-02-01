@@ -89,5 +89,5 @@ async def send_audio(
     try:
         await m.reply_audio(media.content.url, caption=caption, reply_markup=button)
     except Exception:
-        file = await ionify(media.content.url, ext="mp3")
+        file = await ionify(media.content.url, ext="mp3", title=media.content.title)
         await m.reply_audio(file, caption=caption, reply_markup=button)

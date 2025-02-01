@@ -50,7 +50,11 @@ async def api_handler(endpoint: str, m: Message) -> APIResult:
                     result.append(LinkInfo(is_video=False, url=link))
         result = Links(standalone=False, content=result)
     else:
-        link = LinkInfo(is_video=content.get("is_video", True), url=content["result"])
+        link = LinkInfo(
+            is_video=content.get("is_video", True),
+            url=content["result"],
+            title=content.get("title"),
+        )
         result = Links(standalone=True, content=link)
     return APIResult(
         result=result,
@@ -59,14 +63,13 @@ async def api_handler(endpoint: str, m: Message) -> APIResult:
     )
 
 
-async def ionify(url: str, ext: str) -> io.BytesIO:
-    tz = ZoneInfo("Asia/Ho_Chi_Minh")
-    date = datetime.now(tz)
-    content = b""
+async def ionify(
+    url: str, ext: str, title: str = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh"))
+) -> io.BytesIO:
     async with ClientSession() as session:
         async with session.get(url) as response:
             if response.status == 200:
                 content = await response.read()
                 iofile = io.BytesIO(content)
-                iofile.name = f"{date}.{ext}"
+                iofile.name = f"{title}.{ext}"
                 return iofile
