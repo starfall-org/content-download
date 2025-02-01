@@ -48,7 +48,7 @@ async def __instagram__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     retry_count = 0
     while True:
-        if retry_count < 5:
+        if retry_count > 5:
             print("RETRYING: TIMEOUT! ---> EXIT", flush=True)
             return
 
