@@ -47,20 +47,7 @@ async def __facebook__(_: Client, m: Message):
 @Client.on_message(filters.regex("http|https") & filters.regex("instagram."))
 async def __instagram__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    retry_count = 0
-    while True:
-        if retry_count > 9:
-            print("RETRYING: TIMEOUT! ---> EXIT", flush=True)
-            return
-
-        try:
-            result = await api_handler("instagram", m)
-            break
-        except Exception:
-            retry_count += 1
-            print(f"RETRYING: {retry_count} ---> CONTINUE", flush=True)
-        await asyncio.sleep(1)
-
+    result = await api_handler("instagram", m)
     await send_media(m, result.result, result.button, result.caption)
     await save(m)
     await m.delete()
