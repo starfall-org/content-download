@@ -33,8 +33,8 @@ class Database:
         self.session.add(chat)
         self.session.commit()
 
-    def __count_chat__(self):
-        return len(self.session.exec(select(Chat)).all())
+    def __all_chat__(self):
+        return self.session.exec(select(Chat)).all()
 
     def __get_preset__(self, name: str):
         return self.session.exec(
@@ -63,7 +63,11 @@ class Database:
 
     @staticmethod
     async def count_chat():
-        return await to_thread(Database().__count_chat__)
+        return len(await to_thread(Database().__all_chat__))
+
+    @staticmethod
+    async def all_chat():
+        return await to_thread(Database().__all_chat__)
 
     @staticmethod
     async def get_preset(name: str):
