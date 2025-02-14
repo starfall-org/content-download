@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from hydrogram.enums import ChatType
 from hydrogram.types import InlineKeyboardMarkup, Message
 from pydantic import BaseModel
 

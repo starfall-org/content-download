@@ -1,6 +1,5 @@
 import re
 import io
-import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from aiohttp import ClientSession

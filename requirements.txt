@@ -5,7 +5,7 @@ psycopg2
 sqlalchemy
 sqlalchemy-cockroachdb
 aiohttp
-asyncer
 pydantic
 requests
+sqlmodel
 python-dotenv
