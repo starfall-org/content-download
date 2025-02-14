@@ -1,24 +1,24 @@
 from datetime import datetime
-from sqlalchemy import String, BigInteger, Boolean, DateTime
-from sqlalchemy.orm import mapped_column, Mapped, declarative_base
-
-Base = declarative_base()
+from sqlmodel import SQLModel, Field
 
 
-class User(Base):
-    __tablename__ = "users"
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
-    username: Mapped[str | None] = mapped_column(String, nullable=True)
-    first_name: Mapped[str] = mapped_column(String)
-    last_name: Mapped[str | None] = mapped_column(String, nullable=True)
-    is_blocked: Mapped[bool] = mapped_column(Boolean, default=False)
-    last_active: Mapped[datetime] = mapped_column(DateTime)
+class PresetContent(SQLModel, table=True):
+    __tablename__ = "contentdownload_presets"
+    id: int = Field(primary_key=True)
+    name: str
+    content: str
 
 
-class Chat(Base):
-    __tablename__ = "chats"
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
-    username: Mapped[str | None] = mapped_column(String, nullable=True)
-    title: Mapped[str] = mapped_column(String)
-    is_banned: Mapped[bool] = mapped_column(Boolean, default=False)
-    last_active: Mapped[datetime] = mapped_column(DateTime)
+class Chat(SQLModel, table=True):
+    __tablename__ = "contentdownload_chats"
+    id: int = Field(primary_key=True)
+    username: str | None = Field(default=None)
+    title: str
+    is_user: bool = Field(default=False)
+    is_channel: bool = Field(default=False)
+    is_group: bool = Field(default=False)
+    is_supergroup: bool = Field(default=False)
+    is_admin: bool = Field(default=False)
+    is_banned: bool = Field(default=False)
+    can_reply: bool = Field(default=True)
+    last_active: datetime
