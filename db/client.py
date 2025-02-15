@@ -21,7 +21,7 @@ class Database:
     def __update_chat__(self, args: ChatArgs):
         chat = Chat(
             id=args.message.chat.id,
-            title=args.message.chat.title,
+            title=args.message.chat.title or args.message.chat.first_name,
             username=args.message.chat.username,
             is_admin=args.is_admin,
             is_banned=args.is_banned,

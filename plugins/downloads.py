@@ -1,12 +1,14 @@
+from datetime import datetime
+
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
-from hydrogram.types import Message
 from hydrogram.errors import Forbidden
+from hydrogram.types import Message
 
 from db.client import Database
 from utils.methods import send_audio, send_media
+from utils.models import ChatArgs
 from utils.tools import api_handler
-from utils.models import LogMessage, ChatArgs
 
 db = Database()
 
@@ -20,22 +22,24 @@ async def __youtube__(_: Client, m: Message):
             await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
             await send_audio(m, result.result, result.button, result.caption)
             print(
-                LogMessage(
-                    action="music",
-                    user=m.from_user.first_name if m.from_user else m.sender_chat.title,
-                    message=m,
-                ).model_dump_json(),
+                (
+                    f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
+                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                    f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
+                    "ACTION: music"
+                ),
                 flush=True,
             )
         else:
             result = await api_handler("youtube", m)
             await send_media(m, result.result, result.button, result.caption)
             print(
-                LogMessage(
-                    action="youtube",
-                    user=m.from_user.first_name if m.from_user else m.sender_chat.title,
-                    message=m,
-                ).model_dump_json(),
+                (
+                    f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
+                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                    f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
+                    "ACTION: youtube"
+                ),
                 flush=True,
             )
 
@@ -48,7 +52,7 @@ async def __youtube__(_: Client, m: Message):
         message=m,
         can_reply=can_reply,
     )
-    await db.save_chat(chat_args)
+    await db.update_chat(chat_args)
 
 
 @Client.on_message(filters.regex("http|https") & filters.regex("facebook.|fb."))
@@ -59,11 +63,12 @@ async def __facebook__(_: Client, m: Message):
         await send_media(m, result.result, result.button, result.caption)
         await m.delete()
         print(
-            LogMessage(
-                action="facebook",
-                user=m.from_user.first_name if m.from_user else m.sender_chat.title,
-                message=m,
-            ).model_dump_json(),
+            (
+                f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
+                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
+                "ACTION: facebook"
+            ),
             flush=True,
         )
         can_reply = True
@@ -74,7 +79,7 @@ async def __facebook__(_: Client, m: Message):
         message=m,
         can_reply=can_reply,
     )
-    await db.save_chat(chat_args)
+    await db.update_chat(chat_args)
 
 
 @Client.on_message(filters.regex("http|https") & filters.regex("instagram."))
@@ -85,11 +90,12 @@ async def __instagram__(_: Client, m: Message):
         await send_media(m, result.result, result.button, result.caption)
         await m.delete()
         print(
-            LogMessage(
-                action="instagram",
-                user=m.from_user.first_name if m.from_user else m.sender_chat.title,
-                message=m,
-            ).model_dump_json(),
+            (
+                f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
+                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
+                "ACTION: instagram"
+            ),
             flush=True,
         )
         can_reply = True
@@ -100,7 +106,7 @@ async def __instagram__(_: Client, m: Message):
         message=m,
         can_reply=can_reply,
     )
-    await db.save_chat(chat_args)
+    await db.update_chat(chat_args)
 
 
 @Client.on_message(
@@ -113,11 +119,12 @@ async def __douyin__(_: Client, m: Message):
         await send_media(m, result.result, result.button, result.caption)
         await m.delete()
         print(
-            LogMessage(
-                action="douyin",
-                user=m.from_user.first_name if m.from_user else m.sender_chat.title,
-                message=m,
-            ).model_dump_json(),
+            (
+                f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
+                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
+                "ACTION: douyin"
+            ),
             flush=True,
         )
         can_reply = True
@@ -128,4 +135,4 @@ async def __douyin__(_: Client, m: Message):
         message=m,
         can_reply=can_reply,
     )
-    await db.save_chat(chat_args)
+    await db.update_chat(chat_args)

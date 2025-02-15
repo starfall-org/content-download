@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from hydrogram.types import InlineKeyboardMarkup, Message
 from pydantic import BaseModel
 
@@ -38,25 +36,15 @@ class APIResult(BaseModel):
 
 class ChatArgs(BaseModel):
     message: Message
-    is_admin: bool
-    is_banned: bool
-    can_reply: bool
+    is_admin: bool = False
+    is_banned: bool = False
+    can_reply: bool = True
     is_channel: bool = False
     is_group: bool = False
     is_supergroup: bool = False
 
     def get_administrators(self):
         return [7642104102]
-
-    class Config:
-        arbitrary_types_allowed = True
-
-
-class LogMessage(BaseModel):
-    action: str
-    date: datetime = datetime.now()
-    user: str
-    message: Message
 
     class Config:
         arbitrary_types_allowed = True

@@ -21,4 +21,4 @@ class Chat(SQLModel, table=True):
     is_admin: bool = Field(default=False)
     is_banned: bool = Field(default=False)
     can_reply: bool = Field(default=True)
-    last_active: datetime
+    last_active: datetime = Field(default_factory=datetime.now)
