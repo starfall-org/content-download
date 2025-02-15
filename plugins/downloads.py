@@ -21,7 +21,9 @@ async def __youtube__(_: Client, m: Message):
             await send_audio(m, result.result, result.button, result.caption)
             print(
                 LogMessage(
-                    action="music", user=m.from_user.id, message=m
+                    action="music",
+                    user=m.from_user.first_name if m.from_user else m.sender_chat.title,
+                    message=m,
                 ).model_dump_json(),
                 flush=True,
             )
@@ -30,7 +32,9 @@ async def __youtube__(_: Client, m: Message):
             await send_media(m, result.result, result.button, result.caption)
             print(
                 LogMessage(
-                    action="youtube", user=m.from_user.id, message=m
+                    action="youtube",
+                    user=m.from_user.first_name if m.from_user else m.sender_chat.title,
+                    message=m,
                 ).model_dump_json(),
                 flush=True,
             )
@@ -56,7 +60,9 @@ async def __facebook__(_: Client, m: Message):
         await m.delete()
         print(
             LogMessage(
-                action="facebook", user=m.from_user.id, message=m
+                action="facebook",
+                user=m.from_user.first_name if m.from_user else m.sender_chat.title,
+                message=m,
             ).model_dump_json(),
             flush=True,
         )
@@ -80,7 +86,9 @@ async def __instagram__(_: Client, m: Message):
         await m.delete()
         print(
             LogMessage(
-                action="instagram", user=m.from_user.id, message=m
+                action="instagram",
+                user=m.from_user.first_name if m.from_user else m.sender_chat.title,
+                message=m,
             ).model_dump_json(),
             flush=True,
         )
@@ -106,7 +114,9 @@ async def __douyin__(_: Client, m: Message):
         await m.delete()
         print(
             LogMessage(
-                action="douyin", user=m.from_user.id, message=m
+                action="douyin",
+                user=m.from_user.first_name if m.from_user else m.sender_chat.title,
+                message=m,
             ).model_dump_json(),
             flush=True,
         )
