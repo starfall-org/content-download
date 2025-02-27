@@ -11,7 +11,7 @@ from utils.models import ChatArgs
 
 from .models import Chat, GroupStats, MemberCount, PresetContent
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = os.environ["DATABASE_URL"]
 
 
 class Database:

@@ -17,7 +17,7 @@ async def get_start_message():
         else:
             raise Exception
     except Exception:
-        await db.set_preset(
+        await db.add_preset(
             "start_message", "Welcome! Send a link and I'll send you the content."
         )
         return "Welcome! Send a link and I'll send you the content."
