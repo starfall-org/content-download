@@ -1,6 +1,8 @@
 import os
 from client import make_bot, serve
 from dotenv import load_dotenv
+from bg_task import scheduled
+
 
 load_dotenv()
 app = make_bot(
@@ -8,4 +10,4 @@ app = make_bot(
 )
 
 if __name__ == "__main__":
-    app.run(serve(app))
+    app.run(serve(app, scheduled))

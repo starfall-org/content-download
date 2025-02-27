@@ -1,5 +1,6 @@
 from datetime import datetime
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
+from sqlalchemy import JSON
 
 
 class PresetContent(SQLModel, table=True):
@@ -22,3 +23,19 @@ class Chat(SQLModel, table=True):
     is_banned: bool = Field(default=False)
     can_reply: bool = Field(default=True)
     last_active: datetime = Field(default_factory=datetime.now)
+
+
+class GroupStats(SQLModel, table=True):
+    __tablename__ = "contentdownload_groupstats"
+    id: int = Field(primary_key=True)
+    title: str
+    username: str | None
+    member_count: list["MemberCount"] = Relationship(back_populates="group")
+
+
+class MemberCount(SQLModel, table=True):
+    __tablename__ = "contentdownload_membercount"
+    id: int = Field(primary_key=True, default=None)
+    count: int
+    date: datetime = Field(default_factory=datetime.now)
+    group: GroupStats = Relationship(back_populates="member_count")

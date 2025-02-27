@@ -1,12 +1,17 @@
+import os
 from asyncio import to_thread
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
-from hydrogram import DATABASE_URL
 from hydrogram.enums import ChatType
+from hydrogram.types import Chat as Group
 from sqlmodel import Session, SQLModel, create_engine, select
 
 from utils.models import ChatArgs
 
-from .models import Chat, PresetContent
+from .models import Chat, GroupStats, MemberCount, PresetContent
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 
 class Database:
@@ -45,6 +50,26 @@ class Database:
         preset = PresetContent(name=name, content=content)
         self.session.add(preset)
         self.session.commit()
+
+    def update_group_stats(self, group: Group, count: int):
+        group_stats = GroupStats(
+            id=group.id,
+            title=group.title,
+            username=group.username,
+        )
+        member_count = MemberCount(
+            count=count,
+            date=datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")),
+            group=group_stats,
+        )
+        self.session.merge(group_stats)
+        self.session.merge(member_count)
+        self.session.commit()
+
+    def get_group_stats(self, group_id: int):
+        return self.session.exec(
+            select(GroupStats).where(GroupStats.id == group_id)
+        ).all()
 
     @staticmethod
     async def update_chat(args: ChatArgs):

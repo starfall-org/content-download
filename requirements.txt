@@ -9,3 +9,7 @@ pydantic
 requests
 sqlmodel
 python-dotenv
+matplotlib
+pandas
+numpy
+scipy

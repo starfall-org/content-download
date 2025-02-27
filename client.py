@@ -14,8 +14,9 @@ def make_bot(token: str, content_api: str, database_url) -> hydrogram.Client:
     )
 
 
-async def serve(bot: hydrogram.Client) -> hydrogram.Client:
+async def serve(bot: hydrogram.Client, scheduled: callable) -> hydrogram.Client:
     await bot.start()
+    scheduled(bot)
     bot_info = await bot.get_me()
     print(bot_info.first_name)
     await hydrogram.idle()
