@@ -1,8 +1,14 @@
-import os
-from client import make_bot, serve
-from dotenv import load_dotenv
-from bg_task import scheduled
+import uvloop
+from gevent import monkey
 
+uvloop.install()
+monkey.patch_all()
+import os
+
+from dotenv import load_dotenv
+
+from bg_task import scheduled
+from client import make_bot, serve
 
 load_dotenv()
 app = make_bot(

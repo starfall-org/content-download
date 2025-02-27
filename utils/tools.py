@@ -1,11 +1,22 @@
-import re
 import io
+import os
+import re
 from datetime import datetime
 from zoneinfo import ZoneInfo
+
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from aiohttp import ClientSession
-from hydrogram import API
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from .models import Atributes, APIResult, Links, LinkInfo
+from scipy.interpolate import PchipInterpolator
+
+from db.models import GroupStats, MemberCount
+
+from .models import APIResult, Atributes, LinkInfo, Links
+
+API = os.environ["CONTENT_API"]
 
 
 def __attrs__(m: Message) -> Atributes:
@@ -72,3 +83,30 @@ async def ionify(
                 iofile = io.BytesIO(content)
                 iofile.name = f"{title}.{ext}"
                 return iofile
+
+
+def plot_time_series(data: list[MemberCount], group_stats: GroupStats):
+    title = f"{group_stats.title} - Members Count"
+    save_path = f"tmp/{title}|{group_stats.id}.png"
+    data.sort(key=lambda x: x.date)
+    dates = [item.date for item in data]
+    values = [item.count for item in data]
+    dates = pd.to_datetime(dates)
+    dates_num = mdates.date2num(dates)
+    dates_smooth = np.linspace(dates_num.min(), dates_num.max(), 300)
+    pchip = PchipInterpolator(dates_num, values)
+    values_smooth = pchip(dates_smooth)
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(mdates.num2date(dates_smooth), values_smooth, linestyle="-", color="b")
+    ax.scatter(dates, values, color="r", zorder=3)
+
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator(maxticks=5))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
+    plt.xticks(rotation=30, ha="right")
+    plt.title(title)
+    plt.xlabel("Date")
+    plt.ylabel("Count")
+    plt.grid(True, linestyle="--", alpha=0.6)
+    plt.savefig(save_path, dpi=300, bbox_inches="tight")
+    return save_path

@@ -66,10 +66,13 @@ class Database:
         self.session.merge(member_count)
         self.session.commit()
 
-    def get_group_stats(self, group_id: int):
+    def get_group_stats(self):
+        return self.session.exec(select(GroupStats)).all()
+
+    def get_current_group_stats(self, group_id: int):
         return self.session.exec(
             select(GroupStats).where(GroupStats.id == group_id)
-        ).all()
+        ).first()
 
     @staticmethod
     async def update_chat(args: ChatArgs):

@@ -9,26 +9,12 @@ from db.client import Database
 db = Database()
 
 
-async def get_start_message():
-    try:
-        text = await db.get_preset("start_message")
-        if text:
-            return text
-        else:
-            raise Exception
-    except Exception:
-        await db.add_preset(
-            "start_message", "Welcome! Send a link and I'll send you the content."
-        )
-        return "Welcome! Send a link and I'll send you the content."
-
-
 @Client.on_message(filters.command(["start", "help"]) & filters.private)
 async def reply_start(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    text = await get_start_message()
+    text = "Welcome! Download content from popular platforms."
     await m.reply(
-        f"**Content Downloa**\n\n{text}",
+        f"**Content Download**\n\n{text}",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
