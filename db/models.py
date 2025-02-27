@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlmodel import SQLModel, Field, Relationship
-from sqlalchemy import JSON
+from typing import Optional
 
 
 class PresetContent(SQLModel, table=True):
@@ -35,7 +35,8 @@ class GroupStats(SQLModel, table=True):
 
 class MemberCount(SQLModel, table=True):
     __tablename__ = "contentdownload_membercount"
-    id: int = Field(primary_key=True, default=None)
+    id: int = Field(primary_key=True)
     count: int
     date: datetime = Field(default_factory=datetime.now)
+    group_id: int = Field(foreign_key="contentdownload_groupstats.id")
     group: GroupStats = Relationship(back_populates="member_count")

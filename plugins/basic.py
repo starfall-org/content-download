@@ -27,7 +27,6 @@ async def get_start_message():
 async def reply_start(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     text = await get_start_message()
-    panel_link = await db.get_preset("panel_link")
     await m.reply(
         f"**Content Downloa**\n\n{text}",
         reply_markup=InlineKeyboardMarkup(
@@ -37,7 +36,6 @@ async def reply_start(_: Client, m: Message):
                         "Group", url="https://t.me/contentdownload_group"
                     ),
                     InlineKeyboardButton("Channel", url="https://t.me/contentdownload"),
-                    InlineKeyboardButton("Panel", url=panel_link),
                 ],
             ]
         ),
