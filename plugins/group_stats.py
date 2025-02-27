@@ -17,5 +17,8 @@ async def group_stats(c: Client, cmu: ChatMemberUpdated):
 async def graph(c: Client, m: Message):
     await c.send_chat_action(m.chat.id, ChatAction.TYPING)
     group_stats = db.get_current_group_stats(m.chat.id)
+    if not group_stats:
+        await m.reply("No data found.", quote=True)
+        return
     path = plot_time_series(group_stats.member_count, group_stats)
     await m.reply_photo(path, quote=True)
