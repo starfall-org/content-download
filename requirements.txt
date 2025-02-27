@@ -15,4 +15,3 @@ numpy
 scipy
 apscheduler
 uvloop
-gevent
