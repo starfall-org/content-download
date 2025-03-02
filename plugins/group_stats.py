@@ -1,8 +1,8 @@
 from hydrogram import Client, filters
 from hydrogram.types import ChatMemberUpdated, Message
 from hydrogram.enums import ChatAction
-from db.client import Database
-from utils.tools import plot_time_series
+from database.client import Database
+from helpers.graph_tool import plot_time_series
 
 db = Database()
 
@@ -13,7 +13,7 @@ async def group_stats(c: Client, cmu: ChatMemberUpdated):
     db.update_group_stats(cmu.chat, member_count)
 
 
-@Client.on_message(filters.command("graph"))
+@Client.on_message(filters.command("stats") & filters.group)
 async def graph(c: Client, m: Message):
     await c.send_chat_action(m.chat.id, ChatAction.TYPING)
     group_stats = db.get_current_group_stats(m.chat.id)

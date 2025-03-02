@@ -1,8 +1,9 @@
 from hydrogram.types import InlineKeyboardMarkup, Message
 from pydantic import BaseModel
+from .api_models import APIResult
 
 
-class Atributes(BaseModel):
+class FilteredMessageAtributes(BaseModel):
     url: str
     button: InlineKeyboardMarkup
     caption: str
@@ -11,22 +12,8 @@ class Atributes(BaseModel):
         arbitrary_types_allowed = True
 
 
-class LinkInfo(BaseModel):
-    is_video: bool
-    url: str
-    title: str | None = None
-
-
-class Links(BaseModel):
-    standalone: bool
-    content: list[LinkInfo] | LinkInfo
-
-    class Config:
-        arbitrary_types_allowed = True
-
-
-class APIResult(BaseModel):
-    result: Links
+class PreResponseAtributes(BaseModel):
+    result: APIResult
     button: InlineKeyboardMarkup
     caption: str
 
@@ -34,7 +21,7 @@ class APIResult(BaseModel):
         arbitrary_types_allowed = True
 
 
-class ChatArgs(BaseModel):
+class ParsedChatArguments(BaseModel):
     message: Message
     is_admin: bool = False
     is_banned: bool = False

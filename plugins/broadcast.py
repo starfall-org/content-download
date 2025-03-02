@@ -1,7 +1,7 @@
 import asyncio
 from hydrogram import Client, filters
 from hydrogram.types import Message
-from db.client import Database
+from database.client import Database
 
 db = Database()
 

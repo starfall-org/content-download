@@ -3,8 +3,8 @@ import asyncio
 from apscheduler.schedulers.background import BackgroundScheduler
 from hydrogram import Client
 
-from db.client import Database
-from utils.tools import plot_time_series
+from database.client import Database
+from helpers.graph_tool import plot_time_series
 
 
 def bg_job(c: Client):

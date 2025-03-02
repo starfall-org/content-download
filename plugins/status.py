@@ -1,7 +1,8 @@
 from hydrogram import Client, filters
-from hydrogram.types import Message
 from hydrogram.enums import ChatAction
-from db.client import Database
+from hydrogram.types import Message
+
+from database.client import Database
 
 db = Database()
 

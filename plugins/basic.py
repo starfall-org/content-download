@@ -4,7 +4,7 @@ from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from db.client import Database
+from database.client import Database
 
 db = Database()
 

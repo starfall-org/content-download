@@ -1,4 +1,4 @@
-IMAGE_FORMATS = [
+IMAGE_TYPE = [
     "image/png",
     "image/jpeg",
     "image/jpg",
@@ -8,7 +8,7 @@ IMAGE_FORMATS = [
     "image/bmp",
 ]
 
-VIDEO_FORMATS = [
+VIDEO_TYPE = [
     "video/mp4",
     "video/webm",
     "video/ogg",
@@ -21,7 +21,7 @@ VIDEO_FORMATS = [
     "video/h263",
 ]
 
-AUDIO_FORMATS = [
+AUDIO_TYPE = [
     "audio/mpeg",
     "audio/ogg",
     "audio/aac",
@@ -29,11 +29,4 @@ AUDIO_FORMATS = [
     "audio/wav",
     "audio/webm",
     "audio/mp3",
-]
-
-SKIP_FORMATS = [
-    "application/json",
-    "text/plain",
-    "text/plain; charset=utf-8",
-    "text/html; charset=UTF-8",
 ]

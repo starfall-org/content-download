@@ -7,7 +7,7 @@ from hydrogram.enums import ChatType
 from hydrogram.types import Chat as Group
 from sqlmodel import Session, SQLModel, create_engine, select
 
-from utils.models import ChatArgs
+from models.bot_models import ParsedChatArguments
 
 from .models import Chat, GroupStats, MemberCount, PresetContent
 
@@ -23,7 +23,7 @@ class Database:
     def __get_chat__(self, chat_id: int):
         return self.session.exec(select(Chat).where(Chat.id == chat_id)).first()
 
-    def __update_chat__(self, args: ChatArgs):
+    def __update_chat__(self, args: ParsedChatArguments):
         chat = Chat(
             id=args.message.chat.id,
             title=args.message.chat.title or args.message.chat.first_name,
@@ -75,7 +75,7 @@ class Database:
         ).first()
 
     @staticmethod
-    async def update_chat(args: ChatArgs):
+    async def update_chat(args: ParsedChatArguments):
         args.is_admin = (
             args.message.from_user
             and args.message.from_user.id in args.get_administrators()
