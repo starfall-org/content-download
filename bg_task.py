@@ -16,7 +16,7 @@ def bg_job(c: Client):
         asyncio.run_coroutine_threadsafe(c.send_photo(gs.id, photo=path), loop=loop)
 
 
-def scheduled(c: Client):
+def scheduling(c: Client):
     scheduler = BackgroundScheduler()
     scheduler.add_job(
         bg_job,

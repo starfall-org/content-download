@@ -1,6 +1,6 @@
 import re
 
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from models.bot_models import FilteredMessageAtributes
 

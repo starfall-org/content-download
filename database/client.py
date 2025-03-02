@@ -35,7 +35,7 @@ class Database:
             is_group=args.is_group,
             is_supergroup=args.is_supergroup,
         )
-        self.session.add(chat)
+        self.session.merge(chat)
         self.session.commit()
 
     def __all_chat__(self):
@@ -48,7 +48,7 @@ class Database:
 
     def __add_preset__(self, name: str, content: str):
         preset = PresetContent(name=name, content=content)
-        self.session.add(preset)
+        self.session.merge(preset)
         self.session.commit()
 
     def update_group_stats(self, group: Group, count: int):

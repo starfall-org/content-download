@@ -4,13 +4,13 @@ from hydrogram.types import (
     Message,
 )
 
-from models.bot_models import LinkInfo, Links
+from models.api_models import APIResultGroup, APIResult
 
 from .util import convert_to_io, parse_media_group
 
 
 async def reply_media_group(
-    m: Message, media: Links, button: InlineKeyboardMarkup, caption: str
+    m: Message, media: APIResultGroup, button: InlineKeyboardMarkup, caption: str
 ) -> None:
     if media.standalone:
         if media.content.is_video:
@@ -32,7 +32,7 @@ async def reply_media_group(
                 file = await convert_to_io(media.content.url, ext="jpg")
                 await m.reply_photo(file, reply_markup=button, caption=caption)
     else:
-        links: list[LinkInfo] = media.content
+        links: list[APIResult] = media.content
         last_link = links[-1]
         for i in range(0, len(links) - 1, 10):
             part_links = links[i : min(i + 10, len(links) - 1)]
@@ -70,7 +70,7 @@ async def reply_media_group(
 
 
 async def reply_audio(
-    m: Message, media: Links, button: InlineKeyboardMarkup, caption: str
+    m: Message, media: APIResultGroup, button: InlineKeyboardMarkup, caption: str
 ):
     await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
     try:

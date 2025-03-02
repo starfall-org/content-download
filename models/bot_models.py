@@ -1,6 +1,6 @@
 from hydrogram.types import InlineKeyboardMarkup, Message
 from pydantic import BaseModel
-from .api_models import APIResult
+from .api_models import APIResultGroup
 
 
 class FilteredMessageAtributes(BaseModel):
@@ -13,7 +13,7 @@ class FilteredMessageAtributes(BaseModel):
 
 
 class PreResponseAtributes(BaseModel):
-    result: APIResult
+    result: APIResultGroup
     button: InlineKeyboardMarkup
     caption: str
 

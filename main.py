@@ -5,7 +5,7 @@ import hydrogram
 import uvloop
 from dotenv import load_dotenv
 
-from bg_task import scheduled
+from bg_task import scheduling
 from client import make_bot
 
 load_dotenv()
@@ -33,7 +33,7 @@ app = make_bot(
 
 async def main():
     await app.start()
-    scheduled(app)
+    scheduling(app)
     bot_info = await app.get_me()
     print(bot_info.first_name)
     await hydrogram.idle()
