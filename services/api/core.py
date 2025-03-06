@@ -5,7 +5,6 @@ from hydrogram.types import Message
 
 from models.api_models import APIResult, APIResultGroup
 from models.bot_models import (
-    FilteredMessageAtributes,
     PreResponseAtributes,
 )
 
@@ -16,8 +15,8 @@ API = os.environ["CONTENT_API"]
 
 async def get_api_result(endpoint: str, m: Message) -> PreResponseAtributes:
     api_url = f"{API}/{endpoint}"
-    attrs: FilteredMessageAtributes = get_attributes(m)
-    url: str = attrs.url
+    attrs = get_attributes(m)
+    url = attrs.url
     async with ClientSession() as session:
         async with session.get(api_url, params={"url": url}) as response:
             if response.status == 200:
@@ -29,7 +28,9 @@ async def get_api_result(endpoint: str, m: Message) -> PreResponseAtributes:
         for link in content["result"]:
             match endpoint:
                 case "instagram":
-                    result.append(APIResult(is_video=link["is_video"], url=link["url"]))
+                    result.append(
+                        APIResult(is_video=link["is_video"], url=link["result"])
+                    )
                 case _:
                     result.append(APIResult(is_video=False, url=link))
         result = APIResultGroup(standalone=False, content=result)
