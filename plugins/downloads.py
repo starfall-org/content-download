@@ -24,7 +24,7 @@ async def __youtube__(_: Client, m: Message):
             print(
                 (
                     f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
                     f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
                     "ACTION: music"
                 ),
@@ -36,7 +36,7 @@ async def __youtube__(_: Client, m: Message):
             print(
                 (
                     f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
                     f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
                     "ACTION: youtube"
                 ),
@@ -65,7 +65,7 @@ async def __facebook__(_: Client, m: Message):
         print(
             (
                 f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
                 f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
                 "ACTION: facebook"
             ),
@@ -89,10 +89,11 @@ async def __instagram__(_: Client, m: Message):
         result = await get_api_result("instagram", m)
         await reply_media_group(m, result.result, result.button, result.caption)
         await m.delete()
+
         print(
             (
                 f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
                 f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
                 "ACTION: instagram"
             ),
@@ -121,7 +122,7 @@ async def __douyin__(_: Client, m: Message):
         print(
             (
                 f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name', m.sender_chat.title)}\n"
+                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
                 f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
                 "ACTION: douyin"
             ),
