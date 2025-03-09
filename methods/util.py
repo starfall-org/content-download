@@ -13,5 +13,13 @@ def parse_media_group(
     ]
 
 
-async def convert_to_io(media: list[APIResult]) -> list[APIResult]:
-    return [APIResult(link.is_video, await url_to_io(link.url)) for link in media]
+async def list_to_io(media: list[APIResult]) -> list[APIResult]:
+    return [
+        APIResult(
+            link.is_video,
+            await url_to_io(
+                link.url, ext="mp4" if link.is_video else "png", title=link.title
+            ),
+        )
+        for link in media
+    ]

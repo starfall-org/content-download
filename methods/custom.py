@@ -6,7 +6,7 @@ from hydrogram.types import (
 
 from models.api_models import APIResultGroup, APIResult
 
-from .util import convert_to_io, parse_media_group
+from .util import list_to_io, parse_media_group, url_to_io
 
 
 async def reply_media_group(
@@ -20,7 +20,9 @@ async def reply_media_group(
                     media.content.url, reply_markup=button, caption=caption
                 )
             except Exception:
-                file = await convert_to_io(media.content.url, ext="mp4")
+                file = await url_to_io(
+                    media.content.url, title=media.content.title, ext="mp4"
+                )
                 await m.reply_video(file, reply_markup=button, caption=caption)
         else:
             await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
@@ -29,7 +31,9 @@ async def reply_media_group(
                     media.content.url, reply_markup=button, caption=caption
                 )
             except Exception:
-                file = await convert_to_io(media.content.url, ext="jpg")
+                file = await url_to_io(
+                    media.content.url, title=media.content.title, ext="jpg"
+                )
                 await m.reply_photo(file, reply_markup=button, caption=caption)
     else:
         links: list[APIResult] = media.content
@@ -48,7 +52,7 @@ async def reply_media_group(
                     await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
                 else:
                     await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
-                part_files = await convert_to_io(part_links)
+                part_files = await list_to_io(part_links)
                 media_group = parse_media_group(part_files)
                 await m.reply_media_group(media_group)
 
@@ -57,7 +61,7 @@ async def reply_media_group(
             try:
                 await m.reply_video(last_link.url, caption=caption, reply_markup=button)
             except Exception:
-                file = await convert_to_io(last_link.url, ext="mp4")
+                file = await url_to_io(last_link.url, title=last_link.title, ext="mp4")
                 await m.reply_video(file, caption=caption, reply_markup=button)
 
         else:
@@ -65,7 +69,7 @@ async def reply_media_group(
             try:
                 await m.reply_photo(last_link.url, caption=caption, reply_markup=button)
             except Exception:
-                file = await convert_to_io(last_link.url, ext="jpg")
+                file = await url_to_io(last_link.url, title=last_link.title, ext="jpg")
                 await m.reply_photo(file, caption=caption, reply_markup=button)
 
 
@@ -76,7 +80,5 @@ async def reply_audio(
     try:
         await m.reply_audio(media.content.url, caption=caption, reply_markup=button)
     except Exception:
-        file = await convert_to_io(
-            media.content.url, ext="mp3", title=media.content.title
-        )
+        file = await url_to_io(media.content.url, ext="mp3", title=media.content.title)
         await m.reply_audio(file, caption=caption, reply_markup=button)

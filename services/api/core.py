@@ -21,11 +21,10 @@ async def get_api_result(endpoint: str, m: Message) -> PreResponseAtributes:
         async with session.get(api_url, params={"url": url}) as response:
             if response.status == 200:
                 content = await response.json()
-                await session.close()
 
-    if isinstance(content["result"], list):
+    if isinstance(content, list):
         result = []
-        for link in content["result"]:
+        for link in content:
             match endpoint:
                 case "instagram":
                     result.append(
