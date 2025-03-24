@@ -7,3 +7,4 @@ sqlalchemy-cockroachdb
 aiohttp
 uvloop
 google-genai
+sqlmodel
