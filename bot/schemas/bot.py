@@ -1,27 +1,26 @@
+from dataclasses import dataclass
+
 from hydrogram.types import InlineKeyboardMarkup, Message
-from pydantic import BaseModel
-from .api_models import APIResultGroup
+
+from .api import ResponseGroup
 
 
-class FilteredMessageAtributes(BaseModel):
+@dataclass
+class ParsedAtributes:
     url: str
     button: InlineKeyboardMarkup
     caption: str
 
-    class Config:
-        arbitrary_types_allowed = True
 
-
-class PreResponseAtributes(BaseModel):
-    result: APIResultGroup
+@dataclass
+class ResponseUtility:
+    result: ResponseGroup
     button: InlineKeyboardMarkup
     caption: str
 
-    class Config:
-        arbitrary_types_allowed = True
 
-
-class ParsedChatArguments(BaseModel):
+@dataclass
+class ParsedChatArguments:
     message: Message
     is_admin: bool = False
     is_banned: bool = False
@@ -32,6 +31,3 @@ class ParsedChatArguments(BaseModel):
 
     def get_administrators(self):
         return [7642104102]
-
-    class Config:
-        arbitrary_types_allowed = True

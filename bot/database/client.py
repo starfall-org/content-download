@@ -9,7 +9,7 @@ from sqlmodel import Session, SQLModel, create_engine, select
 
 from models.bot_models import ParsedChatArguments
 
-from .models import Chat, GroupStats, MemberCount, PresetContent
+from .models.models import Chat, GroupStats, MemberCount, PresetContent
 
 DATABASE_URL = os.environ["DATABASE_URL"]
 

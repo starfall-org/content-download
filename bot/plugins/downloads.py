@@ -1,14 +1,14 @@
 from datetime import datetime
 
+from database.client import Database
 from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.errors import Forbidden
 from hydrogram.types import Message
+from methods.custom import reply_audio, reply_media_group
 
-from database.client import Database
-from methods.custom import reply_media_group, reply_audio
-from models.bot_models import ParsedChatArguments
-from services.api.core import get_api_result
+from bot.schemas.bot import ParsedChatArguments
+from bot.services.content_api import get_api_result
 
 db = Database()
 
