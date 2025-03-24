@@ -23,12 +23,12 @@ async def item_to_io(
     media: ResponseItem,
 ) -> ResponseItem:
     return ResponseItem(
-        media.is_video,
-        await convert_url_to_io(
+        url=await convert_url_to_io(
             media.url,
             ext="mp4" if media.mediatype == "video" else "png",
             title=media.title,
         ),
+        mediatype=media.is_video,
     )
 
 
@@ -37,12 +37,12 @@ async def list_to_io(
 ) -> list[ResponseItem]:
     return [
         ResponseItem(
-            link.is_video,
-            await convert_url_to_io(
+            url=await convert_url_to_io(
                 link.url,
                 ext="mp4" if link.mediatype == "video" else "png",
                 title=link.title,
             ),
+            mediatype=link.is_video,
         )
         for link in media
     ]
