@@ -5,13 +5,6 @@ psycopg2
 sqlalchemy
 sqlalchemy-cockroachdb
 aiohttp
-pydantic
-requests
-sqlmodel
-python-dotenv
-matplotlib
-pandas
-numpy
-scipy
-apscheduler
 uvloop
+google-genai
+sqlmodel
