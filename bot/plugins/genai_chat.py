@@ -7,6 +7,14 @@ from bot.services.google_genai.core import GoogleGenAI
 gg = GoogleGenAI()
 
 
+@Client.on_message(filters.command("reset") & filters.private)
+async def reset_chat(c: Client, m: Message):
+    await m.reply_chat_action(ChatAction.TYPING)
+    t = await m.reply_text("Resetting...")
+    await gg.new_chat()
+    await t.edit_text("Resetted!")
+
+
 @Client.on_message(
     (filters.private | filters.mentioned)
     & (
