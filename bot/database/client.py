@@ -1,4 +1,3 @@
-import os
 from asyncio import to_thread
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -7,11 +6,10 @@ from hydrogram.enums import ChatType
 from hydrogram.types import Chat as Group
 from sqlmodel import Session, SQLModel, create_engine, select
 
-from models.bot_models import ParsedChatArguments
+from bot.config import DATABASE_URL
+from bot.schemas.bot import ParsedChatArguments
 
-from .models.models import Chat, GroupStats, MemberCount, PresetContent
-
-DATABASE_URL = os.environ["DATABASE_URL"]
+from .models.chat import Chat, GroupStats, MemberCount, PresetContent
 
 
 class Database:

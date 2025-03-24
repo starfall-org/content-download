@@ -4,17 +4,16 @@ from hydrogram.types import Message
 from bot.config import CONTENT_API
 from bot.schemas.api import ResponseGroup, ResponseItem
 from bot.schemas.bot import ResponseUtility
-from bot.utils.regex_tools import get_attributes
+from bot.utils.regex_tools import parse_attributes
 
 
 async def get_api_result(endpoint: str, m: Message) -> ResponseUtility:
     api_url = f"{CONTENT_API}/{endpoint}"
-    attrs = get_attributes(m)
+    attrs = parse_attributes(m)
     url = attrs.url
     async with ClientSession() as session:
         async with session.get(api_url, params={"url": url}) as response:
-            if response.status == 200:
-                content = await response.json()
+            content = await response.json()
 
     if isinstance(content, list):
         result = []
