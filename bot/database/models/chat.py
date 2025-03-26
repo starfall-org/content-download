@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlmodel import BigInteger, Field, Relationship, SQLModel
+from sqlmodel import BigInteger, Field, Relationship, SQLModel, Column
 
 
 class PresetContent(SQLModel, table=True):
@@ -12,7 +12,7 @@ class PresetContent(SQLModel, table=True):
 
 class Chat(SQLModel, table=True):
     __tablename__ = "contentdownload_chats"
-    id: int = Field(sa_column=BigInteger, primary_key=True)
+    id: int = Field(sa_column=Column(BigInteger, primary_key=True))
     username: str | None = Field(default=None)
     title: str
     is_user: bool = Field(default=False)
