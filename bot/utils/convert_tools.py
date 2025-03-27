@@ -28,7 +28,7 @@ async def item_to_io(
             ext="mp4" if media.mediatype == "video" else "png",
             title=media.title,
         ),
-        mediatype=media.is_video,
+        mediatype=media.mediatype,
     )
 
 
@@ -42,7 +42,7 @@ async def list_to_io(
                 ext="mp4" if link.mediatype == "video" else "png",
                 title=link.title,
             ),
-            mediatype=link.is_video,
+            mediatype=link.mediatype,
         )
         for link in media
     ]
