@@ -18,7 +18,8 @@ async def reset_chat(c: Client, m: Message):
 @Client.on_message(
     (filters.private | filters.mentioned)
     & (
-        ~filters.regex("http|https")
+        ~filters.create(lambda _, __, m: m.text.startswith("/"))
+        & ~filters.regex("http|https")
         & (
             ~filters.regex("youtube.|youtu.be")
             & ~filters.regex("facebook.|fb.")
