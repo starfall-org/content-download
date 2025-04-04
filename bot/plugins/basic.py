@@ -20,9 +20,9 @@ async def reply_start(_: Client, m: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "Group", url="https://t.me/contentdownload_group"
+                        "Group", url="https://t.me/starfall_community"
                     ),
-                    InlineKeyboardButton("Channel", url="https://t.me/contentdownload"),
+                    InlineKeyboardButton("Channel", url="https://t.me/channelstarfall"),
                 ],
             ]
         ),
