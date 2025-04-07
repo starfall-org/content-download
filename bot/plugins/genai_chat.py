@@ -10,7 +10,7 @@ MANAGED_MODE = False
 OWNER_ID = 7642104102
 
 
-@Client.on_message(filters.command("enter_managed") & filters.user(OWNER_ID))
+@Client.on_message(filters.command("enter_manage_mode") & filters.user(OWNER_ID))
 async def enter_managed_mode(c: Client, m: Message):
     global MANAGED_MODE
     await m.reply_chat_action(ChatAction.TYPING)
@@ -18,7 +18,7 @@ async def enter_managed_mode(c: Client, m: Message):
     await m.reply("**Managed Mode Enabled**", quote=True)
 
 
-@Client.on_message(filters.command("exit_managed") & filters.user(OWNER_ID))
+@Client.on_message(filters.command("exit_manage_mode") & filters.user(OWNER_ID))
 async def exit_managed_mode(c: Client, m: Message):
     global MANAGED_MODE
     await m.reply_chat_action(ChatAction.TYPING)
@@ -111,14 +111,14 @@ async def instruction_manage(c: Client, m: Message):
 )
 async def genai_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    if m.from_user and m.from_user.id == OWNER_ID:
+    if m.from_user and m.from_user.id == OWNER_ID and MANAGED_MODE:
         aichat = gg.get_managed_chat()
     else:
         aichat = gg.get_chat()
     try:
         text, media = await aichat.send(c, m)
     except Exception:
-        if m.from_user and m.from_user.id == OWNER_ID:
+        if m.from_user and m.from_user.id == OWNER_ID and MANAGED_MODE:
             aichat = gg.reset_managed_chat()
         else:
             aichat = gg.reset_chat()

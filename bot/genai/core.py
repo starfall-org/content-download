@@ -14,7 +14,7 @@ class GoogleGenAI:
         self.client = genai.Client(api_key=GENAI_API)
         self.__current_model__ = "gemini-2.0-flash-thinking-exp"
         self.k = sh.open("genai.db", flag="c")
-        self.default_instruction = INSTRUCTIONS["FRANKLY"]
+        self.default_instruction = INSTRUCTIONS["THẲNG_THẮN"]
         self.__normal_chat__ = self.client.aio.chats.create(
             model=self.__current_model__,
             config=self.get_config(),
@@ -36,7 +36,7 @@ class GoogleGenAI:
 
     def get_managed_config(self) -> types.GenerateContentConfig:
         return types.GenerateContentConfig(
-            system_instruction=f"Danh sách các nhân cách: {INSTRUCTIONS}. Sử dụng change_personality('tên nhân cách') để thay đổi nhân cách.",
+            system_instruction=f"Danh sách các nhân cách cho normal chat:\n{INSTRUCTIONS}.\nkhi được yêu cầu thay đổi nhân cách thì hãy gọi change_personality với tên nhân cách từ danh sách.\nBạn là managed chat nên nhân cách này không phải áp dụng cho bạn.",
             temperature=1,
             top_p=0.95,
             top_k=40,
@@ -56,11 +56,13 @@ class GoogleGenAI:
             self.k["system_instruction"] = text
         else:
             del self.k["system_instruction"]
+        self.reset_chat()
 
     def change_personality(self, personality: str):
         if personality not in INSTRUCTIONS.keys():
             return "Invalid Personality"
         self.default_instruction = INSTRUCTIONS[personality]
+        self.reset_chat()
         return "Personality Changed"
 
     def current_model(self) -> str:
@@ -72,6 +74,7 @@ class GoogleGenAI:
 
     def switch_model(self, model_name: str) -> None:
         self.__current_model__ = model_name
+        self.reset_chat()
 
     def get_chat(self) -> GenAIChat:
         return GenAIChat(self.__normal_chat__)
