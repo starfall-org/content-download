@@ -26,13 +26,13 @@ async def exit_managed_mode(c: Client, m: Message):
     await m.reply("**Managed Mode Disabled**", quote=True)
 
 
-@Client.on_message(filters.command("newchat") & filters.private)
+@Client.on_message(filters.command("reset") & filters.user(OWNER_ID))
 async def new_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     if MANAGED_MODE and m.from_user.id == OWNER_ID:
-        gg.new_managed_chat(m)
+        gg.reset_managed_chat()
     else:
-        gg.new_chat(m)
+        gg.reset_chat()
     await m.reply("**New Chat Created**", quote=True)
 
 
@@ -60,9 +60,9 @@ async def switch_model(c: Client, m: Message):
         await m.reply("**Usage:** `/select model_name`", quote=True)
     model = m.command[1]
     models = gg.list_models()
-    if model.startswith("gemini-") and f"models/{model}" in models:
+    if model.startswith("gemini") and model in [md.split("/")[-1] for md in models]:
         gg.switch_model(model)
-        await m.reply(f"**Model switched to:** `{model.strip('`')}`", quote=True)
+        await m.reply(f"**Model switched to:** `{model}`", quote=True)
     else:
         models = [f"`{model}`" for model in models]
         await m.reply(
@@ -114,13 +114,15 @@ async def genai_chat(c: Client, m: Message):
     if m.from_user and m.from_user.id == OWNER_ID:
         aichat = gg.get_managed_chat()
     else:
-        aichat = gg.get_chat(m)
-    while True:
-        try:
-            text, media = await aichat.send(c, m)
-            break
-        except Exception:
-            gg.new_chat(m)
+        aichat = gg.get_chat()
+    try:
+        text, media = await aichat.send(c, m)
+    except Exception:
+        if m.from_user and m.from_user.id == OWNER_ID:
+            aichat = gg.reset_managed_chat()
+        else:
+            aichat = gg.reset_chat()
+        text, media = await aichat.send(c, m)
     if media:
         if media.mime_type.startswith("image/"):
             await m.reply_photo(photo=media.data, caption=text, quote=True)
