@@ -5,8 +5,28 @@ from hydrogram import Client
 from hydrogram.types import Message
 
 
+def get_user(m: Message) -> tuple[str | None, str | None]:
+    if m.from_user:
+        name = (
+            f"{m.from_user.first_name} {m.from_user.last_name}"
+            if m.from_user.last_name
+            else m.from_user.first_name
+        )
+        username = m.from_user.username
+    else:
+        name = m.sender_chat.title
+        username = m.sender_chat.username
+    return name, username
+
+
 async def split_parts(client: Client, message: Message | list[Message]):
     parts = []
+    fullname, username = get_user(message)
+    parts.append(
+        types.Part.from_text(
+            text=f"<<<NAME: {fullname}, USERNAME: {username}>>>",
+        )
+    )
     if isinstance(message, Message):
         rtm = message.reply_to_message
         if message.text:

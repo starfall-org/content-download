@@ -2,17 +2,33 @@ from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.types import Message
 
+
 from bot.genai.core import GoogleGenAI
 
 gg = GoogleGenAI()
+MANAGED_MODE = False
+OWNER_ID = 7642104102
 
 
-@Client.on_message(filters.command("reset") & filters.private)
-async def reset_chat(c: Client, m: Message):
+@Client.on_message(filters.command("enter_managed") & filters.user(OWNER_ID))
+async def enter_managed_mode(c: Client, m: Message):
+    global MANAGED_MODE
+    MANAGED_MODE = True
+    await m.reply("**Managed Mode Enabled**", quote=True)
+
+
+@Client.on_message(filters.command("exit_managed") & filters.user(OWNER_ID))
+async def exit_managed_mode(c: Client, m: Message):
+    global MANAGED_MODE
+    MANAGED_MODE = False
+    await m.reply("**Managed Mode Disabled**", quote=True)
+
+
+@Client.on_message(filters.command("newchat") & filters.private)
+async def new_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    t = await m.reply_text("Resetting...")
-    await gg.new_chat()
-    await t.edit_text("Resetted!")
+    await gg.new_chat(m)
+    await m.reply("**New Chat Created**", quote=True)
 
 
 @Client.on_message(filters.command("model"))
@@ -20,6 +36,57 @@ async def current_model(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     await m.reply(
         f"**Current Model:** `{gg.current_model()}`",
+        quote=True,
+    )
+
+
+@Client.on_message(filters.command("models") & filters.user(7642104102))
+async def list_models(c: Client, m: Message):
+    await m.reply_chat_action(ChatAction.TYPING)
+    models = gg.list_models()
+    models = [f"`{model}`" for model in models]
+    await m.reply("\n".join(models), quote=True)
+
+
+@Client.on_message(filters.command("select") & filters.user(7642104102))
+async def switch_model(c: Client, m: Message):
+    await m.reply_chat_action(ChatAction.TYPING)
+    if len(m.command) < 2:
+        await m.reply("**Usage:** `/select model_name`", quote=True)
+    model = m.command[1]
+    models = gg.list_models()
+    if model.startswith("gemini-") and f"models/{model}" in models:
+        gg.switch_model(model)
+        await m.reply(f"**Model switched to:** `{model.strip('`')}`", quote=True)
+    else:
+        models = [f"`{model}`" for model in models]
+        await m.reply(
+            f"**Usage:** `/select model_name`\n**Available Models:**\n{', '.join(models)}",
+            quote=True,
+        )
+
+
+@Client.on_message(filters.command("aichats") & filters.user(7642104102))
+async def get_url(c: Client, m: Message):
+    await m.reply_chat_action(ChatAction.TYPING)
+    chats = gg.get_chats()
+    chats = [f"`{chat}`" for chat in chats]
+    await m.reply("\n".join(chats), quote=True)
+
+
+@Client.on_message(filters.command("instruction") & filters.user(7642104102))
+async def instruction_manage(c: Client, m: Message):
+    await m.reply_chat_action(ChatAction.TYPING)
+    current_instruction = gg.get_instruction()
+    if len(m.command) < 2:
+        await m.reply(
+            f"**Usage:** `/instruction instruction`\n**Current Instruction:** ```\n{current_instruction}```",
+            quote=True,
+        )
+    instruction = m.command[1]
+    gg.set_instruction(instruction)
+    await m.reply(
+        f"**Instruction was changed!**\n**From:** ```\n{current_instruction}```\n**To:** ```\n{instruction}```",
         quote=True,
     )
 
@@ -39,17 +106,20 @@ async def current_model(c: Client, m: Message):
 )
 async def genai_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    text, medias = await gg.send_message(c, m)
-    if medias:
-        for media in medias:
-            if media.mime_type.startswith("image/"):
-                await m.reply_photo(photo=media.url, caption=text, quote=True)
-            elif media.mime_type.startswith("video/"):
-                await m.reply_video(video=media.url, caption=text, quote=True)
-            elif media.mime_type.startswith("audio/"):
-                await m.reply_audio(audio=media.url, caption=text, quote=True)
-            else:
-                await m.reply_document(document=media.url, caption=text, quote=True)
-            text = ""
+    if m.from_user and m.from_user.id == OWNER_ID:
+        aichat = gg.get_managed_chat()
+    else:
+        aichat = gg.get_chat(m)
+    text, media = await aichat.send(c, m)
+    if media:
+        if media.mime_type.startswith("image/"):
+            await m.reply_photo(photo=media.data, caption=text, quote=True)
+        elif media.mime_type.startswith("video/"):
+            await m.reply_video(video=media.data, caption=text, quote=True)
+        elif media.mime_type.startswith("audio/"):
+            await m.reply_audio(audio=media.data, caption=text, quote=True)
+        else:
+            await m.reply_document(document=media.data, caption=text, quote=True)
+        text = ""
     else:
         await m.reply(text, quote=True)
