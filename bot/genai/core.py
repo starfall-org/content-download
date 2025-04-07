@@ -19,6 +19,10 @@ class GoogleGenAI:
         self.__current_model__ = "gemini-2.0-flash-thinking-exp"
         self.k = sh.open("genai.db", flag="c")
         self.default_instruction = INSTRUCTIONS["FRANKLY"]
+        self.__managed_chat__ = None
+        self.__init_managed_chat__()
+
+    def __init_managed_chat__(self):
         self.__managed_chat__ = self.client.aio.chats.create(
             model="gemini-2.0-flash",
             config=types.GenerateContentConfig(
@@ -80,16 +84,17 @@ class GoogleGenAI:
         self.__current_model__ = model_name
 
     def get_chat(self, m: Message) -> GenAIChat:
-        return self.k.get(f"chat_{m.chat.id}") or self.new_chat(m)
+        return self.gen_chat(m, self.k.get(f"chat_{m.chat.id}", []))
 
-    def new_chat(self, m: Message) -> GenAIChat:
+    def gen_chat(self, m: Message, history: list[types.Content] = []) -> GenAIChat:
         if m.chat.type == ChatType.PRIVATE:
             config = self.get_config(
                 f"Bạn đang ở kênh chat riêng tư với người dùng {m.chat.full_name} (ID: {m.chat.id})"
             )
-        chat = self.client.aio.chats.create(model=self.__current_model__, config=config)
+        chat = self.client.aio.chats.create(
+            model=self.__current_model__, config=config, history=history
+        )
         genai_chat = GenAIChat(chat)
-        self.k[f"chat_{m.chat.id}"] = genai_chat
         return genai_chat
 
     def get_chats(self) -> list[GenAIChat]:
@@ -97,3 +102,6 @@ class GoogleGenAI:
 
     def get_managed_chat(self) -> GenAIChat:
         return GenAIChat(self.__managed_chat__)
+
+    def new_managed_chat(self) -> GenAIChat:
+        self.__init_managed_chat__()

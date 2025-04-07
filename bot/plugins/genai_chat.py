@@ -13,6 +13,7 @@ OWNER_ID = 7642104102
 @Client.on_message(filters.command("enter_managed") & filters.user(OWNER_ID))
 async def enter_managed_mode(c: Client, m: Message):
     global MANAGED_MODE
+    await m.reply_chat_action(ChatAction.TYPING)
     MANAGED_MODE = True
     await m.reply("**Managed Mode Enabled**", quote=True)
 
@@ -20,6 +21,7 @@ async def enter_managed_mode(c: Client, m: Message):
 @Client.on_message(filters.command("exit_managed") & filters.user(OWNER_ID))
 async def exit_managed_mode(c: Client, m: Message):
     global MANAGED_MODE
+    await m.reply_chat_action(ChatAction.TYPING)
     MANAGED_MODE = False
     await m.reply("**Managed Mode Disabled**", quote=True)
 
@@ -27,7 +29,10 @@ async def exit_managed_mode(c: Client, m: Message):
 @Client.on_message(filters.command("newchat") & filters.private)
 async def new_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    await gg.new_chat(m)
+    if MANAGED_MODE and m.from_user.id == OWNER_ID:
+        gg.new_managed_chat(m)
+    else:
+        gg.new_chat(m)
     await m.reply("**New Chat Created**", quote=True)
 
 
@@ -110,7 +115,12 @@ async def genai_chat(c: Client, m: Message):
         aichat = gg.get_managed_chat()
     else:
         aichat = gg.get_chat(m)
-    text, media = await aichat.send(c, m)
+    while True:
+        try:
+            text, media = await aichat.send(c, m)
+            break
+        except Exception:
+            gg.new_chat(m)
     if media:
         if media.mime_type.startswith("image/"):
             await m.reply_photo(photo=media.data, caption=text, quote=True)
