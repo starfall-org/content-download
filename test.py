@@ -1,4 +1,5 @@
-import mimetypes
+from bot.services.google_genai.core import GoogleGenAI
 
-for m in mimetypes.types_map.items():
-    print(m)
+gg = GoogleGenAI()
+for model in gg.models:
+    print(model.name)
