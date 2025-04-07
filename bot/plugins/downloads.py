@@ -9,7 +9,7 @@ from bot.config import logger
 from bot.database.client import Database
 from bot.methods.custom import reply_audio, reply_media_group
 from bot.schemas.bot import ParsedChatArguments
-from bot.services.content_api import get_api_result
+from bot.content_api import get_api_result
 
 db = Database()
 

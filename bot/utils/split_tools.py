@@ -2,11 +2,41 @@ import mimetypes
 
 from google.genai import types
 from hydrogram import Client
+from hydrogram.enums import ChatType
 from hydrogram.types import Message
+
+
+def get_user(m: Message) -> tuple[str | None, str | None]:
+    if m.from_user:
+        name = (
+            f"{m.from_user.first_name} {m.from_user.last_name}"
+            if m.from_user.last_name
+            else m.from_user.first_name
+        )
+        username = m.from_user.username
+        uid = m.from_user.id
+    else:
+        name = m.sender_chat.title
+        username = m.sender_chat.username
+        uid = m.sender_chat.id
+    return name, username, uid
 
 
 async def split_parts(client: Client, message: Message | list[Message]):
     parts = []
+    fullname, username, uid = get_user(message)
+    if message.chat.type == ChatType.PRIVATE:
+        parts.append(
+            types.Part.from_text(
+                text=f"<<<PRIVATE CHAT>>>\n<<<NAME: {fullname}, USERNAME: {username}, ID: {uid}>>>",
+            )
+        )
+    else:
+        parts.append(
+            types.Part.from_text(
+                text=f"<<<GROUPCHAT: {message.chat.title}, ID: {message.chat.id}>>>\n<<<NAME: {fullname}, USERNAME: {username}, ID: {uid}>>>",
+            )
+        )
     if isinstance(message, Message):
         rtm = message.reply_to_message
         if message.text:
