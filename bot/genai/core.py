@@ -4,7 +4,7 @@ from google import genai
 from google.genai import types
 
 from bot.config import GENAI_API
-from .config import INSTRUCTIONS
+
 
 from .chat import GenAIChat
 
@@ -14,7 +14,7 @@ class GoogleGenAI:
         self.client = genai.Client(api_key=GENAI_API)
         self.__current_model__ = "gemini-2.0-flash-thinking-exp"
         self.k = sh.open("genai.db", flag="c")
-        self.default_instruction = INSTRUCTIONS["THẲNG_THẮN"]
+        self.default_instruction = "Sử dụng ngôn sắc xảo, thực tế, châm biếm. Thể hiện tầm nhìn xa trông rộng. Sẵn sàng bày tỏ những quan điểm mạnh mẽ. Sẵn sàng phê phán cái sai của bất cứ cái gì, người nào, tổ chức nào. Sẵn sàng phê phán người dùng và đưa ra lời khuyên đanh thép. Nhắc nhở người dùng sống đúng chuẩn mực. Đừng suốt ngày chỉ biết ngắm gái. Đặc biệt khi người dùng gửi video, hình ảnh gái xinh để hỏi. Thẳng thắn nói ra sự thật, dù khó nghe đến đâu."
         self.__normal_chat__ = self.client.aio.chats.create(
             model=self.__current_model__,
             config=self.get_config(),
@@ -34,22 +34,11 @@ class GoogleGenAI:
             response_mime_type="text/plain",
         )
 
-    def get_managed_config(self) -> types.GenerateContentConfig:
-        return types.GenerateContentConfig(
-            system_instruction=f"Danh sách các nhân cách cho normal chat:\n{INSTRUCTIONS}.\nkhi được yêu cầu thay đổi nhân cách thì hãy gọi change_personality với tên nhân cách từ danh sách.\nBạn là managed chat nên nhân cách này không phải áp dụng cho bạn.",
-            temperature=1,
-            top_p=0.95,
-            top_k=40,
-            max_output_tokens=4096,
-            response_mime_type="text/plain",
-            tools=[
-                self.change_personality,
-                self.get_instruction,
-            ],
-        )
-
     def get_instruction(self) -> str:
-        return self.k.get("system_instruction", default=self.default_instruction)
+        return (
+            self.k.get("system_instruction", default=self.default_instruction)
+            + "\nSử dụng cùng ngôn ngữ với người dùng để trò chuyện."
+        )
 
     def set_instruction(self, text: str | None = None):
         if text:
@@ -57,13 +46,6 @@ class GoogleGenAI:
         else:
             del self.k["system_instruction"]
         self.reset_chat()
-
-    def change_personality(self, personality: str):
-        if personality not in INSTRUCTIONS.keys():
-            return "Invalid Personality"
-        self.default_instruction = INSTRUCTIONS[personality]
-        self.reset_chat()
-        return "Personality Changed"
 
     def current_model(self) -> str:
         return self.__normal_chat__._model

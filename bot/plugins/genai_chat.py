@@ -10,22 +10,6 @@ MANAGED_MODE = False
 OWNER_ID = 7642104102
 
 
-@Client.on_message(filters.command("enter_manage_mode") & filters.user(OWNER_ID))
-async def enter_managed_mode(c: Client, m: Message):
-    global MANAGED_MODE
-    await m.reply_chat_action(ChatAction.TYPING)
-    MANAGED_MODE = True
-    await m.reply("**Managed Mode Enabled**", quote=True)
-
-
-@Client.on_message(filters.command("exit_manage_mode") & filters.user(OWNER_ID))
-async def exit_managed_mode(c: Client, m: Message):
-    global MANAGED_MODE
-    await m.reply_chat_action(ChatAction.TYPING)
-    MANAGED_MODE = False
-    await m.reply("**Managed Mode Disabled**", quote=True)
-
-
 @Client.on_message(filters.command("reset") & filters.user(OWNER_ID))
 async def new_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
