@@ -61,19 +61,9 @@ class GoogleGenAI:
     def get_chat(self) -> GenAIChat:
         return GenAIChat(self.__normal_chat__)
 
-    def get_managed_chat(self) -> GenAIChat:
-        return GenAIChat(self.__managed_chat__)
-
     def reset_chat(self) -> GenAIChat:
         self.__normal_chat__ = self.client.aio.chats.create(
             model=self.__current_model__,
             config=self.get_config(),
         )
         return GenAIChat(self.__normal_chat__)
-
-    def reset_managed_chat(self) -> GenAIChat:
-        self.__managed_chat__ = self.client.aio.chats.create(
-            model="gemini-2.0-flash",
-            config=self.get_managed_config(),
-        )
-        return GenAIChat(self.__managed_chat__)

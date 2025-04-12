@@ -72,8 +72,10 @@ async def instruction_manage(c: Client, m: Message):
             f"**Usage:** `/instruction instruction`\n**Current Instruction:** ```\n{current_instruction}```",
             quote=True,
         )
-    instruction = m.command[1]
-    gg.set_instruction(instruction)
+        gg.set_instruction()
+    else:
+        instruction = m.command[1]
+        gg.set_instruction(instruction)
     await m.reply(
         f"**Instruction was changed!**\n**From:** ```\n{current_instruction}```\n**To:** ```\n{instruction}```",
         quote=True,
