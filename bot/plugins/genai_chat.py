@@ -2,21 +2,16 @@ from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.types import Message
 
-
 from bot.genai.core import GoogleGenAI
 
 gg = GoogleGenAI()
-MANAGED_MODE = False
 OWNER_ID = 7642104102
 
 
 @Client.on_message(filters.command("reset") & filters.user(OWNER_ID))
 async def new_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    if MANAGED_MODE and m.from_user.id == OWNER_ID:
-        gg.reset_managed_chat()
-    else:
-        gg.reset_chat()
+    gg.reset_chat()
     await m.reply("**New Chat Created**", quote=True)
 
 
@@ -55,14 +50,6 @@ async def switch_model(c: Client, m: Message):
         )
 
 
-@Client.on_message(filters.command("aichats") & filters.user(7642104102))
-async def get_url(c: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    chats = gg.get_chats()
-    chats = [f"`{chat}`" for chat in chats]
-    await m.reply("\n".join(chats), quote=True)
-
-
 @Client.on_message(filters.command("instruction") & filters.user(7642104102))
 async def instruction_manage(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
@@ -97,17 +84,11 @@ async def instruction_manage(c: Client, m: Message):
 )
 async def genai_chat(c: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    if m.from_user and m.from_user.id == OWNER_ID and MANAGED_MODE:
-        aichat = gg.get_managed_chat()
-    else:
-        aichat = gg.get_chat()
+    aichat = gg.get_chat()
     try:
         text, media = await aichat.send(c, m)
     except Exception:
-        if m.from_user and m.from_user.id == OWNER_ID and MANAGED_MODE:
-            aichat = gg.reset_managed_chat()
-        else:
-            aichat = gg.reset_chat()
+        aichat = gg.reset_chat()
         text, media = await aichat.send(c, m)
     if media:
         if media.mime_type.startswith("image/"):
