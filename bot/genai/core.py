@@ -5,7 +5,6 @@ from google.genai import types
 
 from bot.config import GENAI_API
 
-
 from .chat import GenAIChat
 
 
@@ -31,6 +30,24 @@ class GoogleGenAI:
             top_p=0.95,
             top_k=40,
             max_output_tokens=4096,
+            safety_settings=[
+                types.SafetySetting(
+                    category="HARM_CATEGORY_HARASSMENT",
+                    threshold="BLOCK_NONE",
+                ),
+                types.SafetySetting(
+                    category="HARM_CATEGORY_HATE_SPEECH",
+                    threshold="BLOCK_NONE",
+                ),
+                types.SafetySetting(
+                    category="HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                    threshold="BLOCK_NONE",
+                ),
+                types.SafetySetting(
+                    category="HARM_CATEGORY_DANGEROUS_CONTENT",
+                    threshold="BLOCK_NONE",
+                ),
+            ],
             response_mime_type="text/plain",
         )
 
