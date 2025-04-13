@@ -10,7 +10,11 @@
 				"charliermarsh.ruff"
 			]
 		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
 	}
+
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
