@@ -2,7 +2,6 @@ from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.types import Message
 
-
 from bot.genai.core import GoogleGenAI
 
 gg = GoogleGenAI()
@@ -49,14 +48,6 @@ async def switch_model(c: Client, m: Message):
             f"**Usage:** `/select model_name`\n**Available Models:**\n{', '.join(models)}",
             quote=True,
         )
-
-
-@Client.on_message(filters.command("aichats") & filters.user(7642104102))
-async def get_url(c: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    chats = gg.get_chats()
-    chats = [f"`{chat}`" for chat in chats]
-    await m.reply("\n".join(chats), quote=True)
 
 
 @Client.on_message(filters.command("instruction") & filters.user(7642104102))
