@@ -6,10 +6,10 @@ from hydrogram.errors import Forbidden
 from hydrogram.types import Message
 
 from bot.config import logger
+from bot.content_api import get_api_result
 from bot.database.client import Database
 from bot.methods.custom import reply_audio, reply_media_group
 from bot.schemas.bot import ParsedChatArguments
-from bot.content_api import get_api_result
 
 db = Database()
 
@@ -21,7 +21,7 @@ async def __youtube__(_: Client, m: Message):
         if any(command.upper() in ["MUSIC", "AUDIO"] for command in m.text.split()):
             result = await get_api_result("music", m)
             await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-            await reply_audio(m, result.result, result.button, result.caption)
+            await reply_audio(m, result)
             logger.info(
                 (
                     f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
@@ -32,7 +32,7 @@ async def __youtube__(_: Client, m: Message):
             )
         else:
             result = await get_api_result("youtube", m)
-            await reply_media_group(m, result.result, result.button, result.caption)
+            await reply_media_group(m, result)
             logger.info(
                 (
                     f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
@@ -60,7 +60,7 @@ async def __facebook__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     try:
         result = await get_api_result("facebook", m)
-        await reply_media_group(m, result.result, result.button, result.caption)
+        await reply_media_group(m, result)
         await m.delete()
         logger.info(
             (
@@ -86,7 +86,7 @@ async def __instagram__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     try:
         result = await get_api_result("instagram", m)
-        await reply_media_group(m, result.result, result.button, result.caption)
+        await reply_media_group(m, data=result)
         await m.delete()
 
         logger.info(
@@ -116,7 +116,7 @@ async def __douyin__(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     try:
         result = await get_api_result("douyin", m)
-        await reply_media_group(m, result.result, result.button, result.caption)
+        await reply_media_group(m, result)
         await m.delete()
         logger.info(
             (

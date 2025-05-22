@@ -5,6 +5,8 @@ from zoneinfo import ZoneInfo
 from aiohttp import ClientSession
 
 from bot.schemas.api import ResponseItem
+from bot.schemas.common_link import CommonLinks, CommonLink
+from bot.schemas.youtube_link import YoutubeLinks, YoutubeLink
 
 
 async def convert_url_to_io(
@@ -19,30 +21,37 @@ async def convert_url_to_io(
                 return iofile
 
 
-async def item_to_io(
-    media: ResponseItem,
-) -> ResponseItem:
-    return ResponseItem(
-        url=await convert_url_to_io(
-            media.url,
-            ext="mp4" if media.mediatype == "video" else "png",
-            title=media.title,
-        ),
-        mediatype=media.mediatype,
-    )
-
-
-async def list_to_io(
-    media: list[ResponseItem],
-) -> list[ResponseItem]:
-    return [
-        ResponseItem(
-            url=await convert_url_to_io(
-                link.url,
-                ext="mp4" if link.mediatype == "video" else "png",
-                title=link.title,
-            ),
-            mediatype=link.mediatype,
+async def convert_to_io(
+    obj: CommonLinks | YoutubeLinks,
+) -> CommonLinks | YoutubeLinks:
+    if isinstance(obj, CommonLinks):
+        if len(obj.links) == 1:
+            obj.links[0].url = await convert_url_to_io(
+                obj.links[0].url,
+                ext="mp4" if obj.links[0].type == "video" else "png",
+                title=obj.title,
+            )
+        else:
+            for link in obj.links:
+                link.url = await convert_url_to_io(
+                    link.url,
+                    ext="mp4" if link.type == "video" else "png",
+                    title=obj.title,
+                )
+    elif isinstance(obj, YoutubeLinks):
+        obj.video.url = await convert_url_to_io(
+            obj.video.url,
+            ext="mp4",
+            title=obj.title,
         )
-        for link in media
-    ]
+        obj.video_no_audio.url = await convert_url_to_io(
+            obj.video_no_audio.url,
+            ext="mp4",
+            title=obj.title,
+        )
+        obj.audio.url = await convert_url_to_io(
+            obj.audio.url,
+            ext="mp3",
+            title=obj.title,
+        )
+    return obj

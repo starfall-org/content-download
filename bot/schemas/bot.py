@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from hydrogram.types import InlineKeyboardMarkup, Message
 
 from .api import ResponseGroup
+from .common_link import CommonLinks
+from .youtube_link import YoutubeLinks
 
 
 @dataclass
@@ -14,7 +16,7 @@ class ParsedAtributes:
 
 @dataclass
 class ResponseUtility:
-    result: ResponseGroup
+    result: YoutubeLinks | CommonLinks
     button: InlineKeyboardMarkup
     caption: str
 
