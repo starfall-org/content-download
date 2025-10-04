@@ -13,7 +13,7 @@ db = Database()
 @Client.on_message(filters.command(["start", "help"]) & filters.private)
 async def reply_start(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
-    text = "Welcome! Download content from popular platforms."
+    text = "__Welcome to Content Download!\n\nThis bot helps you download content from various sources__"
     await m.reply(
         f"**Content Download**\n\n{text}",
         reply_markup=InlineKeyboardMarkup(
