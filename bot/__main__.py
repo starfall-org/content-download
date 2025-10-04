@@ -4,6 +4,8 @@ import uvloop
 from hydrogram import Client, idle
 
 from bot.config import BOT_TOKEN, logger
+from bot.database.client import Database
+
 
 app = Client(
     __name__,
@@ -31,6 +33,19 @@ def install_uvloop():
         logger.error(f"Failed to install uvloop: {e}")
     policy = asyncio.get_event_loop_policy()
     logger.info(f"Current event loop policy: {policy.__class__.__name__}")
+
+
+async def broadcast_online(client: Client):
+    db = Database()
+    content = "🟢The bot is up!"
+    chats = [chat.id for chat in await db.all_chat()]
+
+    for chat in chats:
+        try:
+            await client.send_message(chat, content)
+        except Exception as e:
+            print(e)
+        await asyncio.sleep(3)
 
 
 if __name__ == "__main__":
