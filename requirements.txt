@@ -5,6 +5,5 @@ psycopg2-binary
 sqlalchemy
 aiohttp
 uvloop
-google-genai
 sqlmodel
 dacite
