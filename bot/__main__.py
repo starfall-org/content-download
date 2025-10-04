@@ -20,6 +20,7 @@ async def main():
     await app.start()
     bot_info = await app.get_me()
     logger.info(bot_info.first_name)
+    await broadcast_online(app)
     await idle()
     await app.stop()
 
