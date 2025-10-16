@@ -4,7 +4,7 @@ from ollama import AsyncClient
 async def generate_alert(language: str) -> str:
     instruction = {
         "role": "system",
-        "content": f"Translate the user's message into the language with language code is '{language}', if you don't know the language or not sure what is that language code, please translate it into English. No extra text, no punctuation, no quotes, just the translated message.",
+        "content": f"Translate the user's message into the language with language code is '{language}', if you don't know the language or not sure what is that language code, please translate it into English. No extra text, just the translated message.",
     }
     message = {
         "role": "user",
