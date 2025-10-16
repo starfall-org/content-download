@@ -4,7 +4,7 @@ from ollama import AsyncClient
 async def generate_alert(language: str) -> str:
     instruction = {
         "role": "system",
-        "content": f"Translate the user's message into {language}. no extra text, no punctuation, no quotes, just the translated message.",
+        "content": f"Translate the user's message into the language with language code is '{language}', if you don't know the language or not sure what is that language code, please translate it into English. No extra text, no punctuation, no quotes, just the translated message.",
     }
     message = {
         "role": "user",
@@ -13,4 +13,7 @@ async def generate_alert(language: str) -> str:
     response = await AsyncClient(host="http://63.176.1.134:11434/").chat(
         model="gemma3n:latest", messages=[instruction, message]
     )
-    return response["message"]["content"]
+    return (
+        response["message"]["content"]
+        + "\n\n__This is an automated message, please do not reply.__\n__Translated by AI.__"
+    )
