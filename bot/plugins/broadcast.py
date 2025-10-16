@@ -34,8 +34,12 @@ async def alert_users(client: Client, message: Message):
     chats = await db.all_chat()
     for chat in chats:
         if chat.is_group or chat.is_supergroup:
-            alert_message = "Hello! I have a few words I'd like to say to you.\nI have lost my old account and no longer have the authority to manage this bot. Therefore, this bot may cease to function in the future. To continue your experience, you should switch to using **Next Download (@nextdownload_bot)**. However, this does not mean I will shut down this bot, you can still continue to use it as usual."
-            await client.send_message(chat.id, f"__{alert_message}__")
+            alert_message = "Hello! I have lost my old account from last year and no longer have the authority to manage this bot. Therefore, this bot may cease to function in the future. To continue your experience, you should switch to using **Next Download (@nextdownload_bot)**. However, this does not mean I will shut down this bot, you can still continue to use it as usual."
+            await client.send_message(
+                chat.id,
+                f"__{alert_message}__"
+                + "\n```\nThis is an automated message, please do not reply.\n```",
+            )
             await message.reply(f"Alerted group: {chat.id}")
         else:
             user = await client.get_users(chat.id)
