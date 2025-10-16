@@ -44,8 +44,8 @@ async def alert_users(client: Client, message: Message):
         else:
             user = await client.get_users(chat.id)
             if user and isinstance(user, types.User):
-                alert_message = await generate_alert(user.language_code or "English")
-                alert_message = alert_message + "\n🤖`Translated by AI.`"
+                alert_message = await generate_alert(user.language_code or "en")
+                alert_message = alert_message + "\n\n🤖`Translated by AI.`"
                 await client.send_chat_action(chat.id, enums.ChatAction.TYPING)
                 await asyncio.sleep(2)
                 await client.send_message(
