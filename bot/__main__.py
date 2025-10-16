@@ -1,11 +1,11 @@
 import asyncio
+from datetime import datetime
 
 import uvloop
 from hydrogram import Client, idle
 
 from bot.config import BOT_TOKEN, logger
 from bot.database.client import Database
-
 
 app = Client(
     __name__,
@@ -38,7 +38,10 @@ def install_uvloop():
 
 async def broadcast_online(client: Client):
     db = Database()
-    content = "🟢The bot is up!"
+    now = datetime.now()
+    content = (
+        f"__{now.strftime('%b %d, %Y - %H:%M:%S')}__\n**The bot has connected!**🟢"
+    )
     chats = [chat.id for chat in await db.all_chat()]
 
     for chat in chats:
