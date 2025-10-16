@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.13
 
 RUN useradd -m -u 1000 user
 RUN apt-get update && apt install -y git expect wget
