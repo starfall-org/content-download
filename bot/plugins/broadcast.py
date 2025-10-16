@@ -17,7 +17,11 @@ async def broadcast(client: Client, message: Message):
         try:
             await client.send_chat_action(chat, enums.ChatAction.TYPING)
             await asyncio.sleep(2)
-            await client.send_message(chat, content)
+            await client.send_message(
+                chat,
+                content
+                + "\n```\nThis is an automated message, please do not reply.\n```",
+            )
         except Exception as e:
             print(e)
         await asyncio.sleep(3)
@@ -37,9 +41,14 @@ async def alert_users(client: Client, message: Message):
             user = await client.get_users(chat.id)
             if user and isinstance(user, types.User):
                 alert_message = await generate_alert(user.language_code or "English")
+                alert_message = alert_message + "\n🤖`Translated by AI.`"
                 await client.send_chat_action(chat.id, enums.ChatAction.TYPING)
                 await asyncio.sleep(2)
-                await client.send_message(chat.id, f"__{alert_message}__")
+                await client.send_message(
+                    chat.id,
+                    f"__{alert_message}__"
+                    + "\n```\nThis is an automated message, please do not reply.\n```",
+                )
                 await message.reply(f"Alerted user: {chat.id}")
         await asyncio.sleep(3)
 
@@ -52,4 +61,7 @@ async def test_alert(client: Client, message: Message):
     user = await client.get_users(message.chat.id)
     if user and isinstance(user, types.User):
         alert_message = await generate_alert(user.language_code or "English")
-        await message.reply(f"__{alert_message}__")
+        await message.reply(
+            f"__{alert_message}__"
+            + "\n```\nThis is an automated message, please do not reply.\n```"
+        )

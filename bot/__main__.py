@@ -41,6 +41,7 @@ async def broadcast_online(client: Client):
     now = datetime.now()
     content = (
         f"__{now.strftime('%b %d, %Y - %H:%M:%S')}__\n**The bot has connected!**🟢"
+        + "\n```\nThis is an automated message, please do not reply.\n```"
     )
     chats = [chat.id for chat in await db.all_chat()]
 

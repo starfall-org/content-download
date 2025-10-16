@@ -13,7 +13,4 @@ async def generate_alert(language: str) -> str:
     response = await AsyncClient(host="http://63.176.1.134:11434/").chat(
         model="gemma3n:latest", messages=[instruction, message]
     )
-    return (
-        response["message"]["content"]
-        + "\n\n__This is an automated message, please do not reply.__\n__Translated by AI.__"
-    )
+    return response["message"]["content"]
