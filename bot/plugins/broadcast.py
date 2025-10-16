@@ -1,6 +1,6 @@
 import asyncio
 
-from hydrogram import Client, filters, types
+from hydrogram import Client, enums, filters, types
 from hydrogram.types import Message
 
 from bot.database.client import Database
@@ -15,6 +15,8 @@ async def broadcast(client: Client, message: Message):
     chats = [chat.id for chat in await db.all_chat()]
     for chat in chats:
         try:
+            await client.send_chat_action(chat, enums.ChatAction.TYPING)
+            await asyncio.sleep(2)
             await client.send_message(chat, content)
         except Exception as e:
             print(e)
@@ -35,6 +37,8 @@ async def alert_users(client: Client, message: Message):
             user = await client.get_users(chat.id)
             if user and isinstance(user, types.User):
                 alert_message = await generate_alert(user.language_code or "English")
+                await client.send_chat_action(chat.id, enums.ChatAction.TYPING)
+                await asyncio.sleep(2)
                 await client.send_message(chat.id, f"__{alert_message}__")
                 await message.reply(f"Alerted user: {chat.id}")
         await asyncio.sleep(3)
@@ -44,6 +48,7 @@ async def alert_users(client: Client, message: Message):
 
 @Client.on_message(filters.command("test_alert") & filters.user(7642104102))  # type: ignore
 async def test_alert(client: Client, message: Message):
+    await message.reply_chat_action(enums.ChatAction.TYPING)
     user = await client.get_users(message.chat.id)
     if user and isinstance(user, types.User):
         alert_message = await generate_alert(user.language_code or "English")
