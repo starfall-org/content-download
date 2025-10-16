@@ -61,6 +61,7 @@ async def test_alert(client: Client, message: Message):
     user = await client.get_users(message.chat.id)
     if user and isinstance(user, types.User):
         alert_message = await generate_alert(user.language_code or "English")
+        alert_message = alert_message + "\n🤖`Translated by AI.`"
         await message.reply(
             f"__{alert_message}__"
             + "\n```\nThis is an automated message, please do not reply.\n```"
