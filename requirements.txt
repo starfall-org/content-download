@@ -4,7 +4,6 @@ flask
 psycopg2-binary
 sqlalchemy
 aiohttp
-uvloop
 sqlmodel
 dacite
 ollama

@@ -1,7 +1,6 @@
 import asyncio
 from datetime import datetime
 
-import uvloop
 from hydrogram import Client, idle
 
 from bot.config import BOT_TOKEN, logger
@@ -25,17 +24,6 @@ async def main():
     await app.stop()
 
 
-def install_uvloop():
-    if "uvloop" == asyncio.get_event_loop_policy().__module__:
-        return
-    try:
-        uvloop.install()
-    except ImportError as e:
-        logger.error(f"Failed to install uvloop: {e}")
-    policy = asyncio.get_event_loop_policy()
-    logger.info(f"Current event loop policy: {policy.__class__.__name__}")
-
-
 async def broadcast_online(client: Client):
     db = Database()
     now = datetime.now()
@@ -54,5 +42,4 @@ async def broadcast_online(client: Client):
 
 
 if __name__ == "__main__":
-    install_uvloop()
     app.run(main())
