@@ -14,10 +14,8 @@ def parse_attributes(m: Message) -> ParsedAtributes:
         [
             [
                 InlineKeyboardButton("Original", url=url),
-                InlineKeyboardButton(
-                    "Youtube", url="https://youtube.com/@tiktokdouyin-share"
-                ),
-                InlineKeyboardButton("Channel", url="https://t.me/contentdownload"),
+                InlineKeyboardButton("Discord", url="https://discord.gg/9WF54BSc4s"),
+                InlineKeyboardButton("Channel", url="https://t.me/starfall_org"),
             ]
         ]
     )

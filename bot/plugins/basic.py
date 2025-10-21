@@ -19,10 +19,18 @@ async def reply_start(_: Client, m: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
+                    InlineKeyboardButton("Channel", url="https://t.me/starfall_org"),
                     InlineKeyboardButton(
                         "Group", url="https://t.me/starfall_community"
                     ),
-                    InlineKeyboardButton("Channel", url="https://t.me/channelstarfall"),
+                    InlineKeyboardButton(
+                        "StarChatter", url="https://t.me/StarChatterBot"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Discord Server", url="https://discord.gg/9WF54BSc4s"
+                    ),
                 ],
             ]
         ),
