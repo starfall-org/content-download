@@ -6,6 +6,7 @@ from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from bot.config import logger
 from bot.database.client import Database
+from bot.utils.sys_usage import show_usage
 
 db = Database()
 
@@ -15,7 +16,7 @@ async def reply_start(_: Client, m: Message):
     await m.reply_chat_action(ChatAction.TYPING)
     text = "__Welcome to Content Download!\n\nThis bot helps you download content from various sources.__"
     await m.reply(
-        f"**Content Download**\n\n{text}",
+        f"**Content Download**\n\n{text}\n{show_usage('idle')}",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -45,3 +46,9 @@ async def reply_start(_: Client, m: Message):
             + "ACTION: start"
         )
     )
+
+
+@Client.on_message(filters.command("rss") )
+async def resource_usage(c: Client, m: Message):
+    await c.send_chat_action(m.chat.id, ChatAction.TYPING)
+    await m.reply(show_usage("idle"), quote=True)
