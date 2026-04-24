@@ -20,78 +20,104 @@ def convert_input_media(
 
 
 async def reply_media_group(m: Message, data: ResponseUtility) -> None:
-    if data.result == CommonLinks and (media := data.result.links) == 1:
-        if media[0].type == "video":
-            await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-            try:
-                await m.reply_video(
-                    media.url, reply_markup=data.button, caption=data.caption
-                )
-            except Exception:
-                result = await convert_to_io(data.result)
-                new_media = result.links[0]
-                await m.reply_video(
-                    new_media.url,
-                    reply_markup=data.button,
-                    caption=data.caption,
-                )
-        elif media[0].type == "image":
-            await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
-            try:
-                await m.reply_photo(
-                    media.content.url, reply_markup=data.button, caption=data.caption
-                )
-            except Exception:
-                result = await convert_to_io(data.result)
-                new_media = result.links[0]
-                await m.reply_photo(
-                    new_media.url,
-                    reply_markup=data.button,
-                    caption=data.caption,
-                )
-    else:
-        result: CommonLinks = data.result
-        items = result.links
-        last_item = items[-1]
-        for i in range(0, len(items) - 1, 10):
-            part_items = items[i : min(i + 10, len(items) - 1)]
-            if any(link.type == "video" for link in part_items):
+    media = data.result.links
+    
+    # Separate audio from other media
+    audio_items = [item for item in media if item.type == "audio"]
+    non_audio_items = [item for item in media if item.type != "audio"]
+    
+    # Send non-audio media first (video/image)
+    if non_audio_items:
+        if len(non_audio_items) == 1:
+            item = non_audio_items[0]
+            if item.type == "video":
                 await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
-            else:
+                try:
+                    await m.reply_video(item.url)
+                except Exception:
+                    result = await convert_to_io(data.result)
+                    new_media = result.links[0]
+                    await m.reply_video(new_media.url)
+            elif item.type == "image":
                 await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
-            try:
-                media_group = convert_input_media(part_items)
-                await m.reply_media_group(media_group)
-            except Exception:
+                try:
+                    await m.reply_photo(item.url)
+                except Exception:
+                    result = await convert_to_io(data.result)
+                    new_media = result.links[0]
+                    await m.reply_photo(new_media.url)
+        else:
+            # Multiple non-audio items - send as media group
+            for i in range(0, len(non_audio_items) - 1, 10):
+                part_items = non_audio_items[i : min(i + 10, len(non_audio_items) - 1)]
                 if any(link.type == "video" for link in part_items):
                     await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
                 else:
                     await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
-                result = await convert_to_io(data.result)
-                items = result.links
-                last_item = items[-1]
-                part_files = items[i : min(i + 10, len(items) - 1)]
-                media_group = convert_input_media(part_files)
-                await m.reply_media_group(media_group)
+                try:
+                    media_group = convert_input_media(part_items)
+                    await m.reply_media_group(media_group)
+                except Exception:
+                    if any(link.type == "video" for link in part_items):
+                        await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
+                    else:
+                        await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
+                    result = await convert_to_io(data.result)
+                    part_files = [item for item in result.links if item.type != "audio"]
+                    media_group = convert_input_media(
+                        part_files[i : min(i + 10, len(part_files) - 1)]
+                    )
+                    await m.reply_media_group(media_group)
 
-        if last_item.type == "video":
-            await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
+            # Send last non-audio item without caption (caption goes with audio)
+            last_non_audio = non_audio_items[-1]
+            if last_non_audio.type == "video":
+                await m.reply_chat_action(ChatAction.UPLOAD_VIDEO)
+                try:
+                    await m.reply_video(last_non_audio.url)
+                except Exception:
+                    result = await convert_to_io(data.result)
+                    new_media = [item for item in result.links if item.type == "video"][-1]
+                    await m.reply_video(new_media.url)
+            elif last_non_audio.type == "image":
+                await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
+                try:
+                    await m.reply_photo(last_non_audio.url)
+                except Exception:
+                    result = await convert_to_io(data.result)
+                    new_media = [item for item in result.links if item.type == "image"][-1]
+                    await m.reply_photo(new_media.url)
+
+    # Send audio last with caption and button
+    if audio_items:
+        for i, audio in enumerate(audio_items):
+            # Last audio gets caption and button
+            is_last = (i == len(audio_items) - 1)
+            await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
             try:
-                await m.reply_video(
-                    last_item.url, caption=data.caption, reply_markup=data.button
-                )
+                if is_last:
+                    await m.reply_audio(
+                        audio.url,
+                        title="music",
+                        performer="bytedance",
+                        caption=data.caption,
+                        reply_markup=data.button,
+                    )
+                else:
+                    await m.reply_audio(audio.url, title="music", performer="music.mp3")
             except Exception:
                 result = await convert_to_io(data.result)
-                last_item = result.links[-1]
-                await m.reply_video(
-                    last_item.url, caption=data.caption, reply_markup=data.button
-                )
-
-        elif last_item.type == "image":
-            await m.reply_chat_action(ChatAction.UPLOAD_PHOTO)
-            await m.reply_photo(
-                last_item.url, caption=data.caption, reply_markup=data.button
-            )
+                audio_links = [item for item in result.links if item.type == "audio"]
+                if is_last:
+                    await m.reply_audio(
+                        audio_links[i].url,
+                        title="music",
+                        performer="music.mp3",
+                        caption=data.caption,
+                        reply_markup=data.button,
+                    )
+                else:
+                    await m.reply_audio(audio_links[i].url, title="music", performer="music.mp3")
 
 
 async def reply_audio(m: Message, data: ResponseUtility) -> None:
