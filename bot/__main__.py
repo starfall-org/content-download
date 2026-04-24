@@ -1,25 +1,18 @@
+import asyncio
 from datetime import datetime
 
 from hydrogram import Client, idle
 
 from bot.config import BOT_TOKEN, logger
-from bot.services.broadcasts import broadcast_text
+from bot.database.client import Database
 
-API_ID = 6
-API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
-
-
-def create_app() -> Client:
-    return Client(
-        __name__,
-        API_ID,
-        API_HASH,
-        bot_token=BOT_TOKEN,
-        plugins={"root": "bot/plugins"},
-    )
-
-
-app = create_app()
+app = Client(
+    __name__,
+    6,
+    "eb06d4abfb49dc3eeb1aeb98ae0f581e",
+    bot_token=BOT_TOKEN,
+    plugins={"root": "bot/plugins"},
+)
 
 
 async def main():
@@ -32,11 +25,20 @@ async def main():
 
 
 async def broadcast_online(client: Client):
+    db = Database()
     now = datetime.now()
     content = (
         f"__{now.strftime('%b %d, %Y - %H:%M:%S')}__\n**The bot has connected!**🟢"
+        + "\n```\nThis is an automated message, please do not reply.\n```"
     )
-    await broadcast_text(client, content)
+    chats = [chat.id for chat in await db.all_chat()]
+
+    for chat in chats:
+        try:
+            await client.send_message(chat, content)
+        except Exception as e:
+            print(e)
+        await asyncio.sleep(3)
 
 
 if __name__ == "__main__":
