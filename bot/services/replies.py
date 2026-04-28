@@ -183,7 +183,6 @@ async def _send_audio(
         url,
         title=AUDIO_TITLE,
         performer=AUDIO_PERFORMER,
-        file_name="audio.mp3",
         caption=caption,
         reply_markup=reply_markup,
     )
