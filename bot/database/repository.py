@@ -7,7 +7,7 @@ from hydrogram.types import Chat as Group
 from sqlmodel import Session, SQLModel, create_engine, select
 
 from bot.config import DATABASE_URL
-from bot.schemas.bot import ParsedChatArguments
+from bot.schemas.telegram import ParsedChatArguments
 
 from .models.chat import Chat, GroupStats, MemberCount, PresetContent
 

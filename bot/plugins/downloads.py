@@ -1,3 +1,4 @@
+from collections.abc import Awaitable, Callable
 from datetime import datetime
 
 from hydrogram import Client, filters
@@ -6,133 +7,92 @@ from hydrogram.errors import Forbidden
 from hydrogram.types import Message
 
 from bot.config import logger
-from bot.content_api import get_api_result
-from bot.database.client import Database
-from bot.methods.custom import reply_audio, reply_media_group
-from bot.schemas.bot import ParsedChatArguments
+from bot.database import Database
+from bot.schemas.telegram import ParsedChatArguments, ResponseUtility
+from bot.services.content_api import get_api_result
+from bot.services.replies import reply_audio, reply_media_group
+
+DownloadReply = Callable[[Message, ResponseUtility], Awaitable[None]]
 
 db = Database()
 
+DATE_FORMAT = "%d/%m/%Y %H:%M:%S"
+MUSIC_COMMANDS = {"AUDIO", "MUSIC"}
+URL_FILTER = filters.regex("http|https")
 
-@Client.on_message(filters.regex("http|https") & filters.regex("youtube.|youtu.be"))
-async def __youtube__(_: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    try:
-        if any(command.upper() in ["MUSIC", "AUDIO"] for command in m.text.split()):
-            result = await get_api_result("music", m)
-            await m.reply_chat_action(ChatAction.UPLOAD_AUDIO)
-            await reply_audio(m, result)
-            logger.info(
-                (
-                    f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
-                    f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
-                    "ACTION: music"
-                ),
-            )
-        else:
-            result = await get_api_result("youtube", m)
-            await reply_media_group(m, result)
-            logger.info(
-                (
-                    f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                    f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
-                    f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
-                    "ACTION: youtube"
-                ),
-            )
 
-        await m.delete()
-        can_reply = True
-    except Forbidden as e:
-        logger.error(e)
-        can_reply = False
-
-    chat_args = ParsedChatArguments(
-        message=m,
-        can_reply=can_reply,
+def _sender_name(message: Message) -> str:
+    return (
+        message.chat.full_name
+        or getattr(message.from_user, "first_name", None)
+        or getattr(message.sender_chat, "title", None)
+        or "Unknown"
     )
-    await db.update_chat(chat_args)
 
 
-@Client.on_message(filters.regex("http|https") & filters.regex("facebook.|fb."))
-async def __facebook__(_: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    try:
-        result = await get_api_result("facebook", m)
-        await reply_media_group(m, result)
-        await m.delete()
-        logger.info(
-            (
-                f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
-                f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
-                "ACTION: facebook"
-            )
+def _chat_name(message: Message) -> str:
+    return message.chat.title or message.chat.full_name or "Private"
+
+
+def _log_download(message: Message, action: str) -> None:
+    logger.info(
+        (
+            f"[{datetime.now().strftime(DATE_FORMAT)}]\n"
+            f"SENDER: {_sender_name(message)}\n"
+            f"CHAT: [{message.chat.id}] {_chat_name(message)}\n"
+            f"ACTION: {action}"
         )
-        can_reply = True
-    except Forbidden:
-        can_reply = False
-
-    chat_args = ParsedChatArguments(
-        message=m,
-        can_reply=can_reply,
     )
-    await db.update_chat(chat_args)
 
 
-@Client.on_message(filters.regex("http|https") & filters.regex("instagram."))
-async def __instagram__(_: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
+def _is_music_request(message: Message) -> bool:
+    return any(part.upper() in MUSIC_COMMANDS for part in (message.text or "").split())
+
+
+async def _update_chat(message: Message, can_reply: bool) -> None:
+    await db.update_chat(ParsedChatArguments(message=message, can_reply=can_reply))
+
+
+async def _handle_download(
+    message: Message,
+    endpoint: str,
+    action: str,
+    reply: DownloadReply,
+) -> None:
+    await message.reply_chat_action(ChatAction.TYPING)
+
     try:
-        result = await get_api_result("instagram", m)
-        await reply_media_group(m, data=result)
-        await m.delete()
-
-        logger.info(
-            (
-                f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
-                f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
-                "ACTION: instagram"
-            )
-        )
+        result = await get_api_result(endpoint, message)
+        await reply(message, result)
+        await message.delete()
+        _log_download(message, action)
         can_reply = True
-    except Forbidden as e:
-        logger.error(e)
+    except Forbidden as error:
+        logger.error(error)
         can_reply = False
 
-    chat_args = ParsedChatArguments(
-        message=m,
-        can_reply=can_reply,
-    )
-    await db.update_chat(chat_args)
+    await _update_chat(message, can_reply)
 
 
-@Client.on_message(
-    filters.regex("http|https") & filters.regex("douyin.|iesdouyin.|tiktok.")
-)
-async def __douyin__(_: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    try:
-        result = await get_api_result("douyin", m)
-        await reply_media_group(m, result)
-        await m.delete()
-        logger.info(
-            (
-                f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-                f"SENDER: {m.chat.full_name or getattr(m.from_user, 'first_name') or getattr(m.sender_chat, 'title')}\n"
-                f"CHAT: [{m.chat.id}] {m.chat.title or m.chat.full_name}\n"
-                "ACTION: douyin"
-            )
-        )
-        can_reply = True
-    except Forbidden as e:
-        logger.error(e)
-        can_reply = False
+@Client.on_message(URL_FILTER & filters.regex("youtube.|youtu.be"))
+async def download_youtube(_: Client, message: Message) -> None:
+    if _is_music_request(message):
+        await _handle_download(message, "music", "music", reply_audio)
+        return
 
-    chat_args = ParsedChatArguments(
-        message=m,
-        can_reply=can_reply,
-    )
-    await db.update_chat(chat_args)
+    await _handle_download(message, "youtube", "youtube", reply_media_group)
+
+
+@Client.on_message(URL_FILTER & filters.regex("facebook.|fb."))
+async def download_facebook(_: Client, message: Message) -> None:
+    await _handle_download(message, "facebook", "facebook", reply_media_group)
+
+
+@Client.on_message(URL_FILTER & filters.regex("instagram."))
+async def download_instagram(_: Client, message: Message) -> None:
+    await _handle_download(message, "instagram", "instagram", reply_media_group)
+
+
+@Client.on_message(URL_FILTER & filters.regex("douyin.|iesdouyin.|tiktok."))
+async def download_douyin(_: Client, message: Message) -> None:
+    await _handle_download(message, "douyin", "douyin", reply_media_group)

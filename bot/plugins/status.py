@@ -2,7 +2,7 @@ from hydrogram import Client, filters
 from hydrogram.enums import ChatAction
 from hydrogram.types import Message
 
-from bot.database.client import Database
+from bot.database import Database
 
 db = Database()
 

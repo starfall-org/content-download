@@ -5,50 +5,62 @@ from hydrogram.enums import ChatAction
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from bot.config import logger
-from bot.database.client import Database
-from bot.utils.sys_usage import show_usage
+from bot.telegram.sys_usage import show_usage
 
-db = Database()
+DATE_FORMAT = "%d/%m/%Y %H:%M:%S"
+WELCOME_TEXT = (
+    "__Welcome to Content Download!\n\n"
+    "This bot helps you download content from various sources.__"
+)
 
 
-@Client.on_message(filters.command(["start", "help"]) & filters.private)
-async def reply_start(_: Client, m: Message):
-    await m.reply_chat_action(ChatAction.TYPING)
-    text = "__Welcome to Content Download!\n\nThis bot helps you download content from various sources.__"
-    await m.reply(
-        f"**Content Download**\n\n{text}\n{show_usage('idle')}",
-        reply_markup=InlineKeyboardMarkup(
+def _support_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        [
             [
-                [
-                    InlineKeyboardButton("Channel", url="https://t.me/starfall_org"),
-                    InlineKeyboardButton(
-                        "Group", url="https://t.me/starfall_community"
-                    ),
-                    InlineKeyboardButton(
-                        "StarChatter", url="https://t.me/StarChatterBot"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "Discord Server", url="https://discord.gg/9WF54BSc4s"
-                    ),
-                ],
-            ]
-        ),
+                InlineKeyboardButton("Channel", url="https://t.me/starfall_org"),
+                InlineKeyboardButton("Group", url="https://t.me/starfall_community"),
+                InlineKeyboardButton("StarChatter", url="https://t.me/StarChatterBot"),
+            ],
+            [
+                InlineKeyboardButton(
+                    "Discord Server",
+                    url="https://discord.gg/9WF54BSc4s",
+                ),
+            ],
+        ]
     )
+
+
+def _log_start(message: Message) -> None:
+    if message.from_user:
+        sender = f"USER: [{message.from_user.id}] {message.from_user.first_name}"
+    elif message.sender_chat:
+        sender = f"SENDER: [{message.sender_chat.id}] {message.sender_chat.title}"
+    else:
+        sender = "SENDER: Unknown"
+
     logger.info(
         (
-            f"[{datetime.now().strftime('%d/%m/%Y %H:%M:%S')}]\n"
-            + f"USER: [{m.from_user.id}] {m.from_user.first_name}"
-            if m.from_user
-            else f"SENDER: [{m.sender_chat.id}] {m.sender_chat.title}"
-            + f"CHAT: [{m.chat.id}] {m.chat.title}"
-            + "ACTION: start"
+            f"[{datetime.now().strftime(DATE_FORMAT)}]\n"
+            f"{sender}\n"
+            f"CHAT: [{message.chat.id}] {message.chat.title}\n"
+            "ACTION: start"
         )
     )
 
 
-@Client.on_message(filters.command("rss") )
-async def resource_usage(c: Client, m: Message):
-    await c.send_chat_action(m.chat.id, ChatAction.TYPING)
-    await m.reply(show_usage("idle"), quote=True)
+@Client.on_message(filters.command(["start", "help"]) & filters.private)
+async def reply_start(_: Client, message: Message) -> None:
+    await message.reply_chat_action(ChatAction.TYPING)
+    await message.reply(
+        f"**Content Download**\n\n{WELCOME_TEXT}\n{show_usage('idle')}",
+        reply_markup=_support_keyboard(),
+    )
+    _log_start(message)
+
+
+@Client.on_message(filters.command("rss"))
+async def resource_usage(client: Client, message: Message) -> None:
+    await client.send_chat_action(message.chat.id, ChatAction.TYPING)
+    await message.reply(show_usage("idle"), quote=True)
