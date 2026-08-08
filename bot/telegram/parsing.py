@@ -30,7 +30,7 @@ def _extract_url(text: str) -> str:
     if not match:
         raise ValueError("No URL found in message text.")
 
-    return match.group("url")
+    return match.group("url").rstrip(".,!?)]}>")
 
 
 def _link_buttons(url: str) -> InlineKeyboardMarkup:

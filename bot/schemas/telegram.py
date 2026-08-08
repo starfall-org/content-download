@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from hydrogram.types import InlineKeyboardMarkup, Message
 
-from bot.schemas.download import CommonLinks, YoutubeLinks
+from bot.schemas.download import CommonLinks
 
 
 @dataclass
@@ -14,7 +14,7 @@ class ParsedAttributes:
 
 @dataclass
 class ResponseUtility:
-    result: YoutubeLinks | CommonLinks
+    result: CommonLinks
     button: InlineKeyboardMarkup
     caption: str
 

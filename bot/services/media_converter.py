@@ -2,15 +2,24 @@ import io
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from aiohttp import ClientSession
+from aiohttp import ClientSession, ClientTimeout
 
-from bot.schemas.download import CommonLinks, YoutubeLinks
+from bot.schemas.download import CommonLinks
 
+DOWNLOAD_TIMEOUT = ClientTimeout(total=180)
 MEDIA_EXTENSIONS = {
     "audio": "mp3",
     "video": "mp4",
     "image": "png",
+    "document": "bin",
+    "hls": "mp4",
 }
+
+
+def _extension(link_type: str, explicit: str | None) -> str:
+    if explicit:
+        return explicit.lstrip(".")
+    return MEDIA_EXTENSIONS.get(link_type, "bin")
 
 
 async def convert_url_to_io(
@@ -23,45 +32,21 @@ async def convert_url_to_io(
 
     filename = title or datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).isoformat()
 
-    async with ClientSession() as session:
-        async with session.get(url) as response:
+    async with ClientSession(timeout=DOWNLOAD_TIMEOUT) as session:
+        async with session.get(url, allow_redirects=True) as response:
             if response.status == 200:
-                content = await response.read()
-                iofile = io.BytesIO(content)
+                iofile = io.BytesIO(await response.read())
                 iofile.name = f"{filename}.{ext}"
                 return iofile
 
     raise ValueError(f"Unable to download media from {url}")
 
 
-def _extension(media_type: str) -> str:
-    return MEDIA_EXTENSIONS.get(media_type, "bin")
-
-
-async def convert_to_io(
-    obj: CommonLinks | YoutubeLinks,
-) -> CommonLinks | YoutubeLinks:
-    if isinstance(obj, CommonLinks):
-        for link in obj.links:
-            link.url = await convert_url_to_io(
-                link.url,
-                ext=_extension(link.type),
-                title=obj.title,
-            )
-    elif isinstance(obj, YoutubeLinks):
-        obj.video.url = await convert_url_to_io(
-            obj.video.url,
-            ext=_extension(obj.video.type),
-            title=obj.title,
-        )
-        obj.video_no_audio.url = await convert_url_to_io(
-            obj.video_no_audio.url,
-            ext=_extension(obj.video_no_audio.type),
-            title=obj.title,
-        )
-        obj.audio.url = await convert_url_to_io(
-            obj.audio.url,
-            ext=_extension(obj.audio.type),
+async def convert_to_io(obj: CommonLinks) -> CommonLinks:
+    for link in obj.media:
+        link.url = await convert_url_to_io(
+            link.url,
+            ext=_extension(link.type, link.extension),
             title=obj.title,
         )
     return obj
