@@ -1,3 +1,6 @@
+import asyncio
+import json
+
 from aiohttp import ClientSession, ClientTimeout
 from dacite import from_dict
 from hydrogram.types import Message
@@ -32,10 +35,18 @@ async def get_api_result(endpoint: str, m: Message) -> ResponseUtility:
         try:
             async with ClientSession(timeout=REQUEST_TIMEOUT) as session:
                 async with session.get(api_url, params={"url": attrs.url}) as response:
-                    payload = await response.json(content_type=None)
+                    status = response.status
+                    body = await response.text()
 
-            if response.status != 200 or not isinstance(payload, dict):
-                raise ContentAPIError(_error_message(payload, response.status))
+            try:
+                payload = json.loads(body)
+            except json.JSONDecodeError as error:
+                raise ContentAPIError(
+                    f"Content API returned non-JSON (HTTP {status}, {len(body)} bytes)"
+                ) from error
+
+            if status != 200 or not isinstance(payload, dict):
+                raise ContentAPIError(_error_message(payload, status))
             if not payload.get("success"):
                 raise ContentAPIError(_error_message(payload, response.status))
 
@@ -50,5 +61,7 @@ async def get_api_result(endpoint: str, m: Message) -> ResponseUtility:
             )
         except Exception as error:
             last_error = error
+            if attempt < MAX_ATTEMPTS:
+                await asyncio.sleep(0.5 * attempt)
 
     raise ContentAPIError(f"Content API call failed after {MAX_ATTEMPTS} attempts: {last_error}")
