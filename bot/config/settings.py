@@ -13,7 +13,12 @@ ENV_FILE = Path(__file__).parent.parent.parent / ".env"
 
 def load_env():
     """Load environment variables from .env file and prompt for missing ones."""
-    env_vars = {}
+    # Environment variables take precedence over values stored in .env.
+    env_vars = {
+        name: os.environ[name]
+        for name in REQUIRED_ENV_VARS
+        if os.environ.get(name)
+    }
 
     # Load existing .env file
     if ENV_FILE.exists():
@@ -22,7 +27,9 @@ def load_env():
                 line = line.strip()
                 if line and not line.startswith("#") and "=" in line:
                     key, _, value = line.partition("=")
-                    env_vars[key.strip()] = value.strip().strip('"').strip("'")
+                    env_vars.setdefault(
+                        key.strip(), value.strip().strip('"').strip("'")
+                    )
 
     # Check for missing variables and prompt user
     missing_vars = []

@@ -1,39 +1,23 @@
-from collections.abc import Iterable
-from email.mime import audio
-
 from aiohttp import ClientSession, ClientTimeout
 from hydrogram.enums import ChatAction
-from hydrogram.types import InputMediaPhoto, InputMediaVideo, Message
+from hydrogram.types import Message
 
-from bot.schemas.download import CommonLink, CommonLinks, YoutubeLink, YoutubeLinks
+from bot.schemas.download import CommonLink, CommonLinks
 from bot.schemas.telegram import ResponseUtility
 from bot.services.media_converter import convert_to_io
 
-MediaLink = CommonLink | YoutubeLink
-
-ALBUM_SIZE = 10
+MediaLink = CommonLink
 AUDIO_TITLE = "music"
 AUDIO_PERFORMER = "music.mp3"
 
 
-def _chunked(
-    items: list[MediaLink],
-    size: int = ALBUM_SIZE,
-) -> Iterable[list[MediaLink]]:
-    for index in range(0, len(items), size):
-        yield items[index : index + size]
-
-
-def _links(result: CommonLinks | YoutubeLinks) -> list[MediaLink]:
-    if isinstance(result, CommonLinks):
-        return result.links
-
-    return [result.video, result.audio]
+def _links(result: CommonLinks) -> list[MediaLink]:
+    return result.media
 
 
 def _split_media(items: list[MediaLink]) -> tuple[list[MediaLink], list[MediaLink]]:
-    audio = [item for item in items if item.type == "audio"]
-    visual = [item for item in items if item.type != "audio"]
+    audio = [item for item in items if item.type.lower() == "audio"]
+    visual = [item for item in items if item.type.lower() != "audio"]
     return visual, audio
 
 
@@ -42,43 +26,20 @@ def _same_type_index(items: list[MediaLink], index: int) -> int:
     return sum(item.type == media_type for item in items[: index + 1]) - 1
 
 
-def _input_media(item: MediaLink) -> InputMediaPhoto | InputMediaVideo:
-    if item.type == "video":
-        return InputMediaVideo(item.url)
-
-    return InputMediaPhoto(item.url)
-
-
-def _input_media_group(
-    items: list[MediaLink],
-) -> list[InputMediaPhoto | InputMediaVideo]:
-    return [_input_media(item) for item in items]
-
-
-def convert_input_media(
-    media: list[MediaLink],
-) -> list[InputMediaPhoto | InputMediaVideo]:
-    return _input_media_group(media)
-
-
 def _chat_action(media_type: str) -> ChatAction:
-    if media_type == "video":
+    media_type = media_type.lower()
+    if media_type in {"video", "hls"}:
         return ChatAction.UPLOAD_VIDEO
     if media_type == "audio":
         return ChatAction.UPLOAD_AUDIO
-    return ChatAction.UPLOAD_PHOTO
-
-
-def _album_action(items: list[MediaLink]) -> ChatAction:
-    if any(item.type == "video" for item in items):
-        return ChatAction.UPLOAD_VIDEO
-
+    if media_type == "document":
+        return ChatAction.UPLOAD_DOCUMENT
     return ChatAction.UPLOAD_PHOTO
 
 
 async def _converted_links(data: ResponseUtility, media_type: str) -> list[MediaLink]:
     converted = await convert_to_io(data.result)
-    return [item for item in _links(converted) if item.type == media_type]
+    return [item for item in _links(converted) if item.type.lower() == media_type.lower()]
 
 
 async def _send_visual(
@@ -87,18 +48,20 @@ async def _send_visual(
     caption: str | None = None,
     reply_markup=None,
 ) -> None:
-    await message.reply_chat_action(_chat_action(item.type))
-
-    reply_kwargs = {"reply_markup": reply_markup}
+    media_type = item.type.lower()
+    await message.reply_chat_action(_chat_action(media_type))
+    kwargs = {"reply_markup": reply_markup}
     if caption:
-        reply_kwargs["caption"] = caption
+        kwargs["caption"] = caption
 
-    if item.type == "video":
-        await message.reply_video(item.url, **reply_kwargs)
-        return
-
-    if item.type == "image":
-        await message.reply_photo(item.url, **reply_kwargs)
+    if media_type in {"video", "hls"}:
+        await message.reply_video(item.url, **kwargs)
+    elif media_type == "image":
+        await message.reply_photo(item.url, **kwargs)
+    elif media_type == "document":
+        await message.reply_document(item.url, **kwargs)
+    else:
+        raise ValueError(f"Unsupported media type: {item.type}")
 
 
 async def _send_visual_with_fallback(
@@ -124,31 +87,9 @@ async def _send_visual_with_fallback(
         )
 
 
-async def _send_visual_album(
-    message: Message,
-    items: list[MediaLink],
-    data: ResponseUtility,
-) -> None:
-    for chunk_index, chunk in enumerate(_chunked(items)):
-        if not chunk:
-            continue
-
-        await message.reply_chat_action(_album_action(chunk))
-        try:
-            await message.reply_media_group(_input_media_group(chunk))
-        except Exception:
-            fallback = await convert_to_io(data.result)
-            fallback_items = [
-                item for item in _links(fallback) if item.type != "audio"
-            ][chunk_index * ALBUM_SIZE : chunk_index * ALBUM_SIZE + len(chunk)]
-            if fallback_items:
-                await message.reply_media_group(_input_media_group(fallback_items))
-
-
 async def _url_is_reachable(url: object) -> bool:
     if not isinstance(url, str):
         return True
-
     try:
         async with ClientSession() as session:
             async with session.head(
@@ -164,12 +105,8 @@ async def _url_is_reachable(url: object) -> bool:
 async def _audio_url(data: ResponseUtility, audio: MediaLink, index: int) -> object:
     if await _url_is_reachable(audio.url):
         return audio.url
-
     fallback_links = await _converted_links(data, "audio")
-    if index < len(fallback_links):
-        return fallback_links[index].url
-
-    return audio.url
+    return fallback_links[index].url if index < len(fallback_links) else audio.url
 
 
 async def _send_audio(
@@ -197,7 +134,6 @@ async def _send_audio_with_fallback(
     reply_markup=None,
 ) -> None:
     url = await _audio_url(data, audio, index)
-
     try:
         await _send_audio(message, url, caption=caption, reply_markup=reply_markup)
     except Exception:
@@ -213,31 +149,22 @@ async def _send_audio_with_fallback(
 
 async def reply_media_group(message: Message, data: ResponseUtility) -> None:
     visual_items, audio_items = _split_media(_links(data.result))
+    if not visual_items and not audio_items:
+        raise ValueError("Content API returned no supported media")
 
-    if visual_items:
+    # Send each visual item independently. Telegram albums require at least two
+    # compatible items, while API responses may mix video, image, and document.
+    for index, item in enumerate(visual_items):
+        is_last_visual = index == len(visual_items) - 1
         has_audio = bool(audio_items)
-        caption = None if has_audio else data.caption
-        button = None if has_audio else data.button
-
-        if len(visual_items) == 1:
-            await _send_visual_with_fallback(
-                message,
-                visual_items[0],
-                data,
-                caption=caption,
-                reply_markup=button,
-            )
-        else:
-            album_items = visual_items[:-1]
-            await _send_visual_album(message, album_items, data)
-            await _send_visual_with_fallback(
-                message,
-                visual_items[-1],
-                data,
-                caption=caption,
-                reply_markup=button,
-                fallback_index=_same_type_index(visual_items, len(visual_items) - 1),
-            )
+        await _send_visual_with_fallback(
+            message,
+            item,
+            data,
+            caption=data.caption if is_last_visual and not has_audio else None,
+            reply_markup=data.button if is_last_visual and not has_audio else None,
+            fallback_index=_same_type_index(visual_items, index),
+        )
 
     for index, audio in enumerate(audio_items):
         is_last_audio = index == len(audio_items) - 1
@@ -252,10 +179,9 @@ async def reply_media_group(message: Message, data: ResponseUtility) -> None:
 
 
 async def reply_audio(message: Message, data: ResponseUtility) -> None:
-    audio_links = [item for item in _links(data.result) if item.type == "audio"]
+    audio_links = [item for item in _links(data.result) if item.type.lower() == "audio"]
     if not audio_links:
-        return
-
+        raise ValueError("Content API returned no audio media")
     await _send_audio_with_fallback(
         message,
         data,
