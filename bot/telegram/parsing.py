@@ -48,6 +48,6 @@ def _link_buttons(url: str) -> InlineKeyboardMarkup:
 def parse_attributes(message: Message) -> ParsedAttributes:
     url = _extract_url(_message_text(message))
     user_name, user_id = _sender_identity(message)
-    caption = f"**Sent by --__[{user_name}](tg://user?id={user_id})__--**"
+    caption = f"||**Sent by --__[{user_name}](tg://user?id={user_id})__--**||"
 
     return ParsedAttributes(url=url, button=_link_buttons(url), caption=caption)
