@@ -1,6 +1,12 @@
 from aiohttp import ClientSession, ClientTimeout
 from hydrogram.enums import ChatAction
-from hydrogram.types import Message
+from hydrogram.types import (
+    InputMediaAudio,
+    InputMediaDocument,
+    InputMediaPhoto,
+    InputMediaVideo,
+    Message,
+)
 
 from bot.schemas.download import CommonLink, CommonLinks
 from bot.schemas.telegram import ResponseUtility
@@ -9,6 +15,7 @@ from bot.services.media_converter import convert_to_io
 MediaLink = CommonLink
 AUDIO_TITLE = "music"
 AUDIO_PERFORMER = "music.mp3"
+MEDIA_GROUP_LIMIT = 10
 
 
 def _links(result: CommonLinks) -> list[MediaLink]:
@@ -64,6 +71,32 @@ async def _send_visual(
         raise ValueError(f"Unsupported media type: {item.type}")
 
 
+def _input_media(item: MediaLink):
+    """Build an InputMedia object without putting captions on the album."""
+    media_type = item.type.lower()
+    if media_type == "image":
+        return InputMediaPhoto(media=item.url)
+    if media_type in {"video", "hls"}:
+        return InputMediaVideo(media=item.url)
+    if media_type == "document":
+        return InputMediaDocument(media=item.url)
+    raise ValueError(f"Unsupported media type: {item.type}")
+
+
+def _media_group_kind(item: MediaLink) -> str:
+    # Telegram permits photos and videos in one album, but documents must be
+    # grouped only with documents. HLS is sent as a video after conversion.
+    return "document" if item.type.lower() == "document" else "visual"
+
+
+async def _send_visual_group(message: Message, items: list[MediaLink]) -> None:
+    if len(items) == 1:
+        await _send_visual(message, items[0])
+        return
+    await message.reply_chat_action(_chat_action(items[0].type))
+    await message.reply_media_group(media=[_input_media(item) for item in items])
+
+
 async def _send_visual_with_fallback(
     message: Message,
     item: MediaLink,
@@ -85,6 +118,27 @@ async def _send_visual_with_fallback(
             caption=caption,
             reply_markup=reply_markup,
         )
+
+
+async def _send_visual_group_with_fallback(
+    message: Message,
+    items: list[MediaLink],
+    data: ResponseUtility,
+    all_items: list[MediaLink],
+) -> None:
+    try:
+        await _send_visual_group(message, items)
+        return
+    except Exception:
+        # A single bad URL must not prevent the rest of an album from being
+        # delivered. Fall back per item, preserving the original order.
+        for item in items:
+            await _send_visual_with_fallback(
+                message,
+                item,
+                data,
+                fallback_index=_same_type_index(all_items, all_items.index(item)),
+            )
 
 
 async def _url_is_reachable(url: object) -> bool:
@@ -147,35 +201,68 @@ async def _send_audio_with_fallback(
             )
 
 
+def _album_batches(items: list[MediaLink]) -> list[list[MediaLink]]:
+    """Batch compatible items, leaving the response's final item alone."""
+    if len(items) <= 1:
+        return [items] if items else []
+
+    batches: list[list[MediaLink]] = []
+    pending: list[MediaLink] = []
+    for item in items[:-1]:
+        if pending and _media_group_kind(item) != _media_group_kind(pending[0]):
+            batches.append(pending)
+            pending = []
+        pending.append(item)
+        if len(pending) == MEDIA_GROUP_LIMIT:
+            batches.append(pending)
+            pending = []
+    if pending:
+        batches.append(pending)
+    batches.append([items[-1]])
+    return batches
+
+
 async def reply_media_group(message: Message, data: ResponseUtility) -> None:
     visual_items, audio_items = _split_media(_links(data.result))
     if not visual_items and not audio_items:
         raise ValueError("Content API returned no supported media")
 
-    # Send each visual item independently. Telegram albums require at least two
-    # compatible items, while API responses may mix video, image, and document.
-    for index, item in enumerate(visual_items):
-        is_last_visual = index == len(visual_items) - 1
-        has_audio = bool(audio_items)
-        await _send_visual_with_fallback(
-            message,
-            item,
-            data,
-            caption=data.caption if is_last_visual and not has_audio else None,
-            reply_markup=data.button if is_last_visual and not has_audio else None,
-            fallback_index=_same_type_index(visual_items, index),
-        )
+    # Albums are limited to ten items. Keep the final item separate so it can
+    # carry the caption and button, while earlier items are sent in batches.
+    for batch in _album_batches(visual_items):
+        if len(batch) == 1 and batch[0] is visual_items[-1]:
+            index = len(visual_items) - 1
+            await _send_visual_with_fallback(
+                message,
+                batch[0],
+                data,
+                caption=data.caption if not audio_items else None,
+                reply_markup=data.button if not audio_items else None,
+                fallback_index=_same_type_index(visual_items, index),
+            )
+        else:
+            await _send_visual_group_with_fallback(message, batch, data, visual_items)
 
-    for index, audio in enumerate(audio_items):
-        is_last_audio = index == len(audio_items) - 1
-        await _send_audio_with_fallback(
-            message,
-            data,
-            audio,
-            index=index,
-            caption=data.caption if is_last_audio else None,
-            reply_markup=data.button if is_last_audio else None,
-        )
+    for batch in _audio_album_batches(audio_items):
+        is_last_batch = batch[-1] is audio_items[-1]
+        if is_last_batch and len(batch) == 1:
+            index = len(audio_items) - 1
+            await _send_audio_with_fallback(
+                message,
+                data,
+                batch[0],
+                index=index,
+                caption=data.caption,
+                reply_markup=data.button,
+            )
+            continue
+
+        try:
+            await _send_audio_group(message, batch)
+        except Exception:
+            for item in batch:
+                index = audio_items.index(item)
+                await _send_audio_with_fallback(message, data, item, index=index)
 
 
 async def reply_audio(message: Message, data: ResponseUtility) -> None:
@@ -189,3 +276,31 @@ async def reply_audio(message: Message, data: ResponseUtility) -> None:
         caption=data.caption,
         reply_markup=data.button,
     )
+
+
+def _audio_media(item: MediaLink):
+    return InputMediaAudio(media=item.url, title=AUDIO_TITLE, performer=AUDIO_PERFORMER)
+
+
+async def _send_audio_group(message: Message, items: list[MediaLink]) -> None:
+    if len(items) == 1:
+        await _send_audio(message, items[0].url)
+        return
+    await message.reply_chat_action(ChatAction.UPLOAD_AUDIO)
+    await message.reply_media_group(media=[_audio_media(item) for item in items])
+
+
+def _audio_album_batches(items: list[MediaLink]) -> list[list[MediaLink]]:
+    if len(items) <= 1:
+        return [items] if items else []
+    batches: list[list[MediaLink]] = []
+    pending: list[MediaLink] = []
+    for item in items[:-1]:
+        pending.append(item)
+        if len(pending) == MEDIA_GROUP_LIMIT:
+            batches.append(pending)
+            pending = []
+    if pending:
+        batches.append(pending)
+    batches.append([items[-1]])
+    return batches
